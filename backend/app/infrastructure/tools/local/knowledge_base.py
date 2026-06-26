@@ -2,10 +2,12 @@ import asyncio
 from typing import Dict, Any
 
 import httpx
-from agents import function_tool
+from agents import RunContextWrapper, function_tool
 
 from app.infrastructure.logging.logger import logger
 from app.config.settings import settings
+from app.infrastructure.harness.context import AgentRunContext
+from app.infrastructure.tools.mcp.mcp_servers import search_mcp_client
 
 
 async def query_knowledge_impl(question: str) -> Dict[str, Any]:
@@ -69,7 +71,7 @@ async def query_knowledge_impl(question: str) -> Dict[str, Any]:
 
 
 @function_tool
-async def query_knowledge(question: str) -> Dict[str, Any]:
+async def query_knowledge(ctx: RunContextWrapper[AgentRunContext], question: str) -> Dict[str, Any]:
     """
     查询电脑问题知识库服务，用于检索与用户问题相关的技术文档或解决方案。
 
@@ -83,8 +85,43 @@ async def query_knowledge(question: str) -> Dict[str, Any]:
                   "answer": "知识库返回答案"
               }
     """
+    return await ctx.context.system_harness.invoke(
+        run_context=ctx.context,
+        agent_key="technical_agent",
+        tool_name="query_knowledge",
+        arguments={"question": question},
+        action=lambda: query_knowledge_impl(question),
+    )
 
-    return await query_knowledge_impl(question)
+
+async def search_web_impl(query: str) -> str:
+    result = await search_mcp_client.call_tool(
+        "bailian_web_search",
+        {"query": query}
+    )
+    texts = []
+    for content in result.content:
+        if hasattr(content, "text") and content.text:
+            texts.append(content.text)
+    return "\n".join(texts)
+
+
+@function_tool
+async def search_web(ctx: RunContextWrapper[AgentRunContext], query: str) -> str:
+    """
+    Search the public web for current information. Use only after the private
+    knowledge base has no useful result, or for real-time information.
+    """
+    result = await ctx.context.system_harness.invoke(
+        run_context=ctx.context,
+        agent_key="technical_agent",
+        tool_name="search_web",
+        arguments={"query": query},
+        action=lambda: search_web_impl(query),
+    )
+    if isinstance(result, dict):
+        return json.dumps(result, ensure_ascii=False)
+    return result
 
 
 async def main():

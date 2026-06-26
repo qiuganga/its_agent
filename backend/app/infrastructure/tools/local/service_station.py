@@ -1,208 +1,129 @@
-from app.infrastructure.database.database_pool import pool
 import json
-import stun
-from pymysql.cursors import DictCursor
-from agents import function_tool
-from app.infrastructure.tools.mcp.mcp_servers import baidu_mcp_client
-from app.infrastructure.logging.logger import logger
-from urllib.parse import quote
 import math
+from urllib.parse import quote
+
+import stun
+from agents import RunContextWrapper, function_tool
+from pymysql.cursors import DictCursor
+
+from app.infrastructure.database.database_pool import pool
+from app.infrastructure.harness.context import AgentRunContext
+from app.infrastructure.logging.logger import logger
+from app.infrastructure.tools.mcp.mcp_servers import baidu_mcp_client
+
+
+RELATIVE_LOCATIONS = {
+    "附近", "这", "这里", "这儿", "周围", "周边",
+    "我的位置", "当前位置", "所在位置", "nearby", "here"
+}
 
 
 def bd09mc_to_bd09(lng: float, lat: float) -> tuple[float, float]:
-    """
-    [工具函数] 百度墨卡托坐标 (BD09MC) 转 百度经纬度 (BD09)
-    百度地图 IP 定位 API 返回的是墨卡托坐标，导航 API 需要经纬度，因此必须转换。
-    来源：https://github.com/wandergis/coordTransform_py/blob/master/coordTransform_utils.py
-    """
     x = lng
     y = lat
-
-    # 1. 简单校验：如果坐标值过小，视为无效坐标（通常在中国境外或解析错误）
     if abs(y) < 1e-6 or abs(x) < 1e-6:
         return (0.0, 0.0)
 
-    # 2. 核心算法：墨卡托平面坐标转球面经纬度
     lng = x / 20037508.34 * 180
     lat = y / 20037508.34 * 180
     lat = 180 / math.pi * (2 * math.atan(math.exp(lat * math.pi / 180)) - math.pi / 2)
-
     return (lng, lat)
 
 
 def get_ip_via_stun():
-    """
-        [辅助函数] 获取本机公网 IP
-        注意：在服务器部署时，这获取的是服务器机房 IP。
-        如果要获取终端用户 IP，建议使用 ContextVars 从 HTTP Header 中透传。
-        真正开发期间--->前端请求的时候携带过来---->FastAPI的request携带过来---注入到工具中，工具使用。
-    """
-
     try:
-        # 默认使用公用的 STUN 服务器
-        nat_type, external_ip, external_port = stun.get_ip_info()
+        _nat_type, external_ip, _external_port = stun.get_ip_info()
         return external_ip
     except Exception as e:
-        print(f"STUN 获取失败: {e}")
+        logger.warning("[Location] STUN lookup failed: %s", e)
         return None
-#  从昌平区温都水城到海淀区清华大学（起点明确）--->地址解析得到经纬度
-#  我准备去清华大学（起点模糊问题）---->ip找经纬度
-#  离我最近的服务站有哪些----？流程:1.先调用resolve_user_location_from_text工具（用户当前的经纬度）---->2.query_nearest_repair_shops_by_coords(用户当前的经纬度)---->最近的服务返回出来
 
-@function_tool
-async def resolve_user_location_from_text(
-        user_input: str,
-) -> str:
-    """
-    智能解析用户当前位置（起点），用于导航或服务站查询。
-    ⚠️ 注意：
-    - 仅用于获取**起点**，不可作为终点使用。
 
-    Args:
-        user_input (str): 用户提到的**明确地名**。⚠️重要：如果用户只说了“附近”、“这里”、“我的位置”等相对方位词，请**留空**此参数（传空字符串），不要填入这些词。
+async def _baidu_tool_text(tool_name: str, arguments: dict) -> str:
+    result = await baidu_mcp_client.call_tool(tool_name, arguments)
+    texts = []
+    for content in result.content:
+        if hasattr(content, "text") and content.text:
+            texts.append(content.text)
+    return "\n".join(texts)
 
-    返回 JSON 字符串：
-    {
-        "ok": bool,
-        "lat": float,
-        "lng": float,
-        "source": "geocode" | "ip" | "fallback",
-        "original_input": str,
-        "error": str?  # 仅当 ok=False 时存在
-    }
-    """
 
-    # 1. 相对位置词黑名单 ---
-    # LLM 有时会提取出 "附近" 作为参数，但这会导致 Geocode 返回无意义坐标（如城市中心）。
-    # 定义这个黑名单，强制这些词触发 IP 定位逻辑。
-    RELATIVE_LOCATIONS = {
-        "附近", "这", "这里", "这儿", "周围", "周边",
-        "我的位置", "当前位置", "所在位置", "nearby", "here"
-    }
-
+async def resolve_user_location_from_text_impl(user_input: str) -> str:
     user_input = user_input.strip() if user_input else ""
-
-    # 2. 如果输入的是相对词，视为无效输入，清空它以便触发后续 IP 逻辑
     if user_input in RELATIVE_LOCATIONS:
-        logger.info(f"[Location] Detected relative term '{user_input}', forcing IP location fallback.")
+        logger.info("[Location] Relative term detected; using IP/fallback location")
         user_input = ""
 
-    # 3.  尝试 Geocode（明确地名解）
     if user_input:
         try:
-            logger.debug(f"[Location] Trying geocode for: '{user_input}'")
-
-            # 3.1 调用MCP工具 百度地理编码
-            geo_result = await baidu_mcp_client.call_tool(tool_name="map_geocode", arguments={"address": user_input})
-
-            # 3.2 MCP 返回的复杂结构
-            text = geo_result.content[0].text
-            text = json.loads(text)
-            result = text['result']
-
-            # 3.3  校验返回数据的完整性
-            if isinstance(result, dict) and "lat" in result['location'] and "lng" in result['location']:
-                lat = float(result['location']['lat'])
-                lng = float(result['location']['lng'])
-                logger.info(f"[Location] Geocode success: '{user_input}' → ({lat}, {lng})")
+            text = await _baidu_tool_text("map_geocode", {"address": user_input})
+            data = json.loads(text)
+            result = data.get("result", {})
+            location = result.get("location", {})
+            if "lat" in location and "lng" in location:
                 return json.dumps({
                     "ok": True,
-                    "lat": lat,
-                    "lng": lng,
-                    "source": "geocode"
+                    "lat": float(location["lat"]),
+                    "lng": float(location["lng"]),
+                    "source": "geocode",
                 }, ensure_ascii=False)
-            else:
-                logger.warning(f"[Location] Geocode returned invalid result: {geo_result}")
         except Exception as e:
-            # 3.4 如果 Geocode 报错，不抛出异常，而是吞掉错误继续向下走 IP 逻辑
-            logger.warning(f"[Location] Geocode failed for '{user_input}': {e}")
+            logger.warning("[Location] Geocode failed: %s", e)
 
-    #  获取 IP (注意：此处目前是获取运行环境对外的公网IP，生产环境建议改为前端获取传参注入)
     user_ip = get_ip_via_stun()
-
-    # 4. 尝试 IP 定位
     if user_ip and user_ip not in ("127.0.0.1", "localhost", "::1"):
         try:
-            logger.debug(f"[Location] Trying IP location for: {user_ip}")
-
-            # 4.1 调用 MCP 工具：百度 IP 定位
-            ip_result = await baidu_mcp_client.call_tool("map_ip_location", {"ip": user_ip})
-
-            # 4.2 解析 MCP 返回的 TextContent
-            text = ip_result.content[0].text
+            text = await _baidu_tool_text("map_ip_location", {"ip": user_ip})
             data = json.loads(text)
-
-            # 4.3 检查状态
             if data.get("status") != 0:
-                logger.warning(f"[Location] IP location API error: {data.get('message', 'unknown')}")
-                raise ValueError("IP location API returned non-zero status")
-
+                raise ValueError(data.get("message", "ip location failed"))
             point = data.get("content", {}).get("point", {})
             x_str = point.get("x")
             y_str = point.get("y")
-
             if not x_str or not y_str:
-                logger.warning(f"[Location] Missing x/y in IP location result: {data}")
-                raise ValueError("Missing x/y coordinates")
-
-            # 4.4 坐标转换
-            # 百度 IP API 返回的是 墨卡托坐标 (Mercator)，后续的维修站查询和导航使用的是 经纬度坐标 (Lat/Lng)，必须转换。
-            x = float(x_str)
-            y = float(y_str)
-
-            lng, lat = bd09mc_to_bd09(x, y)  # 注意顺序：返回 (lng, lat)
-
-            logger.info(f"[Location] IP location success: {user_ip} → ({lat:.6f}, {lng:.6f})")
+                raise ValueError("missing x/y coordinates")
+            lng, lat = bd09mc_to_bd09(float(x_str), float(y_str))
             return json.dumps({
                 "ok": True,
                 "lat": lat,
                 "lng": lng,
-                "source": "ip"
+                "source": "ip",
             }, ensure_ascii=False)
-
         except Exception as e:
-            logger.warning(f"[Location] IP location failed for {user_ip}: {e}")
-
-    #  5. 兜底
-    # 防止整个流程失败导致 Agent 崩溃，返回一个默认坐标（通常是北京天安门）
-    fallback_lat, fallback_lng = 39.9042, 116.4074
-    logger.info("[Location] Using fallback coordinates (Beijing)")
+            logger.warning("[Location] IP location failed: %s", e)
 
     return json.dumps({
         "ok": False,
         "error": "无法解析用户位置，使用默认坐标",
-        "lat": fallback_lat,
-        "lng": fallback_lng,
-        "source": "fallback"
+        "lat": 39.9042,
+        "lng": 116.4074,
+        "source": "fallback",
     }, ensure_ascii=False)
 
 
 @function_tool
-def query_nearest_repair_shops_by_coords(lat: float, lng: float, limit: int = 3) -> str:
-    """
-    根据给定的经纬度坐标，查询数据库中最近的维修站/服务站。
+async def resolve_user_location_from_text(
+    ctx: RunContextWrapper[AgentRunContext],
+    user_input: str,
+) -> str:
+    result = await ctx.context.system_harness.invoke(
+        run_context=ctx.context,
+        agent_key="service_agent",
+        tool_name="resolve_user_location_from_text",
+        arguments={"user_input": user_input},
+        action=lambda: resolve_user_location_from_text_impl(user_input),
+    )
+    if isinstance(result, dict):
+        return json.dumps(result, ensure_ascii=False)
+    return result
 
-    Args:
-        lat (float): 纬度 (BD09LL)
-        lng (float): 经度 (BD09LL)
-        limit (int): 返回结果数量限制，默认为 3
 
-    Returns:
-        str: JSON 格式的查询结果，包含最近的维修站列表。
-    """
+def query_nearest_repair_shops_by_coords_impl(lat: float, lng: float, limit: int = 3) -> str:
     connection = None
     cursor = None
     try:
         connection = pool.connection()
         cursor = connection.cursor(DictCursor)
-
-        # 1. Haversine 距离计算公式
-        # 6371 是地球平均半径 (km)
-        # acos/cos/sin/radians 是三角函数
-        # 作用：给定两点坐标代入球面几何公式，算出它们在地球表面的直线距离（公里），并以此作为 distance_km 字段返回
-        # 6371 把计算出来的“弧度角度”转化为实际的“地面距离”
-        # radians()：经纬度通常是 角度 (Degrees) 三角函数必须使用 弧度 (Radians)
-
         sql = """
         SELECT
             id,
@@ -235,81 +156,101 @@ def query_nearest_repair_shops_by_coords(lat: float, lng: float, limit: int = 3)
                 )
             ) AS distance_km
         FROM repair_shops
-        WHERE 
-            latitude IS NOT NULL 
+        WHERE
+            latitude IS NOT NULL
             AND longitude IS NOT NULL
             AND ABS(latitude) <= 90
             AND ABS(longitude) <= 180
         ORDER BY distance_km ASC
         LIMIT %s
         """
-
-        # 2. 执行SQL (lat, lng, lat (起点纬度 起点经度 起点纬度))
         cursor.execute(sql, (lat, lng, lat, limit))
         rows = cursor.fetchall()
-
-        logger.info(f"[NearestShops] Found {len(rows)} shops near ({lat}, {lng})")
-
         return json.dumps({
             "ok": True,
             "count": len(rows),
             "data": rows,
-            "query": {
-                "lat": lat,
-                "lng": lng,
-                "limit": limit
-            }
+            "query": {"lat": lat, "lng": lng, "limit": limit},
         }, ensure_ascii=False, default=str)
-
     except Exception as e:
-        logger.error(f"[NearestShops] DB query failed: {e}", exc_info=True)
+        logger.error("[NearestShops] DB query failed: %s", e, exc_info=True)
         return json.dumps({
             "ok": False,
             "error": f"数据库查询失败: {str(e)}",
-            "query": {"lat": lat, "lng": lng, "limit": limit}
+            "query": {"lat": lat, "lng": lng, "limit": limit},
         }, ensure_ascii=False)
     finally:
-        # 必须确保归还连接到连接池，否则会导致连接耗尽
         if cursor:
             cursor.close()
         if connection:
             connection.close()
 
 
+@function_tool
+async def query_nearest_repair_shops_by_coords(
+    ctx: RunContextWrapper[AgentRunContext],
+    lat: float,
+    lng: float,
+    limit: int = 3,
+) -> str:
+    result = await ctx.context.system_harness.invoke(
+        run_context=ctx.context,
+        agent_key="service_agent",
+        tool_name="query_nearest_repair_shops_by_coords",
+        arguments={"lat": lat, "lng": lng, "limit": limit},
+        action=lambda: query_nearest_repair_shops_by_coords_impl(lat, lng, limit),
+    )
+    if isinstance(result, dict):
+        return json.dumps(result, ensure_ascii=False)
+    return result
+
+
+async def geocode_destination_impl(address: str) -> str:
+    try:
+        return await _baidu_tool_text("map_geocode", {"address": address})
+    except Exception as e:
+        logger.error("[GeocodeDestination] failed: %s", e, exc_info=True)
+        return json.dumps({
+            "ok": False,
+            "error": f"destination geocode failed: {str(e)}",
+        }, ensure_ascii=False)
+
+
+@function_tool
+async def geocode_destination(
+    ctx: RunContextWrapper[AgentRunContext],
+    address: str,
+) -> str:
+    result = await ctx.context.system_harness.invoke(
+        run_context=ctx.context,
+        agent_key="service_agent",
+        tool_name="geocode_destination",
+        arguments={"address": address},
+        action=lambda: geocode_destination_impl(address),
+    )
+    if isinstance(result, dict):
+        return json.dumps(result, ensure_ascii=False)
+    return result
+
 
 def encode_baidu_url(url: str) -> str:
     return quote(url, safe=":/?&=%")
 
 
-
-
-@function_tool
-async def map_navigation_tool(
+async def map_navigation_tool_impl(
     origin: str,
     destination: str,
     mode: str = "driving",
-    region: str = "北京市"
+    region: str = "北京",
 ) -> str:
-    """
-    通过百度地图 MCP 生成导航链接。
-
-    Args:
-        origin: 起点，格式：latlng:纬度,经度|name:起点名称
-        destination: 终点，格式：latlng:纬度,经度|name:终点名称
-        mode: driving / walking / transit
-        region: 城市名，例如 北京市
-
-    Returns:
-        JSON字符串，包含 url 和 markdown_link。
-    """
     try:
         if not origin or not destination:
             return json.dumps({
                 "ok": False,
-                "error": "起点或终点为空，无法生成导航链接"
+                "error": "起点或终点为空，无法生成导航链接",
             }, ensure_ascii=False)
 
-        result = await baidu_mcp_client.call_tool(
+        text = await _baidu_tool_text(
             "map_uri",
             {
                 "service": "direction",
@@ -317,39 +258,60 @@ async def map_navigation_tool(
                 "destination": destination,
                 "mode": mode,
                 "region": region,
-            }
+            },
         )
-
         url = None
-
-        for content in result.content:
-            if hasattr(content, "text") and content.text:
-                text = content.text.strip()
-
-                try:
-                    data = json.loads(text)
-                    url = data.get("url") or data.get("uri") or data.get("link")
-                except json.JSONDecodeError:
-                    url = text
-
-                if url:
-                    break
+        for part in text.splitlines() or [text]:
+            part = part.strip()
+            if not part:
+                continue
+            try:
+                data = json.loads(part)
+                url = data.get("url") or data.get("uri") or data.get("link")
+            except json.JSONDecodeError:
+                url = part
+            if url:
+                break
 
         if not url:
             return json.dumps({
                 "ok": False,
-                "error": "百度地图 MCP 未返回导航链接"
+                "error": "百度地图 MCP 未返回导航链接",
             }, ensure_ascii=False)
 
         return json.dumps({
             "ok": True,
             "url": url,
-            "markdown_link": f"[点击开始导航]({url})"
+            "markdown_link": f"[点击开始导航]({url})",
         }, ensure_ascii=False)
-
     except Exception as e:
-        logger.error(f"[MapNavigation] 生成导航链接失败: {e}", exc_info=True)
+        logger.error("[MapNavigation] failed: %s", e, exc_info=True)
         return json.dumps({
             "ok": False,
-            "error": f"导航链接生成失败: {str(e)}"
+            "error": f"导航链接生成失败: {str(e)}",
         }, ensure_ascii=False)
+
+
+@function_tool
+async def map_navigation_tool(
+    ctx: RunContextWrapper[AgentRunContext],
+    origin: str,
+    destination: str,
+    mode: str = "driving",
+    region: str = "北京",
+) -> str:
+    result = await ctx.context.system_harness.invoke(
+        run_context=ctx.context,
+        agent_key="service_agent",
+        tool_name="map_navigation_tool",
+        arguments={
+            "origin": origin,
+            "destination": destination,
+            "mode": mode,
+            "region": region,
+        },
+        action=lambda: map_navigation_tool_impl(origin, destination, mode, region),
+    )
+    if isinstance(result, dict):
+        return json.dumps(result, ensure_ascii=False)
+    return result

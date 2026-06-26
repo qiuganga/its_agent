@@ -16,6 +16,8 @@ search_mcp_client = MCPServerStreamableHttp(
     },
     client_session_timeout_seconds=60 * 10,
     cache_tools_list=True,
+    tool_filter={"allowed_tool_names": ["bailian_web_search"]},
+    max_retry_attempts=0,
 )
 
 # 2. 定义百度地图相关的MCP客户端(AK)
@@ -28,6 +30,8 @@ baidu_mcp_client = MCPServerStreamableHttp(
     },
     client_session_timeout_seconds=60 * 10,  # 客户端基于会话级别的超时时间
     cache_tools_list=True,
+    tool_filter={"allowed_tool_names": ["map_geocode", "map_ip_location", "map_uri"]},
+    max_retry_attempts=0,
 )
 
 

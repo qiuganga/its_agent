@@ -71,7 +71,7 @@ class Settings(BaseSettings):
         description="通义千问 DashScope Base URL"
     )
     DASHSCOPE_API_KEY: Optional[str] = Field(
-        default="sk-037fa48f3ac5454d9f4be3f75368a383",
+        default=None,
         description="通义千问 DashScope API Key"
     )
 
@@ -82,6 +82,19 @@ class Settings(BaseSettings):
     )
 
     # ==================== Pydantic Settings 配置 ====================
+
+    # ==================== Harness 执行控制 ====================
+
+    HARNESS_ORCHESTRATOR_MAX_TURNS: int = Field(default=5)
+    HARNESS_TECHNICAL_MAX_TURNS: int = Field(default=4)
+    HARNESS_SERVICE_MAX_TURNS: int = Field(default=5)
+    HARNESS_MAX_TOTAL_TOOL_CALLS_PER_RUN: int = Field(default=8)
+    HARNESS_MAX_SUB_AGENT_TOOL_CALLS_PER_RUN: int = Field(default=2)
+    HARNESS_MAX_REQUEST_SECONDS: int = Field(default=45)
+    HARNESS_MAX_CONCURRENT_RUNS: int = Field(default=20)
+    HARNESS_SESSION_TTL_SECONDS: int = Field(default=1800)
+    HARNESS_SESSION_MAX_TOTAL_TOOL_CALLS: int = Field(default=80)
+    HARNESS_TRACE_ENABLED: bool = Field(default=False)
 
     model_config = SettingsConfigDict(
         # 计算.env文件的绝对路径：config目录的父目录(app目录)下的.env
