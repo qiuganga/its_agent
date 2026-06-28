@@ -1,6 +1,9 @@
 import asyncio
 import inspect
+import json
+import time
 import unittest
+from types import SimpleNamespace
 
 from app.infrastructure.harness.context import AgentRunContext
 from app.infrastructure.harness.policy import HarnessPolicy, ToolPolicy, freeze_tool_policies
@@ -8,7 +11,7 @@ from app.infrastructure.harness.run_state import RunHarnessState
 from app.infrastructure.harness.system_harness import SystemHarness
 
 
-def make_policy(*, max_total=8, session_total=80, timeout=1.0, tool_limit=2):
+def make_policy(*, max_total=8, session_total=80, timeout=1.0, tool_limit=2, max_request_seconds=45, max_runs=20, tool_concurrency=10):
     policies = {
         "consult_technical_expert": ToolPolicy(
             tool_name="consult_technical_expert",
@@ -34,7 +37,7 @@ def make_policy(*, max_total=8, session_total=80, timeout=1.0, tool_limit=2):
             max_calls_per_run=tool_limit,
             max_calls_per_session=None,
             timeout_seconds=timeout,
-            max_concurrency=10,
+            max_concurrency=tool_concurrency,
         ),
         "search_web": ToolPolicy(
             tool_name="search_web",
@@ -59,8 +62,8 @@ def make_policy(*, max_total=8, session_total=80, timeout=1.0, tool_limit=2):
         service_agent_max_turns=5,
         max_total_agent_visible_tool_calls=max_total,
         max_total_sub_agent_tool_calls=2,
-        max_request_seconds=45,
-        max_concurrent_runs=20,
+        max_request_seconds=max_request_seconds,
+        max_concurrent_runs=max_runs,
         session_ttl_seconds=1800,
         session_max_total_tool_calls=session_total,
         trace_enabled=False,
@@ -271,6 +274,109 @@ class HarnessControlTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(calls, 1)
         self.assertEqual(blocked["reason_code"], "TOOL_TIMEOUT")
+
+    async def test_tool_queue_timeout_does_not_start_action(self):
+        harness = SystemHarness(make_policy(timeout=1.0, max_request_seconds=1.0, tool_concurrency=1))
+        first_ctx = make_context(harness, run_id="queue-a")
+        second_ctx = make_context(harness, run_id="queue-b")
+        second_ctx.run_state.started_at = time.monotonic() - 0.98
+        first_started = asyncio.Event()
+        second_calls = 0
+
+        async def slow_action():
+            first_started.set()
+            await asyncio.sleep(0.1)
+            return "slow"
+
+        async def should_not_start():
+            nonlocal second_calls
+            second_calls += 1
+            return "bad"
+
+        first_task = asyncio.create_task(harness.invoke(
+            run_context=first_ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "hold"},
+            action=slow_action,
+        ))
+        await first_started.wait()
+        blocked = await harness.invoke(
+            run_context=second_ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "wait"},
+            action=should_not_start,
+        )
+        await first_task
+
+        self.assertEqual(blocked["reason_code"], "TOOL_QUEUE_TIMEOUT")
+        self.assertEqual(second_calls, 0)
+
+    async def test_tool_timeout_releases_semaphore(self):
+        harness = SystemHarness(make_policy(timeout=0.01, tool_concurrency=1))
+        first_ctx = make_context(harness, run_id="timeout-a")
+        second_ctx = make_context(harness, run_id="timeout-b")
+        calls = 0
+
+        async def slow_action():
+            nonlocal calls
+            calls += 1
+            await asyncio.sleep(0.1)
+            return "late"
+
+        async def fast_action():
+            return "ok"
+
+        blocked = await harness.invoke(
+            run_context=first_ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "slow"},
+            action=slow_action,
+        )
+        allowed = await harness.invoke(
+            run_context=second_ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "fast"},
+            action=fast_action,
+        )
+
+        self.assertEqual(blocked["reason_code"], "TOOL_TIMEOUT")
+        self.assertEqual(calls, 1)
+        self.assertEqual(allowed, "ok")
+
+    async def test_run_slot_acquire_is_atomic_and_non_blocking(self):
+        harness = SystemHarness(make_policy(max_runs=3))
+
+        results = await asyncio.gather(*(harness.acquire_run_slot() for _ in range(20)))
+        self.assertEqual(sum(1 for item in results if item), 3)
+
+        for _ in range(3):
+            harness.release_run_slot()
+
+        reacquired = [await harness.acquire_run_slot() for _ in range(4)]
+        self.assertEqual(reacquired, [True, True, True, False])
+        for _ in range(3):
+            harness.release_run_slot()
+
+    async def test_search_web_serializes_blocked_dict(self):
+        from app.infrastructure.tools.local.knowledge_base import search_web
+
+        class FakeHarness:
+            async def invoke(self, **kwargs):
+                return {"ok": False, "harness_blocked": True, "reason_code": "DUPLICATE_TOOL_CALL"}
+
+        ctx = SimpleNamespace(
+            context=SimpleNamespace(system_harness=FakeHarness()),
+            tool_name="search_web",
+            run_config=SimpleNamespace(trace_include_sensitive_data=False),
+        )
+        result = await search_web.on_invoke_tool(ctx, json.dumps({"query": "hello"}))
+        parsed = json.loads(result)
+        self.assertTrue(parsed["harness_blocked"])
+        self.assertEqual(parsed["reason_code"], "DUPLICATE_TOOL_CALL")
 
     def test_process_task_does_not_recurse_on_errors(self):
         from app.services.agent_service import MultiAgentService

@@ -8,6 +8,7 @@ langchain-openai     # OpenAI 官方集成包，用于调用 GPT 模型和 Embed
 langchain-chroma     # Chroma 向量数据库集成（用于本地存储向量数据）
 pydantic-settings    # 配置管理神器，用于规范化读取和验证环境变量:把散落在环境变量（Environment Variables）或 .env 文件中的配置，自动加载并验证到一个 Python 类中
 markdownify          # 将 HTML 转换为 Markdown 格式（网页清洗核心工具）
+beautifulsoup4       # HTML 解析库，import 名称为 bs4
 scikit-learn         # 机器学习库，常用于本地计算余弦相似度或文本聚类
 jieba                # 中文分词库，RAG 中处理中文切词和关键词提取
 unstructured         # 强大的文档解析库，用于解析 PDF、Word 等非结构化文件

@@ -40,7 +40,13 @@ async def  upload_file(file: UploadFile=File(...)):
             temp_file_path=temp_file.name
 
         # 2. 磁盘写入完成,入库操作  # TODO(去重)
-        chunks_added= await run_in_threadpool(ingestion_processor.ingest_file,temp_file_path)
+        stable_source_id = file.filename or os.path.basename(temp_file_path)
+        chunks_added= await run_in_threadpool(
+            ingestion_processor.ingest_file,
+            temp_file_path,
+            source_id=stable_source_id,
+            display_title=file.filename,
+        )
         print(f"临时文件路径:{temp_file_path}")
 
         # 3.构建文件上传的响应对象

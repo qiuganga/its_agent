@@ -15,6 +15,8 @@ class Settings(BaseSettings):
     _project_root = os.path.dirname(_current_dir)
     
     VECTOR_STORE_PATH: str = os.path.join(_project_root, "chroma_kb")
+    VECTOR_COLLECTION_NAME: str = os.environ.get("VECTOR_COLLECTION_NAME", "its-knowledge")
+    VECTOR_DISTANCE_SPACE: str = os.environ.get("VECTOR_DISTANCE_SPACE", "cosine")
     
     # Default directories
     CRAWL_OUTPUT_DIR: str = os.path.join(_project_root, "data", "crawl")
@@ -30,6 +32,9 @@ class Settings(BaseSettings):
     # Retrieval configuration
     TOP_ROUGH: int = 50
     TOP_FINAL: int = 5
+    RAG_FINAL_TOP_K: int = int(os.environ.get("RAG_FINAL_TOP_K", "2"))
+    RAG_MMR_LAMBDA: float = float(os.environ.get("RAG_MMR_LAMBDA", "0.75"))
+    RAG_MAX_CHUNKS_PER_DOCUMENT: int = int(os.environ.get("RAG_MAX_CHUNKS_PER_DOCUMENT", "1"))
 
     class Config:
         env_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")

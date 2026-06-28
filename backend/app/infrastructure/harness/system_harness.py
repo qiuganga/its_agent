@@ -22,16 +22,22 @@ class SystemHarness:
             name: asyncio.Semaphore(tool_policy.max_concurrency)
             for name, tool_policy in policy.tool_policies.items()
         }
-        self.run_semaphore = asyncio.Semaphore(policy.max_concurrent_runs)
+        self._run_slots: asyncio.Queue[int] = asyncio.Queue(maxsize=policy.max_concurrent_runs)
+        for token in range(policy.max_concurrent_runs):
+            self._run_slots.put_nowait(token)
 
     async def acquire_run_slot(self) -> bool:
-        if self.run_semaphore.locked():
+        try:
+            self._run_slots.get_nowait()
+            return True
+        except asyncio.QueueEmpty:
             return False
-        await self.run_semaphore.acquire()
-        return True
 
     def release_run_slot(self) -> None:
-        self.run_semaphore.release()
+        try:
+            self._run_slots.put_nowait(1)
+        except asyncio.QueueFull:
+            pass
 
     async def invoke(
         self,
@@ -47,6 +53,22 @@ class SystemHarness:
         tool_policy = self.policy.get_tool_policy(tool_name)
         canonical_args = canonicalize_arguments(arguments)
         argument_fingerprint = ""
+
+        async def record_event(event_type: str, result_status: str, reason_code: str | None = None) -> None:
+            event = {
+                "run_id": run_context.run_id,
+                "user_id": run_context.user_id,
+                "session_id": run_context.session_id,
+                "agent_key": agent_key,
+                "tool_name": tool_name,
+                "event_type": event_type,
+                "elapsed_ms": int((time.monotonic() - started_at) * 1000),
+                "result_status": result_status,
+                "reason_code": reason_code,
+                "argument_fingerprint": argument_fingerprint,
+            }
+            await run_state.trace(event)
+            log_harness_event(**event)
 
         async def block(reason_code: str, message: str, event_type: str = "tool_blocked") -> dict[str, Any]:
             result = blocked_result(reason_code, message)
@@ -67,25 +89,13 @@ class SystemHarness:
             return result
 
         if tool_policy is None:
-            return await block(
-                "TOOL_PERMISSION_DENIED",
-                "该工具不在系统白名单中，已被 Harness 阻止。",
-                "tool_blocked_permission",
-            )
+            return await block("TOOL_PERMISSION_DENIED", "该工具不在系统白名单中，已被 Harness 阻止。", "tool_blocked_permission")
 
         if agent_key not in tool_policy.allowed_agents:
-            return await block(
-                "TOOL_PERMISSION_DENIED",
-                "当前 Agent 无权调用该工具，已被 Harness 阻止。",
-                "tool_blocked_permission",
-            )
+            return await block("TOOL_PERMISSION_DENIED", "当前 Agent 无权调用该工具，已被 Harness 阻止。", "tool_blocked_permission")
 
         if run_state.deadline_exceeded():
-            return await block(
-                "REQUEST_DEADLINE_EXCEEDED",
-                "本次请求已超过最大执行时间，系统已停止继续调用工具。",
-                "tool_blocked_deadline",
-            )
+            return await block("REQUEST_DEADLINE_EXCEEDED", "本次请求已超过最大执行时间，系统已停止继续调用工具。", "tool_blocked_deadline")
 
         allowed, blocked, argument_fingerprint = await run_state.reserve_tool_call(
             agent_name=agent_key,
@@ -123,22 +133,25 @@ class SystemHarness:
             )
 
         semaphore = self.tool_semaphores[tool_name]
-        started_event = {
-            "run_id": run_context.run_id,
-            "user_id": run_context.user_id,
-            "session_id": run_context.session_id,
-            "agent_key": agent_key,
-            "tool_name": tool_name,
-            "event_type": "tool_started",
-            "elapsed_ms": int((time.monotonic() - started_at) * 1000),
-            "result_status": "started",
-            "reason_code": None,
-            "argument_fingerprint": argument_fingerprint,
-        }
-        await run_state.trace(started_event)
-        log_harness_event(**started_event)
+        remaining_before_queue = run_state.remaining_seconds()
+        if remaining_before_queue <= 0:
+            return await block("REQUEST_DEADLINE_EXCEEDED", "本次请求已超过最大执行时间，系统已停止继续调用工具。", "tool_blocked_deadline")
 
-        async with semaphore:
+        await record_event("tool_queue_started", "started")
+        acquired = False
+        try:
+            await asyncio.wait_for(semaphore.acquire(), timeout=remaining_before_queue)
+            acquired = True
+        except asyncio.TimeoutError:
+            await run_state.mark_failed(tool_name)
+            return await block(
+                "TOOL_QUEUE_TIMEOUT",
+                "等待工具并发名额时，本次请求的剩余时间已经耗尽，系统已阻止执行真实工具。",
+                "tool_queue_timeout",
+            )
+
+        try:
+            await record_event("tool_started", "started")
             timeout_seconds = min(tool_policy.timeout_seconds, max(0.001, run_state.remaining_seconds()))
             try:
                 maybe_result = action()
@@ -148,48 +161,21 @@ class SystemHarness:
                     result = maybe_result
             except asyncio.TimeoutError:
                 await run_state.mark_failed(tool_name)
-                return await block(
-                    "TOOL_TIMEOUT",
-                    "工具执行超时，系统已停止等待该工具结果。",
-                    "tool_timeout",
-                )
+                return await block("TOOL_TIMEOUT", "工具执行超时，系统已停止等待该工具结果。", "tool_timeout")
             except Exception as exc:
                 await run_state.mark_failed(tool_name)
-                event = {
-                    "run_id": run_context.run_id,
-                    "user_id": run_context.user_id,
-                    "session_id": run_context.session_id,
-                    "agent_key": agent_key,
-                    "tool_name": tool_name,
-                    "event_type": "tool_failed",
-                    "elapsed_ms": int((time.monotonic() - started_at) * 1000),
-                    "result_status": "failed",
-                    "reason_code": exc.__class__.__name__,
-                    "argument_fingerprint": argument_fingerprint,
-                }
-                await run_state.trace(event)
-                log_harness_event(**event)
+                await record_event("tool_failed", "failed", exc.__class__.__name__)
                 return {
                     "ok": False,
                     "harness_error": True,
                     "reason_code": exc.__class__.__name__,
                     "message": "工具执行失败，系统已阻止自动重试。请基于已有信息回答，或提示用户稍后再试。",
                 }
+        finally:
+            if acquired:
+                semaphore.release()
 
-        event = {
-            "run_id": run_context.run_id,
-            "user_id": run_context.user_id,
-            "session_id": run_context.session_id,
-            "agent_key": agent_key,
-            "tool_name": tool_name,
-            "event_type": "tool_succeeded",
-            "elapsed_ms": int((time.monotonic() - started_at) * 1000),
-            "result_status": "succeeded",
-            "reason_code": None,
-            "argument_fingerprint": argument_fingerprint,
-        }
-        await run_state.trace(event)
-        log_harness_event(**event)
+        await record_event("tool_succeeded", "succeeded")
         return result
 
 

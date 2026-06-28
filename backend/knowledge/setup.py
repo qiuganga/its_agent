@@ -15,6 +15,7 @@ setup(
         "langchain-chroma",
         "pydantic-settings",
         "markdownify",
+        "beautifulsoup4",
         "scikit-learn",
         "jieba",
         "unstructured",

@@ -1,4 +1,4 @@
-
+import os
 
 from repositories.file_repository import FileRepository
 from services.ingestion.ingestion_processor import IngestionProcessor
@@ -29,7 +29,12 @@ def  main():
     with tqdm(unique_files_path,desc="知识库上传进度统计") as pbar:  # 包装器思想
         for unique_file_path in pbar:
             try:
-                ingestion_processor.ingest_file(unique_file_path)
+                source_id = os.path.normpath(os.path.relpath(unique_file_path, settings.CRAWL_OUTPUT_DIR)).replace("\\", "/")
+                ingestion_processor.ingest_file(
+                    unique_file_path,
+                    source_id=source_id,
+                    display_title=os.path.basename(unique_file_path),
+                )
                 success += 1
             except Exception as e:
                 fail += 1
