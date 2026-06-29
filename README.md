@@ -87,6 +87,8 @@ backend/knowledge/.env
 - Session Budget TTL：`30` 分钟
 - Session 工具总调用预算：`80`
 
+`HARNESS_MAX_REQUEST_SECONDS` 是整个 Agent Run 的硬超时上限，覆盖历史读取、主 Agent 流式执行、嵌套子 Agent、Tool 排队、Tool 执行、结果整理和历史保存。Tool 自身仍保留 `TOOL_QUEUE_TIMEOUT` 与 `TOOL_TIMEOUT`，但它们不能延长整个 Run 的总时限。
+
 子 Agent Tool 默认每个 Run 最多调用一次：
 
 - `consult_technical_expert`
