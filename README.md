@@ -83,11 +83,14 @@ backend/knowledge/.env
 - 每个 Run 的 Agent 可见工具总调用数：`8`
 - 每个 Run 的子 Agent Tool 调用数：`2`
 - 每个请求最长执行时间：`45` 秒
+- 同一 Tool 每个 Run 允许的连续 Harness 执行失败次数：`2`
 - 全局并发 Run：`20`
 - Session Budget TTL：`30` 分钟
 - Session 工具总调用预算：`80`
 
 `HARNESS_MAX_REQUEST_SECONDS` 是整个 Agent Run 的硬超时上限，覆盖历史读取、主 Agent 流式执行、嵌套子 Agent、Tool 排队、Tool 执行、结果整理和历史保存。Tool 自身仍保留 `TOOL_QUEUE_TIMEOUT` 与 `TOOL_TIMEOUT`，但它们不能延长整个 Run 的总时限。
+
+`HARNESS_MAX_CONSECUTIVE_TOOL_FAILURES_PER_RUN` 用于限制同一个 Tool 在一次 Run 内允许连续发生的 Harness 执行失败次数。默认值为 `2`；达到阈值后，后续同 Tool 调用会直接返回 `TOOL_CONSECUTIVE_FAILURE_LIMIT_REACHED`，不再占用 Run/Session 预算、Tool Semaphore 或真实外部服务。
 
 子 Agent Tool 默认每个 Run 最多调用一次：
 

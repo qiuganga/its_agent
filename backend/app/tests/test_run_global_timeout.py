@@ -200,6 +200,86 @@ class GlobalRunTimeoutTests(unittest.IsolatedAsyncioTestCase):
         run_streamed.assert_not_called()
         self.assertEqual(fake_harness.release_count, 0)
 
+    async def test_client_cancel_propagates_without_finish_or_history_save(self):
+        fake_harness = FakeHarness(max_request_seconds=10.0)
+        fake_session = FakeSessionService()
+        captured_contexts: list[AgentRunContext] = []
+        chunks: list[str] = []
+        first_chunk = asyncio.Event()
+
+        def fake_run_streamed(*args, **kwargs):
+            captured_contexts.append(kwargs["context"])
+            return FakeStreamingResult("incomplete")
+
+        async def fake_process_stream(streaming_result):
+            yield text_sse("partial")
+            first_chunk.set()
+            await asyncio.sleep(10)
+            yield finish_sse()
+
+        async def consume():
+            async for chunk in agent_service.MultiAgentService.process_task(self.make_request(), True):
+                chunks.append(chunk)
+
+        with patch.object(agent_service, "system_harness", fake_harness), \
+             patch.object(agent_service, "session_service", fake_session), \
+             patch.object(agent_service.Runner, "run_streamed", side_effect=fake_run_streamed), \
+             patch.object(agent_service, "process_stream_response", fake_process_stream):
+            task = asyncio.create_task(consume())
+            await first_chunk.wait()
+            task.cancel()
+            with self.assertRaises(asyncio.CancelledError):
+                await task
+
+        visible_text = "".join(chunk_text(chunk) for chunk in chunks if not is_finish(chunk))
+        self.assertIn("partial", visible_text)
+        self.assertNotIn("超过系统上限", visible_text)
+        self.assertEqual(sum(1 for chunk in chunks if is_finish(chunk)), 0)
+        self.assertEqual(fake_session.saved, [])
+        self.assertEqual(fake_harness.release_count, 1)
+        self.assertEqual(fake_harness.slots, 1)
+        trace_events = captured_contexts[0].run_state.trace_events
+        self.assertTrue(any(
+            event.get("event_type") == "run_cancelled" and event.get("reason_code") == "CLIENT_CANCELLED"
+            for event in trace_events
+        ))
+        self.assertFalse(any(event.get("reason_code") == "RUN_TIMEOUT" for event in trace_events))
+
+    async def test_tool_cancel_releases_semaphore_and_does_not_count_as_failure(self):
+        harness = SystemHarness(make_policy(timeout=5.0, max_request_seconds=10.0, tool_concurrency=1, tool_limit=5))
+        ctx = make_context(harness, run_id="client-cancel-tool")
+        started = asyncio.Event()
+
+        async def slow_action():
+            started.set()
+            await asyncio.sleep(10)
+            return "late"
+
+        task = asyncio.create_task(harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "slow-cancel"},
+            action=slow_action,
+        ))
+        await started.wait()
+        task.cancel()
+        with self.assertRaises(asyncio.CancelledError):
+            await task
+
+        next_ctx = make_context(harness, run_id="after-client-cancel-tool")
+        allowed = await harness.invoke(
+            run_context=next_ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "fast-after-cancel"},
+            action=lambda: "ok",
+        )
+
+        self.assertEqual(allowed, "ok")
+        self.assertNotIn("query_knowledge", ctx.run_state.failed_count_by_name)
+        self.assertNotIn("query_knowledge", ctx.run_state.consecutive_failed_count_by_name)
+
 
 if __name__ == "__main__":
     unittest.main()

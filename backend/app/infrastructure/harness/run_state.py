@@ -47,6 +47,7 @@ class RunHarnessState:
     total_sub_agent_tool_calls: int = 0
     tool_call_count_by_name: dict[str, int] = field(default_factory=dict)
     failed_count_by_name: dict[str, int] = field(default_factory=dict)
+    consecutive_failed_count_by_name: dict[str, int] = field(default_factory=dict)
     seen_call_signatures: set[str] = field(default_factory=set)
     blocked_events: list[dict[str, Any]] = field(default_factory=list)
     trace_events: list[dict[str, Any]] = field(default_factory=list)
@@ -65,9 +66,23 @@ class RunHarnessState:
         async with self._lock:
             self.trace_events.append(event)
 
-    async def mark_failed(self, tool_name: str) -> None:
+    async def mark_tool_failed(self, tool_name: str) -> None:
         async with self._lock:
             self.failed_count_by_name[tool_name] = self.failed_count_by_name.get(tool_name, 0) + 1
+            self.consecutive_failed_count_by_name[tool_name] = (
+                self.consecutive_failed_count_by_name.get(tool_name, 0) + 1
+            )
+
+    async def mark_tool_succeeded(self, tool_name: str) -> None:
+        async with self._lock:
+            self.consecutive_failed_count_by_name[tool_name] = 0
+
+    async def is_tool_failure_limit_reached(self, tool_name: str, limit: int) -> bool:
+        async with self._lock:
+            return self.consecutive_failed_count_by_name.get(tool_name, 0) >= limit
+
+    async def mark_failed(self, tool_name: str) -> None:
+        await self.mark_tool_failed(tool_name)
 
     async def record_blocked(self, event: dict[str, Any]) -> None:
         async with self._lock:

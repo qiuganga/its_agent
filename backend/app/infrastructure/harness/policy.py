@@ -23,11 +23,16 @@ class HarnessPolicy:
     max_total_agent_visible_tool_calls: int
     max_total_sub_agent_tool_calls: int
     max_request_seconds: float
+    max_consecutive_tool_failures_per_run: int
     max_concurrent_runs: int
     session_ttl_seconds: int
     session_max_total_tool_calls: int
     trace_enabled: bool
     tool_policies: Mapping[str, ToolPolicy]
+
+    def __post_init__(self) -> None:
+        if self.max_consecutive_tool_failures_per_run < 1:
+            raise ValueError("max_consecutive_tool_failures_per_run must be >= 1")
 
     def get_tool_policy(self, tool_name: str) -> ToolPolicy | None:
         return self.tool_policies.get(tool_name)

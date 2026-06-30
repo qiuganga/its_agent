@@ -11,7 +11,17 @@ from app.infrastructure.harness.run_state import RunHarnessState
 from app.infrastructure.harness.system_harness import SystemHarness
 
 
-def make_policy(*, max_total=8, session_total=80, timeout=1.0, tool_limit=2, max_request_seconds=45, max_runs=20, tool_concurrency=10):
+def make_policy(
+    *,
+    max_total=8,
+    session_total=80,
+    timeout=1.0,
+    tool_limit=2,
+    max_request_seconds=45,
+    max_runs=20,
+    tool_concurrency=10,
+    failure_limit=2,
+):
     policies = {
         "consult_technical_expert": ToolPolicy(
             tool_name="consult_technical_expert",
@@ -63,6 +73,7 @@ def make_policy(*, max_total=8, session_total=80, timeout=1.0, tool_limit=2, max
         max_total_agent_visible_tool_calls=max_total,
         max_total_sub_agent_tool_calls=2,
         max_request_seconds=max_request_seconds,
+        max_consecutive_tool_failures_per_run=failure_limit,
         max_concurrent_runs=max_runs,
         session_ttl_seconds=1800,
         session_max_total_tool_calls=session_total,
@@ -346,6 +357,121 @@ class HarnessControlTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(blocked["reason_code"], "TOOL_TIMEOUT")
         self.assertEqual(calls, 1)
         self.assertEqual(allowed, "ok")
+
+    async def test_consecutive_tool_failure_limit_blocks_without_consuming_new_budget(self):
+        harness = SystemHarness(make_policy(timeout=0.01, tool_limit=5, failure_limit=2))
+        ctx = make_context(harness)
+        calls = 0
+
+        async def slow_action():
+            nonlocal calls
+            calls += 1
+            await asyncio.sleep(0.1)
+            return "late"
+
+        for question in ("a", "b"):
+            result = await harness.invoke(
+                run_context=ctx,
+                agent_key="technical_agent",
+                tool_name="query_knowledge",
+                arguments={"question": question},
+                action=slow_action,
+            )
+            self.assertEqual(result["reason_code"], "TOOL_TIMEOUT")
+
+        run_budget_before = ctx.run_state.total_agent_visible_tool_calls
+        session_before = await harness.session_store.snapshot(ctx.user_id, ctx.session_id)
+
+        blocked = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "c"},
+            action=slow_action,
+        )
+
+        session_after = await harness.session_store.snapshot(ctx.user_id, ctx.session_id)
+        self.assertEqual(blocked["reason_code"], "TOOL_CONSECUTIVE_FAILURE_LIMIT_REACHED")
+        self.assertEqual(calls, 2)
+        self.assertEqual(ctx.run_state.total_agent_visible_tool_calls, run_budget_before)
+        self.assertEqual(session_after.session_total_tool_calls, session_before.session_total_tool_calls)
+
+        other_tool = await harness.invoke(
+            run_context=ctx,
+            agent_key="service_agent",
+            tool_name="map_navigation_tool",
+            arguments={"origin": "x", "destination": "y"},
+            action=lambda: "ok",
+        )
+        self.assertEqual(other_tool, "ok")
+
+    async def test_success_resets_consecutive_failure_count_but_keeps_total_failures(self):
+        harness = SystemHarness(make_policy(timeout=0.01, tool_limit=5, failure_limit=2))
+        ctx = make_context(harness)
+
+        async def slow_action():
+            await asyncio.sleep(0.1)
+            return "late"
+
+        first = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "first"},
+            action=slow_action,
+        )
+        second = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "second"},
+            action=lambda: {"ok": True, "data": []},
+        )
+        third = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "third"},
+            action=slow_action,
+        )
+
+        self.assertEqual(first["reason_code"], "TOOL_TIMEOUT")
+        self.assertEqual(second, {"ok": True, "data": []})
+        self.assertEqual(third["reason_code"], "TOOL_TIMEOUT")
+        self.assertEqual(ctx.run_state.failed_count_by_name["query_knowledge"], 2)
+        self.assertEqual(ctx.run_state.consecutive_failed_count_by_name["query_knowledge"], 1)
+
+    async def test_empty_or_business_error_results_do_not_count_as_harness_failures(self):
+        harness = SystemHarness(make_policy(tool_limit=5, failure_limit=2))
+        ctx = make_context(harness)
+
+        empty_result = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "empty"},
+            action=lambda: {"ok": True, "count": 0, "data": []},
+        )
+        business_error = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "not-found"},
+            action=lambda: {"ok": False, "error": "not found"},
+        )
+        third = await harness.invoke(
+            run_context=ctx,
+            agent_key="technical_agent",
+            tool_name="query_knowledge",
+            arguments={"question": "still-allowed"},
+            action=lambda: "ok",
+        )
+
+        self.assertEqual(empty_result, {"ok": True, "count": 0, "data": []})
+        self.assertEqual(business_error, {"ok": False, "error": "not found"})
+        self.assertEqual(third, "ok")
+        self.assertNotIn("query_knowledge", ctx.run_state.failed_count_by_name)
+        self.assertEqual(ctx.run_state.consecutive_failed_count_by_name["query_knowledge"], 0)
 
     async def test_run_slot_acquire_is_atomic_and_non_blocking(self):
         harness = SystemHarness(make_policy(max_runs=3))

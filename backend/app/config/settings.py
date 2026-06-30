@@ -91,6 +91,7 @@ class Settings(BaseSettings):
     HARNESS_MAX_TOTAL_TOOL_CALLS_PER_RUN: int = Field(default=8)
     HARNESS_MAX_SUB_AGENT_TOOL_CALLS_PER_RUN: int = Field(default=2)
     HARNESS_MAX_REQUEST_SECONDS: int = Field(default=45)
+    HARNESS_MAX_CONSECUTIVE_TOOL_FAILURES_PER_RUN: int = Field(default=2, ge=1)
     HARNESS_MAX_CONCURRENT_RUNS: int = Field(default=20)
     HARNESS_SESSION_TTL_SECONDS: int = Field(default=1800)
     HARNESS_SESSION_MAX_TOTAL_TOOL_CALLS: int = Field(default=80)

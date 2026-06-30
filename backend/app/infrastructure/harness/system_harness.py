@@ -7,7 +7,7 @@ from typing import Any
 from app.config.settings import settings
 from app.infrastructure.harness.observability import log_harness_event
 from app.infrastructure.harness.policy import HarnessPolicy, ToolPolicy, freeze_tool_policies
-from app.infrastructure.harness.run_state import blocked_result, canonicalize_arguments
+from app.infrastructure.harness.run_state import blocked_result, canonicalize_arguments, fingerprint_text
 from app.infrastructure.harness.session_store import SessionBudgetStore
 
 
@@ -52,7 +52,7 @@ class SystemHarness:
         run_state = run_context.run_state
         tool_policy = self.policy.get_tool_policy(tool_name)
         canonical_args = canonicalize_arguments(arguments)
-        argument_fingerprint = ""
+        argument_fingerprint = fingerprint_text(canonical_args)
 
         async def record_event(event_type: str, result_status: str, reason_code: str | None = None) -> None:
             event = {
@@ -89,13 +89,23 @@ class SystemHarness:
             return result
 
         if tool_policy is None:
-            return await block("TOOL_PERMISSION_DENIED", "该工具不在系统白名单中，已被 Harness 阻止。", "tool_blocked_permission")
+            return await block("TOOL_PERMISSION_DENIED", "\u8be5\u5de5\u5177\u4e0d\u5728\u7cfb\u7edf\u767d\u540d\u5355\u4e2d\uff0c\u5df2\u88ab Harness \u963b\u6b62\u3002", "tool_blocked_permission")
 
         if agent_key not in tool_policy.allowed_agents:
-            return await block("TOOL_PERMISSION_DENIED", "当前 Agent 无权调用该工具，已被 Harness 阻止。", "tool_blocked_permission")
+            return await block("TOOL_PERMISSION_DENIED", "\u5f53\u524d Agent \u65e0\u6743\u8c03\u7528\u8be5\u5de5\u5177\uff0c\u5df2\u88ab Harness \u963b\u6b62\u3002", "tool_blocked_permission")
 
         if run_state.deadline_exceeded():
-            return await block("REQUEST_DEADLINE_EXCEEDED", "本次请求已超过最大执行时间，系统已停止继续调用工具。", "tool_blocked_deadline")
+            return await block("REQUEST_DEADLINE_EXCEEDED", "\u672c\u6b21\u8bf7\u6c42\u5df2\u8d85\u8fc7\u6700\u5927\u6267\u884c\u65f6\u95f4\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7ee7\u7eed\u8c03\u7528\u5de5\u5177\u3002", "tool_blocked_deadline")
+
+        if await run_state.is_tool_failure_limit_reached(
+            tool_name,
+            self.policy.max_consecutive_tool_failures_per_run,
+        ):
+            return await block(
+                "TOOL_CONSECUTIVE_FAILURE_LIMIT_REACHED",
+                "\u8be5\u5de5\u5177\u5728\u672c\u6b21\u8bf7\u6c42\u4e2d\u5df2\u8fde\u7eed\u6267\u884c\u5931\u8d25\u591a\u6b21\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7ee7\u7eed\u91cd\u8bd5\u3002\u8bf7\u57fa\u4e8e\u5df2\u6709\u4fe1\u606f\u56de\u7b54\u3001\u6539\u7528\u5907\u7528\u80fd\u529b\uff0c\u6216\u63d0\u793a\u7528\u6237\u7a0d\u540e\u91cd\u8bd5\u3002",
+                "tool_blocked_failure_limit",
+            )
 
         allowed, blocked, argument_fingerprint = await run_state.reserve_tool_call(
             agent_name=agent_key,
@@ -128,25 +138,27 @@ class SystemHarness:
         if not session_allowed:
             return await block(
                 session_reason or "SESSION_TOOL_BUDGET_REACHED",
-                "当前会话的工具调用预算已达到上限，系统已停止继续调用工具。",
+                "\u5f53\u524d\u4f1a\u8bdd\u7684\u5de5\u5177\u8c03\u7528\u9884\u7b97\u5df2\u8fbe\u5230\u4e0a\u9650\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7ee7\u7eed\u8c03\u7528\u5de5\u5177\u3002",
                 "tool_blocked_session_limit",
             )
 
         semaphore = self.tool_semaphores[tool_name]
         remaining_before_queue = run_state.remaining_seconds()
         if remaining_before_queue <= 0:
-            return await block("REQUEST_DEADLINE_EXCEEDED", "本次请求已超过最大执行时间，系统已停止继续调用工具。", "tool_blocked_deadline")
+            return await block("REQUEST_DEADLINE_EXCEEDED", "\u672c\u6b21\u8bf7\u6c42\u5df2\u8d85\u8fc7\u6700\u5927\u6267\u884c\u65f6\u95f4\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7ee7\u7eed\u8c03\u7528\u5de5\u5177\u3002", "tool_blocked_deadline")
 
         await record_event("tool_queue_started", "started")
         acquired = False
         try:
             await asyncio.wait_for(semaphore.acquire(), timeout=remaining_before_queue)
             acquired = True
+        except asyncio.CancelledError:
+            raise
         except asyncio.TimeoutError:
-            await run_state.mark_failed(tool_name)
+            await run_state.mark_tool_failed(tool_name)
             return await block(
                 "TOOL_QUEUE_TIMEOUT",
-                "等待工具并发名额时，本次请求的剩余时间已经耗尽，系统已阻止执行真实工具。",
+                "\u7b49\u5f85\u5de5\u5177\u5e76\u53d1\u540d\u989d\u65f6\uff0c\u672c\u6b21\u8bf7\u6c42\u7684\u5269\u4f59\u65f6\u95f4\u5df2\u7ecf\u8017\u5c3d\uff0c\u7cfb\u7edf\u5df2\u963b\u6b62\u6267\u884c\u771f\u5b9e\u5de5\u5177\u3002",
                 "tool_queue_timeout",
             )
 
@@ -159,22 +171,25 @@ class SystemHarness:
                     result = await asyncio.wait_for(maybe_result, timeout=timeout_seconds)
                 else:
                     result = maybe_result
+            except asyncio.CancelledError:
+                raise
             except asyncio.TimeoutError:
-                await run_state.mark_failed(tool_name)
-                return await block("TOOL_TIMEOUT", "工具执行超时，系统已停止等待该工具结果。", "tool_timeout")
+                await run_state.mark_tool_failed(tool_name)
+                return await block("TOOL_TIMEOUT", "\u5de5\u5177\u6267\u884c\u8d85\u65f6\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7b49\u5f85\u8be5\u5de5\u5177\u7ed3\u679c\u3002", "tool_timeout")
             except Exception as exc:
-                await run_state.mark_failed(tool_name)
+                await run_state.mark_tool_failed(tool_name)
                 await record_event("tool_failed", "failed", exc.__class__.__name__)
                 return {
                     "ok": False,
                     "harness_error": True,
                     "reason_code": exc.__class__.__name__,
-                    "message": "工具执行失败，系统已阻止自动重试。请基于已有信息回答，或提示用户稍后再试。",
+                    "message": "\u5de5\u5177\u6267\u884c\u5931\u8d25\uff0c\u7cfb\u7edf\u5df2\u963b\u6b62\u81ea\u52a8\u91cd\u8bd5\u3002\u8bf7\u57fa\u4e8e\u5df2\u6709\u4fe1\u606f\u56de\u7b54\uff0c\u6216\u63d0\u793a\u7528\u6237\u7a0d\u540e\u518d\u8bd5\u3002",
                 }
         finally:
             if acquired:
                 semaphore.release()
 
+        await run_state.mark_tool_succeeded(tool_name)
         await record_event("tool_succeeded", "succeeded")
         return result
 
@@ -255,6 +270,7 @@ def build_default_policy() -> HarnessPolicy:
         max_total_agent_visible_tool_calls=settings.HARNESS_MAX_TOTAL_TOOL_CALLS_PER_RUN,
         max_total_sub_agent_tool_calls=settings.HARNESS_MAX_SUB_AGENT_TOOL_CALLS_PER_RUN,
         max_request_seconds=settings.HARNESS_MAX_REQUEST_SECONDS,
+        max_consecutive_tool_failures_per_run=settings.HARNESS_MAX_CONSECUTIVE_TOOL_FAILURES_PER_RUN,
         max_concurrent_runs=settings.HARNESS_MAX_CONCURRENT_RUNS,
         session_ttl_seconds=settings.HARNESS_SESSION_TTL_SECONDS,
         session_max_total_tool_calls=settings.HARNESS_SESSION_MAX_TOTAL_TOOL_CALLS,

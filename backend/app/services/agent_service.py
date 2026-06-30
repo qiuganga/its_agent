@@ -110,6 +110,22 @@ class MultiAgentService:
                 system_harness.policy.max_request_seconds,
             )
 
+        async def record_run_cancelled() -> None:
+            if run_state is None:
+                return
+            elapsed_ms = int(run_state.elapsed_seconds() * 1000)
+            event = {
+                "run_id": run_id,
+                "user_id": user_id,
+                "session_id": session_id,
+                "event_type": "run_cancelled",
+                "elapsed_ms": elapsed_ms,
+                "result_status": "cancelled",
+                "reason_code": "CLIENT_CANCELLED",
+            }
+            await run_state.trace(event)
+            logger.warning("Run %s cancelled by client: elapsed_ms=%s", run_id, elapsed_ms)
+
         try:
             run_slot_acquired = await system_harness.acquire_run_slot()
             if not run_slot_acquired:
@@ -179,6 +195,9 @@ class MultiAgentService:
                     if finish:
                         yield finish
 
+        except asyncio.CancelledError:
+            await record_run_cancelled()
+            raise
         except TimeoutError:
             await record_run_timeout()
             yield _sse_text(RUN_TIMEOUT_MESSAGE)
