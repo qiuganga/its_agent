@@ -141,6 +141,37 @@ cd backend
 python -m compileall app
 ```
 
+## MySQL Chat History
+
+Runtime chat history is stored in the existing MySQL database configured by `backend/app/.env`. Do not create a new database for chat history. The project expects `MYSQL_DATABASE=its` and adds only these tables:
+
+- `agent_chat_sessions`
+- `agent_chat_messages`
+
+Create or update the tables with:
+
+```bash
+mysql -u root -p its < backend/sql/001_create_chat_history_tables.sql
+```
+
+The SQL file does not create a database and does not modify existing business tables such as `repair_shops`.
+
+Legacy JSON files under `backend/app/user_memories/<user_id>/<session_id>.json` are no longer used at runtime. They are only migration input or manual backups.
+
+Migration commands:
+
+```bash
+cd backend
+python -m app.scripts.migrate_json_sessions_to_mysql --dry-run
+python -m app.scripts.migrate_json_sessions_to_mysql --apply
+python -m app.scripts.migrate_json_sessions_to_mysql --apply --user-id <user_id>
+python -m app.scripts.migrate_json_sessions_to_mysql --apply --overwrite
+```
+
+`--dry-run` is the default and does not write to MySQL. `--apply` writes valid sessions. Existing MySQL sessions are skipped by default; `--overwrite` must be explicit.
+
+Database credentials belong in `backend/app/.env`. Keep `MYSQL_PASSWORD=` as a local placeholder in examples and fill the real password only on your machine.
+
 ## 注意事项
 
 - Harness 不是 OS 级 Sandbox。本项目没有新增 Shell、文件编辑、电脑控制类工具，也不允许 Agent Tool 读取 `.env`、执行终端命令或任意访问文件系统。

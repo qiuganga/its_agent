@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     MYSQL_PORT: int = Field(default=3306, description="MySQL端口")
     MYSQL_USER: Optional[str] = Field(default="root", description="MySQL用户名")
     MYSQL_PASSWORD: Optional[str] = Field(default="", description="MySQL密码")
-    MYSQL_DATABASE: Optional[str] = Field(default="its_db", description="MySQL数据库名")
+    MYSQL_DATABASE: Optional[str] = Field(default="its", description="MySQL数据库名")
     MYSQL_CHARSET: str = Field(default="utf8mb4", description="MySQL字符集")
     MYSQL_CONNECT_TIMEOUT: int = Field(default=10, description="MySQL连接超时（秒）")
     MYSQL_MAX_CONNECTIONS: int = Field(default=5, description="MySQL最大连接数")

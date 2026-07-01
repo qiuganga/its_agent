@@ -161,11 +161,12 @@ class MultiAgentService:
                 raise asyncio.TimeoutError
 
             async with asyncio.timeout(remaining_seconds):
-                chat_history = session_service.prepare_history(user_id, session_id, user_query)
+                full_history = session_service.prepare_full_history(user_id, session_id, user_query)
+                prompt_history = session_service.build_prompt_history(full_history)
 
                 streaming_result = Runner.run_streamed(
                     starting_agent=orchestrator_agent,
-                    input=chat_history,
+                    input=prompt_history,
                     context=run_context,
                     max_turns=system_harness.policy.orchestrator_max_turns,
                     run_config=_build_run_config(run_context),
@@ -179,8 +180,8 @@ class MultiAgentService:
 
                 agent_result = streaming_result.final_output or ""
                 format_agent_result = re.sub(r"\n+", "\n", agent_result)
-                chat_history.append({"role": "assistant", "content": format_agent_result})
-                session_service.save_history(user_id, session_id, chat_history)
+                full_history.append({"role": "assistant", "content": format_agent_result})
+                session_service.save_history(user_id, session_id, full_history)
                 await run_state.trace({
                     "run_id": run_id,
                     "user_id": user_id,

@@ -44,6 +44,12 @@ class FakeSessionService:
     def prepare_history(self, user_id, session_id, user_query):
         return [{"role": "user", "content": user_query}]
 
+    def prepare_full_history(self, user_id, session_id, user_query):
+        return [{"role": "user", "content": user_query}]
+
+    def build_prompt_history(self, full_history, max_turn=3):
+        return list(full_history)
+
     def save_history(self, user_id, session_id, chat_history):
         self.saved.append((user_id, session_id, list(chat_history)))
 
@@ -199,6 +205,26 @@ class GlobalRunTimeoutTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(sum(1 for chunk in chunks if is_finish(chunk)), 1)
         run_streamed.assert_not_called()
         self.assertEqual(fake_harness.release_count, 0)
+
+    async def test_regular_exception_does_not_save_partial_full_history(self):
+        fake_harness = FakeHarness(max_request_seconds=1.0)
+        fake_session = FakeSessionService()
+
+        async def fake_process_stream(streaming_result):
+            yield text_sse("partial")
+            raise RuntimeError("stream failed")
+
+        with patch.object(agent_service, "system_harness", fake_harness), \
+             patch.object(agent_service, "session_service", fake_session), \
+             patch.object(agent_service.Runner, "run_streamed", return_value=FakeStreamingResult("incomplete")), \
+             patch.object(agent_service, "process_stream_response", fake_process_stream):
+            chunks = await collect(agent_service.MultiAgentService.process_task(self.make_request(), True))
+
+        visible_text = "".join(chunk_text(chunk) for chunk in chunks if not is_finish(chunk))
+        self.assertIn("partial", visible_text)
+        self.assertEqual(fake_session.saved, [])
+        self.assertEqual(sum(1 for chunk in chunks if is_finish(chunk)), 1)
+        self.assertEqual(fake_harness.release_count, 1)
 
     async def test_client_cancel_propagates_without_finish_or_history_save(self):
         fake_harness = FakeHarness(max_request_seconds=10.0)

@@ -1,134 +1,211 @@
-import json
 from datetime import datetime
-from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from app.infrastructure.database.database_pool import pool
 from app.infrastructure.logging.logger import logger
 
 
+Message = Dict[str, Any]
+SessionMetadata = Tuple[str, str, Union[List[Message], Exception]]
+
+
 class SessionRepository:
-    """会话数据仓储类。
+    """MySQL-backed chat session repository."""
 
-    负责处理底层的会话文件存储、读取和文件系统操作。
-    使用 pathlib 进行现代化的路径管理。
-    """
+    def __init__(self, db_pool=None):
+        self._pool = db_pool or pool
 
-    # 存储目录名称常量
-    STORAGE_DIR_NAME = "user_memories"
+    def load_session(self, user_id: str, session_id: str) -> Optional[List[Message]]:
+        connection = self._pool.connection()
+        cursor = None
+        try:
+            cursor = connection.cursor()
+            cursor.execute(
+                """
+                SELECT id
+                FROM agent_chat_sessions
+                WHERE user_id = %s AND session_id = %s
+                """,
+                (user_id, session_id),
+            )
+            row = cursor.fetchone()
+            if row is None:
+                return None
 
-    def __init__(self):
-        """初始化 SessionRepository。
-
-        自动定位并创建存储根目录。
-        """
-
-        current_file = Path(__file__).resolve()
-
-        self._base_dir = current_file.parent.parent
-
-        # 拼接存储路径: backend/app/user_memories
-        self._storage_root = self._base_dir / self.STORAGE_DIR_NAME
-
-        # 确保存储根目录存在
-        self._storage_root.mkdir(parents=True, exist_ok=True)
-
-
-    def load_session(
-            self, user_id: str, session_id: str
-    ) -> Optional[List[Dict[str, Any]]]:
-        """从文件加载会话数据。
-
-        Args:
-            user_id: 用户ID。
-            session_id: 会话ID。
-
-        Returns:
-            List[Dict]: 解析后的会话数据。
-            None: 如果文件不存在。
-
-        Raises:
-            json.JSONDecodeError: 如果文件内容损坏。
-        """
-        file_path = self._get_file_path(user_id, session_id)
-
-        if not file_path.exists():
-            return None
-
-        with file_path.open("r", encoding="utf-8") as f:
-            return json.load(f)
+            chat_session_id = self._first_column(row)
+            cursor.execute(
+                """
+                SELECT role, content
+                FROM agent_chat_messages
+                WHERE chat_session_id = %s
+                ORDER BY message_order ASC
+                """,
+                (chat_session_id,),
+            )
+            return [
+                {"role": self._column(row, 0, "role"), "content": self._column(row, 1, "content")}
+                for row in cursor.fetchall()
+            ]
+        finally:
+            self._close_cursor(cursor)
+            connection.close()
 
     def save_session(
-            self, user_id: str, session_id: str, data: List[Dict[str, Any]]
+        self,
+        user_id: str,
+        session_id: str,
+        data: List[Message],
+        *,
+        created_at: datetime | None = None,
+        updated_at: datetime | None = None,
+        overwrite_created_at: bool = False,
     ) -> None:
-        """保存会话数据到文件。
-
-        Args:
-            user_id: 用户ID。
-            session_id: 会话ID。
-            data: 要保存的数据列表。
-        """
-        file_path = self._get_file_path(user_id, session_id)
-
-        # 确保用户的个人目录存在 (懒加载模式)
-        if not file_path.parent.exists():
-            file_path.parent.mkdir(parents=True, exist_ok=True)
-
-        with file_path.open("w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
-    def get_all_sessions_metadata(
-            self, user_id: str
-    ) -> List[Tuple[str, str, Union[List, Exception]]]:
-        """获取用户所有会话的元数据和内容。
-
-        Args:
-            user_id: 用户ID。
-
-        Returns:
-            List[Tuple]: 包含 (session_id, create_time, data_or_error) 的列表。
-        """
-        user_dir = self._get_user_directory(user_id)
-
-        if not user_dir.exists():
-            logger.warning(f"用户目录不存在: {user_id}")
-            return []
-
-        results = []
-
+        connection = self._pool.connection()
+        cursor = None
         try:
-            # 遍历目录下所有 .json 文件
-            for file_path in user_dir.glob("*.json"):
-                session_id = file_path.stem  # 获取文件名不带后缀部分
+            cursor = connection.cursor()
+            now = updated_at or datetime.now()
+            created_at_value = created_at or now
+            cursor.execute(
+                """
+                INSERT INTO agent_chat_sessions (user_id, session_id, created_at, updated_at)
+                VALUES (%s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE
+                    created_at = IF(%s, VALUES(created_at), created_at),
+                    updated_at = VALUES(updated_at)
+                """,
+                (user_id, session_id, created_at_value, now, overwrite_created_at),
+            )
+            cursor.execute(
+                """
+                SELECT id
+                FROM agent_chat_sessions
+                WHERE user_id = %s AND session_id = %s
+                """,
+                (user_id, session_id),
+            )
+            row = cursor.fetchone()
+            if row is None:
+                raise RuntimeError("chat session was not created")
 
-                # 获取文件创建时间
-                stat = file_path.stat()
-                create_time = datetime.fromtimestamp(stat.st_ctime).strftime(
-                    "%Y-%m-%d %H:%M:%S"
+            chat_session_id = self._first_column(row)
+            cursor.execute(
+                "DELETE FROM agent_chat_messages WHERE chat_session_id = %s",
+                (chat_session_id,),
+            )
+            rows = [
+                (
+                    chat_session_id,
+                    index,
+                    str(message.get("role", "")),
+                    str(message.get("content", "")),
+                    now,
                 )
+                for index, message in enumerate(data)
+            ]
+            if rows:
+                cursor.executemany(
+                    """
+                    INSERT INTO agent_chat_messages
+                        (chat_session_id, message_order, role, content, created_at)
+                    VALUES (%s, %s, %s, %s, %s)
+                    """,
+                    rows,
+                )
+            cursor.execute(
+                "UPDATE agent_chat_sessions SET updated_at = %s WHERE id = %s",
+                (now, chat_session_id),
+            )
+            connection.commit()
+        except Exception:
+            connection.rollback()
+            logger.exception(
+                "failed to save chat session user_id=%s session_id=%s",
+                user_id,
+                session_id,
+            )
+            raise
+        finally:
+            self._close_cursor(cursor)
+            connection.close()
 
-                try:
-                    with file_path.open("r", encoding="utf-8") as f:
-                        data = json.load(f)
-                    results.append((session_id, create_time, data))
-                except Exception as e:
-                    # 读取或解析失败，返回异常对象
-                    logger.error(f"读取会话文件 {file_path.name} 失败: {e}")
-                    results.append((session_id, create_time, e))
+    def get_all_sessions_metadata(self, user_id: str) -> List[SessionMetadata]:
+        connection = self._pool.connection()
+        cursor = None
+        try:
+            cursor = connection.cursor()
+            cursor.execute(
+                """
+                SELECT id, session_id, updated_at
+                FROM agent_chat_sessions
+                WHERE user_id = %s
+                ORDER BY updated_at DESC
+                """,
+                (user_id,),
+            )
+            sessions = cursor.fetchall()
+            if not sessions:
+                return []
 
-        except Exception as e:
-            logger.error(f"遍历用户 {user_id} 会话目录失败: {e}")
+            session_ids = [self._column(row, 0, "id") for row in sessions]
+            placeholders = ", ".join(["%s"] * len(session_ids))
+            cursor.execute(
+                f"""
+                SELECT chat_session_id, role, content, message_order
+                FROM agent_chat_messages
+                WHERE chat_session_id IN ({placeholders})
+                ORDER BY chat_session_id ASC, message_order ASC
+                """,
+                tuple(session_ids),
+            )
+            messages_by_session: dict[int, List[Message]] = {int(session_id): [] for session_id in session_ids}
+            for row in cursor.fetchall():
+                chat_session_id = int(self._column(row, 0, "chat_session_id"))
+                messages_by_session.setdefault(chat_session_id, []).append({
+                    "role": self._column(row, 1, "role"),
+                    "content": self._column(row, 2, "content"),
+                })
+
+            results: List[SessionMetadata] = []
+            for row in sessions:
+                chat_session_id = int(self._column(row, 0, "id"))
+                session_id = str(self._column(row, 1, "session_id"))
+                updated_at = self._column(row, 2, "updated_at")
+                results.append((
+                    session_id,
+                    self._format_datetime(updated_at),
+                    messages_by_session.get(chat_session_id, []),
+                ))
+            return results
+        except Exception as exc:
+            logger.exception("failed to load session metadata user_id=%s", user_id)
             return []
+        finally:
+            self._close_cursor(cursor)
+            connection.close()
 
-        return results
+    @staticmethod
+    def _column(row: Any, index: int, name: str) -> Any:
+        if isinstance(row, dict):
+            return row[name]
+        return row[index]
 
-    def _get_user_directory(self, user_id: str) -> Path:
-        """获取用户的记忆文件夹路径对象。"""
-        return self._storage_root / user_id
+    @classmethod
+    def _first_column(cls, row: Any) -> Any:
+        if isinstance(row, dict):
+            return next(iter(row.values()))
+        return row[0]
 
-    def _get_file_path(self, user_id: str, session_id: str) -> Path:
-        """获取具体会话文件的路径对象。"""
-        return self._get_user_directory(user_id) / f"{session_id}.json"
+    @staticmethod
+    def _format_datetime(value: Any) -> str:
+        if isinstance(value, datetime):
+            return value.strftime("%Y-%m-%d %H:%M:%S")
+        return str(value)
+
+    @staticmethod
+    def _close_cursor(cursor: Any) -> None:
+        if cursor is not None and hasattr(cursor, "close"):
+            cursor.close()
 
 
-# 全局单例
 session_repository = SessionRepository()
