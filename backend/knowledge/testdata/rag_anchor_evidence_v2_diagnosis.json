@@ -1,0 +1,761 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-05T20:29:19",
+  "legacy_report": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_v2_anchor_evidence.json",
+  "total_records": 17,
+  "reason_counts": {
+    "HARD_ANCHOR_TOO_BROAD": 3,
+    "CANDIDATE_RECALL_MISSING": 1,
+    "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK": 8,
+    "OTHER": 4,
+    "ALIAS_OR_LANGUAGE_GAP": 1
+  },
+  "records": [
+    {
+      "case_id": "case_022",
+      "original_question": "火星基地打印机怎么连接量子网络",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "量子网络",
+          "normalized_term": "量子网络",
+          "anchor_type": "HARD",
+          "aliases": [
+            "quantum network",
+            "量子网络"
+          ],
+          "source": "configured_hard_phrase"
+        },
+        {
+          "term": "网络",
+          "normalized_term": "网络",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "网络"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [
+        "量子网络"
+      ],
+      "soft_anchors": [],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "HARD_ANCHOR_TOO_BROAD"
+    },
+    {
+      "case_id": "case_023",
+      "original_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "冰箱冷冻室",
+          "normalized_term": "冰箱冷冻室",
+          "anchor_type": "HARD",
+          "aliases": [
+            "freezer cold room",
+            "冰箱冷冻室"
+          ],
+          "source": "configured_hard_phrase"
+        },
+        {
+          "term": "电脑",
+          "normalized_term": "电脑",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "电脑"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [
+        "冰箱冷冻室"
+      ],
+      "soft_anchors": [],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "HARD_ANCHOR_TOO_BROAD"
+    },
+    {
+      "case_id": "case_024",
+      "original_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "折叠屏铰链",
+          "normalized_term": "折叠屏铰链",
+          "anchor_type": "HARD",
+          "aliases": [
+            "folding screen hinge",
+            "折叠屏铰链"
+          ],
+          "source": "configured_hard_phrase"
+        }
+      ],
+      "hard_anchors": [
+        "折叠屏铰链"
+      ],
+      "soft_anchors": [],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "HARD_ANCHOR_TOO_BROAD"
+    },
+    {
+      "case_id": "case_025",
+      "original_question": "PowerPoint 2007 cannot input Chinese",
+      "case_group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "anchors": [],
+      "hard_anchors": [],
+      "soft_anchors": [],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0007-在 PowerPoint 2007 中无法输入中文怎么办？.md"
+      ],
+      "rejection_reason": null,
+      "diagnosis_reason": "CANDIDATE_RECALL_MISSING"
+    },
+    {
+      "case_id": "case_026",
+      "original_question": "How to modify Microsoft Word default style",
+      "case_group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Word",
+          "normalized_term": "word",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "word"
+          ],
+          "source": "configured_soft_phrase"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Word"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0008-如何修改 Microsoft Word 的默认样式？.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_027",
+      "original_question": "Outlook paragraph marks should be hidden",
+      "case_group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Outlook",
+          "normalized_term": "outlook",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "outlook"
+          ],
+          "source": "configured_soft_phrase"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Outlook"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0010-如何去掉Outlook中的段落标记等符号-.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_030",
+      "original_question": "Excel shows #VALUE! error",
+      "case_group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Excel",
+          "normalized_term": "excel",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "excel"
+          ],
+          "source": "configured_soft_phrase"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Excel"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0033-如何解决 Excel 显示 #VALUE! 错误信息的问题-.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_039",
+      "original_question": "How to turn on Bluetooth module",
+      "case_group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Bluetooth",
+          "normalized_term": "bluetooth",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "bluetooth",
+            "蓝牙"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "蓝牙设备",
+          "normalized_term": "蓝牙设备",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "bluetooth",
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "source": "configured_soft_phrase"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Bluetooth",
+        "蓝牙设备"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_040",
+      "original_question": "How to add Bluetooth device",
+      "case_group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Bluetooth",
+          "normalized_term": "bluetooth",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "bluetooth",
+            "蓝牙"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "蓝牙设备",
+          "normalized_term": "蓝牙设备",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "bluetooth",
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "device",
+          "normalized_term": "device",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "device"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Bluetooth",
+        "蓝牙设备"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0356-如何添加启用蓝牙的设备.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_044",
+      "original_question": "Blue screen error 0xDEADBEEF",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "0xDEADBEEF",
+          "normalized_term": "0xdeadbeef",
+          "anchor_type": "HARD",
+          "aliases": [
+            "0xDEADBEEF"
+          ],
+          "source": "error_code"
+        },
+        {
+          "term": "blue screen",
+          "normalized_term": "blue screen",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "blue screen",
+            "蓝屏"
+          ],
+          "source": "configured_soft_phrase"
+        }
+      ],
+      "hard_anchors": [
+        "0xDEADBEEF"
+      ],
+      "soft_anchors": [
+        "blue screen"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "OTHER"
+    },
+    {
+      "case_id": "case_045",
+      "original_question": "System error E9999 repair",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "E9999",
+          "normalized_term": "e9999",
+          "anchor_type": "HARD",
+          "aliases": [
+            "E9999"
+          ],
+          "source": "error_code"
+        },
+        {
+          "term": "system",
+          "normalized_term": "system",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "system"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [
+        "E9999"
+      ],
+      "soft_anchors": [],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "OTHER"
+    },
+    {
+      "case_id": "case_049",
+      "original_question": "Boot error 0xBADF00D cannot enter system",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "0xBADF00D",
+          "normalized_term": "0xbadf00d",
+          "anchor_type": "HARD",
+          "aliases": [
+            "0xBADF00D"
+          ],
+          "source": "error_code"
+        },
+        {
+          "term": "startup",
+          "normalized_term": "startup",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "startup",
+            "boot",
+            "开机",
+            "启动"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "system",
+          "normalized_term": "system",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "system"
+          ],
+          "source": "generic_term"
+        },
+        {
+          "term": "boot",
+          "normalized_term": "boot",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "boot"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [
+        "0xBADF00D"
+      ],
+      "soft_anchors": [
+        "startup"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "OTHER"
+    },
+    {
+      "case_id": "case_050",
+      "original_question": "Startup protocol error E654321",
+      "case_group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "anchors": [
+        {
+          "term": "E654321",
+          "normalized_term": "e654321",
+          "anchor_type": "HARD",
+          "aliases": [
+            "E654321"
+          ],
+          "source": "error_code"
+        },
+        {
+          "term": "startup",
+          "normalized_term": "startup",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "startup",
+            "boot",
+            "开机",
+            "启动"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "startup",
+          "normalized_term": "startup",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "startup"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [
+        "E654321"
+      ],
+      "soft_anchors": [
+        "startup"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "OTHER"
+    },
+    {
+      "case_id": "case_071",
+      "original_question": "Word inserted pictures become blank boxes, not black screen",
+      "case_group": "E_confusing",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Word",
+          "normalized_term": "word",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "word"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "black screen",
+          "normalized_term": "black screen",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "black screen"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Word"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_072",
+      "original_question": "Screen brightness is too low, not Word blank picture",
+      "case_group": "E_confusing",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Word",
+          "normalized_term": "word",
+          "anchor_type": "NEGATIVE",
+          "aliases": [
+            "Word",
+            "word"
+          ],
+          "source": "negative_phrase"
+        },
+        {
+          "term": "display brightness",
+          "normalized_term": "display brightness",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "display brightness",
+            "screen brightness",
+            "屏幕亮度",
+            "屏幕的亮度"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "picture",
+          "normalized_term": "picture",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "picture"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "display brightness"
+      ],
+      "negative_anchors": [
+        "Word"
+      ],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_074",
+      "original_question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+      "case_group": "E_confusing",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Bluetooth",
+          "normalized_term": "bluetooth",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "bluetooth",
+            "蓝牙"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "蓝牙设备",
+          "normalized_term": "蓝牙设备",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "bluetooth",
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "Wi-Fi",
+          "normalized_term": "wi-fi",
+          "anchor_type": "SOFT",
+          "aliases": [
+            "wi-fi",
+            "wifi",
+            "wireless network",
+            "无线网络"
+          ],
+          "source": "configured_soft_phrase"
+        },
+        {
+          "term": "device",
+          "normalized_term": "device",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "device"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [],
+      "soft_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "Wi-Fi"
+      ],
+      "negative_anchors": [],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0355-如何开启蓝牙模块功能.md",
+        "0356-如何添加启用蓝牙的设备.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "SOFT_ANCHOR_WRONGLY_USED_FOR_BLOCK"
+    },
+    {
+      "case_id": "case_080",
+      "original_question": "Taskbar input method icon disappeared, not Word input issue",
+      "case_group": "E_confusing",
+      "expected_answerability": "answerable",
+      "anchors": [
+        {
+          "term": "Word",
+          "normalized_term": "word",
+          "anchor_type": "NEGATIVE",
+          "aliases": [
+            "Word",
+            "word"
+          ],
+          "source": "negative_phrase"
+        },
+        {
+          "term": "任务栏输入法图标",
+          "normalized_term": "任务栏输入法图标",
+          "anchor_type": "HARD",
+          "aliases": [
+            "taskbar input method icon",
+            "任务栏输入法图标"
+          ],
+          "source": "configured_hard_phrase"
+        },
+        {
+          "term": "issue",
+          "normalized_term": "issue",
+          "anchor_type": "GENERIC",
+          "aliases": [
+            "issue"
+          ],
+          "source": "generic_term"
+        }
+      ],
+      "hard_anchors": [
+        "任务栏输入法图标"
+      ],
+      "soft_anchors": [],
+      "negative_anchors": [
+        "Word"
+      ],
+      "final_top2": [],
+      "final_top2_has_anchor": false,
+      "candidate_window_has_anchor": false,
+      "candidate_window_has_hard_anchor": false,
+      "expected_sources_in_window": [],
+      "expected_source_ids": [
+        "0270-如何恢复Windows XP任务栏输入法图标.md",
+        "0271-如何恢复Windows 7任务栏输入法图标.md"
+      ],
+      "rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "diagnosis_reason": "ALIAS_OR_LANGUAGE_GAP"
+    }
+  ],
+  "notes": [
+    "This script diagnoses existing reports only; it does not call Embedding, LLM, /query, or Chroma.",
+    "Diagnosis categories are heuristic and require manual confirmation."
+  ]
+}

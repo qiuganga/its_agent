@@ -32,9 +32,25 @@ class Settings(BaseSettings):
     # Retrieval configuration
     TOP_ROUGH: int = 50
     TOP_FINAL: int = 5
+    RAG_VECTOR_CANDIDATE_TOP_K: int = int(os.environ.get("RAG_VECTOR_CANDIDATE_TOP_K", "15"))
+    RAG_TITLE_CANDIDATE_TOP_K: int = int(os.environ.get("RAG_TITLE_CANDIDATE_TOP_K", "10"))
     RAG_FINAL_TOP_K: int = int(os.environ.get("RAG_FINAL_TOP_K", "2"))
+    RAG_MIN_RERANK_SCORE: float = float(os.environ.get("RAG_MIN_RERANK_SCORE", "0.35"))
     RAG_MMR_LAMBDA: float = float(os.environ.get("RAG_MMR_LAMBDA", "0.75"))
     RAG_MAX_CHUNKS_PER_DOCUMENT: int = int(os.environ.get("RAG_MAX_CHUNKS_PER_DOCUMENT", "1"))
+    RAG_ANCHOR_EVIDENCE_ENABLED: bool = os.environ.get("RAG_ANCHOR_EVIDENCE_ENABLED", "false").lower() == "true"
+    RAG_ANCHOR_EVIDENCE_MODE: str = os.environ.get("RAG_ANCHOR_EVIDENCE_MODE", "off")
+    RAG_ANCHOR_EVIDENCE_WINDOW_SIZE: int = int(os.environ.get("RAG_ANCHOR_EVIDENCE_WINDOW_SIZE", "10"))
+    RAG_ANCHOR_MATCH_BOOST: float = float(os.environ.get("RAG_ANCHOR_MATCH_BOOST", "0.08"))
+    RAG_ANCHOR_MISSING_PENALTY: float = float(os.environ.get("RAG_ANCHOR_MISSING_PENALTY", "0.10"))
+    RAG_HARD_ANCHOR_MATCH_BOOST: float = float(os.environ.get("RAG_HARD_ANCHOR_MATCH_BOOST", "0.08"))
+    RAG_HARD_ANCHOR_MISSING_PENALTY: float = float(os.environ.get("RAG_HARD_ANCHOR_MISSING_PENALTY", "0.10"))
+    RAG_SOFT_ANCHOR_MATCH_BOOST: float = float(os.environ.get("RAG_SOFT_ANCHOR_MATCH_BOOST", "0.03"))
+    RAG_SOFT_ANCHOR_MISSING_PENALTY: float = float(os.environ.get("RAG_SOFT_ANCHOR_MISSING_PENALTY", "0.00"))
+    RAG_NEGATIVE_ANCHOR_MATCH_PENALTY: float = float(os.environ.get("RAG_NEGATIVE_ANCHOR_MATCH_PENALTY", "0.10"))
+    RAG_ANCHOR_REQUIRE_EVIDENCE_FOR_BLOCK: bool = (
+        os.environ.get("RAG_ANCHOR_REQUIRE_EVIDENCE_FOR_BLOCK", "true").lower() == "true"
+    )
 
     class Config:
         env_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")

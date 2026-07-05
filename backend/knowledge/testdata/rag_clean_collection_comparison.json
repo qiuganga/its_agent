@@ -1,0 +1,2184 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-05T00:27:02",
+  "reports": {
+    "old": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_old_collection_recheck.json",
+    "clean": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_clean_v1.json",
+    "clean_small_chunk": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_clean_chunk1000_v1.json"
+  },
+  "metrics": {
+    "old": {
+      "collection_name": "its-knowledge",
+      "indexable_documents": null,
+      "skipped_documents": null,
+      "chunk_count": 1101,
+      "average_chunks_per_document": null,
+      "metadata_complete_rate": 0.0,
+      "top1_title_weak_hit_count": 4,
+      "top2_title_weak_hit_count": 6,
+      "expected_no_answer_not_rejected": 3,
+      "expected_no_answer_correctly_rejected": 0,
+      "low_effective_topk_count": 0,
+      "low_effective_topk_unknown_count": 36,
+      "missing_source_topk_count": 36,
+      "accepted_count": 24,
+      "low_confidence_rejected_count": 0
+    },
+    "clean": {
+      "collection_name": "its-knowledge-clean-v1",
+      "indexable_documents": 733,
+      "skipped_documents": 0,
+      "chunk_count": 834,
+      "average_chunks_per_document": 1.1378,
+      "metadata_complete_rate": 1.0,
+      "top1_title_weak_hit_count": 7,
+      "top2_title_weak_hit_count": 9,
+      "expected_no_answer_not_rejected": 3,
+      "expected_no_answer_correctly_rejected": 0,
+      "low_effective_topk_count": 0,
+      "low_effective_topk_unknown_count": 0,
+      "missing_source_topk_count": 0,
+      "accepted_count": 24,
+      "low_confidence_rejected_count": 0
+    },
+    "clean_small_chunk": {
+      "collection_name": "its-knowledge-clean-chunk1000-v1",
+      "indexable_documents": 733,
+      "skipped_documents": 0,
+      "chunk_count": 974,
+      "average_chunks_per_document": 1.3288,
+      "metadata_complete_rate": 1.0,
+      "top1_title_weak_hit_count": 4,
+      "top2_title_weak_hit_count": 6,
+      "expected_no_answer_not_rejected": 3,
+      "expected_no_answer_correctly_rejected": 0,
+      "low_effective_topk_count": 0,
+      "low_effective_topk_unknown_count": 0,
+      "missing_source_topk_count": 0,
+      "accepted_count": 24,
+      "low_confidence_rejected_count": 0
+    }
+  },
+  "classification_counts": {
+    "requires_manual_review": 17,
+    "positive": 5,
+    "negative": 2
+  },
+  "focus_cases": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "category": "口语化故障问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "无法开机，黑屏怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 36,
+        "top_titles": [
+          "Visio 2010-2007 形状面板不见了怎么办？",
+          "Lenovo G485无线网络连接不上的解决方案"
+        ],
+        "top_scores": [
+          0.5642337726750268,
+          0.5590641529790483
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无法开机，黑屏怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 37,
+        "top_titles": [
+          "Windows XP 关机故障",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.603783819822407,
+          0.5468904943019967
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无法开机，黑屏怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 36,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "Windows XP 关机故障"
+        ],
+        "top_scores": [
+          0.6563383328111727,
+          0.6014237292392017
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "category": "口语化故障问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "无法开机怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 49,
+        "candidate_count_after_dedup": 31,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "Internet Explorer版本升级说明"
+        ],
+        "top_scores": [
+          0.5462223925728276,
+          0.5001764997299845
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无法开机怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 28,
+        "top_titles": [
+          "开机时，需要按F1（或F2）键后才能继续启动",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.5414254472785203,
+          0.5251268358461182
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无法开机怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 31,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "联想支持Windows 10系统升级的机型列表"
+        ],
+        "top_scores": [
+          0.6053414805643793,
+          0.5325919266741965
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "category": "容易混淆问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "黑屏但风扇会转怎么处理",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 52,
+        "candidate_count_after_dedup": 41,
+        "top_titles": [
+          "如何设置显卡的电源管理",
+          "智能电视开不了机并且指示灯都不亮怎么办？"
+        ],
+        "top_scores": [
+          0.5287652817018051,
+          0.5228054571086586
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "黑屏但风扇会转怎么处理",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 52,
+        "candidate_count_after_dedup": 41,
+        "top_titles": [
+          "宽带连接频繁掉线",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.5320364763181433,
+          0.5165509829034334
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "黑屏但风扇会转怎么处理",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 52,
+        "candidate_count_after_dedup": 41,
+        "top_titles": [
+          "宽带连接频繁掉线",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.5351204301667424,
+          0.515683648398809
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "category": "标准表达问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "新圆梦F系列电脑运行游戏卡",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.5846510550471072,
+          0.5750452821644836
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "台式和一体机蓝屏报错代码：0x0000007B",
+          "开机时，需要按F1（或F2）键后才能继续启动"
+        ],
+        "top_scores": [
+          0.6121722092319496,
+          0.5925482081836805
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.6371012340684956,
+          0.6147667868352691
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "category": "网络问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "无线网络连不上怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.5809229743821851,
+          0.5546277844316582
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无线网络连不上怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.5827017107573725,
+          0.5622062608219777
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无线网络连不上怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？"
+        ],
+        "top_scores": [
+          0.6343395195709776,
+          0.5823665775481475
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "category": "口语化故障问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "蓝牙设备无法被发现怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 54,
+        "candidate_count_after_dedup": 44,
+        "top_titles": [
+          "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "关于NOKIA手机通过红外线连接旭日150拨号上网的解决方案"
+        ],
+        "top_scores": [
+          0.5337793915237351,
+          0.5014754493385694
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "蓝牙设备无法被发现怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 54,
+        "candidate_count_after_dedup": 39,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "如何确认触控板的品牌（厂商）"
+        ],
+        "top_scores": [
+          0.5781446021061756,
+          0.5456722600264399
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "蓝牙设备无法被发现怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 54,
+        "candidate_count_after_dedup": 39,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.5756142981738701,
+          0.5673097217272591
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "category": "口语化故障问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "电脑无声音，音量怎么调",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 26,
+        "top_titles": [
+          "如何通过联想电源管理软件调整电源模式",
+          "电脑会自动开机启动，是什么问题？"
+        ],
+        "top_scores": [
+          0.45977858929348675,
+          0.41606755051680955
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "电脑无声音，音量怎么调",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 26,
+        "top_titles": [
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "一键恢复功能键在什么位置？"
+        ],
+        "top_scores": [
+          0.5937000844636269,
+          0.4697691822364749
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "电脑无声音，音量怎么调",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 27,
+        "top_titles": [
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "一键恢复功能键在什么位置？"
+        ],
+        "top_scores": [
+          0.5950282509558078,
+          0.47062227451354477
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "category": "同义词或别称问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "系统无响应怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 49,
+        "candidate_count_after_dedup": 30,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.5329886350256616,
+          0.5203025216761005
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "系统无响应怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 29,
+        "top_titles": [
+          "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "开机时，需要按F1（或F2）键后才能继续启动"
+        ],
+        "top_scores": [
+          0.5527975914307299,
+          0.5451647526708359
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "系统无响应怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 30,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”"
+        ],
+        "top_scores": [
+          0.5824659911185619,
+          0.5507230833687018
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "category": "标题命中问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "单向可Ping通的原因与原理-"
+        ],
+        "top_scores": [
+          0.590867295810328,
+          0.5650950879342661
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "台式和一体机蓝屏报错代码：0x0000007B",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.6224840537258507,
+          0.5984999285816919
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.6624465902741279,
+          0.6223052100195168
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_018",
+      "question": "如何使用U盘安装Windows 7操作系统",
+      "category": "标准表达问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "如何使用U盘安装Windows 7操作系统",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 23,
+        "candidate_count_after_dedup": 23,
+        "top_titles": [
+          "联想摄像头随机软件能否保存视频捕捉属性以及视频捕捉参数？",
+          "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+        ],
+        "top_scores": [
+          0.48657090393008307,
+          0.4633210043813585
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "如何使用U盘安装Windows 7操作系统",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想硬盘保护EDU7.X的安装方法",
+          "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+        ],
+        "top_scores": [
+          0.824089887496962,
+          0.5529502240967934
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "如何使用U盘安装Windows 7操作系统",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "联想硬盘保护EDU7.X的安装方法",
+          "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+        ],
+        "top_scores": [
+          0.8268134132940277,
+          0.5559366774853229
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "category": "预计无答案",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "火星基地打印机怎么连接量子网络",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 28,
+        "candidate_count_after_dedup": 28,
+        "top_titles": [
+          "联想一键恢复的使用方法",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.5808058663718789,
+          0.5794257451171771
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "火星基地打印机怎么连接量子网络",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 29,
+        "candidate_count_after_dedup": 29,
+        "top_titles": [
+          "在Windows 8系统下如何查看网络IP地址",
+          "WinXP从待机状态唤醒后网络连接断开"
+        ],
+        "top_scores": [
+          0.6252994272586148,
+          0.5837147925788273
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "火星基地打印机怎么连接量子网络",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 29,
+        "candidate_count_after_dedup": 29,
+        "top_titles": [
+          "在Windows 8系统下如何查看网络IP地址",
+          "暴风影音在播放高清视频时占用的CPU高怎么办-"
+        ],
+        "top_scores": [
+          0.6241570894314977,
+          0.5861753718855995
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "category": "预计无答案",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Windows自带电源管理（包括休眠、待机和睡眠）的设置方法",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.521603131710743,
+          0.5134956036123652
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.524272029123074,
+          0.5065999746965979
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "改善手机或平板机身发热的办法"
+        ],
+        "top_scores": [
+          0.5912533848365349,
+          0.5592796427870816
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "category": "预计无答案",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "在Windows XP下如何配置无线网络",
+          "如何恢复Windows XP任务栏输入法图标"
+        ],
+        "top_scores": [
+          0.6778516386762434,
+          0.6700769863402853
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "31018765A 扬天T系列用户手册 V1.0"
+        ],
+        "top_scores": [
+          0.7035405046010768,
+          0.6471785905126128
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "SecureBoot未正确配置"
+        ],
+        "top_scores": [
+          0.7042312876087977,
+          0.6877515934990753
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    }
+  ],
+  "case_comparisons": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "category": "口语化故障问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "无法开机，黑屏怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 36,
+        "top_titles": [
+          "Visio 2010-2007 形状面板不见了怎么办？",
+          "Lenovo G485无线网络连接不上的解决方案"
+        ],
+        "top_scores": [
+          0.5642337726750268,
+          0.5590641529790483
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无法开机，黑屏怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 37,
+        "top_titles": [
+          "Windows XP 关机故障",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.603783819822407,
+          0.5468904943019967
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无法开机，黑屏怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 36,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "Windows XP 关机故障"
+        ],
+        "top_scores": [
+          0.6563383328111727,
+          0.6014237292392017
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "category": "口语化故障问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "无法开机怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 49,
+        "candidate_count_after_dedup": 31,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "Internet Explorer版本升级说明"
+        ],
+        "top_scores": [
+          0.5462223925728276,
+          0.5001764997299845
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无法开机怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 28,
+        "top_titles": [
+          "开机时，需要按F1（或F2）键后才能继续启动",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.5414254472785203,
+          0.5251268358461182
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无法开机怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 31,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "联想支持Windows 10系统升级的机型列表"
+        ],
+        "top_scores": [
+          0.6053414805643793,
+          0.5325919266741965
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "category": "容易混淆问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "黑屏但风扇会转怎么处理",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 52,
+        "candidate_count_after_dedup": 41,
+        "top_titles": [
+          "如何设置显卡的电源管理",
+          "智能电视开不了机并且指示灯都不亮怎么办？"
+        ],
+        "top_scores": [
+          0.5287652817018051,
+          0.5228054571086586
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "黑屏但风扇会转怎么处理",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 52,
+        "candidate_count_after_dedup": 41,
+        "top_titles": [
+          "宽带连接频繁掉线",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.5320364763181433,
+          0.5165509829034334
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "黑屏但风扇会转怎么处理",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 52,
+        "candidate_count_after_dedup": 41,
+        "top_titles": [
+          "宽带连接频繁掉线",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.5351204301667424,
+          0.515683648398809
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "category": "标准表达问题",
+      "classification": "negative",
+      "old": {
+        "normalized_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 23,
+        "candidate_count_after_dedup": 23,
+        "top_titles": [
+          "开机蓝屏或提示登录进程初始化失败问题的解决方案（Vista）",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.6380537277479141,
+          0.5998314706762669
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Windows XP 关机故障",
+          "手机或平板电脑无法访问百度相关网站的解决办法"
+        ],
+        "top_scores": [
+          0.6399372238041915,
+          0.5992229188227622
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Windows XP 关机故障",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.6398319390632037,
+          0.6025487772592029
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "category": "标准表达问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "新圆梦F系列电脑运行游戏卡",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.5846510550471072,
+          0.5750452821644836
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "台式和一体机蓝屏报错代码：0x0000007B",
+          "开机时，需要按F1（或F2）键后才能继续启动"
+        ],
+        "top_scores": [
+          0.6121722092319496,
+          0.5925482081836805
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.6371012340684956,
+          0.6147667868352691
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "category": "网络问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "无线网络连不上怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.5809229743821851,
+          0.5546277844316582
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无线网络连不上怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.5827017107573725,
+          0.5622062608219777
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无线网络连不上怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？"
+        ],
+        "top_scores": [
+          0.6343395195709776,
+          0.5823665775481475
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "category": "口语化故障问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "无法连接网络，怎么检查网络是否通畅",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 38,
+        "top_titles": [
+          "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.6395655466903752,
+          0.6301418577979747
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "无法连接网络，怎么检查网络是否通畅",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 35,
+        "top_titles": [
+          "Windows XP 关机故障",
+          "WPS Office中如何打印稿纸"
+        ],
+        "top_scores": [
+          0.67551393608443,
+          0.6184693705364817
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "无法连接网络，怎么检查网络是否通畅",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 36,
+        "top_titles": [
+          "Windows XP 关机故障",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.6753417730088334,
+          0.6463623300959034
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_008",
+      "question": "只使用电池有时找不到网络设备怎么办",
+      "category": "正文和标题命中问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "只使用电池有时找不到网络设备怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "Windows 2000蓝屏死机故障分析与排除",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.6073206365119754,
+          0.5757036512370522
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "只使用电池有时找不到网络设备怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "开机时，需要按F1（或F2）键后才能继续启动",
+          "关于电池充电、保养、设置、较准的方法汇总"
+        ],
+        "top_scores": [
+          0.6467418492065642,
+          0.5984087557592319
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "只使用电池有时找不到网络设备怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "开机时，需要按F1（或F2）键后才能继续启动",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.6471269899143023,
+          0.6395530880447289
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "category": "口语化故障问题",
+      "classification": "positive",
+      "old": {
+        "normalized_question": "蓝牙设备无法被发现怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 54,
+        "candidate_count_after_dedup": 44,
+        "top_titles": [
+          "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "关于NOKIA手机通过红外线连接旭日150拨号上网的解决方案"
+        ],
+        "top_scores": [
+          0.5337793915237351,
+          0.5014754493385694
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "蓝牙设备无法被发现怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 54,
+        "candidate_count_after_dedup": 39,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "如何确认触控板的品牌（厂商）"
+        ],
+        "top_scores": [
+          0.5781446021061756,
+          0.5456722600264399
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "蓝牙设备无法被发现怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 54,
+        "candidate_count_after_dedup": 39,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "Excel文件菜单及相关功能灰色不可用怎么办？"
+        ],
+        "top_scores": [
+          0.5756142981738701,
+          0.5673097217272591
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "category": "口语化故障问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "蓝牙连接失败怎么添加",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 56,
+        "candidate_count_after_dedup": 40,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+        ],
+        "top_scores": [
+          0.48628805025915045,
+          0.47260564273908395
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "蓝牙连接失败怎么添加",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 56,
+        "candidate_count_after_dedup": 42,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "如何备份幸福之家4.X中的日记"
+        ],
+        "top_scores": [
+          0.5315444469060182,
+          0.4886230315535173
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "蓝牙连接失败怎么添加",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 56,
+        "candidate_count_after_dedup": 42,
+        "top_titles": [
+          "如何添加启用蓝牙的设备",
+          "如何备份幸福之家4.X中的日记"
+        ],
+        "top_scores": [
+          0.5312089507043656,
+          0.4874227784531693
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "category": "口语化故障问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "电脑无声音，音量怎么调",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 26,
+        "top_titles": [
+          "如何通过联想电源管理软件调整电源模式",
+          "电脑会自动开机启动，是什么问题？"
+        ],
+        "top_scores": [
+          0.45977858929348675,
+          0.41606755051680955
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "电脑无声音，音量怎么调",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 26,
+        "top_titles": [
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "一键恢复功能键在什么位置？"
+        ],
+        "top_scores": [
+          0.5937000844636269,
+          0.4697691822364749
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "电脑无声音，音量怎么调",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 27,
+        "top_titles": [
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "一键恢复功能键在什么位置？"
+        ],
+        "top_scores": [
+          0.5950282509558078,
+          0.47062227451354477
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "category": "同义词或别称问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "系统无响应怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 49,
+        "candidate_count_after_dedup": 30,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.5329886350256616,
+          0.5203025216761005
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "系统无响应怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 29,
+        "top_titles": [
+          "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "开机时，需要按F1（或F2）键后才能继续启动"
+        ],
+        "top_scores": [
+          0.5527975914307299,
+          0.5451647526708359
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "系统无响应怎么办",
+        "dual_retrieval_enabled": true,
+        "candidate_count_before_dedup": 50,
+        "candidate_count_after_dedup": 30,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”"
+        ],
+        "top_scores": [
+          0.5824659911185619,
+          0.5507230833687018
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_013",
+      "question": "电脑运行游戏卡怎么办",
+      "category": "容易混淆问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "电脑运行游戏卡怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.6088593635218738,
+          0.5828551941941886
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "电脑运行游戏卡怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.6078380614558603,
+          0.595151131493467
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "电脑运行游戏卡怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "新圆梦F系列电脑运行游戏卡"
+        ],
+        "top_scores": [
+          0.6369384517428107,
+          0.6001278093293705
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "category": "标题命中问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.6269816268504407,
+          0.5728471507126656
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.6271280799224179,
+          0.6114505752712425
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.7025039970698292,
+          0.6111382712966671
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "category": "标题命中问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "单向可Ping通的原因与原理-"
+        ],
+        "top_scores": [
+          0.590867295810328,
+          0.5650950879342661
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "台式和一体机蓝屏报错代码：0x0000007B",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.6224840537258507,
+          0.5984999285816919
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "台式和一体机蓝屏报错代码：0x0000007B"
+        ],
+        "top_scores": [
+          0.6624465902741279,
+          0.6223052100195168
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_016",
+      "question": "Outlook 为什么没有已发送邮件的记录",
+      "category": "标题命中问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "Outlook 为什么没有已发送邮件的记录",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 23,
+        "candidate_count_after_dedup": 23,
+        "top_titles": [
+          "如何给某分区、光驱、U盘分配盘符",
+          "Outlook为何没有已发送邮件的记录-"
+        ],
+        "top_scores": [
+          0.5187732179338329,
+          0.4887877263827448
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "Outlook 为什么没有已发送邮件的记录",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Outlook为何没有已发送邮件的记录-",
+          "彩色喷墨多功能一体机M920校准墨盒的操作"
+        ],
+        "top_scores": [
+          0.5669834121104425,
+          0.528927398738902
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "Outlook 为什么没有已发送邮件的记录",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Outlook为何没有已发送邮件的记录-",
+          "彩色喷墨多功能一体机M920校准墨盒的操作"
+        ],
+        "top_scores": [
+          0.565492461976571,
+          0.5279099148723768
+        ],
+        "top1_title_weak_hit": true,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_017",
+      "question": "IE 只能打开首页，其他链接打不开怎么办",
+      "category": "标题命中问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "IE 只能打开首页，其他链接打不开怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "Lenovo G485无线网络连接不上的解决方案"
+        ],
+        "top_scores": [
+          0.5605574067048207,
+          0.5436663431990418
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "IE 只能打开首页，其他链接打不开怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "开机时，需要按F1（或F2）键后才能继续启动",
+          "Vista系统下随机软件的安装与卸载"
+        ],
+        "top_scores": [
+          0.5699500496938077,
+          0.541793680286645
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "IE 只能打开首页，其他链接打不开怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？"
+        ],
+        "top_scores": [
+          0.5872409414406407,
+          0.5604107507713072
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_018",
+      "question": "如何使用U盘安装Windows 7操作系统",
+      "category": "标准表达问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "如何使用U盘安装Windows 7操作系统",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 23,
+        "candidate_count_after_dedup": 23,
+        "top_titles": [
+          "联想摄像头随机软件能否保存视频捕捉属性以及视频捕捉参数？",
+          "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+        ],
+        "top_scores": [
+          0.48657090393008307,
+          0.4633210043813585
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "如何使用U盘安装Windows 7操作系统",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "联想硬盘保护EDU7.X的安装方法",
+          "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+        ],
+        "top_scores": [
+          0.824089887496962,
+          0.5529502240967934
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "如何使用U盘安装Windows 7操作系统",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "联想硬盘保护EDU7.X的安装方法",
+          "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+        ],
+        "top_scores": [
+          0.8268134132940277,
+          0.5559366774853229
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_019",
+      "question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "category": "标题命中问题",
+      "classification": "negative",
+      "old": {
+        "normalized_question": "手机或平板电脑无法访问百度相关网站怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "手机或平板电脑无法访问百度相关网站的解决办法"
+        ],
+        "top_scores": [
+          0.6333983572390931,
+          0.6134757285934624
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": true,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "手机或平板电脑无法访问百度相关网站怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "台式和一体机蓝屏报错代码：0x0000007B",
+          "两台电脑如何共享访问"
+        ],
+        "top_scores": [
+          0.6336132192049082,
+          0.6065343628525831
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "手机或平板电脑无法访问百度相关网站怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "视频指导：IE10浏览器如何显示快速导航界面"
+        ],
+        "top_scores": [
+          0.6423213492399225,
+          0.6281563190822673
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_020",
+      "question": "屏幕保护怎么关闭或取消",
+      "category": "标题命中问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "屏幕保护怎么关闭或取消",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "改善手机或平板机身发热的办法",
+          "如何在任务栏显示或隐藏电池图标"
+        ],
+        "top_scores": [
+          0.5848403404791753,
+          0.5419257342647146
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "屏幕保护怎么关闭或取消",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 27,
+        "candidate_count_after_dedup": 27,
+        "top_titles": [
+          "万全T100-T400-T468 1008的硬盘配置方案",
+          "天权2000产品示意图及功能键说明"
+        ],
+        "top_scores": [
+          0.6110140480180658,
+          0.5688822032417347
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "屏幕保护怎么关闭或取消",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 27,
+        "candidate_count_after_dedup": 27,
+        "top_titles": [
+          "万全T100-T400-T468 1008的硬盘配置方案",
+          "天权2000产品示意图及功能键说明"
+        ],
+        "top_scores": [
+          0.6093757128876189,
+          0.5693715944375433
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_021",
+      "question": "风扇声音大但电脑能正常开机怎么办",
+      "category": "容易混淆问题",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "风扇声音大但电脑能正常开机怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "电子词典LN4000操作汇总",
+          "智能电视开不了机并且指示灯都不亮怎么办？"
+        ],
+        "top_scores": [
+          0.5741346527781572,
+          0.5666383519351145
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "风扇声音大但电脑能正常开机怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "台式和一体机蓝屏报错代码：0x0000007B",
+          "联想V858-V658手机如何使用语音短信功能？"
+        ],
+        "top_scores": [
+          0.5966700065557559,
+          0.5503882353888158
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "风扇声音大但电脑能正常开机怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "联想台式机模式转换功能介绍"
+        ],
+        "top_scores": [
+          0.6342897701562792,
+          0.5876322230284234
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "category": "预计无答案",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "火星基地打印机怎么连接量子网络",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 28,
+        "candidate_count_after_dedup": 28,
+        "top_titles": [
+          "联想一键恢复的使用方法",
+          "电子词典LN4000操作汇总"
+        ],
+        "top_scores": [
+          0.5808058663718789,
+          0.5794257451171771
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "火星基地打印机怎么连接量子网络",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 29,
+        "candidate_count_after_dedup": 29,
+        "top_titles": [
+          "在Windows 8系统下如何查看网络IP地址",
+          "WinXP从待机状态唤醒后网络连接断开"
+        ],
+        "top_scores": [
+          0.6252994272586148,
+          0.5837147925788273
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "火星基地打印机怎么连接量子网络",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 29,
+        "candidate_count_after_dedup": 29,
+        "top_titles": [
+          "在Windows 8系统下如何查看网络IP地址",
+          "暴风影音在播放高清视频时占用的CPU高怎么办-"
+        ],
+        "top_scores": [
+          0.6241570894314977,
+          0.5861753718855995
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "category": "预计无答案",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Windows自带电源管理（包括休眠、待机和睡眠）的设置方法",
+          "Windows 2000蓝屏死机故障分析与排除"
+        ],
+        "top_scores": [
+          0.521603131710743,
+          0.5134956036123652
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+        ],
+        "top_scores": [
+          0.524272029123074,
+          0.5065999746965979
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "改善手机或平板机身发热的办法"
+        ],
+        "top_scores": [
+          0.5912533848365349,
+          0.5592796427870816
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "category": "预计无答案",
+      "classification": "requires_manual_review",
+      "old": {
+        "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "在Windows XP下如何配置无线网络",
+          "如何恢复Windows XP任务栏输入法图标"
+        ],
+        "top_scores": [
+          0.6778516386762434,
+          0.6700769863402853
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean": {
+        "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 25,
+        "candidate_count_after_dedup": 25,
+        "top_titles": [
+          "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "31018765A 扬天T系列用户手册 V1.0"
+        ],
+        "top_scores": [
+          0.7035405046010768,
+          0.6471785905126128
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      },
+      "clean_small_chunk": {
+        "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+        "dual_retrieval_enabled": false,
+        "candidate_count_before_dedup": 24,
+        "candidate_count_after_dedup": 24,
+        "top_titles": [
+          "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "SecureBoot未正确配置"
+        ],
+        "top_scores": [
+          0.7042312876087977,
+          0.6877515934990753
+        ],
+        "top1_title_weak_hit": false,
+        "top2_title_weak_hit": false,
+        "rejected_by_low_confidence": false
+      }
+    }
+  ],
+  "notes": [
+    "expected_title_contains is a weak title label, not a ground-truth relevance score.",
+    "No-answer not rejected is recorded but not counted as cleaning failure because rejection strategy is unchanged."
+  ]
+}

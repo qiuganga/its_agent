@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-04T23:03:22",
+  "collection_name": "its-knowledge-clean-chunk1000-v1",
+  "chunk_size": 1000,
+  "chunk_overlap": 120,
+  "min_effective_chars": 80,
+  "documents_added": 974,
+  "chunk_count": 974,
+  "collection_count": 974,
+  "metadata_errors": [],
+  "sample_metadata_errors": [],
+  "manifest_summary": {
+    "total_markdown": 733,
+    "indexable_documents": 733,
+    "skipped_documents": 0,
+    "mineru_candidate_documents": 8,
+    "average_original_char_count": 1120.06,
+    "average_cleaned_char_count": 638.15,
+    "removed_image_markdown_count": 2308,
+    "removed_url_count": 3315,
+    "removed_html_tag_count": 760
+  },
+  "embedding_model": "Qwen/Qwen3-Embedding-8B",
+  "distance_space": "cosine"
+}

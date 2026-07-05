@@ -1,0 +1,4137 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-05T15:57:50",
+  "resources": {
+    "crawl_dir_exists": true,
+    "crawl_markdown_count": 733,
+    "chroma_dir_exists": true,
+    "chroma_file_count": 14,
+    "env_exists": true
+  },
+  "collection_count": 834,
+  "settings": {
+    "collection_name": "its-knowledge-clean-v1",
+    "CHUNK_SIZE": 3000,
+    "CHUNK_OVERLAP": 200,
+    "EMBEDDING_MODEL": "Qwen/Qwen3-Embedding-8B",
+    "VECTOR_DISTANCE_SPACE": "cosine",
+    "RAG_VECTOR_CANDIDATE_TOP_K": 15,
+    "RAG_TITLE_CANDIDATE_TOP_K": 10,
+    "RAG_FINAL_TOP_K": 2,
+    "RAG_MIN_RERANK_SCORE": 0.35,
+    "RAG_ANCHOR_EVIDENCE_MODE": "experimental",
+    "RAG_ANCHOR_MATCH_BOOST": 0.08,
+    "RAG_ANCHOR_MISSING_PENALTY": 0.12,
+    "RAG_ANCHOR_REQUIRE_EVIDENCE_FOR_BLOCK": true
+  },
+  "summary": {
+    "total_cases": 24,
+    "category_distribution": {
+      "口语化故障问题": 6,
+      "容易混淆问题": 3,
+      "标准表达问题": 3,
+      "网络问题": 1,
+      "正文和标题命中问题": 1,
+      "同义词或别称问题": 1,
+      "标题命中问题": 6,
+      "预计无答案": 3
+    },
+    "normalization_triggered": 8,
+    "normalization_not_triggered": 16,
+    "dual_retrieval_count": 8,
+    "single_retrieval_count": 16,
+    "accepted_count": 21,
+    "low_confidence_rejected_count": 0,
+    "anchor_rejected_count": 3,
+    "total_rejected_count": 3,
+    "top1_title_weak_hit_count": 9,
+    "top1_title_weak_hit_rate": 0.375,
+    "top2_title_weak_hit_count": 11,
+    "top2_title_weak_hit_rate": 0.4583,
+    "expected_no_answer_correctly_rejected": 0,
+    "expected_no_answer_anchor_rejected": 3,
+    "expected_no_answer_not_rejected": 0,
+    "expected_answer_false_rejected": 0,
+    "anchor_evidence_mode": "experimental",
+    "strong_anchor_case_count": 11,
+    "no_strong_anchor_case_count": 13,
+    "anchor_evidence_missing_count": 3,
+    "ab_positive_count": 0,
+    "ab_neutral_count": 7,
+    "ab_changed_count": 1,
+    "ab_negative_count": 0,
+    "score_buckets": {
+      ">=0.50": 24
+    },
+    "top_score_min": 0.5216628282865722,
+    "top_score_median": 0.5993655786915048,
+    "top_score_max": 0.825057241001603,
+    "possible_false_rejections": [],
+    "possible_irrelevant_accepted": []
+  },
+  "threshold_recommendation": {
+    "recommendation": "keep_0.35_pending_manual_review",
+    "cases_between_0.25_and_0.35": [],
+    "possible_false_rejections": [],
+    "passed_but_title_weak_miss": [
+      "case_001",
+      "case_004",
+      "case_007",
+      "case_011",
+      "case_012",
+      "case_017",
+      "case_018",
+      "case_019",
+      "case_020",
+      "case_021"
+    ],
+    "expected_no_answer_not_rejected": []
+  },
+  "suspicious_cases": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "top_score": 0.5988386462917739,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Windows XP 关机故障",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "top_score": 0.6395515220813949,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Windows XP 关机故障",
+        "手机或平板电脑无法访问百度相关网站的解决办法"
+      ]
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "top_score": 0.6751524121935604,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Windows XP 关机故障",
+        "WPS Office中如何打印稿纸"
+      ]
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "top_score": 0.5969357222656353,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "一键恢复功能键在什么位置？"
+      ]
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "top_score": 0.5523975784676328,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "case_id": "case_001",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "开不了机，屏幕不亮怎么办",
+      "normalized_question": "无法开机，黑屏怎么办",
+      "query_variants": [
+        "开不了机，屏幕不亮怎么办",
+        "无法开机，黑屏怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 37,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.5988386462917739,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5988386462917739,
+          "mmr_score": 0.5988386462917739,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5988386462917739,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5450384659408581,
+          "mmr_score": 0.27249561466379457,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5450384659408581,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5988386462917739,
+          "mmr_score": 0.5988386462917739,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5988386462917739,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5450384659408581,
+          "mmr_score": 0.27249561466379457,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5450384659408581,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6020580281600024,
+            "mmr_score": 0.6020580281600024,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.6020580281600024,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5468904943019967,
+            "mmr_score": 0.2737744913342197,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5468904943019967,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5988386462917739,
+            "mmr_score": 0.5988386462917739,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5988386462917739,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5450384659408581,
+            "mmr_score": 0.27249561466379457,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5450384659408581,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_002",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "开机没反应怎么办",
+      "normalized_question": "无法开机怎么办",
+      "query_variants": [
+        "开机没反应怎么办",
+        "无法开机怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 29,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.5391750934721173,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5391750934721173,
+          "mmr_score": 0.5391750934721173,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5391750934721173,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5256470093238185,
+          "mmr_score": 0.2545647856069593,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5256470093238185,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5391750934721173,
+          "mmr_score": 0.5391750934721173,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5391750934721173,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5256470093238185,
+          "mmr_score": 0.2545647856069593,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5256470093238185,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "开机时，需要按F1（或F2）键后才能继续启动",
+            "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5414940294527726,
+            "mmr_score": 0.5414940294527726,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5414940294527726,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5269459412813882,
+            "mmr_score": 0.2554140276084827,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5269459412813882,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "开机时，需要按F1（或F2）键后才能继续启动",
+            "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5391750934721173,
+            "mmr_score": 0.5391750934721173,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5391750934721173,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5256470093238185,
+            "mmr_score": 0.2545647856069593,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5256470093238185,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_003",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "normalized_question": "黑屏但风扇会转怎么处理",
+      "query_variants": [
+        "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+        "黑屏但风扇会转怎么处理"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 52,
+      "candidate_count_after_dedup": 41,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.53221143390196,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.53221143390196,
+          "mmr_score": 0.53221143390196,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.53221143390196,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5143750873153485,
+          "mmr_score": 0.2547727828367331,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5143750873153485,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.53221143390196,
+          "mmr_score": 0.53221143390196,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.53221143390196,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5143750873153485,
+          "mmr_score": 0.2547727828367331,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5143750873153485,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "宽带连接频繁掉线",
+            "source_id": "0055-宽带连接频繁掉线.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5320545170298356,
+            "mmr_score": 0.5320545170298356,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5320545170298356,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5143750873153485,
+            "mmr_score": 0.25496053026436316,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5143750873153485,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "宽带连接频繁掉线",
+            "source_id": "0055-宽带连接频繁掉线.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.53221143390196,
+            "mmr_score": 0.53221143390196,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.53221143390196,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5143750873153485,
+            "mmr_score": 0.2547727828367331,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5143750873153485,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_004",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "normalized_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "query_variants": [
+        "开机蓝屏提示登录进程初始化失败怎么解决"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.6395515220813949,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6395515220813949,
+          "mmr_score": 0.6395515220813949,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6395515220813949,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法",
+          "source_id": "0100-手机或平板电脑无法访问百度相关网站的解决办法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5998843207220343,
+          "mmr_score": 0.3057018494374999,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5998843207220343,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6395515220813949,
+          "mmr_score": 0.6395515220813949,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6395515220813949,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法",
+          "source_id": "0100-手机或平板电脑无法访问百度相关网站的解决办法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5998843207220343,
+          "mmr_score": 0.3057018494374999,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5998843207220343,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_005",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "电脑蓝屏报错0x0000007B怎么办",
+      "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+      "query_variants": [
+        "电脑蓝屏报错0x0000007B怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "0x0000007B"
+          ],
+          "matched_anchor_terms": [
+            "0x0000007B"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "NO_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.6133300324409076,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6133300324409076,
+          "mmr_score": 0.6933300324409075,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "0x0000007B"
+          ],
+          "matched_anchor_terms": [
+            "0x0000007B"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6933300324409075,
+          "matched_locations": {
+            "title": [
+              "0x0000007B"
+            ],
+            "keywords": [],
+            "content": [
+              "0x0000007B"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.59400648065522,
+          "mmr_score": 0.1979406982759032,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "0x0000007B"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "0x0000007B"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47400648065522,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6133300324409076,
+          "mmr_score": 0.6933300324409075,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "0x0000007B"
+          ],
+          "matched_anchor_terms": [
+            "0x0000007B"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6933300324409075,
+          "matched_locations": {
+            "title": [
+              "0x0000007B"
+            ],
+            "keywords": [],
+            "content": [
+              "0x0000007B"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.59400648065522,
+          "mmr_score": 0.1979406982759032,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "0x0000007B"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "0x0000007B"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47400648065522,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_006",
+      "category": "网络问题",
+      "expected_no_answer": false,
+      "original_question": "无线网络连不上怎么办",
+      "normalized_question": "无线网络连不上怎么办",
+      "query_variants": [
+        "无线网络连不上怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "无线网络"
+          ],
+          "matched_anchor_terms": [
+            "无线网络"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "FULL_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.5537360675001923,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "在Windows 7下如何配置无线网络",
+          "source_id": "0353-在Windows 7下如何配置无线网络.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5537360675001923,
+          "mmr_score": 0.6337360675001923,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "无线网络"
+          ],
+          "matched_anchor_terms": [
+            "无线网络"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6337360675001923,
+          "matched_locations": {
+            "title": [
+              "无线网络"
+            ],
+            "keywords": [],
+            "content": [
+              "无线网络"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "联想手机A789如何连接无线网络上网",
+          "source_id": "0446-联想手机A789如何连接无线网络上网.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5476949964964137,
+          "mmr_score": 0.27756892909932784,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "无线网络"
+          ],
+          "matched_anchor_terms": [
+            "无线网络"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6276949964964137,
+          "matched_locations": {
+            "title": [
+              "无线网络"
+            ],
+            "keywords": [],
+            "content": [
+              "无线网络"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "在Windows 7下如何配置无线网络",
+          "source_id": "0353-在Windows 7下如何配置无线网络.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5537360675001923,
+          "mmr_score": 0.6337360675001923,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "无线网络"
+          ],
+          "matched_anchor_terms": [
+            "无线网络"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6337360675001923,
+          "matched_locations": {
+            "title": [
+              "无线网络"
+            ],
+            "keywords": [],
+            "content": [
+              "无线网络"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "联想手机A789如何连接无线网络上网",
+          "source_id": "0446-联想手机A789如何连接无线网络上网.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5476949964964137,
+          "mmr_score": 0.27756892909932784,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "无线网络"
+          ],
+          "matched_anchor_terms": [
+            "无线网络"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6276949964964137,
+          "matched_locations": {
+            "title": [
+              "无线网络"
+            ],
+            "keywords": [],
+            "content": [
+              "无线网络"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_007",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "连不上网，怎么检查网络是否通畅",
+      "normalized_question": "无法连接网络，怎么检查网络是否通畅",
+      "query_variants": [
+        "连不上网，怎么检查网络是否通畅",
+        "无法连接网络，怎么检查网络是否通畅"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 35,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.6751524121935604,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6751524121935604,
+          "mmr_score": 0.6751524121935604,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6751524121935604,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "WPS Office中如何打印稿纸",
+          "source_id": "0914-WPS Office中如何打印稿纸.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6190824948325921,
+          "mmr_score": 0.31409739739621045,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6190824948325921,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6751524121935604,
+          "mmr_score": 0.6751524121935604,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6751524121935604,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "WPS Office中如何打印稿纸",
+          "source_id": "0914-WPS Office中如何打印稿纸.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6190824948325921,
+          "mmr_score": 0.31409739739621045,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6190824948325921,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6757480292553618,
+            "mmr_score": 0.6757480292553618,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.6757480292553618,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "WPS Office中如何打印稿纸",
+            "source_id": "0914-WPS Office中如何打印稿纸.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6187658306750706,
+            "mmr_score": 0.31385989927806934,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.6187658306750706,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6751524121935604,
+            "mmr_score": 0.6751524121935604,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.6751524121935604,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "WPS Office中如何打印稿纸",
+            "source_id": "0914-WPS Office中如何打印稿纸.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6190824948325921,
+            "mmr_score": 0.31409739739621045,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.6190824948325921,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_008",
+      "category": "正文和标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "只使用电池有时找不到网络设备怎么办",
+      "normalized_question": "只使用电池有时找不到网络设备怎么办",
+      "query_variants": [
+        "只使用电池有时找不到网络设备怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.6464543786940902,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6464543786940902,
+          "mmr_score": 0.6464543786940902,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6464543786940902,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "关于电池充电、保养、设置、较准的方法汇总",
+          "source_id": "0420-关于电池充电、保养、设置、较准的方法汇总.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6001197239161706,
+          "mmr_score": 0.30233094351963385,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6001197239161706,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6464543786940902,
+          "mmr_score": 0.6464543786940902,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6464543786940902,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "关于电池充电、保养、设置、较准的方法汇总",
+          "source_id": "0420-关于电池充电、保养、设置、较准的方法汇总.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6001197239161706,
+          "mmr_score": 0.30233094351963385,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6001197239161706,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_009",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "搜不到蓝牙设备怎么办",
+      "normalized_question": "蓝牙设备无法被发现怎么办",
+      "query_variants": [
+        "搜不到蓝牙设备怎么办",
+        "蓝牙设备无法被发现怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 54,
+      "candidate_count_after_dedup": 41,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "FULL_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.577574535638185,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.577574535638185,
+          "mmr_score": 0.6575745356381849,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6575745356381849,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何开启蓝牙模块功能",
+          "source_id": "0355-如何开启蓝牙模块功能.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5137353125423981,
+          "mmr_score": 0.282806233062433,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5937353125423981,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.577574535638185,
+          "mmr_score": 0.6575745356381849,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6575745356381849,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何开启蓝牙模块功能",
+          "source_id": "0355-如何开启蓝牙模块功能.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5137353125423981,
+          "mmr_score": 0.282806233062433,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5937353125423981,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5766042465491282,
+            "mmr_score": 0.6566042465491282,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.6566042465491282,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "智能电视遥控器比较费电怎么办？",
+            "source_id": "0184-智能电视遥控器比较费电怎么办？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.42739918750005573,
+            "mmr_score": 0.25778071064312746,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.5073991875000557,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.577574535638185,
+            "mmr_score": 0.6575745356381849,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.6575745356381849,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "如何开启蓝牙模块功能",
+            "source_id": "0355-如何开启蓝牙模块功能.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5137353125423981,
+            "mmr_score": 0.282806233062433,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.5937353125423981,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "changed"
+      }
+    },
+    {
+      "case_id": "case_010",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "连不上蓝牙设备怎么添加",
+      "normalized_question": "蓝牙连接失败怎么添加",
+      "query_variants": [
+        "连不上蓝牙设备怎么添加",
+        "蓝牙连接失败怎么添加"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 56,
+      "candidate_count_after_dedup": 43,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "FULL_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.5307616001953248,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5307616001953248,
+          "mmr_score": 0.6107616001953248,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6107616001953248,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.4723723810886072,
+          "mmr_score": 0.2577027414119421,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5523723810886072,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5307616001953248,
+          "mmr_score": 0.6107616001953248,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6107616001953248,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.4723723810886072,
+          "mmr_score": 0.2577027414119421,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5523723810886072,
+          "matched_locations": {
+            "title": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "keywords": [],
+            "content": [
+              "蓝牙",
+              "蓝牙设备"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5322275872114586,
+            "mmr_score": 0.6122275872114585,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.6122275872114585,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+            "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.47265816693766943,
+            "mmr_score": 0.2578305842683724,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.5526581669376694,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5307616001953248,
+            "mmr_score": 0.6107616001953248,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.6107616001953248,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+            "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.4723723810886072,
+            "mmr_score": 0.2577027414119421,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "matched_anchor_terms": [
+              "蓝牙",
+              "蓝牙设备"
+            ],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": 1.0,
+            "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+            "anchor_adjustment": 0.08,
+            "evidence_adjusted_score": 0.5523723810886072,
+            "matched_locations": {
+              "title": [
+                "蓝牙",
+                "蓝牙设备"
+              ],
+              "keywords": [],
+              "content": [
+                "蓝牙",
+                "蓝牙设备"
+              ]
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_011",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "电脑没声音，音量怎么调",
+      "normalized_question": "电脑无声音，音量怎么调",
+      "query_variants": [
+        "电脑没声音，音量怎么调",
+        "电脑无声音，音量怎么调"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 26,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.5969357222656353,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5969357222656353,
+          "mmr_score": 0.5969357222656353,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5969357222656353,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "一键恢复功能键在什么位置？",
+          "source_id": "0235-一键恢复功能键在什么位置？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.4714026989958786,
+          "mmr_score": 0.21663302313361316,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4714026989958786,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5969357222656353,
+          "mmr_score": 0.5969357222656353,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5969357222656353,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "一键恢复功能键在什么位置？",
+          "source_id": "0235-一键恢复功能键在什么位置？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.4714026989958786,
+          "mmr_score": 0.21663302313361316,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4714026989958786,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5969357222656353,
+            "mmr_score": 0.5969357222656353,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5969357222656353,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "一键恢复功能键在什么位置？",
+            "source_id": "0235-一键恢复功能键在什么位置？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.4714026989958786,
+            "mmr_score": 0.21663302313361316,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.4714026989958786,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5969357222656353,
+            "mmr_score": 0.5969357222656353,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5969357222656353,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "一键恢复功能键在什么位置？",
+            "source_id": "0235-一键恢复功能键在什么位置？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.4714026989958786,
+            "mmr_score": 0.21663302313361316,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.4714026989958786,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_012",
+      "category": "同义词或别称问题",
+      "expected_no_answer": false,
+      "original_question": "系统卡死没有响应怎么办",
+      "normalized_question": "系统无响应怎么办",
+      "query_variants": [
+        "系统卡死没有响应怎么办",
+        "系统无响应怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 30,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.5523975784676328,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5523975784676328,
+          "mmr_score": 0.5523975784676328,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5523975784676328,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5444469671082601,
+          "mmr_score": 0.25103667657532563,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5444469671082601,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5523975784676328,
+          "mmr_score": 0.5523975784676328,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5523975784676328,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5444469671082601,
+          "mmr_score": 0.25103667657532563,
+          "matched_by_normalized_query": true,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5444469671082601,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+            "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.550884899206314,
+            "mmr_score": 0.550884899206314,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.550884899206314,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "开机时，需要按F1（或F2）键后才能继续启动",
+            "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5437284610170374,
+            "mmr_score": 0.25001652512447836,
+            "matched_by_normalized_query": false,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5437284610170374,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+            "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5523975784676328,
+            "mmr_score": 0.5523975784676328,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5523975784676328,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          },
+          {
+            "final_rank": 2,
+            "title": "开机时，需要按F1（或F2）键后才能继续启动",
+            "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5444469671082601,
+            "mmr_score": 0.25103667657532563,
+            "matched_by_normalized_query": true,
+            "anchor_terms": [],
+            "matched_anchor_terms": [],
+            "missing_anchor_terms": [],
+            "anchor_coverage_ratio": null,
+            "anchor_evidence_status": "NO_STRONG_ANCHOR",
+            "anchor_adjustment": 0.0,
+            "evidence_adjusted_score": 0.5444469671082601,
+            "matched_locations": {
+              "title": [],
+              "keywords": [],
+              "content": []
+            }
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_013",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "电脑运行游戏卡怎么办",
+      "normalized_question": "电脑运行游戏卡怎么办",
+      "query_variants": [
+        "电脑运行游戏卡怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.6078380614558603,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "source_id": "0077-联想新圆梦F系列机型运行游戏卡或无法运行的解决方案.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6078380614558603,
+          "mmr_score": 0.6078380614558603,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6078380614558603,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5949418112245598,
+          "mmr_score": 0.2737157348790219,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5949418112245598,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "source_id": "0077-联想新圆梦F系列机型运行游戏卡或无法运行的解决方案.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6078380614558603,
+          "mmr_score": 0.6078380614558603,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6078380614558603,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5949418112245598,
+          "mmr_score": 0.2737157348790219,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5949418112245598,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_014",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "normalized_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "query_variants": [
+        "Excel 文件菜单和相关功能灰色不可用怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "Excel"
+          ],
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "FULL_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.6265706662738548,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6265706662738548,
+          "mmr_score": 0.7065706662738548,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Excel"
+          ],
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.7065706662738548,
+          "matched_locations": {
+            "title": [
+              "Excel"
+            ],
+            "keywords": [],
+            "content": [
+              "Excel"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-",
+          "source_id": "0034-Excel表导入 Access 2010 后时间显示错误怎么办-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5867700439627834,
+          "mmr_score": 0.31563610330961367,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Excel"
+          ],
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6667700439627834,
+          "matched_locations": {
+            "title": [
+              "Excel"
+            ],
+            "keywords": [],
+            "content": [
+              "Excel"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6265706662738548,
+          "mmr_score": 0.7065706662738548,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Excel"
+          ],
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.7065706662738548,
+          "matched_locations": {
+            "title": [
+              "Excel"
+            ],
+            "keywords": [],
+            "content": [
+              "Excel"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-",
+          "source_id": "0034-Excel表导入 Access 2010 后时间显示错误怎么办-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5867700439627834,
+          "mmr_score": 0.31563610330961367,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Excel"
+          ],
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6667700439627834,
+          "matched_locations": {
+            "title": [
+              "Excel"
+            ],
+            "keywords": [],
+            "content": [
+              "Excel"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_015",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Word 插入的图片都变成空白框了怎么办",
+      "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+      "query_variants": [
+        "Word 插入的图片都变成空白框了怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "Word"
+          ],
+          "matched_anchor_terms": [
+            "Word"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "NO_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.5998925110912356,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "source_id": "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.576646938491748,
+          "mmr_score": 0.6566469384917479,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Word"
+          ],
+          "matched_anchor_terms": [
+            "Word"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6566469384917479,
+          "matched_locations": {
+            "title": [
+              "Word"
+            ],
+            "keywords": [],
+            "content": [
+              "Word"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5998925110912356,
+          "mmr_score": 0.2262500516238842,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Word"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "Word"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47989251109123565,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "source_id": "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.576646938491748,
+          "mmr_score": 0.6566469384917479,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Word"
+          ],
+          "matched_anchor_terms": [
+            "Word"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6566469384917479,
+          "matched_locations": {
+            "title": [
+              "Word"
+            ],
+            "keywords": [],
+            "content": [
+              "Word"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5998925110912356,
+          "mmr_score": 0.2262500516238842,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Word"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "Word"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47989251109123565,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_016",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Outlook 为什么没有已发送邮件的记录",
+      "normalized_question": "Outlook 为什么没有已发送邮件的记录",
+      "query_variants": [
+        "Outlook 为什么没有已发送邮件的记录"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "Outlook"
+          ],
+          "matched_anchor_terms": [
+            "Outlook"
+          ],
+          "final_top_k_statuses": [
+            "FULL_ANCHOR_EVIDENCE",
+            "FULL_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.5680568626982915,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5680568626982915,
+          "mmr_score": 0.6480568626982914,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Outlook"
+          ],
+          "matched_anchor_terms": [
+            "Outlook"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6480568626982914,
+          "matched_locations": {
+            "title": [
+              "Outlook"
+            ],
+            "keywords": [],
+            "content": [
+              "Outlook"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "将Outlook设为Mac默认程序后为何仍弹出Apple Mail？",
+          "source_id": "0024-将Outlook设为Mac默认程序后为何仍弹出Apple Mail？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5073217795880285,
+          "mmr_score": 0.26813695201479226,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Outlook"
+          ],
+          "matched_anchor_terms": [
+            "Outlook"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5873217795880284,
+          "matched_locations": {
+            "title": [
+              "Outlook"
+            ],
+            "keywords": [],
+            "content": [
+              "Outlook"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5680568626982915,
+          "mmr_score": 0.6480568626982914,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Outlook"
+          ],
+          "matched_anchor_terms": [
+            "Outlook"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6480568626982914,
+          "matched_locations": {
+            "title": [
+              "Outlook"
+            ],
+            "keywords": [],
+            "content": [
+              "Outlook"
+            ]
+          },
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "将Outlook设为Mac默认程序后为何仍弹出Apple Mail？",
+          "source_id": "0024-将Outlook设为Mac默认程序后为何仍弹出Apple Mail？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5073217795880285,
+          "mmr_score": 0.26813695201479226,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Outlook"
+          ],
+          "matched_anchor_terms": [
+            "Outlook"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5873217795880284,
+          "matched_locations": {
+            "title": [
+              "Outlook"
+            ],
+            "keywords": [],
+            "content": [
+              "Outlook"
+            ]
+          },
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_017",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "IE 只能打开首页，其他链接打不开怎么办",
+      "normalized_question": "IE 只能打开首页，其他链接打不开怎么办",
+      "query_variants": [
+        "IE 只能打开首页，其他链接打不开怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.5721589250812719,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5721589250812719,
+          "mmr_score": 0.5721589250812719,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5721589250812719,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Vista系统下随机软件的安装与卸载",
+          "source_id": "0003-Vista系统下随机软件的安装与卸载.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5446022648300166,
+          "mmr_score": 0.27021282551909254,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5446022648300166,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5721589250812719,
+          "mmr_score": 0.5721589250812719,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5721589250812719,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Vista系统下随机软件的安装与卸载",
+          "source_id": "0003-Vista系统下随机软件的安装与卸载.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5446022648300166,
+          "mmr_score": 0.27021282551909254,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5446022648300166,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_018",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "如何使用U盘安装Windows 7操作系统",
+      "normalized_question": "如何使用U盘安装Windows 7操作系统",
+      "query_variants": [
+        "如何使用U盘安装Windows 7操作系统"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "At least one final document contains anchor evidence.",
+        "anchor_evidence": {
+          "anchors": [
+            "Windows"
+          ],
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "final_top_k_statuses": [
+            "NO_ANCHOR_EVIDENCE",
+            "FULL_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.825057241001603,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.825057241001603,
+          "mmr_score": 0.705057241001603,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Windows"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "Windows"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.705057241001603,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-",
+          "source_id": "0970-使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5240751952683053,
+          "mmr_score": 0.30395701727661373,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Windows"
+          ],
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6040751952683052,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": [
+              "Windows"
+            ]
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.825057241001603,
+          "mmr_score": 0.705057241001603,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Windows"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "Windows"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.705057241001603,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-",
+          "source_id": "0970-使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5240751952683053,
+          "mmr_score": 0.30395701727661373,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "Windows"
+          ],
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": 1.0,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6040751952683052,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": [
+              "Windows"
+            ]
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_019",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "normalized_question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "query_variants": [
+        "手机或平板电脑无法访问百度相关网站怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.6340806446022158,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6340806446022158,
+          "mmr_score": 0.6340806446022158,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6340806446022158,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "两台电脑如何共享访问",
+          "source_id": "0284-两台电脑如何共享访问.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6075196612600569,
+          "mmr_score": 0.3104585407926294,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6075196612600569,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6340806446022158,
+          "mmr_score": 0.6340806446022158,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6340806446022158,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "两台电脑如何共享访问",
+          "source_id": "0284-两台电脑如何共享访问.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6075196612600569,
+          "mmr_score": 0.3104585407926294,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6075196612600569,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_020",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "屏幕保护怎么关闭或取消",
+      "normalized_question": "屏幕保护怎么关闭或取消",
+      "query_variants": [
+        "屏幕保护怎么关闭或取消"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.610711747446053,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "source_id": "0618-万全T100-T400-T468 1008的硬盘配置方案.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.610711747446053,
+          "mmr_score": 0.610711747446053,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.610711747446053,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5688090557743186,
+          "mmr_score": 0.26603444101991425,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5688090557743186,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "source_id": "0618-万全T100-T400-T468 1008的硬盘配置方案.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.610711747446053,
+          "mmr_score": 0.610711747446053,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.610711747446053,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5688090557743186,
+          "mmr_score": 0.26603444101991425,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5688090557743186,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_021",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "风扇声音大但电脑能正常开机怎么办",
+      "normalized_question": "风扇声音大但电脑能正常开机怎么办",
+      "query_variants": [
+        "风扇声音大但电脑能正常开机怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": false,
+      "anchor_decision": {
+        "ok": true,
+        "reason_code": null,
+        "message": "No strong anchor was extracted.",
+        "anchor_evidence": {
+          "anchors": [],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": []
+        }
+      },
+      "top_score": 0.5979516077584652,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5979516077584652,
+          "mmr_score": 0.5979516077584652,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5979516077584652,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想V858-V658手机如何使用语音短信功能？",
+          "source_id": "0850-联想V858-V658手机如何使用语音短信功能？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5518924537303254,
+          "mmr_score": 0.2706015125499261,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5518924537303254,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5979516077584652,
+          "mmr_score": 0.5979516077584652,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5979516077584652,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想V858-V658手机如何使用语音短信功能？",
+          "source_id": "0850-联想V858-V658手机如何使用语音短信功能？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5518924537303254,
+          "mmr_score": 0.2706015125499261,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [],
+          "anchor_coverage_ratio": null,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5518924537303254,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_022",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "火星基地打印机怎么连接量子网络",
+      "normalized_question": "火星基地打印机怎么连接量子网络",
+      "query_variants": [
+        "火星基地打印机怎么连接量子网络"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 29,
+      "candidate_count_after_dedup": 29,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": true,
+      "anchor_decision": {
+        "ok": false,
+        "reason_code": "ANCHOR_EVIDENCE_MISSING",
+        "message": "知识库中未检索到包含关键实体或故障证据的资料，暂不建议基于现有资料直接回答。",
+        "anchor_evidence": {
+          "anchors": [
+            "量子网络"
+          ],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": [
+            "NO_ANCHOR_EVIDENCE",
+            "NO_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.6248707379315541,
+      "final_topk_count": 0,
+      "final_documents": [],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6248707379315541,
+          "mmr_score": 0.5048707379315541,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "量子网络"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "量子网络"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5048707379315541,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "source_id": "0896-WinXP从待机状态唤醒后网络连接断开.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5828852912390075,
+          "mmr_score": 0.1957223109331565,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "量子网络"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "量子网络"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.46288529123900746,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_023",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "query_variants": [
+        "冰箱冷冻室结霜导致电脑不能上网怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": true,
+      "anchor_decision": {
+        "ok": false,
+        "reason_code": "ANCHOR_EVIDENCE_MISSING",
+        "message": "知识库中未检索到包含关键实体或故障证据的资料，暂不建议基于现有资料直接回答。",
+        "anchor_evidence": {
+          "anchors": [
+            "冰箱冷冻室"
+          ],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": [
+            "NO_ANCHOR_EVIDENCE",
+            "NO_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.5216628282865722,
+      "final_topk_count": 0,
+      "final_documents": [],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5216628282865722,
+          "mmr_score": 0.4016628282865722,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "冰箱冷冻室"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "冰箱冷冻室"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.4016628282865722,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5049519045749329,
+          "mmr_score": 0.153708885334986,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "冰箱冷冻室"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "冰箱冷冻室"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.3849519045749329,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_024",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "query_variants": [
+        "手机屏幕进水后如何更换折叠屏铰链"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "rejected_by_anchor_evidence": true,
+      "anchor_decision": {
+        "ok": false,
+        "reason_code": "ANCHOR_EVIDENCE_MISSING",
+        "message": "知识库中未检索到包含关键实体或故障证据的资料，暂不建议基于现有资料直接回答。",
+        "anchor_evidence": {
+          "anchors": [
+            "折叠屏铰链"
+          ],
+          "matched_anchor_terms": [],
+          "final_top_k_statuses": [
+            "NO_ANCHOR_EVIDENCE",
+            "NO_ANCHOR_EVIDENCE"
+          ]
+        }
+      },
+      "top_score": 0.7042312876087977,
+      "final_topk_count": 0,
+      "final_documents": [],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.7042312876087977,
+          "mmr_score": 0.5842312876087977,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "折叠屏铰链"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "折叠屏铰链"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5842312876087977,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6478328547285436,
+          "mmr_score": 0.2258848659909613,
+          "matched_by_normalized_query": false,
+          "anchor_terms": [
+            "折叠屏铰链"
+          ],
+          "matched_anchor_terms": [],
+          "missing_anchor_terms": [
+            "折叠屏铰链"
+          ],
+          "anchor_coverage_ratio": 0.0,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5278328547285436,
+          "matched_locations": {
+            "title": [],
+            "keywords": [],
+            "content": []
+          },
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    }
+  ],
+  "notes": [
+    "Title weak hit is an automatic weak label based only on expected_title_contains.",
+    "It is not equivalent to real business accuracy and requires manual confirmation.",
+    "Reports intentionally omit full document text and sensitive environment values."
+  ]
+}

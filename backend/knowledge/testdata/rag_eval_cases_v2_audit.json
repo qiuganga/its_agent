@@ -1,0 +1,2362 @@
+{
+  "status": "passed",
+  "generated_at": "2026-07-05T18:03:44",
+  "cases_file": "backend\\knowledge\\testdata\\rag_eval_cases_v2.json",
+  "crawl_dir": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\data\\crawl",
+  "summary": {
+    "total_cases": 82,
+    "valid_cases": 82,
+    "invalid_cases": 0,
+    "duplicate_cases": 0,
+    "needs_manual_review_cases": 0,
+    "group_counts": {
+      "C_generic_answerable": 20,
+      "E_confusing": 15,
+      "A_anchor_answerable": 24,
+      "B_anchor_unanswerable": 15,
+      "D_generic_unanswerable": 8
+    },
+    "requirement_violations": {},
+    "answerable_cases": 59,
+    "answerable_evidence_covered": 59,
+    "answerable_evidence_coverage_rate": 1.0
+  },
+  "records": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "category": "口语化故障问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "开机",
+        "黑屏"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "开机",
+          "source_id": "0004-开机之后无任何反应怎么办？.md",
+          "title": "开机之后无任何反应怎么办？"
+        },
+        {
+          "term": "黑屏",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "category": "口语化故障问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "开机",
+        "无任何反应"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "开机",
+          "source_id": "0004-开机之后无任何反应怎么办？.md",
+          "title": "开机之后无任何反应怎么办？"
+        },
+        {
+          "term": "无任何反应",
+          "source_id": "0004-开机之后无任何反应怎么办？.md",
+          "title": "开机之后无任何反应怎么办？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "category": "容易混淆问题",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "黑屏",
+        "屏幕"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "黑屏",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+        },
+        {
+          "term": "屏幕",
+          "source_id": "0010-如何去掉Outlook中的段落标记等符号-.md",
+          "title": "如何去掉Outlook中的段落标记等符号-"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "category": "标准表达问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "蓝屏",
+        "登录进程初始化失败"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "蓝屏",
+          "source_id": "0068-关于系统提示登录进程初始化失败问题的解决方案.md",
+          "title": "关于系统提示登录进程初始化失败问题的解决方案"
+        },
+        {
+          "term": "登录进程初始化失败",
+          "source_id": "0068-关于系统提示登录进程初始化失败问题的解决方案.md",
+          "title": "关于系统提示登录进程初始化失败问题的解决方案"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "category": "标准表达问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "0x0000007B",
+        "蓝屏"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "0x0000007B"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "title": "台式和一体机蓝屏报错代码：0x0000007B"
+        },
+        {
+          "term": "蓝屏",
+          "source_id": "0068-关于系统提示登录进程初始化失败问题的解决方案.md",
+          "title": "关于系统提示登录进程初始化失败问题的解决方案"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "category": "网络问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "无线网络",
+        "网络连接"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "无线网络"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "无线网络",
+          "source_id": "0082-Lenovo G485无线网络连接不上的解决方案.md",
+          "title": "Lenovo G485无线网络连接不上的解决方案"
+        },
+        {
+          "term": "网络连接",
+          "source_id": "0054-设置正确的DNS解决上网慢下驱动慢的问题.md",
+          "title": "设置正确的DNS解决上网慢下驱动慢的问题"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "category": "口语化故障问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "网络",
+        "通畅"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "网络",
+          "source_id": "0002-昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法.md",
+          "title": "昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法"
+        },
+        {
+          "term": "通畅",
+          "source_id": "0264-在Windows 7下如何检查判断网络是否通畅.md",
+          "title": "在Windows 7下如何检查判断网络是否通畅"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_008",
+      "question": "只使用电池有时找不到网络设备怎么办",
+      "category": "正文和标题命中问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "电池",
+        "网络设备"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "电池",
+          "source_id": "0002-昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法.md",
+          "title": "昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法"
+        },
+        {
+          "term": "网络设备",
+          "source_id": "0002-昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法.md",
+          "title": "昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "category": "口语化故障问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "蓝牙"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "蓝牙",
+        "蓝牙设备"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "蓝牙",
+          "source_id": "0118-手机使用中个人安全隐私如何保障？.md",
+          "title": "手机使用中个人安全隐私如何保障？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "category": "口语化故障问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "蓝牙",
+        "设备"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "蓝牙",
+        "蓝牙设备"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "蓝牙",
+          "source_id": "0118-手机使用中个人安全隐私如何保障？.md",
+          "title": "手机使用中个人安全隐私如何保障？"
+        },
+        {
+          "term": "设备",
+          "source_id": "0002-昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法.md",
+          "title": "昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "category": "口语化故障问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "音量",
+        "声音"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "音量",
+          "source_id": "0205-智能电视一键空鼠智能遥控器使用指南.md",
+          "title": "智能电视一键空鼠智能遥控器使用指南"
+        },
+        {
+          "term": "声音",
+          "source_id": "0203-联想智能电视设置界面介绍.md",
+          "title": "联想智能电视设置界面介绍"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "category": "同义词或别称问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "停止响应",
+        "无响应"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "停止响应",
+          "source_id": "0059-IE 9 页面停止响应并提示关闭程序的解决办法.md",
+          "title": "IE 9 页面停止响应并提示关闭程序的解决办法"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_013",
+      "question": "电脑运行游戏卡怎么办",
+      "category": "容易混淆问题",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "游戏卡",
+        "无法运行"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "游戏卡",
+          "source_id": "0076-新圆梦F系列电脑运行游戏卡.md",
+          "title": "新圆梦F系列电脑运行游戏卡"
+        },
+        {
+          "term": "无法运行",
+          "source_id": "0062-Internet Explorer 8-9 无法启用 JavaScript 怎么办？.md",
+          "title": "Internet Explorer 8-9 无法启用 JavaScript 怎么办？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "category": "标题命中问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Excel",
+        "灰色不可用"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "Excel"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Excel",
+          "source_id": "0020-如何在 OneNote 2010-2007 中输入复杂的数学公式？.md",
+          "title": "如何在 OneNote 2010-2007 中输入复杂的数学公式？"
+        },
+        {
+          "term": "灰色不可用",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "category": "标题命中问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Word",
+        "图片",
+        "空白框"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "Word"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Word",
+          "source_id": "0008-如何修改 Microsoft Word 的默认样式？.md",
+          "title": "如何修改 Microsoft Word 的默认样式？"
+        },
+        {
+          "term": "图片",
+          "source_id": "0005-XP-Vista系统下如何清理系统盘.md",
+          "title": "XP-Vista系统下如何清理系统盘"
+        },
+        {
+          "term": "空白框",
+          "source_id": "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md",
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_016",
+      "question": "Outlook 为什么没有已发送邮件的记录",
+      "category": "标题命中问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Outlook",
+        "已发送邮件"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "Outlook"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Outlook",
+          "source_id": "0010-如何去掉Outlook中的段落标记等符号-.md",
+          "title": "如何去掉Outlook中的段落标记等符号-"
+        },
+        {
+          "term": "已发送邮件",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "title": "Outlook为何没有已发送邮件的记录-"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_017",
+      "question": "IE 只能打开首页，其他链接打不开怎么办",
+      "category": "标题命中问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "IE",
+        "首页",
+        "链接"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "IE",
+          "source_id": "0036-如何使用 WP IE 浏览器打开多个页面并互相切换-.md",
+          "title": "如何使用 WP IE 浏览器打开多个页面并互相切换-"
+        },
+        {
+          "term": "首页",
+          "source_id": "0056-QQ可以登录但网页打不开或者很慢.md",
+          "title": "QQ可以登录但网页打不开或者很慢"
+        },
+        {
+          "term": "链接",
+          "source_id": "0034-Excel表导入 Access 2010 后时间显示错误怎么办-.md",
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_018",
+      "question": "如何使用U盘安装Windows 7操作系统",
+      "category": "标准表达问题",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "U盘",
+        "Windows 7"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "Windows"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "U盘",
+          "source_id": "0001-如何使用U盘安装Windows 7操作系统 .md",
+          "title": "如何使用U盘安装Windows 7操作系统 "
+        },
+        {
+          "term": "Windows 7",
+          "source_id": "0001-如何使用U盘安装Windows 7操作系统 .md",
+          "title": "如何使用U盘安装Windows 7操作系统 "
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_019",
+      "question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "category": "标题命中问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "无法访问百度"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "无法访问百度",
+          "source_id": "0100-手机或平板电脑无法访问百度相关网站的解决办法.md",
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_020",
+      "question": "屏幕保护怎么关闭或取消",
+      "category": "标题命中问题",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "屏幕保护",
+        "屏保"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "屏幕保护",
+          "source_id": "0339-如何设置休眠、待机、睡眠.md",
+          "title": "如何设置休眠、待机、睡眠"
+        },
+        {
+          "term": "屏保",
+          "source_id": "0344-屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能.md",
+          "title": "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_021",
+      "question": "风扇声音大但电脑能正常开机怎么办",
+      "category": "容易混淆问题",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "风扇"
+      ],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "风扇",
+          "source_id": "0288-联想台式机模式转换功能介绍.md",
+          "title": "联想台式机模式转换功能介绍"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "category": "预计无答案",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "量子网络"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "category": "预计无答案",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "冰箱冷冻室"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "category": "预计无答案",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "折叠屏铰链"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_025",
+      "question": "PowerPoint 2007 cannot input Chinese",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "PowerPoint 2007"
+      ],
+      "expected_source_ids": [
+        "0007-在 PowerPoint 2007 中无法输入中文怎么办？.md"
+      ],
+      "expected_anchor_terms": [
+        "PowerPoint"
+      ],
+      "source_id_found": [
+        "0007-在 PowerPoint 2007 中无法输入中文怎么办？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "PowerPoint 2007",
+          "source_id": "0007-在 PowerPoint 2007 中无法输入中文怎么办？.md",
+          "title": "在 PowerPoint 2007 中无法输入中文怎么办？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_026",
+      "question": "How to modify Microsoft Word default style",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Microsoft Word"
+      ],
+      "expected_source_ids": [
+        "0008-如何修改 Microsoft Word 的默认样式？.md"
+      ],
+      "expected_anchor_terms": [
+        "Word"
+      ],
+      "source_id_found": [
+        "0008-如何修改 Microsoft Word 的默认样式？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Microsoft Word",
+          "source_id": "0008-如何修改 Microsoft Word 的默认样式？.md",
+          "title": "如何修改 Microsoft Word 的默认样式？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_027",
+      "question": "Outlook paragraph marks should be hidden",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Outlook"
+      ],
+      "expected_source_ids": [
+        "0010-如何去掉Outlook中的段落标记等符号-.md"
+      ],
+      "expected_anchor_terms": [
+        "Outlook"
+      ],
+      "source_id_found": [
+        "0010-如何去掉Outlook中的段落标记等符号-.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Outlook",
+          "source_id": "0010-如何去掉Outlook中的段落标记等符号-.md",
+          "title": "如何去掉Outlook中的段落标记等符号-"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_028",
+      "question": "Outlook sent mail record is missing",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Outlook"
+      ],
+      "expected_source_ids": [
+        "0011-Outlook为何没有已发送邮件的记录-.md"
+      ],
+      "expected_anchor_terms": [
+        "Outlook"
+      ],
+      "source_id_found": [
+        "0011-Outlook为何没有已发送邮件的记录-.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Outlook",
+          "source_id": "0010-如何去掉Outlook中的段落标记等符号-.md",
+          "title": "如何去掉Outlook中的段落标记等符号-"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_029",
+      "question": "Visio 2010 shapes panel disappeared",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Visio 2010"
+      ],
+      "expected_source_ids": [
+        "0019-Visio 2010-2007 形状面板不见了怎么办？.md"
+      ],
+      "expected_anchor_terms": [
+        "Visio"
+      ],
+      "source_id_found": [
+        "0019-Visio 2010-2007 形状面板不见了怎么办？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Visio 2010",
+          "source_id": "0019-Visio 2010-2007 形状面板不见了怎么办？.md",
+          "title": "Visio 2010-2007 形状面板不见了怎么办？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_030",
+      "question": "Excel shows #VALUE! error",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Excel",
+        "#VALUE"
+      ],
+      "expected_source_ids": [
+        "0033-如何解决 Excel 显示 #VALUE! 错误信息的问题-.md"
+      ],
+      "expected_anchor_terms": [
+        "Excel"
+      ],
+      "source_id_found": [
+        "0033-如何解决 Excel 显示 #VALUE! 错误信息的问题-.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Excel",
+          "source_id": "0020-如何在 OneNote 2010-2007 中输入复杂的数学公式？.md",
+          "title": "如何在 OneNote 2010-2007 中输入复杂的数学公式？"
+        },
+        {
+          "term": "#VALUE",
+          "source_id": "0033-如何解决 Excel 显示 #VALUE! 错误信息的问题-.md",
+          "title": "如何解决 Excel 显示 #VALUE! 错误信息的问题-"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_031",
+      "question": "Windows 7 group policy client service failed login",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Windows 7",
+        "group policy client"
+      ],
+      "expected_source_ids": [
+        "0026-Windows 7 开机提示group policy client 服务器未登录.md"
+      ],
+      "expected_anchor_terms": [
+        "Windows"
+      ],
+      "source_id_found": [
+        "0026-Windows 7 开机提示group policy client 服务器未登录.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Windows 7",
+          "source_id": "0001-如何使用U盘安装Windows 7操作系统 .md",
+          "title": "如何使用U盘安装Windows 7操作系统 "
+        },
+        {
+          "term": "group policy client",
+          "source_id": "0026-Windows 7 开机提示group policy client 服务器未登录.md",
+          "title": "Windows 7 开机提示group policy client 服务器未登录"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_032",
+      "question": "Lenovo G485 Wi-Fi cannot connect",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Lenovo G485"
+      ],
+      "expected_source_ids": [
+        "0082-Lenovo G485无线网络连接不上的解决方案.md"
+      ],
+      "expected_anchor_terms": [
+        "Lenovo G485",
+        "Wi-Fi"
+      ],
+      "source_id_found": [
+        "0082-Lenovo G485无线网络连接不上的解决方案.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Lenovo G485",
+          "source_id": "0080-Lenovo G485在XP系统下无法使用独显的解决方案.md",
+          "title": "Lenovo G485在XP系统下无法使用独显的解决方案"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_033",
+      "question": "Upgrade to Windows 8.1 from app store",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Windows 8.1"
+      ],
+      "expected_source_ids": [
+        "0085-如何通过应用商店升级到Windows 8.1.md"
+      ],
+      "expected_anchor_terms": [
+        "Windows"
+      ],
+      "source_id_found": [
+        "0085-如何通过应用商店升级到Windows 8.1.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Windows 8.1",
+          "source_id": "0084-联想各机型升级Windows 8.1操作指导及注意事项汇总.md",
+          "title": "联想各机型升级Windows 8.1操作指导及注意事项汇总"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_034",
+      "question": "BIOS fingerprint option disable and enable",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "BIOS"
+      ],
+      "expected_source_ids": [
+        "0367-BIOS中如何关闭指纹识别并再次开启.md"
+      ],
+      "expected_anchor_terms": [
+        "BIOS"
+      ],
+      "source_id_found": [
+        "0367-BIOS中如何关闭指纹识别并再次开启.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "BIOS",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_035",
+      "question": "Lenovo G470 black screen or blue screen cannot enter system",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Lenovo G470"
+      ],
+      "expected_source_ids": [
+        "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md"
+      ],
+      "expected_anchor_terms": [
+        "Lenovo G470"
+      ],
+      "source_id_found": [
+        "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Lenovo G470",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md']"
+      ]
+    },
+    {
+      "case_id": "case_036",
+      "question": "Lenovo G485 USB3.0 driver cannot be installed",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Lenovo G485",
+        "USB3.0"
+      ],
+      "expected_source_ids": [
+        "0081-Lenovo G485 USB3.0驱动程序安装不上的解决方法.md"
+      ],
+      "expected_anchor_terms": [
+        "Lenovo G485"
+      ],
+      "source_id_found": [
+        "0081-Lenovo G485 USB3.0驱动程序安装不上的解决方法.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Lenovo G485",
+          "source_id": "0080-Lenovo G485在XP系统下无法使用独显的解决方案.md",
+          "title": "Lenovo G485在XP系统下无法使用独显的解决方案"
+        },
+        {
+          "term": "USB3.0",
+          "source_id": "0081-Lenovo G485 USB3.0驱动程序安装不上的解决方法.md",
+          "title": "Lenovo G485 USB3.0驱动程序安装不上的解决方法"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_037",
+      "question": "Windows XP safe mode startup",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Windows XP"
+      ],
+      "expected_source_ids": [
+        "0317-如何启动到Windows XP的安全模式.md"
+      ],
+      "expected_anchor_terms": [
+        "Windows"
+      ],
+      "source_id_found": [
+        "0317-如何启动到Windows XP的安全模式.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Windows XP",
+          "source_id": "0005-XP-Vista系统下如何清理系统盘.md",
+          "title": "XP-Vista系统下如何清理系统盘"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_038",
+      "question": "Configure wireless network on Windows 7",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Windows 7"
+      ],
+      "expected_source_ids": [
+        "0353-在Windows 7下如何配置无线网络.md"
+      ],
+      "expected_anchor_terms": [
+        "Windows",
+        "Wi-Fi"
+      ],
+      "source_id_found": [
+        "0353-在Windows 7下如何配置无线网络.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Windows 7",
+          "source_id": "0001-如何使用U盘安装Windows 7操作系统 .md",
+          "title": "如何使用U盘安装Windows 7操作系统 "
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0353-在Windows 7下如何配置无线网络.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0353-在Windows 7下如何配置无线网络.md']"
+      ]
+    },
+    {
+      "case_id": "case_039",
+      "question": "How to turn on Bluetooth module",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "expected_anchor_terms": [
+        "Bluetooth"
+      ],
+      "source_id_found": [
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0355-如何开启蓝牙模块功能.md']"
+      ]
+    },
+    {
+      "case_id": "case_040",
+      "question": "How to add Bluetooth device",
+      "category": "anchor_answerable",
+      "group": "A_anchor_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0356-如何添加启用蓝牙的设备.md"
+      ],
+      "expected_anchor_terms": [
+        "Bluetooth"
+      ],
+      "source_id_found": [
+        "0356-如何添加启用蓝牙的设备.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0356-如何添加启用蓝牙的设备.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0356-如何添加启用蓝牙的设备.md']"
+      ]
+    },
+    {
+      "case_id": "case_041",
+      "question": "Moon base printer connect to quantum network",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_042",
+      "question": "Foldable screen hinge replacement for tablet",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "?????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_043",
+      "question": "Freezer compartment temperature sensor repair",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "?????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_044",
+      "question": "Blue screen error 0xDEADBEEF",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "0xDEADBEEF"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_045",
+      "question": "System error E9999 repair",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "E9999"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_046",
+      "question": "Quantum network router configuration",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_047",
+      "question": "Foldable screen hinge water damage",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "?????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_048",
+      "question": "Freezer compartment fan stopped spinning",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "?????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_049",
+      "question": "Boot error 0xBADF00D cannot enter system",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "0xBADF00D"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_050",
+      "question": "Startup protocol error E654321",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "E654321"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_051",
+      "question": "Mars projector access quantum network",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_052",
+      "question": "Foldable screen hinge calibration",
+      "category": "anchor_unanswerable",
+      "group": "B_anchor_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [
+        "?????"
+      ],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_053",
+      "question": "Power button pressed but no response",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0004-开机之后无任何反应怎么办？.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0004-开机之后无任何反应怎么办？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_054",
+      "question": "Internet and driver download are slow because of DNS",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "DNS"
+      ],
+      "expected_source_ids": [
+        "0054-设置正确的DNS解决上网慢下驱动慢的问题.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0054-设置正确的DNS解决上网慢下驱动慢的问题.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "DNS",
+          "source_id": "0054-设置正确的DNS解决上网慢下驱动慢的问题.md",
+          "title": "设置正确的DNS解决上网慢下驱动慢的问题"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_055",
+      "question": "Broadband connection drops frequently",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0055-宽带连接频繁掉线.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0055-宽带连接频繁掉线.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_056",
+      "question": "QQ can log in but web pages cannot open",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "QQ"
+      ],
+      "expected_source_ids": [
+        "0056-QQ可以登录但网页打不开或者很慢.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0056-QQ可以登录但网页打不开或者很慢.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "QQ",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "title": "宽带连接频繁掉线"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_057",
+      "question": "Adjust screen brightness",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md']"
+      ]
+    },
+    {
+      "case_id": "case_058",
+      "question": "Computer starts automatically by itself",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0408-电脑会自动开机启动，是什么问题？.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0408-电脑会自动开机启动，是什么问题？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_059",
+      "question": "Check if network is reachable",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0264-在Windows 7下如何检查判断网络是否通畅.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0264-在Windows 7下如何检查判断网络是否通畅.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_060",
+      "question": "Manually add wireless network",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0292-手动添加无线网络方法.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0292-手动添加无线网络方法.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_061",
+      "question": "Where should I place a home router near the TV",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_062",
+      "question": "Washing machine shakes during spin cycle",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_063",
+      "question": "Robot vacuum cannot return to charging dock",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_064",
+      "question": "Gas stove turns off immediately after ignition",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_065",
+      "question": "Air fryer heats unevenly",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_066",
+      "question": "Car navigation location keeps drifting",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_067",
+      "question": "Smart door lock fingerprint recognition fails",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_068",
+      "question": "Home projector image keystone distortion",
+      "category": "generic_unanswerable",
+      "group": "D_generic_unanswerable",
+      "expected_answerability": "unanswerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [],
+      "expected_anchor_terms": [],
+      "source_id_found": [],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_069",
+      "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0353-在Windows 7下如何配置无线网络.md",
+        "0352-在Windows XP下如何配置无线网络.md"
+      ],
+      "expected_anchor_terms": [
+        "Wi-Fi"
+      ],
+      "source_id_found": [
+        "0353-在Windows 7下如何配置无线网络.md",
+        "0352-在Windows XP下如何配置无线网络.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0353-在Windows 7下如何配置无线网络.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0353-在Windows 7下如何配置无线网络.md']"
+      ]
+    },
+    {
+      "case_id": "case_070",
+      "question": "Wireless keyboard and mouse suddenly fail, not Wi-Fi",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md"
+      ],
+      "expected_anchor_terms": [
+        "Wi-Fi"
+      ],
+      "source_id_found": [
+        "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_071",
+      "question": "Word inserted pictures become blank boxes, not black screen",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Word"
+      ],
+      "expected_source_ids": [
+        "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md"
+      ],
+      "expected_anchor_terms": [
+        "Word"
+      ],
+      "source_id_found": [
+        "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Word",
+          "source_id": "0008-如何修改 Microsoft Word 的默认样式？.md",
+          "title": "如何修改 Microsoft Word 的默认样式？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_072",
+      "question": "Screen brightness is too low, not Word blank picture",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "expected_anchor_terms": [
+        "Word"
+      ],
+      "source_id_found": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md']"
+      ]
+    },
+    {
+      "case_id": "case_073",
+      "question": "Excel file menu is gray, not other Office document problem",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Excel"
+      ],
+      "expected_source_ids": [
+        "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md"
+      ],
+      "expected_anchor_terms": [
+        "Excel"
+      ],
+      "source_id_found": [
+        "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Excel",
+          "source_id": "0020-如何在 OneNote 2010-2007 中输入复杂的数学公式？.md",
+          "title": "如何在 OneNote 2010-2007 中输入复杂的数学公式？"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_074",
+      "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0356-如何添加启用蓝牙的设备.md",
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "expected_anchor_terms": [
+        "Bluetooth"
+      ],
+      "source_id_found": [
+        "0356-如何添加启用蓝牙的设备.md",
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0356-如何添加启用蓝牙的设备.md",
+        "0355-如何开启蓝牙模块功能.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0356-如何添加启用蓝牙的设备.md', '0355-如何开启蓝牙模块功能.md']"
+      ]
+    },
+    {
+      "case_id": "case_075",
+      "question": "Need to press F1 or F2 to continue startup, not shutdown problem",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "F1",
+        "F2"
+      ],
+      "expected_source_ids": [
+        "0406-开机时，需要按F1（或F2）键后才能继续启动.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0406-开机时，需要按F1（或F2）键后才能继续启动.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "F1",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+        },
+        {
+          "term": "F2",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_076",
+      "question": "Blue screen shows 0x0000007B, not generic blue screen",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "0x0000007B"
+      ],
+      "expected_source_ids": [
+        "0212-台式和一体机蓝屏报错代码：0x0000007B.md"
+      ],
+      "expected_anchor_terms": [
+        "0x0000007B"
+      ],
+      "source_id_found": [
+        "0212-台式和一体机蓝屏报错代码：0x0000007B.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "title": "台式和一体机蓝屏报错代码：0x0000007B"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_077",
+      "question": "Generic blue screen cannot enter system but no error code",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+        "0073-Windows XP系统开机出现蓝屏问题的解决方案.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+        "0073-Windows XP系统开机出现蓝屏问题的解决方案.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [
+        "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md"
+      ],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": [
+        "duplicate_source_ids=['0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md']"
+      ]
+    },
+    {
+      "case_id": "case_078",
+      "question": "Windows 8.1 update failed, not startup fault",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [
+        "Windows 8.1"
+      ],
+      "expected_source_ids": [
+        "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md"
+      ],
+      "expected_anchor_terms": [
+        "Windows"
+      ],
+      "source_id_found": [
+        "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [
+        {
+          "term": "Windows 8.1",
+          "source_id": "0084-联想各机型升级Windows 8.1操作指导及注意事项汇总.md",
+          "title": "联想各机型升级Windows 8.1操作指导及注意事项汇总"
+        }
+      ],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_079",
+      "question": "Network adapter power management causes disconnect, not wireless mouse",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0363-如何关闭网卡的电源管理选项.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0363-如何关闭网卡的电源管理选项.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_080",
+      "question": "Taskbar input method icon disappeared, not Word input issue",
+      "category": "confusing",
+      "group": "E_confusing",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0270-如何恢复Windows XP任务栏输入法图标.md",
+        "0271-如何恢复Windows 7任务栏输入法图标.md"
+      ],
+      "expected_anchor_terms": [
+        "????????"
+      ],
+      "source_id_found": [
+        "0270-如何恢复Windows XP任务栏输入法图标.md",
+        "0271-如何恢复Windows 7任务栏输入法图标.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_081",
+      "question": "How to update network card IP address",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0211-如何更新网卡的IP地址.md"
+      ],
+      "expected_anchor_terms": [],
+      "source_id_found": [
+        "0211-如何更新网卡的IP地址.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    },
+    {
+      "case_id": "case_082",
+      "question": "How to install printer hardware driver on Windows",
+      "category": "generic_answerable",
+      "group": "C_generic_answerable",
+      "expected_answerability": "answerable",
+      "expected_title_contains": [],
+      "expected_source_ids": [
+        "0298-如何在 Windows 系统下安装打印机硬件驱动程序.md"
+      ],
+      "expected_anchor_terms": [
+        "Windows"
+      ],
+      "source_id_found": [
+        "0298-如何在 Windows 系统下安装打印机硬件驱动程序.md"
+      ],
+      "source_id_missing": [],
+      "title_contains_found": [],
+      "duplicate_question": false,
+      "duplicate_source_ids": [],
+      "empty_fields": [],
+      "obvious_unanswerable_hits": [],
+      "audit_status": "VALID",
+      "audit_notes": []
+    }
+  ],
+  "notes": [
+    "Audit is local-only and does not call Embedding, Chroma, LLM, network, or /query.",
+    "expected_title_contains is weak evidence for offline audit, not ground-truth retrieval correctness."
+  ]
+}

@@ -10,6 +10,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 from config.settings import settings
 from repositories.vector_store_repository import VectorStoreRepository
 from services.ingestion.ingestion_processor import IngestionProcessor
+from services.anchor_evidence_service import (
+    apply_anchor_adjustment,
+    evaluate_hard_soft_negative_gate,
+    evaluate_retrieval_evidence,
+)
 from utils.embedding_text import (
     build_content_hash,
     build_document_id,
@@ -25,9 +30,48 @@ logger = logging.getLogger(__name__)
 
 
 class RetrievalService:
-    def __init__(self, chroma_vector: VectorStoreRepository | None = None, spliter: IngestionProcessor | None = None):
+    def __init__(
+        self,
+        chroma_vector: VectorStoreRepository | None = None,
+        spliter: IngestionProcessor | None = None,
+        *,
+        anchor_evidence_enabled: bool | None = None,
+        anchor_match_boost: float | None = None,
+        anchor_missing_penalty: float | None = None,
+        anchor_require_evidence_for_block: bool | None = None,
+        anchor_evidence_mode: str | None = None,
+        anchor_evidence_window_size: int | None = None,
+    ):
         self.chroma_vector = chroma_vector or VectorStoreRepository()
         self.spliter = spliter or IngestionProcessor(vector_store=self.chroma_vector)
+        configured_mode = (anchor_evidence_mode or settings.RAG_ANCHOR_EVIDENCE_MODE or "off").strip().lower()
+        if configured_mode == "experimental":
+            configured_mode = "legacy"
+        if configured_mode not in {"off", "legacy", "hard-soft-negative"}:
+            configured_mode = "off"
+        if anchor_evidence_enabled is True and configured_mode == "off":
+            configured_mode = "legacy"
+        if anchor_evidence_enabled is False:
+            configured_mode = "off"
+        self.anchor_evidence_mode = configured_mode
+        self.anchor_evidence_enabled = self.anchor_evidence_mode != "off"
+        self.anchor_evidence_window_size = (
+            settings.RAG_ANCHOR_EVIDENCE_WINDOW_SIZE
+            if anchor_evidence_window_size is None
+            else int(anchor_evidence_window_size)
+        )
+        self.anchor_match_boost = (
+            settings.RAG_ANCHOR_MATCH_BOOST if anchor_match_boost is None else float(anchor_match_boost)
+        )
+        self.anchor_missing_penalty = (
+            settings.RAG_ANCHOR_MISSING_PENALTY if anchor_missing_penalty is None else float(anchor_missing_penalty)
+        )
+        self.anchor_require_evidence_for_block = (
+            settings.RAG_ANCHOR_REQUIRE_EVIDENCE_FOR_BLOCK
+            if anchor_require_evidence_for_block is None
+            else bool(anchor_require_evidence_for_block)
+        )
+        self._last_anchor_window_documents: list[Document] = []
 
     def rough_ranking(self, user_query, mds_metadata: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if not user_query:
@@ -82,13 +126,107 @@ class RetrievalService:
             copied["final_score"] = float(final_score)
             valid_results.append(copied)
 
-        return sorted(valid_results, key=lambda x: x.get("final_score", 0), reverse=True)[:settings.TOP_FINAL]
+        return sorted(valid_results, key=lambda x: x.get("final_score", 0), reverse=True)[:settings.RAG_TITLE_CANDIDATE_TOP_K]
 
-    def retrieval(self, user_question: str) -> List[Document]:
-        based_vector_candidates = self._search_based_vector(user_question)
-        based_title_candidates = self._search_based_title(user_question)
-        unique_candidates = self._deduplicate(based_vector_candidates + based_title_candidates)
-        return self._reranking(unique_candidates, user_question)
+    def retrieve_candidates(
+        self,
+        query: str,
+        *,
+        original_question: str | None = None,
+    ) -> List[Document]:
+        """Run vector and title retrieval for one query variant without final rerank."""
+        based_vector_candidates = self._search_based_vector(query)
+        based_title_candidates = self._search_based_title(query)
+        is_normalized_match = bool(original_question and query != original_question)
+        for document in based_vector_candidates + based_title_candidates:
+            document.metadata = dict(document.metadata or {})
+            document.metadata["matched_by_normalized_query"] = is_normalized_match
+        return based_vector_candidates + based_title_candidates
+
+    def rerank_candidates(self, original_question: str, candidates: List[Document]) -> List[Document]:
+        """Use only the original user question for final semantic rerank and MMR."""
+        return self._reranking(candidates, original_question)
+
+    def retrieval(
+        self,
+        user_question: str | None = None,
+        *,
+        original_question: str | None = None,
+        query_variants: list[str] | None = None,
+    ) -> List[Document]:
+        original_question = (original_question or user_question or "").strip()
+        if not original_question:
+            return []
+
+        variants = self._normalize_query_variants(original_question, query_variants)
+        all_candidates: List[Document] = []
+        for query in variants:
+            all_candidates.extend(self.retrieve_candidates(query, original_question=original_question))
+
+        candidate_count_before_dedup = len(all_candidates)
+        unique_candidates = self._deduplicate(all_candidates)
+        final_documents = self.rerank_candidates(original_question, unique_candidates)
+
+        for document in final_documents:
+            document.metadata = dict(document.metadata or {})
+            document.metadata["query_variants"] = list(variants)
+
+        top_score = max(
+            (float(doc.metadata.get("final_rerank_score", 0.0)) for doc in final_documents),
+            default=None,
+        )
+        accepted = top_score is not None and top_score >= settings.RAG_MIN_RERANK_SCORE
+        logger.info(
+            "RAG retrieval decision original_question=%s query_variants=%s "
+            "candidate_count_before_dedup=%s candidate_count_after_dedup=%s "
+            "top_score=%s threshold=%s result=%s",
+            original_question,
+            variants,
+            candidate_count_before_dedup,
+            len(unique_candidates),
+            top_score,
+            settings.RAG_MIN_RERANK_SCORE,
+            "accepted" if accepted else "rejected",
+        )
+        if not accepted:
+            return []
+        if self.is_anchor_evidence_enabled():
+            decision = self.evaluate_anchor_gate(original_question, final_documents)
+            if not decision.get("ok", True):
+                logger.info(
+                    "RAG retrieval blocked by anchor evidence original_question=%s reason_code=%s anchors=%s",
+                    original_question,
+                    decision.get("reason_code"),
+                    decision.get("anchor_evidence", {}).get("anchors"),
+                )
+                return []
+        return final_documents
+
+    def is_anchor_evidence_enabled(self) -> bool:
+        return bool(getattr(self, "anchor_evidence_enabled", False))
+
+    def evaluate_anchor_gate(self, original_question: str, documents: List[Document]) -> dict[str, Any]:
+        if not self.is_anchor_evidence_enabled() or not getattr(self, "anchor_require_evidence_for_block", True):
+            return {"ok": True, "reason_code": None}
+        if self.anchor_evidence_mode == "hard-soft-negative":
+            return evaluate_hard_soft_negative_gate(
+                original_question,
+                documents,
+                getattr(self, "_last_anchor_window_documents", []) or documents,
+            ).as_dict()
+        return evaluate_retrieval_evidence(original_question, documents).as_dict()
+
+    def _normalize_query_variants(self, original_question: str, query_variants: list[str] | None) -> list[str]:
+        raw_variants = query_variants or [original_question]
+        variants = []
+        seen = set()
+        for query in [original_question, *raw_variants]:
+            normalized = re.sub(r"\s+", " ", (query or "").strip())
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            variants.append(normalized)
+        return variants
 
     def _search_based_vector(self, user_question: str) -> List[Document]:
         documents_with_score = self.chroma_vector.search_similarity_with_score(user_question)
@@ -155,6 +293,7 @@ class RetrievalService:
     def _deduplicate(self, total_candidates: List[Document]) -> List[Document]:
         seen = set()
         unique_candidates = []
+        existing_by_key = {}
         for document in total_candidates:
             if not self._is_valid_document(document):
                 continue
@@ -166,7 +305,15 @@ class RetrievalService:
             )
             if key not in seen:
                 seen.add(key)
+                existing_by_key[key] = document
                 unique_candidates.append(document)
+            else:
+                existing = existing_by_key[key]
+                existing.metadata = dict(existing.metadata or {})
+                existing.metadata["matched_by_normalized_query"] = bool(
+                    existing.metadata.get("matched_by_normalized_query")
+                    or document.metadata.get("matched_by_normalized_query")
+                )
         return unique_candidates
 
     def _reranking(self, unique_candidates: List[Document], user_question: str) -> List[Document]:
@@ -199,7 +346,33 @@ class RetrievalService:
             doc.metadata["canonical_embedding_text_hash"] = build_content_hash(canonical_texts[index])
             scored.append((doc, score, candidate_embeddings[index]))
 
+        if self.is_anchor_evidence_enabled():
+            apply_anchor_adjustment(
+                user_question,
+                [doc for doc, _, _ in scored],
+                match_boost=getattr(self, "anchor_match_boost", settings.RAG_ANCHOR_MATCH_BOOST),
+                missing_penalty=getattr(self, "anchor_missing_penalty", settings.RAG_ANCHOR_MISSING_PENALTY),
+                hard_match_boost=settings.RAG_HARD_ANCHOR_MATCH_BOOST,
+                hard_missing_penalty=settings.RAG_HARD_ANCHOR_MISSING_PENALTY,
+                soft_match_boost=settings.RAG_SOFT_ANCHOR_MATCH_BOOST
+                if self.anchor_evidence_mode == "hard-soft-negative"
+                else getattr(self, "anchor_match_boost", settings.RAG_ANCHOR_MATCH_BOOST),
+                soft_missing_penalty=settings.RAG_SOFT_ANCHOR_MISSING_PENALTY
+                if self.anchor_evidence_mode == "hard-soft-negative"
+                else getattr(self, "anchor_missing_penalty", settings.RAG_ANCHOR_MISSING_PENALTY),
+                negative_match_penalty=settings.RAG_NEGATIVE_ANCHOR_MATCH_PENALTY,
+            )
+            scored = [
+                (doc, float(doc.metadata.get("evidence_adjusted_score", score)), embedding)
+                for doc, score, embedding in scored
+            ]
+
         scored.sort(key=lambda item: item[1], reverse=True)
+        window_size = max(int(getattr(self, "anchor_evidence_window_size", settings.RAG_ANCHOR_EVIDENCE_WINDOW_SIZE)), settings.RAG_FINAL_TOP_K)
+        self._last_anchor_window_documents = [doc for doc, _, _ in scored[:window_size]]
+        for rank, doc in enumerate(self._last_anchor_window_documents, start=1):
+            doc.metadata = dict(doc.metadata or {})
+            doc.metadata["anchor_candidate_window_rank"] = rank
         selected = self._select_mmr(scored, settings.RAG_FINAL_TOP_K)
         for rank, (doc, mmr_score) in enumerate(selected, start=1):
             doc.metadata["mmr_score"] = float(mmr_score)

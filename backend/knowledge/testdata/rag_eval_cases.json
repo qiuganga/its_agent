@@ -1,0 +1,173 @@
+[
+  {
+    "id": "case_001",
+    "question": "开不了机，屏幕不亮怎么办",
+    "expected_keywords": ["无法开机", "黑屏"],
+    "expected_title_contains": ["开机", "黑屏"],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_002",
+    "question": "开机没反应怎么办",
+    "expected_keywords": ["无法开机"],
+    "expected_title_contains": ["开机", "无任何反应"],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_003",
+    "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+    "expected_keywords": ["黑屏"],
+    "expected_title_contains": ["黑屏", "屏幕"],
+    "category": "容易混淆问题"
+  },
+  {
+    "id": "case_004",
+    "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+    "expected_keywords": ["蓝屏", "登录进程初始化失败"],
+    "expected_title_contains": ["蓝屏", "登录进程初始化失败"],
+    "category": "标准表达问题"
+  },
+  {
+    "id": "case_005",
+    "question": "电脑蓝屏报错0x0000007B怎么办",
+    "expected_keywords": ["蓝屏", "0x0000007B"],
+    "expected_title_contains": ["0x0000007B", "蓝屏"],
+    "category": "标准表达问题"
+  },
+  {
+    "id": "case_006",
+    "question": "无线网络连不上怎么办",
+    "expected_keywords": ["无线网络", "连接"],
+    "expected_title_contains": ["无线网络", "网络连接"],
+    "category": "网络问题"
+  },
+  {
+    "id": "case_007",
+    "question": "连不上网，怎么检查网络是否通畅",
+    "expected_keywords": ["无法连接网络"],
+    "expected_title_contains": ["网络", "通畅"],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_008",
+    "question": "只使用电池有时找不到网络设备怎么办",
+    "expected_keywords": ["网络设备", "电池"],
+    "expected_title_contains": ["电池", "网络设备"],
+    "category": "正文和标题命中问题"
+  },
+  {
+    "id": "case_009",
+    "question": "搜不到蓝牙设备怎么办",
+    "expected_keywords": ["蓝牙设备无法被发现"],
+    "expected_title_contains": ["蓝牙"],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_010",
+    "question": "连不上蓝牙设备怎么添加",
+    "expected_keywords": ["蓝牙连接失败"],
+    "expected_title_contains": ["蓝牙", "设备"],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_011",
+    "question": "电脑没声音，音量怎么调",
+    "expected_keywords": ["无声音"],
+    "expected_title_contains": ["音量", "声音"],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_012",
+    "question": "系统卡死没有响应怎么办",
+    "expected_keywords": ["系统无响应"],
+    "expected_title_contains": ["停止响应", "无响应"],
+    "category": "同义词或别称问题"
+  },
+  {
+    "id": "case_013",
+    "question": "电脑运行游戏卡怎么办",
+    "expected_keywords": ["卡"],
+    "expected_title_contains": ["游戏卡", "无法运行"],
+    "category": "容易混淆问题"
+  },
+  {
+    "id": "case_014",
+    "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+    "expected_keywords": ["Excel", "灰色不可用"],
+    "expected_title_contains": ["Excel", "灰色不可用"],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_015",
+    "question": "Word 插入的图片都变成空白框了怎么办",
+    "expected_keywords": ["Word", "图片", "空白框"],
+    "expected_title_contains": ["Word", "图片", "空白框"],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_016",
+    "question": "Outlook 为什么没有已发送邮件的记录",
+    "expected_keywords": ["Outlook", "已发送邮件"],
+    "expected_title_contains": ["Outlook", "已发送邮件"],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_017",
+    "question": "IE 只能打开首页，其他链接打不开怎么办",
+    "expected_keywords": ["IE", "链接"],
+    "expected_title_contains": ["IE", "首页", "链接"],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_018",
+    "question": "如何使用U盘安装Windows 7操作系统",
+    "expected_keywords": ["U盘", "Windows 7"],
+    "expected_title_contains": ["U盘", "Windows 7"],
+    "category": "标准表达问题"
+  },
+  {
+    "id": "case_019",
+    "question": "手机或平板电脑无法访问百度相关网站怎么办",
+    "expected_keywords": ["百度", "网站"],
+    "expected_title_contains": ["无法访问百度"],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_020",
+    "question": "屏幕保护怎么关闭或取消",
+    "expected_keywords": ["屏幕保护"],
+    "expected_title_contains": ["屏幕保护", "屏保"],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_021",
+    "question": "风扇声音大但电脑能正常开机怎么办",
+    "expected_keywords": ["风扇"],
+    "expected_title_contains": ["风扇"],
+    "category": "容易混淆问题"
+  },
+  {
+    "id": "case_022",
+    "question": "火星基地打印机怎么连接量子网络",
+    "expected_keywords": [],
+    "expected_title_contains": [],
+    "category": "预计无答案",
+    "expected_no_answer": true
+  },
+  {
+    "id": "case_023",
+    "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+    "expected_keywords": [],
+    "expected_title_contains": [],
+    "category": "预计无答案",
+    "expected_no_answer": true
+  },
+  {
+    "id": "case_024",
+    "question": "手机屏幕进水后如何更换折叠屏铰链",
+    "expected_keywords": [],
+    "expected_title_contains": [],
+    "category": "预计无答案",
+    "expected_no_answer": true
+  }
+]

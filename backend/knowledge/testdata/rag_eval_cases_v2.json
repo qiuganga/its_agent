@@ -1,0 +1,1125 @@
+[
+  {
+    "id": "case_001",
+    "question": "开不了机，屏幕不亮怎么办",
+    "expected_keywords": [
+      "无法开机",
+      "黑屏"
+    ],
+    "expected_title_contains": [
+      "开机",
+      "黑屏"
+    ],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_002",
+    "question": "开机没反应怎么办",
+    "expected_keywords": [
+      "无法开机"
+    ],
+    "expected_title_contains": [
+      "开机",
+      "无任何反应"
+    ],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_003",
+    "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+    "expected_keywords": [
+      "黑屏"
+    ],
+    "expected_title_contains": [
+      "黑屏",
+      "屏幕"
+    ],
+    "category": "容易混淆问题"
+  },
+  {
+    "id": "case_004",
+    "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+    "expected_keywords": [
+      "蓝屏",
+      "登录进程初始化失败"
+    ],
+    "expected_title_contains": [
+      "蓝屏",
+      "登录进程初始化失败"
+    ],
+    "category": "标准表达问题"
+  },
+  {
+    "id": "case_005",
+    "question": "电脑蓝屏报错0x0000007B怎么办",
+    "expected_keywords": [
+      "蓝屏",
+      "0x0000007B"
+    ],
+    "expected_title_contains": [
+      "0x0000007B",
+      "蓝屏"
+    ],
+    "category": "标准表达问题"
+  },
+  {
+    "id": "case_006",
+    "question": "无线网络连不上怎么办",
+    "expected_keywords": [
+      "无线网络",
+      "连接"
+    ],
+    "expected_title_contains": [
+      "无线网络",
+      "网络连接"
+    ],
+    "category": "网络问题"
+  },
+  {
+    "id": "case_007",
+    "question": "连不上网，怎么检查网络是否通畅",
+    "expected_keywords": [
+      "无法连接网络"
+    ],
+    "expected_title_contains": [
+      "网络",
+      "通畅"
+    ],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_008",
+    "question": "只使用电池有时找不到网络设备怎么办",
+    "expected_keywords": [
+      "网络设备",
+      "电池"
+    ],
+    "expected_title_contains": [
+      "电池",
+      "网络设备"
+    ],
+    "category": "正文和标题命中问题"
+  },
+  {
+    "id": "case_009",
+    "question": "搜不到蓝牙设备怎么办",
+    "expected_keywords": [
+      "蓝牙设备无法被发现"
+    ],
+    "expected_title_contains": [
+      "蓝牙"
+    ],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_010",
+    "question": "连不上蓝牙设备怎么添加",
+    "expected_keywords": [
+      "蓝牙连接失败"
+    ],
+    "expected_title_contains": [
+      "蓝牙",
+      "设备"
+    ],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_011",
+    "question": "电脑没声音，音量怎么调",
+    "expected_keywords": [
+      "无声音"
+    ],
+    "expected_title_contains": [
+      "音量",
+      "声音"
+    ],
+    "category": "口语化故障问题"
+  },
+  {
+    "id": "case_012",
+    "question": "系统卡死没有响应怎么办",
+    "expected_keywords": [
+      "系统无响应"
+    ],
+    "expected_title_contains": [
+      "停止响应",
+      "无响应"
+    ],
+    "category": "同义词或别称问题"
+  },
+  {
+    "id": "case_013",
+    "question": "电脑运行游戏卡怎么办",
+    "expected_keywords": [
+      "卡"
+    ],
+    "expected_title_contains": [
+      "游戏卡",
+      "无法运行"
+    ],
+    "category": "容易混淆问题"
+  },
+  {
+    "id": "case_014",
+    "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+    "expected_keywords": [
+      "Excel",
+      "灰色不可用"
+    ],
+    "expected_title_contains": [
+      "Excel",
+      "灰色不可用"
+    ],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_015",
+    "question": "Word 插入的图片都变成空白框了怎么办",
+    "expected_keywords": [
+      "Word",
+      "图片",
+      "空白框"
+    ],
+    "expected_title_contains": [
+      "Word",
+      "图片",
+      "空白框"
+    ],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_016",
+    "question": "Outlook 为什么没有已发送邮件的记录",
+    "expected_keywords": [
+      "Outlook",
+      "已发送邮件"
+    ],
+    "expected_title_contains": [
+      "Outlook",
+      "已发送邮件"
+    ],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_017",
+    "question": "IE 只能打开首页，其他链接打不开怎么办",
+    "expected_keywords": [
+      "IE",
+      "链接"
+    ],
+    "expected_title_contains": [
+      "IE",
+      "首页",
+      "链接"
+    ],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_018",
+    "question": "如何使用U盘安装Windows 7操作系统",
+    "expected_keywords": [
+      "U盘",
+      "Windows 7"
+    ],
+    "expected_title_contains": [
+      "U盘",
+      "Windows 7"
+    ],
+    "category": "标准表达问题"
+  },
+  {
+    "id": "case_019",
+    "question": "手机或平板电脑无法访问百度相关网站怎么办",
+    "expected_keywords": [
+      "百度",
+      "网站"
+    ],
+    "expected_title_contains": [
+      "无法访问百度"
+    ],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_020",
+    "question": "屏幕保护怎么关闭或取消",
+    "expected_keywords": [
+      "屏幕保护"
+    ],
+    "expected_title_contains": [
+      "屏幕保护",
+      "屏保"
+    ],
+    "category": "标题命中问题"
+  },
+  {
+    "id": "case_021",
+    "question": "风扇声音大但电脑能正常开机怎么办",
+    "expected_keywords": [
+      "风扇"
+    ],
+    "expected_title_contains": [
+      "风扇"
+    ],
+    "category": "容易混淆问题"
+  },
+  {
+    "id": "case_022",
+    "question": "火星基地打印机怎么连接量子网络",
+    "expected_keywords": [],
+    "expected_title_contains": [],
+    "category": "预计无答案",
+    "expected_no_answer": true
+  },
+  {
+    "id": "case_023",
+    "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+    "expected_keywords": [],
+    "expected_title_contains": [],
+    "category": "预计无答案",
+    "expected_no_answer": true
+  },
+  {
+    "id": "case_024",
+    "question": "手机屏幕进水后如何更换折叠屏铰链",
+    "expected_keywords": [],
+    "expected_title_contains": [],
+    "category": "预计无答案",
+    "expected_no_answer": true
+  },
+  {
+    "id": "case_025",
+    "question": "PowerPoint 2007 cannot input Chinese",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "PowerPoint 2007"
+    ],
+    "expected_source_ids": [
+      "0007-在 PowerPoint 2007 中无法输入中文怎么办？.md"
+    ],
+    "expected_anchor_terms": [
+      "PowerPoint"
+    ],
+    "gold_evidence_note": "Local markdown has a PowerPoint 2007 Chinese input article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_026",
+    "question": "How to modify Microsoft Word default style",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Microsoft Word"
+    ],
+    "expected_source_ids": [
+      "0008-如何修改 Microsoft Word 的默认样式？.md"
+    ],
+    "expected_anchor_terms": [
+      "Word"
+    ],
+    "gold_evidence_note": "Local markdown has a Microsoft Word default style article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_027",
+    "question": "Outlook paragraph marks should be hidden",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Outlook"
+    ],
+    "expected_source_ids": [
+      "0010-如何去掉Outlook中的段落标记等符号-.md"
+    ],
+    "expected_anchor_terms": [
+      "Outlook"
+    ],
+    "gold_evidence_note": "Local markdown has an Outlook paragraph mark article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_028",
+    "question": "Outlook sent mail record is missing",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Outlook"
+    ],
+    "expected_source_ids": [
+      "0011-Outlook为何没有已发送邮件的记录-.md"
+    ],
+    "expected_anchor_terms": [
+      "Outlook"
+    ],
+    "gold_evidence_note": "Local markdown has an Outlook sent mail record article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_029",
+    "question": "Visio 2010 shapes panel disappeared",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Visio 2010"
+    ],
+    "expected_source_ids": [
+      "0019-Visio 2010-2007 形状面板不见了怎么办？.md"
+    ],
+    "expected_anchor_terms": [
+      "Visio"
+    ],
+    "gold_evidence_note": "Local markdown has a Visio shape panel article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_030",
+    "question": "Excel shows #VALUE! error",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Excel",
+      "#VALUE"
+    ],
+    "expected_source_ids": [
+      "0033-如何解决 Excel 显示 #VALUE! 错误信息的问题-.md"
+    ],
+    "expected_anchor_terms": [
+      "Excel"
+    ],
+    "gold_evidence_note": "Local markdown has an Excel #VALUE error article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_031",
+    "question": "Windows 7 group policy client service failed login",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Windows 7",
+      "group policy client"
+    ],
+    "expected_source_ids": [
+      "0026-Windows 7 开机提示group policy client 服务器未登录.md"
+    ],
+    "expected_anchor_terms": [
+      "Windows"
+    ],
+    "gold_evidence_note": "Local markdown has a Windows 7 group policy client article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_032",
+    "question": "Lenovo G485 Wi-Fi cannot connect",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Lenovo G485"
+    ],
+    "expected_source_ids": [
+      "0082-Lenovo G485无线网络连接不上的解决方案.md"
+    ],
+    "expected_anchor_terms": [
+      "Lenovo G485",
+      "Wi-Fi"
+    ],
+    "gold_evidence_note": "Local markdown has a Lenovo G485 wireless network article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_033",
+    "question": "Upgrade to Windows 8.1 from app store",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Windows 8.1"
+    ],
+    "expected_source_ids": [
+      "0085-如何通过应用商店升级到Windows 8.1.md"
+    ],
+    "expected_anchor_terms": [
+      "Windows"
+    ],
+    "gold_evidence_note": "Local markdown has a Windows 8.1 app store upgrade article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_034",
+    "question": "BIOS fingerprint option disable and enable",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "BIOS"
+    ],
+    "expected_source_ids": [
+      "0367-BIOS中如何关闭指纹识别并再次开启.md"
+    ],
+    "expected_anchor_terms": [
+      "BIOS"
+    ],
+    "gold_evidence_note": "Local markdown has a BIOS fingerprint article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_035",
+    "question": "Lenovo G470 black screen or blue screen cannot enter system",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Lenovo G470"
+    ],
+    "expected_source_ids": [
+      "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md"
+    ],
+    "expected_anchor_terms": [
+      "Lenovo G470"
+    ],
+    "gold_evidence_note": "Local markdown has a Lenovo G470 black/blue screen article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_036",
+    "question": "Lenovo G485 USB3.0 driver cannot be installed",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Lenovo G485",
+      "USB3.0"
+    ],
+    "expected_source_ids": [
+      "0081-Lenovo G485 USB3.0驱动程序安装不上的解决方法.md"
+    ],
+    "expected_anchor_terms": [
+      "Lenovo G485"
+    ],
+    "gold_evidence_note": "Local markdown has a Lenovo G485 USB3.0 driver article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_037",
+    "question": "Windows XP safe mode startup",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Windows XP"
+    ],
+    "expected_source_ids": [
+      "0317-如何启动到Windows XP的安全模式.md"
+    ],
+    "expected_anchor_terms": [
+      "Windows"
+    ],
+    "gold_evidence_note": "Local markdown has a Windows XP safe mode article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_038",
+    "question": "Configure wireless network on Windows 7",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Windows 7"
+    ],
+    "expected_source_ids": [
+      "0353-在Windows 7下如何配置无线网络.md"
+    ],
+    "expected_anchor_terms": [
+      "Windows",
+      "Wi-Fi"
+    ],
+    "gold_evidence_note": "Local markdown has a Windows 7 wireless network article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_039",
+    "question": "How to turn on Bluetooth module",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0355-如何开启蓝牙模块功能.md"
+    ],
+    "expected_anchor_terms": [
+      "Bluetooth"
+    ],
+    "gold_evidence_note": "Local markdown has a Bluetooth module article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_040",
+    "question": "How to add Bluetooth device",
+    "category": "anchor_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0356-如何添加启用蓝牙的设备.md"
+    ],
+    "expected_anchor_terms": [
+      "Bluetooth"
+    ],
+    "gold_evidence_note": "Local markdown has an add Bluetooth device article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_041",
+    "question": "Moon base printer connect to quantum network",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no direct quantum network printer article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_042",
+    "question": "Foldable screen hinge replacement for tablet",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "?????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no foldable screen hinge replacement article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_043",
+    "question": "Freezer compartment temperature sensor repair",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "?????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no freezer compartment repair article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_044",
+    "question": "Blue screen error 0xDEADBEEF",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "0xDEADBEEF"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no 0xDEADBEEF article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_045",
+    "question": "System error E9999 repair",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "E9999"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no E9999 article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_046",
+    "question": "Quantum network router configuration",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no quantum network router article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_047",
+    "question": "Foldable screen hinge water damage",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "?????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no foldable hinge water damage article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_048",
+    "question": "Freezer compartment fan stopped spinning",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "?????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no freezer compartment fan article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_049",
+    "question": "Boot error 0xBADF00D cannot enter system",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "0xBADF00D"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no 0xBADF00D article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_050",
+    "question": "Startup protocol error E654321",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "E654321"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no E654321 article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_051",
+    "question": "Mars projector access quantum network",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no Mars projector or quantum network article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_052",
+    "question": "Foldable screen hinge calibration",
+    "category": "anchor_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [
+      "?????"
+    ],
+    "gold_evidence_note": "Local crawl markdown has no foldable hinge calibration article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_053",
+    "question": "Power button pressed but no response",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0004-开机之后无任何反应怎么办？.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a no response after power-on article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_054",
+    "question": "Internet and driver download are slow because of DNS",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "DNS"
+    ],
+    "expected_source_ids": [
+      "0054-设置正确的DNS解决上网慢下驱动慢的问题.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a DNS slow network article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_055",
+    "question": "Broadband connection drops frequently",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0055-宽带连接频繁掉线.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a broadband frequent disconnect article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_056",
+    "question": "QQ can log in but web pages cannot open",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "QQ"
+    ],
+    "expected_source_ids": [
+      "0056-QQ可以登录但网页打不开或者很慢.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a QQ login but web page cannot open article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_057",
+    "question": "Adjust screen brightness",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a screen brightness setting article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_058",
+    "question": "Computer starts automatically by itself",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0408-电脑会自动开机启动，是什么问题？.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has an automatic startup article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_059",
+    "question": "Check if network is reachable",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0264-在Windows 7下如何检查判断网络是否通畅.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a network connectivity check article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_060",
+    "question": "Manually add wireless network",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0292-手动添加无线网络方法.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has a manually add wireless network article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_061",
+    "question": "Where should I place a home router near the TV",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no router placement article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_062",
+    "question": "Washing machine shakes during spin cycle",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no washing machine repair article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_063",
+    "question": "Robot vacuum cannot return to charging dock",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no robot vacuum article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_064",
+    "question": "Gas stove turns off immediately after ignition",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no gas stove repair article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_065",
+    "question": "Air fryer heats unevenly",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no air fryer article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_066",
+    "question": "Car navigation location keeps drifting",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no car navigation article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_067",
+    "question": "Smart door lock fingerprint recognition fails",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no smart door lock article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_068",
+    "question": "Home projector image keystone distortion",
+    "category": "generic_unanswerable",
+    "expected_answerability": "unanswerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local crawl markdown has no home projector keystone article.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_069",
+    "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0353-在Windows 7下如何配置无线网络.md",
+      "0352-在Windows XP下如何配置无线网络.md"
+    ],
+    "expected_anchor_terms": [
+      "Wi-Fi"
+    ],
+    "gold_evidence_note": "Distinguishes Wi-Fi from wireless keyboard mouse.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_070",
+    "question": "Wireless keyboard and mouse suddenly fail, not Wi-Fi",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Distinguishes wireless keyboard mouse from Wi-Fi.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_071",
+    "question": "Word inserted pictures become blank boxes, not black screen",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Word"
+    ],
+    "expected_source_ids": [
+      "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md"
+    ],
+    "expected_anchor_terms": [
+      "Word"
+    ],
+    "gold_evidence_note": "Distinguishes Word picture blank boxes from display black screen.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_072",
+    "question": "Screen brightness is too low, not Word blank picture",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Distinguishes screen brightness from Word blank picture.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_073",
+    "question": "Excel file menu is gray, not other Office document problem",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Excel"
+    ],
+    "expected_source_ids": [
+      "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md"
+    ],
+    "expected_anchor_terms": [
+      "Excel"
+    ],
+    "gold_evidence_note": "Distinguishes Excel gray menu from other Office issues.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_074",
+    "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0356-如何添加启用蓝牙的设备.md",
+      "0355-如何开启蓝牙模块功能.md"
+    ],
+    "expected_anchor_terms": [
+      "Bluetooth"
+    ],
+    "gold_evidence_note": "Distinguishes Bluetooth device from infrared and Wi-Fi.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_075",
+    "question": "Need to press F1 or F2 to continue startup, not shutdown problem",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "F1",
+      "F2"
+    ],
+    "expected_source_ids": [
+      "0406-开机时，需要按F1（或F2）键后才能继续启动.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Distinguishes F1/F2 startup from shutdown issue.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_076",
+    "question": "Blue screen shows 0x0000007B, not generic blue screen",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "0x0000007B"
+    ],
+    "expected_source_ids": [
+      "0212-台式和一体机蓝屏报错代码：0x0000007B.md"
+    ],
+    "expected_anchor_terms": [
+      "0x0000007B"
+    ],
+    "gold_evidence_note": "Distinguishes exact error code blue screen from generic blue screen.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_077",
+    "question": "Generic blue screen cannot enter system but no error code",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+      "0073-Windows XP系统开机出现蓝屏问题的解决方案.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Distinguishes generic blue screen from exact error code.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_078",
+    "question": "Windows 8.1 update failed, not startup fault",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [
+      "Windows 8.1"
+    ],
+    "expected_source_ids": [
+      "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md"
+    ],
+    "expected_anchor_terms": [
+      "Windows"
+    ],
+    "gold_evidence_note": "Distinguishes Windows update failure from startup fault.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_079",
+    "question": "Network adapter power management causes disconnect, not wireless mouse",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0363-如何关闭网卡的电源管理选项.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Distinguishes network adapter power management from wireless peripherals.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_080",
+    "question": "Taskbar input method icon disappeared, not Word input issue",
+    "category": "confusing",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0270-如何恢复Windows XP任务栏输入法图标.md",
+      "0271-如何恢复Windows 7任务栏输入法图标.md"
+    ],
+    "expected_anchor_terms": [
+      "????????"
+    ],
+    "gold_evidence_note": "Distinguishes taskbar input method icon from Word or PowerPoint input issue.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_081",
+    "question": "How to update network card IP address",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0211-如何更新网卡的IP地址.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has an article about updating network card IP address.",
+    "review_status": "verified"
+  },
+  {
+    "id": "case_082",
+    "question": "How to install printer hardware driver on Windows",
+    "category": "generic_answerable",
+    "expected_answerability": "answerable",
+    "expected_title_contains": [],
+    "expected_source_ids": [
+      "0298-如何在 Windows 系统下安装打印机硬件驱动程序.md"
+    ],
+    "expected_anchor_terms": [],
+    "gold_evidence_note": "Local markdown has an article about installing printer hardware driver on Windows.",
+    "review_status": "verified"
+  }
+]

@@ -1,0 +1,2023 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-05T00:24:03",
+  "resources": {
+    "crawl_dir_exists": true,
+    "crawl_markdown_count": 733,
+    "chroma_dir_exists": true,
+    "chroma_file_count": 14,
+    "env_exists": true
+  },
+  "collection_count": 974,
+  "settings": {
+    "collection_name": "its-knowledge-clean-chunk1000-v1",
+    "CHUNK_SIZE": 3000,
+    "CHUNK_OVERLAP": 200,
+    "EMBEDDING_MODEL": "Qwen/Qwen3-Embedding-8B",
+    "VECTOR_DISTANCE_SPACE": "cosine",
+    "RAG_VECTOR_CANDIDATE_TOP_K": 15,
+    "RAG_TITLE_CANDIDATE_TOP_K": 10,
+    "RAG_FINAL_TOP_K": 2,
+    "RAG_MIN_RERANK_SCORE": 0.35
+  },
+  "summary": {
+    "total_cases": 24,
+    "category_distribution": {
+      "口语化故障问题": 6,
+      "容易混淆问题": 3,
+      "标准表达问题": 3,
+      "网络问题": 1,
+      "正文和标题命中问题": 1,
+      "同义词或别称问题": 1,
+      "标题命中问题": 6,
+      "预计无答案": 3
+    },
+    "normalization_triggered": 8,
+    "normalization_not_triggered": 16,
+    "dual_retrieval_count": 8,
+    "single_retrieval_count": 16,
+    "accepted_count": 24,
+    "low_confidence_rejected_count": 0,
+    "top1_title_weak_hit_count": 4,
+    "top1_title_weak_hit_rate": 0.1667,
+    "top2_title_weak_hit_count": 6,
+    "top2_title_weak_hit_rate": 0.25,
+    "expected_no_answer_correctly_rejected": 0,
+    "expected_no_answer_not_rejected": 3,
+    "expected_answer_false_rejected": 0,
+    "ab_positive_count": 0,
+    "ab_neutral_count": 7,
+    "ab_changed_count": 0,
+    "ab_negative_count": 1,
+    "score_buckets": {
+      ">=0.50": 24
+    },
+    "top_score_min": 0.5312089507043656,
+    "top_score_median": 0.6343146448636283,
+    "top_score_max": 0.8268134132940277,
+    "possible_false_rejections": [],
+    "possible_irrelevant_accepted": [
+      "case_022",
+      "case_023",
+      "case_024"
+    ]
+  },
+  "threshold_recommendation": {
+    "recommendation": "consider_raising_to_0.40",
+    "cases_between_0.25_and_0.35": [],
+    "possible_false_rejections": [],
+    "passed_but_title_weak_miss": [
+      "case_001",
+      "case_002",
+      "case_003",
+      "case_004",
+      "case_006",
+      "case_007",
+      "case_008",
+      "case_011",
+      "case_012",
+      "case_015",
+      "case_017",
+      "case_018",
+      "case_019",
+      "case_020",
+      "case_021"
+    ],
+    "expected_no_answer_not_rejected": [
+      "case_022",
+      "case_023",
+      "case_024"
+    ]
+  },
+  "suspicious_cases": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "top_score": 0.6563383328111727,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "Windows XP 关机故障"
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "top_score": 0.6053414805643793,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "联想支持Windows 10系统升级的机型列表"
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "top_score": 0.5351204301667424,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss",
+        "dual_retrieval_possible_negative"
+      ],
+      "top_titles": [
+        "宽带连接频繁掉线",
+        "Excel文件菜单及相关功能灰色不可用怎么办？"
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "top_score": 0.6398319390632037,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Windows XP 关机故障",
+        "Excel文件菜单及相关功能灰色不可用怎么办？"
+      ]
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "top_score": 0.6343395195709776,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "case_id": "case_001",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "开不了机，屏幕不亮怎么办",
+      "normalized_question": "无法开机，黑屏怎么办",
+      "query_variants": [
+        "开不了机，屏幕不亮怎么办",
+        "无法开机，黑屏怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 36,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6563383328111727,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6563383328111727,
+          "mmr_score": 0.6563383328111727,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6014237292392017,
+          "mmr_score": 0.30839877397907234,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6563383328111727,
+          "mmr_score": 0.6563383328111727,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6014237292392017,
+          "mmr_score": 0.30839877397907234,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6583964059830366,
+            "mmr_score": 0.6583964059830366,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.603783819822407,
+            "mmr_score": 0.3101688419164763,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6563383328111727,
+            "mmr_score": 0.6563383328111727,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6014237292392017,
+            "mmr_score": 0.30839877397907234,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_002",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "开机没反应怎么办",
+      "normalized_question": "无法开机怎么办",
+      "query_variants": [
+        "开机没反应怎么办",
+        "无法开机怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 31,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6053414805643793,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6053414805643793,
+          "mmr_score": 0.6053414805643793,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5325919266741965,
+          "mmr_score": 0.26739306757364695,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6053414805643793,
+          "mmr_score": 0.6053414805643793,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5325919266741965,
+          "mmr_score": 0.26739306757364695,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6056733472996767,
+            "mmr_score": 0.6056733472996767,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "联想支持Windows 10系统升级的机型列表",
+            "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5323175930965245,
+            "mmr_score": 0.2672778272864464,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6053414805643793,
+            "mmr_score": 0.6053414805643793,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "联想支持Windows 10系统升级的机型列表",
+            "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5325919266741965,
+            "mmr_score": 0.26739306757364695,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_003",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "normalized_question": "黑屏但风扇会转怎么处理",
+      "query_variants": [
+        "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+        "黑屏但风扇会转怎么处理"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 52,
+      "candidate_count_after_dedup": 41,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5351204301667424,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5351204301667424,
+          "mmr_score": 0.5351204301667424,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.515683648398809,
+          "mmr_score": 0.2589323241773258,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5351204301667424,
+          "mmr_score": 0.5351204301667424,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.515683648398809,
+          "mmr_score": 0.2589323241773258,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "宽带连接频繁掉线",
+            "source_id": "0055-宽带连接频繁掉线.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.533365295615775,
+            "mmr_score": 0.533365295615775,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5159776813103396,
+            "mmr_score": 0.25591729448735256,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "宽带连接频繁掉线",
+            "source_id": "0055-宽带连接频繁掉线.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5351204301667424,
+            "mmr_score": 0.5351204301667424,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.515683648398809,
+            "mmr_score": 0.2589323241773258,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": true,
+        "classification": "negative"
+      }
+    },
+    {
+      "case_id": "case_004",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "normalized_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "query_variants": [
+        "开机蓝屏提示登录进程初始化失败怎么解决"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6398319390632037,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6398319390632037,
+          "mmr_score": 0.6398319390632037,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6025487772592029,
+          "mmr_score": 0.30924255999407313,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6398319390632037,
+          "mmr_score": 0.6398319390632037,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6025487772592029,
+          "mmr_score": 0.30924255999407313,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_005",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "电脑蓝屏报错0x0000007B怎么办",
+      "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+      "query_variants": [
+        "电脑蓝屏报错0x0000007B怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6371012340684956,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6371012340684956,
+          "mmr_score": 0.6371012340684956,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6147667868352691,
+          "mmr_score": 0.31416157633755604,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6371012340684956,
+          "mmr_score": 0.6371012340684956,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6147667868352691,
+          "mmr_score": 0.31416157633755604,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_006",
+      "category": "网络问题",
+      "expected_no_answer": false,
+      "original_question": "无线网络连不上怎么办",
+      "normalized_question": "无线网络连不上怎么办",
+      "query_variants": [
+        "无线网络连不上怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6343395195709776,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6343395195709776,
+          "mmr_score": 0.6343395195709776,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5823665775481475,
+          "mmr_score": 0.299703417419746,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6343395195709776,
+          "mmr_score": 0.6343395195709776,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5823665775481475,
+          "mmr_score": 0.299703417419746,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_007",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "连不上网，怎么检查网络是否通畅",
+      "normalized_question": "无法连接网络，怎么检查网络是否通畅",
+      "query_variants": [
+        "连不上网，怎么检查网络是否通畅",
+        "无法连接网络，怎么检查网络是否通畅"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 36,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6753417730088334,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6753417730088334,
+          "mmr_score": 0.6753417730088334,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6463623300959034,
+          "mmr_score": 0.3421027246215985,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6753417730088334,
+          "mmr_score": 0.6753417730088334,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6463623300959034,
+          "mmr_score": 0.3421027246215985,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6768925788850355,
+            "mmr_score": 0.6768925788850355,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.645758094028358,
+            "mmr_score": 0.34164954757093957,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Windows XP 关机故障",
+            "source_id": "0759-Windows XP 关机故障.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6753417730088334,
+            "mmr_score": 0.6753417730088334,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6463623300959034,
+            "mmr_score": 0.3421027246215985,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_008",
+      "category": "正文和标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "只使用电池有时找不到网络设备怎么办",
+      "normalized_question": "只使用电池有时找不到网络设备怎么办",
+      "query_variants": [
+        "只使用电池有时找不到网络设备怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6471269899143023,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6471269899143023,
+          "mmr_score": 0.6471269899143023,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6395530880447289,
+          "mmr_score": 0.33921000324387884,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6471269899143023,
+          "mmr_score": 0.6471269899143023,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6395530880447289,
+          "mmr_score": 0.33921000324387884,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_009",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "搜不到蓝牙设备怎么办",
+      "normalized_question": "蓝牙设备无法被发现怎么办",
+      "query_variants": [
+        "搜不到蓝牙设备怎么办",
+        "蓝牙设备无法被发现怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 54,
+      "candidate_count_after_dedup": 39,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5756142981738701,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5756142981738701,
+          "mmr_score": 0.5756142981738701,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5673097217272591,
+          "mmr_score": 0.2980697937147175,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5756142981738701,
+          "mmr_score": 0.5756142981738701,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5673097217272591,
+          "mmr_score": 0.2980697937147175,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5768177504998382,
+            "mmr_score": 0.5768177504998382,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5687532973875092,
+            "mmr_score": 0.29915247545990503,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5756142981738701,
+            "mmr_score": 0.5756142981738701,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5673097217272591,
+            "mmr_score": 0.2980697937147175,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_010",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "连不上蓝牙设备怎么添加",
+      "normalized_question": "蓝牙连接失败怎么添加",
+      "query_variants": [
+        "连不上蓝牙设备怎么添加",
+        "蓝牙连接失败怎么添加"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 56,
+      "candidate_count_after_dedup": 42,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5312089507043656,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5312089507043656,
+          "mmr_score": 0.5312089507043656,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何备份幸福之家4.X中的日记",
+          "source_id": "0884-如何备份幸福之家4.X中的日记.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.4874227784531693,
+          "mmr_score": 0.21826404821315126,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5312089507043656,
+          "mmr_score": 0.5312089507043656,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "如何备份幸福之家4.X中的日记",
+          "source_id": "0884-如何备份幸福之家4.X中的日记.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.4874227784531693,
+          "mmr_score": 0.21826404821315126,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5319729278910585,
+            "mmr_score": 0.5319729278910585,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "如何备份幸福之家4.X中的日记",
+            "source_id": "0884-如何备份幸福之家4.X中的日记.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.48882048653997234,
+            "mmr_score": 0.21940443419435468,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "0356-如何添加启用蓝牙的设备.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5312089507043656,
+            "mmr_score": 0.5312089507043656,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "如何备份幸福之家4.X中的日记",
+            "source_id": "0884-如何备份幸福之家4.X中的日记.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.4874227784531693,
+            "mmr_score": 0.21826404821315126,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_011",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "电脑没声音，音量怎么调",
+      "normalized_question": "电脑无声音，音量怎么调",
+      "query_variants": [
+        "电脑没声音，音量怎么调",
+        "电脑无声音，音量怎么调"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 27,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5950282509558078,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5950282509558078,
+          "mmr_score": 0.5950282509558078,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "一键恢复功能键在什么位置？",
+          "source_id": "0235-一键恢复功能键在什么位置？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.47062227451354477,
+          "mmr_score": 0.2154900854105518,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5950282509558078,
+          "mmr_score": 0.5950282509558078,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "一键恢复功能键在什么位置？",
+          "source_id": "0235-一键恢复功能键在什么位置？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.47062227451354477,
+          "mmr_score": 0.2154900854105518,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5952934264133287,
+            "mmr_score": 0.5952934264133287,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "一键恢复功能键在什么位置？",
+            "source_id": "0235-一键恢复功能键在什么位置？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.4696074922044381,
+            "mmr_score": 0.2152866180400328,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+            "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5950282509558078,
+            "mmr_score": 0.5950282509558078,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "一键恢复功能键在什么位置？",
+            "source_id": "0235-一键恢复功能键在什么位置？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.47062227451354477,
+            "mmr_score": 0.2154900854105518,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_012",
+      "category": "同义词或别称问题",
+      "expected_no_answer": false,
+      "original_question": "系统卡死没有响应怎么办",
+      "normalized_question": "系统无响应怎么办",
+      "query_variants": [
+        "系统卡死没有响应怎么办",
+        "系统无响应怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 30,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5824659911185619,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5824659911185619,
+          "mmr_score": 0.5824659911185619,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5507230833687018,
+          "mmr_score": 0.2681841648374133,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5824659911185619,
+          "mmr_score": 0.5824659911185619,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5507230833687018,
+          "mmr_score": 0.2681841648374133,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5828477894356725,
+            "mmr_score": 0.5828477894356725,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+            "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5507230833687018,
+            "mmr_score": 0.26789149326351497,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+            "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5824659911185619,
+            "mmr_score": 0.5824659911185619,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+            "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5507230833687018,
+            "mmr_score": 0.2681841648374133,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_013",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "电脑运行游戏卡怎么办",
+      "normalized_question": "电脑运行游戏卡怎么办",
+      "query_variants": [
+        "电脑运行游戏卡怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6369384517428107,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6369384517428107,
+          "mmr_score": 0.6369384517428107,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "新圆梦F系列电脑运行游戏卡",
+          "source_id": "0076-新圆梦F系列电脑运行游戏卡.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6001278093293705,
+          "mmr_score": 0.30920155152623846,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6369384517428107,
+          "mmr_score": 0.6369384517428107,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "新圆梦F系列电脑运行游戏卡",
+          "source_id": "0076-新圆梦F系列电脑运行游戏卡.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6001278093293705,
+          "mmr_score": 0.30920155152623846,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_014",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "normalized_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "query_variants": [
+        "Excel 文件菜单和相关功能灰色不可用怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.7025039970698292,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.7025039970698292,
+          "mmr_score": 0.7025039970698292,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6111382712966671,
+          "mmr_score": 0.3117459324952289,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.7025039970698292,
+          "mmr_score": 0.7025039970698292,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6111382712966671,
+          "mmr_score": 0.3117459324952289,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_015",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Word 插入的图片都变成空白框了怎么办",
+      "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+      "query_variants": [
+        "Word 插入的图片都变成空白框了怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6624465902741279,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6624465902741279,
+          "mmr_score": 0.6624465902741279,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6223052100195168,
+          "mmr_score": 0.31983350366640795,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6624465902741279,
+          "mmr_score": 0.6624465902741279,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6223052100195168,
+          "mmr_score": 0.31983350366640795,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_016",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Outlook 为什么没有已发送邮件的记录",
+      "normalized_question": "Outlook 为什么没有已发送邮件的记录",
+      "query_variants": [
+        "Outlook 为什么没有已发送邮件的记录"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.565492461976571,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.565492461976571,
+          "mmr_score": 0.565492461976571,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "彩色喷墨多功能一体机M920校准墨盒的操作",
+          "source_id": "0820-彩色喷墨多功能一体机M920校准墨盒的操作.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5279099148723768,
+          "mmr_score": 0.26532665155745777,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.565492461976571,
+          "mmr_score": 0.565492461976571,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "彩色喷墨多功能一体机M920校准墨盒的操作",
+          "source_id": "0820-彩色喷墨多功能一体机M920校准墨盒的操作.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5279099148723768,
+          "mmr_score": 0.26532665155745777,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_017",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "IE 只能打开首页，其他链接打不开怎么办",
+      "normalized_question": "IE 只能打开首页，其他链接打不开怎么办",
+      "query_variants": [
+        "IE 只能打开首页，其他链接打不开怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5872409414406407,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5872409414406407,
+          "mmr_score": 0.5872409414406407,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5604107507713072,
+          "mmr_score": 0.2832365473371158,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5872409414406407,
+          "mmr_score": 0.5872409414406407,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5604107507713072,
+          "mmr_score": 0.2832365473371158,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_018",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "如何使用U盘安装Windows 7操作系统",
+      "normalized_question": "如何使用U盘安装Windows 7操作系统",
+      "query_variants": [
+        "如何使用U盘安装Windows 7操作系统"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 24,
+      "candidate_count_after_dedup": 24,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.8268134132940277,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.8268134132940277,
+          "mmr_score": 0.8268134132940277,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）",
+          "source_id": "0937-使用联想系统恢复光盘安装WIN98操作系统（CHM格式）.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5559366774853229,
+          "mmr_score": 0.2593491375844341,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.8268134132940277,
+          "mmr_score": 0.8268134132940277,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）",
+          "source_id": "0937-使用联想系统恢复光盘安装WIN98操作系统（CHM格式）.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5559366774853229,
+          "mmr_score": 0.2593491375844341,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_019",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "normalized_question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "query_variants": [
+        "手机或平板电脑无法访问百度相关网站怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6423213492399225,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6423213492399225,
+          "mmr_score": 0.6423213492399225,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "视频指导：IE10浏览器如何显示快速导航界面",
+          "source_id": "0558-视频指导：IE10浏览器如何显示快速导航界面.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6281563190822673,
+          "mmr_score": 0.33236746581464166,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6423213492399225,
+          "mmr_score": 0.6423213492399225,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "视频指导：IE10浏览器如何显示快速导航界面",
+          "source_id": "0558-视频指导：IE10浏览器如何显示快速导航界面.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6281563190822673,
+          "mmr_score": 0.33236746581464166,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_020",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "屏幕保护怎么关闭或取消",
+      "normalized_question": "屏幕保护怎么关闭或取消",
+      "query_variants": [
+        "屏幕保护怎么关闭或取消"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 27,
+      "candidate_count_after_dedup": 27,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6093757128876189,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "source_id": "0618-万全T100-T400-T468 1008的硬盘配置方案.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6093757128876189,
+          "mmr_score": 0.6093757128876189,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5693715944375433,
+          "mmr_score": 0.26644552922715475,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "source_id": "0618-万全T100-T400-T468 1008的硬盘配置方案.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6093757128876189,
+          "mmr_score": 0.6093757128876189,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5693715944375433,
+          "mmr_score": 0.26644552922715475,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_021",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "风扇声音大但电脑能正常开机怎么办",
+      "normalized_question": "风扇声音大但电脑能正常开机怎么办",
+      "query_variants": [
+        "风扇声音大但电脑能正常开机怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6342897701562792,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6342897701562792,
+          "mmr_score": 0.6342897701562792,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想台式机模式转换功能介绍",
+          "source_id": "0288-联想台式机模式转换功能介绍.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5876322230284234,
+          "mmr_score": 0.30788162983674916,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6342897701562792,
+          "mmr_score": 0.6342897701562792,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "联想台式机模式转换功能介绍",
+          "source_id": "0288-联想台式机模式转换功能介绍.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5876322230284234,
+          "mmr_score": 0.30788162983674916,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_022",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "火星基地打印机怎么连接量子网络",
+      "normalized_question": "火星基地打印机怎么连接量子网络",
+      "query_variants": [
+        "火星基地打印机怎么连接量子网络"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 29,
+      "candidate_count_after_dedup": 29,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6241570894314977,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6241570894314977,
+          "mmr_score": 0.6241570894314977,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "暴风影音在播放高清视频时占用的CPU高怎么办-",
+          "source_id": "0487-暴风影音在播放高清视频时占用的CPU高怎么办-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5861753718855995,
+          "mmr_score": 0.30186200539843366,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6241570894314977,
+          "mmr_score": 0.6241570894314977,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "暴风影音在播放高清视频时占用的CPU高怎么办-",
+          "source_id": "0487-暴风影音在播放高清视频时占用的CPU高怎么办-.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5861753718855995,
+          "mmr_score": 0.30186200539843366,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_023",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "query_variants": [
+        "冰箱冷冻室结霜导致电脑不能上网怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5912533848365349,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5912533848365349,
+          "mmr_score": 0.5912533848365349,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "改善手机或平板机身发热的办法",
+          "source_id": "0108-改善手机或平板机身发热的办法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5592796427870816,
+          "mmr_score": 0.26541965266040474,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5912533848365349,
+          "mmr_score": 0.5912533848365349,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "改善手机或平板机身发热的办法",
+          "source_id": "0108-改善手机或平板机身发热的办法.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5592796427870816,
+          "mmr_score": 0.26541965266040474,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_024",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "query_variants": [
+        "手机屏幕进水后如何更换折叠屏铰链"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 24,
+      "candidate_count_after_dedup": 24,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.7042312876087977,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.7042312876087977,
+          "mmr_score": 0.7042312876087977,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "SecureBoot未正确配置",
+          "source_id": "0289-SecureBoot未正确配置.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6877515934990753,
+          "mmr_score": 0.31858392162234545,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.7042312876087977,
+          "mmr_score": 0.7042312876087977,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "SecureBoot未正确配置",
+          "source_id": "0289-SecureBoot未正确配置.md",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6877515934990753,
+          "mmr_score": 0.31858392162234545,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    }
+  ],
+  "notes": [
+    "Title weak hit is an automatic weak label based only on expected_title_contains.",
+    "It is not equivalent to real business accuracy and requires manual confirmation.",
+    "Reports intentionally omit full document text and sensitive environment values."
+  ]
+}

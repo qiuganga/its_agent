@@ -32,7 +32,7 @@ class QueryService:
 
 
         # 2. 处理检索到的知识内容
-        retrival_context="\n\n".join([f"资料{index+1}:{document}"for index,document in enumerate(retrival_context)])
+        retrival_context = self._format_retrieval_context(retrival_context)
 
         # 3. 定义提示词
         prompt = f"""
@@ -67,6 +67,22 @@ class QueryService:
 
         # 5. 返回模型的结果
         return  llm_response.content
+
+    def _format_retrieval_context(self, retrieval_context: List[Document]) -> str:
+        contexts = []
+        for index, document in enumerate(retrieval_context, start=1):
+            metadata = document.metadata or {}
+            title = metadata.get("title") or "未知标题"
+            source_id = metadata.get("source_id") or ""
+            score = metadata.get("final_rerank_score")
+            contexts.append(
+                f"资料{index}\n"
+                f"标题：{title}\n"
+                f"来源：{source_id}\n"
+                f"相关度：{score}\n"
+                f"正文：\n{document.page_content}"
+            )
+        return "\n\n".join(contexts)
 
 
 

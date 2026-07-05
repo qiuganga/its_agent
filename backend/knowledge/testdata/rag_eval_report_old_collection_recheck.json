@@ -1,0 +1,2023 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-04T23:47:54",
+  "resources": {
+    "crawl_dir_exists": true,
+    "crawl_markdown_count": 733,
+    "chroma_dir_exists": true,
+    "chroma_file_count": 14,
+    "env_exists": true
+  },
+  "collection_count": 1101,
+  "settings": {
+    "collection_name": "its-knowledge",
+    "CHUNK_SIZE": 3000,
+    "CHUNK_OVERLAP": 200,
+    "EMBEDDING_MODEL": "Qwen/Qwen3-Embedding-8B",
+    "VECTOR_DISTANCE_SPACE": "cosine",
+    "RAG_VECTOR_CANDIDATE_TOP_K": 15,
+    "RAG_TITLE_CANDIDATE_TOP_K": 10,
+    "RAG_FINAL_TOP_K": 2,
+    "RAG_MIN_RERANK_SCORE": 0.35
+  },
+  "summary": {
+    "total_cases": 24,
+    "category_distribution": {
+      "口语化故障问题": 6,
+      "容易混淆问题": 3,
+      "标准表达问题": 3,
+      "网络问题": 1,
+      "正文和标题命中问题": 1,
+      "同义词或别称问题": 1,
+      "标题命中问题": 6,
+      "预计无答案": 3
+    },
+    "normalization_triggered": 8,
+    "normalization_not_triggered": 16,
+    "dual_retrieval_count": 8,
+    "single_retrieval_count": 16,
+    "accepted_count": 24,
+    "low_confidence_rejected_count": 0,
+    "top1_title_weak_hit_count": 4,
+    "top1_title_weak_hit_rate": 0.1667,
+    "top2_title_weak_hit_count": 6,
+    "top2_title_weak_hit_rate": 0.25,
+    "expected_no_answer_correctly_rejected": 0,
+    "expected_no_answer_not_rejected": 3,
+    "expected_answer_false_rejected": 0,
+    "ab_positive_count": 0,
+    "ab_neutral_count": 8,
+    "ab_changed_count": 0,
+    "ab_negative_count": 0,
+    "score_buckets": {
+      ">=0.50": 21,
+      "0.35-0.50": 3
+    },
+    "top_score_min": 0.45977858929348675,
+    "top_score_median": 0.5774702595750181,
+    "top_score_max": 0.6778516386762434,
+    "possible_false_rejections": [],
+    "possible_irrelevant_accepted": [
+      "case_022",
+      "case_023",
+      "case_024"
+    ]
+  },
+  "threshold_recommendation": {
+    "recommendation": "consider_raising_to_0.40",
+    "cases_between_0.25_and_0.35": [],
+    "possible_false_rejections": [],
+    "passed_but_title_weak_miss": [
+      "case_001",
+      "case_002",
+      "case_003",
+      "case_005",
+      "case_006",
+      "case_007",
+      "case_008",
+      "case_009",
+      "case_011",
+      "case_012",
+      "case_015",
+      "case_017",
+      "case_018",
+      "case_020",
+      "case_021"
+    ],
+    "expected_no_answer_not_rejected": [
+      "case_022",
+      "case_023",
+      "case_024"
+    ]
+  },
+  "suspicious_cases": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "top_score": 0.5642337726750268,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "Visio 2010-2007 形状面板不见了怎么办？",
+        "Lenovo G485无线网络连接不上的解决方案"
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "top_score": 0.5462223925728276,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "电子词典LN4000操作汇总",
+        "Internet Explorer版本升级说明"
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "top_score": 0.5287652817018051,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "如何设置显卡的电源管理",
+        "智能电视开不了机并且指示灯都不亮怎么办？"
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "top_score": 0.5846510550471072,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "新圆梦F系列电脑运行游戏卡",
+        "电子词典LN4000操作汇总"
+      ]
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "top_score": 0.5809229743821851,
+      "rejected_by_low_confidence": false,
+      "reason": [
+        "top2_title_weak_miss"
+      ],
+      "top_titles": [
+        "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+        "Windows 2000蓝屏死机故障分析与排除"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "case_id": "case_001",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "开不了机，屏幕不亮怎么办",
+      "normalized_question": "无法开机，黑屏怎么办",
+      "query_variants": [
+        "开不了机，屏幕不亮怎么办",
+        "无法开机，黑屏怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 36,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5642337726750268,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Visio 2010-2007 形状面板不见了怎么办？",
+          "source_id": "0019-Visio 2010-2007 形状面板不见了怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5642337726750268,
+          "mmr_score": 0.5642337726750268,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5590641529790483,
+          "mmr_score": 0.2725349928510445,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Visio 2010-2007 形状面板不见了怎么办？",
+          "source_id": "0019-Visio 2010-2007 形状面板不见了怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5642337726750268,
+          "mmr_score": 0.5642337726750268,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5590641529790483,
+          "mmr_score": 0.2725349928510445,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Visio 2010-2007 形状面板不见了怎么办？",
+            "source_id": "0019-Visio 2010-2007 形状面板不见了怎么办？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.5646464510546702,
+            "mmr_score": 0.5646464510546702,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Lenovo G485无线网络连接不上的解决方案",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5604776644271801,
+            "mmr_score": 0.2733200074389369,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Visio 2010-2007 形状面板不见了怎么办？",
+            "source_id": "0019-Visio 2010-2007 形状面板不见了怎么办？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.5642337726750268,
+            "mmr_score": 0.5642337726750268,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Lenovo G485无线网络连接不上的解决方案",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5590641529790483,
+            "mmr_score": 0.2725349928510445,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_002",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "开机没反应怎么办",
+      "normalized_question": "无法开机怎么办",
+      "query_variants": [
+        "开机没反应怎么办",
+        "无法开机怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 49,
+      "candidate_count_after_dedup": 31,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5462223925728276,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5462223925728276,
+          "mmr_score": 0.5462223925728276,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Internet Explorer版本升级说明",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5001764997299845,
+          "mmr_score": 0.24576927266365192,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5462223925728276,
+          "mmr_score": 0.5462223925728276,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Internet Explorer版本升级说明",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5001764997299845,
+          "mmr_score": 0.24576927266365192,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "电子词典LN4000操作汇总",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5459863446511963,
+            "mmr_score": 0.5459863446511963,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Internet Explorer版本升级说明",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5001389206543392,
+            "mmr_score": 0.24602875569496535,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "电子词典LN4000操作汇总",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5462223925728276,
+            "mmr_score": 0.5462223925728276,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "Internet Explorer版本升级说明",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5001764997299845,
+            "mmr_score": 0.24576927266365192,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_003",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "normalized_question": "黑屏但风扇会转怎么处理",
+      "query_variants": [
+        "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+        "黑屏但风扇会转怎么处理"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 52,
+      "candidate_count_after_dedup": 41,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5287652817018051,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何设置显卡的电源管理",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5287652817018051,
+          "mmr_score": 0.5287652817018051,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5228054571086586,
+          "mmr_score": 0.2316942634494753,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何设置显卡的电源管理",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5287652817018051,
+          "mmr_score": 0.5287652817018051,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5228054571086586,
+          "mmr_score": 0.2316942634494753,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何设置显卡的电源管理",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5246122988434639,
+            "mmr_score": 0.5246122988434639,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+            "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.5195026261401393,
+            "mmr_score": 0.22919516812478796,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何设置显卡的电源管理",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5287652817018051,
+            "mmr_score": 0.5287652817018051,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+            "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.5228054571086586,
+            "mmr_score": 0.2316942634494753,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_004",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "normalized_question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "query_variants": [
+        "开机蓝屏提示登录进程初始化失败怎么解决"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 23,
+      "candidate_count_after_dedup": 23,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6380537277479141,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "开机蓝屏或提示登录进程初始化失败问题的解决方案（Vista）",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6380537277479141,
+          "mmr_score": 0.6380537277479141,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5998314706762669,
+          "mmr_score": 0.2955134296665516,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "开机蓝屏或提示登录进程初始化失败问题的解决方案（Vista）",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6380537277479141,
+          "mmr_score": 0.6380537277479141,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5998314706762669,
+          "mmr_score": 0.2955134296665516,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_005",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "电脑蓝屏报错0x0000007B怎么办",
+      "normalized_question": "电脑蓝屏报错0x0000007B怎么办",
+      "query_variants": [
+        "电脑蓝屏报错0x0000007B怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5846510550471072,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "新圆梦F系列电脑运行游戏卡",
+          "source_id": "0076-新圆梦F系列电脑运行游戏卡.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5846510550471072,
+          "mmr_score": 0.5846510550471072,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5750452821644836,
+          "mmr_score": 0.28024400522960613,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "新圆梦F系列电脑运行游戏卡",
+          "source_id": "0076-新圆梦F系列电脑运行游戏卡.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5846510550471072,
+          "mmr_score": 0.5846510550471072,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5750452821644836,
+          "mmr_score": 0.28024400522960613,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_006",
+      "category": "网络问题",
+      "expected_no_answer": false,
+      "original_question": "无线网络连不上怎么办",
+      "normalized_question": "无线网络连不上怎么办",
+      "query_variants": [
+        "无线网络连不上怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 24,
+      "candidate_count_after_dedup": 24,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5809229743821851,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5809229743821851,
+          "mmr_score": 0.5809229743821851,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5546277844316582,
+          "mmr_score": 0.26924946404947525,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5809229743821851,
+          "mmr_score": 0.5809229743821851,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5546277844316582,
+          "mmr_score": 0.26924946404947525,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_007",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "连不上网，怎么检查网络是否通畅",
+      "normalized_question": "无法连接网络，怎么检查网络是否通畅",
+      "query_variants": [
+        "连不上网，怎么检查网络是否通畅",
+        "无法连接网络，怎么检查网络是否通畅"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 38,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6395655466903752,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6395655466903752,
+          "mmr_score": 0.6395655466903752,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6301418577979747,
+          "mmr_score": 0.31236726310349394,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6395655466903752,
+          "mmr_score": 0.6395655466903752,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6301418577979747,
+          "mmr_score": 0.31236726310349394,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6390059267385211,
+            "mmr_score": 0.6390059267385211,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "电子词典LN4000操作汇总",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6311981508702835,
+            "mmr_score": 0.3128071528043104,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6395655466903752,
+            "mmr_score": 0.6395655466903752,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "电子词典LN4000操作汇总",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.6301418577979747,
+            "mmr_score": 0.31236726310349394,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_008",
+      "category": "正文和标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "只使用电池有时找不到网络设备怎么办",
+      "normalized_question": "只使用电池有时找不到网络设备怎么办",
+      "query_variants": [
+        "只使用电池有时找不到网络设备怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 24,
+      "candidate_count_after_dedup": 24,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6073206365119754,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6073206365119754,
+          "mmr_score": 0.6073206365119754,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5757036512370522,
+          "mmr_score": 0.2990527980267135,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6073206365119754,
+          "mmr_score": 0.6073206365119754,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5757036512370522,
+          "mmr_score": 0.2990527980267135,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_009",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "搜不到蓝牙设备怎么办",
+      "normalized_question": "蓝牙设备无法被发现怎么办",
+      "query_variants": [
+        "搜不到蓝牙设备怎么办",
+        "蓝牙设备无法被发现怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 54,
+      "candidate_count_after_dedup": 44,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5337793915237351,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5337793915237351,
+          "mmr_score": 0.5337793915237351,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "关于NOKIA手机通过红外线连接旭日150拨号上网的解决方案",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5014754493385694,
+          "mmr_score": 0.22874839801922756,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5337793915237351,
+          "mmr_score": 0.5337793915237351,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "关于NOKIA手机通过红外线连接旭日150拨号上网的解决方案",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5014754493385694,
+          "mmr_score": 0.22874839801922756,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5351049396979934,
+            "mmr_score": 0.5351049396979934,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "关于NOKIA手机通过红外线连接旭日150拨号上网的解决方案",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5026722549816113,
+            "mmr_score": 0.22964600225150897,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5337793915237351,
+            "mmr_score": 0.5337793915237351,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "关于NOKIA手机通过红外线连接旭日150拨号上网的解决方案",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5014754493385694,
+            "mmr_score": 0.22874839801922756,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_010",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "连不上蓝牙设备怎么添加",
+      "normalized_question": "蓝牙连接失败怎么添加",
+      "query_variants": [
+        "连不上蓝牙设备怎么添加",
+        "蓝牙连接失败怎么添加"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 56,
+      "candidate_count_after_dedup": 40,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.48628805025915045,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.48628805025915045,
+          "mmr_score": 0.48628805025915045,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.47260564273908395,
+          "mmr_score": 0.21093985796259376,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.48628805025915045,
+          "mmr_score": 0.48628805025915045,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.47260564273908395,
+          "mmr_score": 0.21093985796259376,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.48604375236963765,
+            "mmr_score": 0.48604375236963765,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+            "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.4726993669773239,
+            "mmr_score": 0.21081354591745993,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何添加启用蓝牙的设备",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.48628805025915045,
+            "mmr_score": 0.48628805025915045,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.47260564273908395,
+            "mmr_score": 0.21093985796259376,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_011",
+      "category": "口语化故障问题",
+      "expected_no_answer": false,
+      "original_question": "电脑没声音，音量怎么调",
+      "normalized_question": "电脑无声音，音量怎么调",
+      "query_variants": [
+        "电脑没声音，音量怎么调",
+        "电脑无声音，音量怎么调"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 50,
+      "candidate_count_after_dedup": 26,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.45977858929348675,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何通过联想电源管理软件调整电源模式",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.45977858929348675,
+          "mmr_score": 0.45977858929348675,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电脑会自动开机启动，是什么问题？",
+          "source_id": "0408-电脑会自动开机启动，是什么问题？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.41606755051680955,
+          "mmr_score": 0.17991092583991436,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何通过联想电源管理软件调整电源模式",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.45977858929348675,
+          "mmr_score": 0.45977858929348675,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电脑会自动开机启动，是什么问题？",
+          "source_id": "0408-电脑会自动开机启动，是什么问题？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.41606755051680955,
+          "mmr_score": 0.17991092583991436,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何通过联想电源管理软件调整电源模式",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.45907528208783965,
+            "mmr_score": 0.45907528208783965,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "电脑会自动开机启动，是什么问题？",
+            "source_id": "0408-电脑会自动开机启动，是什么问题？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.4180238078123845,
+            "mmr_score": 0.1815339042062196,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "如何通过联想电源管理软件调整电源模式",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.45977858929348675,
+            "mmr_score": 0.45977858929348675,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "电脑会自动开机启动，是什么问题？",
+            "source_id": "0408-电脑会自动开机启动，是什么问题？.md",
+            "retrieval_route": "title",
+            "final_rerank_score": 0.41606755051680955,
+            "mmr_score": 0.17991092583991436,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_012",
+      "category": "同义词或别称问题",
+      "expected_no_answer": false,
+      "original_question": "系统卡死没有响应怎么办",
+      "normalized_question": "系统无响应怎么办",
+      "query_variants": [
+        "系统卡死没有响应怎么办",
+        "系统无响应怎么办"
+      ],
+      "dual_retrieval_enabled": true,
+      "candidate_count_before_dedup": 49,
+      "candidate_count_after_dedup": 30,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5329886350256616,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5329886350256616,
+          "mmr_score": 0.5329886350256616,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5203025216761005,
+          "mmr_score": 0.25748759633250196,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5329886350256616,
+          "mmr_score": 0.5329886350256616,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5203025216761005,
+          "mmr_score": 0.25748759633250196,
+          "matched_by_normalized_query": true,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false,
+      "ab_comparison": {
+        "original_topk": [
+          {
+            "final_rank": 1,
+            "title": "电子词典LN4000操作汇总",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.534089992824879,
+            "mmr_score": 0.534089992824879,
+            "matched_by_normalized_query": false
+          },
+          {
+            "final_rank": 2,
+            "title": "Windows 2000蓝屏死机故障分析与排除",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5193309915079986,
+            "mmr_score": 0.25645238442572443,
+            "matched_by_normalized_query": false
+          }
+        ],
+        "dual_topk": [
+          {
+            "final_rank": 1,
+            "title": "电子词典LN4000操作汇总",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5329886350256616,
+            "mmr_score": 0.5329886350256616,
+            "matched_by_normalized_query": true
+          },
+          {
+            "final_rank": 2,
+            "title": "Windows 2000蓝屏死机故障分析与排除",
+            "source_id": "",
+            "retrieval_route": "vector",
+            "final_rerank_score": 0.5203025216761005,
+            "mmr_score": 0.25748759633250196,
+            "matched_by_normalized_query": true
+          }
+        ],
+        "dual_added_expected_title_hit": false,
+        "dual_displaced_expected_title_hit": false,
+        "classification": "neutral"
+      }
+    },
+    {
+      "case_id": "case_013",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "电脑运行游戏卡怎么办",
+      "normalized_question": "电脑运行游戏卡怎么办",
+      "query_variants": [
+        "电脑运行游戏卡怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6088593635218738,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "source_id": "0077-联想新圆梦F系列机型运行游戏卡或无法运行的解决方案.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6088593635218738,
+          "mmr_score": 0.6088593635218738,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5828551941941886,
+          "mmr_score": 0.27904635466280975,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "source_id": "0077-联想新圆梦F系列机型运行游戏卡或无法运行的解决方案.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6088593635218738,
+          "mmr_score": 0.6088593635218738,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5828551941941886,
+          "mmr_score": 0.27904635466280975,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_014",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "normalized_question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "query_variants": [
+        "Excel 文件菜单和相关功能灰色不可用怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6269816268504407,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6269816268504407,
+          "mmr_score": 0.6269816268504407,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5728471507126656,
+          "mmr_score": 0.2771453125971947,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6269816268504407,
+          "mmr_score": 0.6269816268504407,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5728471507126656,
+          "mmr_score": 0.2771453125971947,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": true,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_015",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Word 插入的图片都变成空白框了怎么办",
+      "normalized_question": "Word 插入的图片都变成空白框了怎么办",
+      "query_variants": [
+        "Word 插入的图片都变成空白框了怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.590867295810328,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.590867295810328,
+          "mmr_score": 0.590867295810328,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "单向可Ping通的原因与原理-",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5650950879342661,
+          "mmr_score": 0.2886966625225862,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.590867295810328,
+          "mmr_score": 0.590867295810328,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "单向可Ping通的原因与原理-",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5650950879342661,
+          "mmr_score": 0.2886966625225862,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_016",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "Outlook 为什么没有已发送邮件的记录",
+      "normalized_question": "Outlook 为什么没有已发送邮件的记录",
+      "query_variants": [
+        "Outlook 为什么没有已发送邮件的记录"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 23,
+      "candidate_count_after_dedup": 23,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5187732179338329,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "如何给某分区、光驱、U盘分配盘符",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5187732179338329,
+          "mmr_score": 0.5187732179338329,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.4887877263827448,
+          "mmr_score": 0.23038604442978655,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "如何给某分区、光驱、U盘分配盘符",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5187732179338329,
+          "mmr_score": 0.5187732179338329,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.4887877263827448,
+          "mmr_score": 0.23038604442978655,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_017",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "IE 只能打开首页，其他链接打不开怎么办",
+      "normalized_question": "IE 只能打开首页，其他链接打不开怎么办",
+      "query_variants": [
+        "IE 只能打开首页，其他链接打不开怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5605574067048207,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5605574067048207,
+          "mmr_score": 0.5605574067048207,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5436663431990418,
+          "mmr_score": 0.25818748587918516,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+          "source_id": "0785-联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5605574067048207,
+          "mmr_score": 0.5605574067048207,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5436663431990418,
+          "mmr_score": 0.25818748587918516,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_018",
+      "category": "标准表达问题",
+      "expected_no_answer": false,
+      "original_question": "如何使用U盘安装Windows 7操作系统",
+      "normalized_question": "如何使用U盘安装Windows 7操作系统",
+      "query_variants": [
+        "如何使用U盘安装Windows 7操作系统"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 23,
+      "candidate_count_after_dedup": 23,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.48657090393008307,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想摄像头随机软件能否保存视频捕捉属性以及视频捕捉参数？",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.48657090393008307,
+          "mmr_score": 0.48657090393008307,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.4633210043813585,
+          "mmr_score": 0.21823873924782886,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想摄像头随机软件能否保存视频捕捉属性以及视频捕捉参数？",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.48657090393008307,
+          "mmr_score": 0.48657090393008307,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.4633210043813585,
+          "mmr_score": 0.21823873924782886,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_019",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "normalized_question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "query_variants": [
+        "手机或平板电脑无法访问百度相关网站怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6333983572390931,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6333983572390931,
+          "mmr_score": 0.6333983572390931,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法",
+          "source_id": "0100-手机或平板电脑无法访问百度相关网站的解决办法.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6134757285934624,
+          "mmr_score": 0.3218316755278291,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6333983572390931,
+          "mmr_score": 0.6333983572390931,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法",
+          "source_id": "0100-手机或平板电脑无法访问百度相关网站的解决办法.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.6134757285934624,
+          "mmr_score": 0.3218316755278291,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": true
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": true
+    },
+    {
+      "case_id": "case_020",
+      "category": "标题命中问题",
+      "expected_no_answer": false,
+      "original_question": "屏幕保护怎么关闭或取消",
+      "normalized_question": "屏幕保护怎么关闭或取消",
+      "query_variants": [
+        "屏幕保护怎么关闭或取消"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 24,
+      "candidate_count_after_dedup": 24,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5848403404791753,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "改善手机或平板机身发热的办法",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5848403404791753,
+          "mmr_score": 0.5848403404791753,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何在任务栏显示或隐藏电池图标",
+          "source_id": "0336-如何在任务栏显示或隐藏电池图标.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5419257342647146,
+          "mmr_score": 0.24896560163343845,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "改善手机或平板机身发热的办法",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5848403404791753,
+          "mmr_score": 0.5848403404791753,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何在任务栏显示或隐藏电池图标",
+          "source_id": "0336-如何在任务栏显示或隐藏电池图标.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5419257342647146,
+          "mmr_score": 0.24896560163343845,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_021",
+      "category": "容易混淆问题",
+      "expected_no_answer": false,
+      "original_question": "风扇声音大但电脑能正常开机怎么办",
+      "normalized_question": "风扇声音大但电脑能正常开机怎么办",
+      "query_variants": [
+        "风扇声音大但电脑能正常开机怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5741346527781572,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5741346527781572,
+          "mmr_score": 0.5741346527781572,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5666383519351145,
+          "mmr_score": 0.27389328797763546,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5741346527781572,
+          "mmr_score": 0.5741346527781572,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+          "retrieval_route": "title",
+          "final_rerank_score": 0.5666383519351145,
+          "mmr_score": 0.27389328797763546,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_022",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "火星基地打印机怎么连接量子网络",
+      "normalized_question": "火星基地打印机怎么连接量子网络",
+      "query_variants": [
+        "火星基地打印机怎么连接量子网络"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 28,
+      "candidate_count_after_dedup": 28,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.5808058663718789,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "联想一键恢复的使用方法",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5808058663718789,
+          "mmr_score": 0.5808058663718789,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5794257451171771,
+          "mmr_score": 0.2825627582552595,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "联想一键恢复的使用方法",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5808058663718789,
+          "mmr_score": 0.5808058663718789,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "电子词典LN4000操作汇总",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5794257451171771,
+          "mmr_score": 0.2825627582552595,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_023",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "normalized_question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "query_variants": [
+        "冰箱冷冻室结霜导致电脑不能上网怎么办"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 25,
+      "candidate_count_after_dedup": 25,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.521603131710743,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "Windows自带电源管理（包括休眠、待机和睡眠）的设置方法",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.521603131710743,
+          "mmr_score": 0.521603131710743,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5134956036123652,
+          "mmr_score": 0.2242502695408914,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "Windows自带电源管理（包括休眠、待机和睡眠）的设置方法",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.521603131710743,
+          "mmr_score": 0.521603131710743,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.5134956036123652,
+          "mmr_score": 0.2242502695408914,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    },
+    {
+      "case_id": "case_024",
+      "category": "预计无答案",
+      "expected_no_answer": true,
+      "original_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "normalized_question": "手机屏幕进水后如何更换折叠屏铰链",
+      "query_variants": [
+        "手机屏幕进水后如何更换折叠屏铰链"
+      ],
+      "dual_retrieval_enabled": false,
+      "candidate_count_before_dedup": 24,
+      "candidate_count_after_dedup": 24,
+      "rejected_by_low_confidence": false,
+      "top_score": 0.6778516386762434,
+      "final_topk_count": 2,
+      "final_documents": [
+        {
+          "final_rank": 1,
+          "title": "在Windows XP下如何配置无线网络",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6778516386762434,
+          "mmr_score": 0.6778516386762434,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何恢复Windows XP任务栏输入法图标",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6700769863402853,
+          "mmr_score": 0.2810376187351015,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "documents_before_threshold": [
+        {
+          "final_rank": 1,
+          "title": "在Windows XP下如何配置无线网络",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6778516386762434,
+          "mmr_score": 0.6778516386762434,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        },
+        {
+          "final_rank": 2,
+          "title": "如何恢复Windows XP任务栏输入法图标",
+          "source_id": "",
+          "retrieval_route": "vector",
+          "final_rerank_score": 0.6700769863402853,
+          "mmr_score": 0.2810376187351015,
+          "matched_by_normalized_query": false,
+          "expected_title_contains_hit": false
+        }
+      ],
+      "top1_title_weak_hit": false,
+      "top2_title_weak_hit": false
+    }
+  ],
+  "notes": [
+    "Title weak hit is an automatic weak label based only on expected_title_contains.",
+    "It is not equivalent to real business accuracy and requires manual confirmation.",
+    "Reports intentionally omit full document text and sensitive environment values."
+  ]
+}

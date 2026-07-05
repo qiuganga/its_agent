@@ -3,6 +3,7 @@ import logging
 import aiofiles
 from knowledge.services.retrieval_service import RetrievalService
 from knowledge.services.query_service import QueryService
+from knowledge.services.query_normalization_service import query_normalization_service
 from knowledge.services.ingestion.ingestion_processor import IngestionProcessor
 from knowledge.schemas.schema import UploadResponse, QueryRequest, QueryResponse
 
@@ -81,12 +82,19 @@ async def query(request: QueryRequest):
     """
     try:
         # 1. 判断用户问题
-        user_question = request.question
+        user_question = request.question.strip() if request.question else ""
         if not user_question:
             raise HTTPException(status_code=500, detail="查询问题不存在")
 
         # 2. 调用检索器的检索方法
-        retrieval_context = retrieval_service.retrieval(user_question)
+        normalized_question = query_normalization_service.normalize(user_question)
+        query_variants = [user_question]
+        if normalized_question and normalized_question != user_question:
+            query_variants.append(normalized_question)
+        retrieval_context = retrieval_service.retrieval(
+            original_question=user_question,
+            query_variants=query_variants,
+        )
 
         # 3. 调用查询器的查询方法
         answer = query_service.generate_answer(user_question, retrieval_context)

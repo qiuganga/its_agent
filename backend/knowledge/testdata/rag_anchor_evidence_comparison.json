@@ -1,0 +1,1436 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-05T15:58:08",
+  "baseline_report": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_clean_v1_anchor_baseline.json",
+  "experiment_report": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_clean_v1_anchor_evidence.json",
+  "metrics": {
+    "baseline": {
+      "total_cases": 24,
+      "strong_anchor_case_count": 0,
+      "no_strong_anchor_case_count": 24,
+      "top1_title_weak_hit_count": 7,
+      "top2_title_weak_hit_count": 10,
+      "expected_no_answer_correctly_rejected": 0,
+      "expected_no_answer_anchor_rejected": 0,
+      "expected_no_answer_not_rejected": 3,
+      "expected_answer_false_rejected": 0,
+      "anchor_evidence_missing_count": 0,
+      "missing_source_topk_count": 0
+    },
+    "experiment": {
+      "total_cases": 24,
+      "strong_anchor_case_count": 11,
+      "no_strong_anchor_case_count": 13,
+      "top1_title_weak_hit_count": 9,
+      "top2_title_weak_hit_count": 11,
+      "expected_no_answer_correctly_rejected": 0,
+      "expected_no_answer_anchor_rejected": 3,
+      "expected_no_answer_not_rejected": 0,
+      "expected_answer_false_rejected": 0,
+      "anchor_evidence_missing_count": 3,
+      "missing_source_topk_count": 0
+    }
+  },
+  "top2_change_counts": {
+    "unchanged": 15,
+    "changed": 9
+  },
+  "focus_cases": [
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5391750934721173,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5391750934721173,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5256470093238185,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5256470093238185,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "extracted_anchors": [
+        "0x0000007B"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6133300324409076,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6933300324409075,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B"
+          ]
+        },
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.59400648065522,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47400648065522,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "extracted_anchors": [
+        "无线网络"
+      ],
+      "baseline_top2": [
+        "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "在Windows 7下如何配置无线网络",
+        "联想手机A789如何连接无线网络上网"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 7下如何配置无线网络",
+          "source_id": "0353-在Windows 7下如何配置无线网络.md",
+          "final_rerank_score": 0.5537360675001923,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6337360675001923,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "无线网络"
+          ]
+        },
+        {
+          "title": "联想手机A789如何连接无线网络上网",
+          "source_id": "0446-联想手机A789如何连接无线网络上网.md",
+          "final_rerank_score": 0.5476949964964137,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6276949964964137,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "无线网络"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "extracted_anchors": [
+        "蓝牙",
+        "蓝牙设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何确认触控板的品牌（厂商）"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何开启蓝牙模块功能"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.577574535638185,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6575745356381849,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        },
+        {
+          "title": "如何开启蓝牙模块功能",
+          "source_id": "0355-如何开启蓝牙模块功能.md",
+          "final_rerank_score": 0.5137353125423981,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5937353125423981,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "extracted_anchors": [
+        "蓝牙",
+        "蓝牙设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何备份幸福之家4.X中的日记"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.5307616001953248,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6107616001953248,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        },
+        {
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+          "final_rerank_score": 0.4723723810886072,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5523723810886072,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "extracted_anchors": [
+        "Excel"
+      ],
+      "baseline_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "Excel表导入 Access 2010 后时间显示错误怎么办-"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "final_rerank_score": 0.6265706662738548,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.7065706662738548,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Excel"
+          ]
+        },
+        {
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-",
+          "source_id": "0034-Excel表导入 Access 2010 后时间显示错误怎么办-.md",
+          "final_rerank_score": 0.5867700439627834,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6667700439627834,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Excel"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "extracted_anchors": [
+        "Word"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "source_id": "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md",
+          "final_rerank_score": 0.576646938491748,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6566469384917479,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Word"
+          ]
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5998925110912356,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47989251109123565,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "extracted_anchors": [
+        "量子网络"
+      ],
+      "baseline_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "暴风影音在播放高清视频时占用的CPU高怎么办-"
+      ],
+      "experiment_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "WinXP从待机状态唤醒后网络连接断开"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "final_rerank_score": 0.6248707379315541,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5048707379315541,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "source_id": "0896-WinXP从待机状态唤醒后网络连接断开.md",
+          "final_rerank_score": 0.5828852912390075,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.46288529123900746,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "extracted_anchors": [
+        "冰箱冷冻室"
+      ],
+      "baseline_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.5216628282865722,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.4016628282865722,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5049519045749329,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.3849519045749329,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "extracted_anchors": [
+        "折叠屏铰链"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7042312876087977,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5842312876087977,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.6478328547285436,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5278328547285436,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    }
+  ],
+  "case_comparisons": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.5988386462917739,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5988386462917739,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5450384659408581,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5450384659408581,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5391750934721173,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5391750934721173,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5256470093238185,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5256470093238185,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "宽带连接频繁掉线",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "宽带连接频繁掉线",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "final_rerank_score": 0.53221143390196,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.53221143390196,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5143750873153485,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5143750873153485,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "手机或平板电脑无法访问百度相关网站的解决办法"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "手机或平板电脑无法访问百度相关网站的解决办法"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.6395515220813949,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6395515220813949,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法",
+          "source_id": "0100-手机或平板电脑无法访问百度相关网站的解决办法.md",
+          "final_rerank_score": 0.5998843207220343,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5998843207220343,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "extracted_anchors": [
+        "0x0000007B"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6133300324409076,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6933300324409075,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B"
+          ]
+        },
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.59400648065522,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47400648065522,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "extracted_anchors": [
+        "无线网络"
+      ],
+      "baseline_top2": [
+        "联想无线键鼠套装安装注意事项，无线键盘或鼠标突然失灵怎么办？",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "在Windows 7下如何配置无线网络",
+        "联想手机A789如何连接无线网络上网"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 7下如何配置无线网络",
+          "source_id": "0353-在Windows 7下如何配置无线网络.md",
+          "final_rerank_score": 0.5537360675001923,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6337360675001923,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "无线网络"
+          ]
+        },
+        {
+          "title": "联想手机A789如何连接无线网络上网",
+          "source_id": "0446-联想手机A789如何连接无线网络上网.md",
+          "final_rerank_score": 0.5476949964964137,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6276949964964137,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "无线网络"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "WPS Office中如何打印稿纸"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "WPS Office中如何打印稿纸"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.6751524121935604,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6751524121935604,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "WPS Office中如何打印稿纸",
+          "source_id": "0914-WPS Office中如何打印稿纸.md",
+          "final_rerank_score": 0.6190824948325921,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6190824948325921,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_008",
+      "question": "只使用电池有时找不到网络设备怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "关于电池充电、保养、设置、较准的方法汇总"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "关于电池充电、保养、设置、较准的方法汇总"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.6464543786940902,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6464543786940902,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "关于电池充电、保养、设置、较准的方法汇总",
+          "source_id": "0420-关于电池充电、保养、设置、较准的方法汇总.md",
+          "final_rerank_score": 0.6001197239161706,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6001197239161706,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "extracted_anchors": [
+        "蓝牙",
+        "蓝牙设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何确认触控板的品牌（厂商）"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何开启蓝牙模块功能"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.577574535638185,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6575745356381849,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        },
+        {
+          "title": "如何开启蓝牙模块功能",
+          "source_id": "0355-如何开启蓝牙模块功能.md",
+          "final_rerank_score": 0.5137353125423981,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5937353125423981,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "extracted_anchors": [
+        "蓝牙",
+        "蓝牙设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何备份幸福之家4.X中的日记"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.5307616001953248,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6107616001953248,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        },
+        {
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+          "final_rerank_score": 0.4723723810886072,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5523723810886072,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "蓝牙",
+            "蓝牙设备"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "一键恢复功能键在什么位置？"
+      ],
+      "experiment_top2": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "一键恢复功能键在什么位置？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5969357222656353,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5969357222656353,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "一键恢复功能键在什么位置？",
+          "source_id": "0235-一键恢复功能键在什么位置？.md",
+          "final_rerank_score": 0.4714026989958786,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4714026989958786,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "experiment_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.5523975784676328,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5523975784676328,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5444469671082601,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5444469671082601,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_013",
+      "question": "电脑运行游戏卡怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "source_id": "0077-联想新圆梦F系列机型运行游戏卡或无法运行的解决方案.md",
+          "final_rerank_score": 0.6078380614558603,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6078380614558603,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.5949418112245598,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5949418112245598,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "extracted_anchors": [
+        "Excel"
+      ],
+      "baseline_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "Excel表导入 Access 2010 后时间显示错误怎么办-"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "final_rerank_score": 0.6265706662738548,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.7065706662738548,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Excel"
+          ]
+        },
+        {
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-",
+          "source_id": "0034-Excel表导入 Access 2010 后时间显示错误怎么办-.md",
+          "final_rerank_score": 0.5867700439627834,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6667700439627834,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Excel"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "extracted_anchors": [
+        "Word"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "source_id": "0016-为什么 Word 2010-2007 中插入的图片都变成空白框了？.md",
+          "final_rerank_score": 0.576646938491748,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6566469384917479,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Word"
+          ]
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5998925110912356,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.47989251109123565,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_016",
+      "question": "Outlook 为什么没有已发送邮件的记录",
+      "extracted_anchors": [
+        "Outlook"
+      ],
+      "baseline_top2": [
+        "Outlook为何没有已发送邮件的记录-",
+        "彩色喷墨多功能一体机M920校准墨盒的操作"
+      ],
+      "experiment_top2": [
+        "Outlook为何没有已发送邮件的记录-",
+        "将Outlook设为Mac默认程序后为何仍弹出Apple Mail？"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "final_rerank_score": 0.5680568626982915,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6480568626982914,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Outlook"
+          ]
+        },
+        {
+          "title": "将Outlook设为Mac默认程序后为何仍弹出Apple Mail？",
+          "source_id": "0024-将Outlook设为Mac默认程序后为何仍弹出Apple Mail？.md",
+          "final_rerank_score": 0.5073217795880285,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5873217795880284,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Outlook"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_017",
+      "question": "IE 只能打开首页，其他链接打不开怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "Vista系统下随机软件的安装与卸载"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "Vista系统下随机软件的安装与卸载"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5721589250812719,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5721589250812719,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "Vista系统下随机软件的安装与卸载",
+          "source_id": "0003-Vista系统下随机软件的安装与卸载.md",
+          "final_rerank_score": 0.5446022648300166,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5446022648300166,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_018",
+      "question": "如何使用U盘安装Windows 7操作系统",
+      "extracted_anchors": [
+        "Windows"
+      ],
+      "baseline_top2": [
+        "联想硬盘保护EDU7.X的安装方法",
+        "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+      ],
+      "experiment_top2": [
+        "联想硬盘保护EDU7.X的安装方法",
+        "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "final_rerank_score": 0.825057241001603,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.705057241001603,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-",
+          "source_id": "0970-使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-.md",
+          "final_rerank_score": 0.5240751952683053,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.6040751952683052,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "case_019",
+      "question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "手机或平板电脑无法访问百度相关网站的解决办法"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "两台电脑如何共享访问"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6340806446022158,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6340806446022158,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "两台电脑如何共享访问",
+          "source_id": "0284-两台电脑如何共享访问.md",
+          "final_rerank_score": 0.6075196612600569,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6075196612600569,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_020",
+      "question": "屏幕保护怎么关闭或取消",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "万全T100-T400-T468 1008的硬盘配置方案",
+        "天权2000产品示意图及功能键说明"
+      ],
+      "experiment_top2": [
+        "万全T100-T400-T468 1008的硬盘配置方案",
+        "天权2000产品示意图及功能键说明"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "source_id": "0618-万全T100-T400-T468 1008的硬盘配置方案.md",
+          "final_rerank_score": 0.610711747446053,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.610711747446053,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "final_rerank_score": 0.5688090557743186,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5688090557743186,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_021",
+      "question": "风扇声音大但电脑能正常开机怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "联想V858-V658手机如何使用语音短信功能？"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "联想V858-V658手机如何使用语音短信功能？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.5979516077584652,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5979516077584652,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "联想V858-V658手机如何使用语音短信功能？",
+          "source_id": "0850-联想V858-V658手机如何使用语音短信功能？.md",
+          "final_rerank_score": 0.5518924537303254,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5518924537303254,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "extracted_anchors": [
+        "量子网络"
+      ],
+      "baseline_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "暴风影音在播放高清视频时占用的CPU高怎么办-"
+      ],
+      "experiment_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "WinXP从待机状态唤醒后网络连接断开"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "final_rerank_score": 0.6248707379315541,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5048707379315541,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "source_id": "0896-WinXP从待机状态唤醒后网络连接断开.md",
+          "final_rerank_score": 0.5828852912390075,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.46288529123900746,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "extracted_anchors": [
+        "冰箱冷冻室"
+      ],
+      "baseline_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.5216628282865722,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.4016628282865722,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5049519045749329,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.3849519045749329,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "extracted_anchors": [
+        "折叠屏铰链"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7042312876087977,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5842312876087977,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.6478328547285436,
+          "anchor_adjustment": -0.12,
+          "evidence_adjusted_score": 0.5278328547285436,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": []
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "expected_title_contains remains a weak label and is not treated as ground truth.",
+    "Anchor rejection is based only on extracted anchors from original_question and final TopK evidence fields."
+  ]
+}

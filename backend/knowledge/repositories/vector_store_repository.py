@@ -118,5 +118,11 @@ class VectorStoreRepository:
     def embedd_documents(self, texts: List[str]) -> List[List[float]]:
         return self.embedding.embed_documents(texts)
 
-    def search_similarity_with_score(self, user_question: str, top_k: int = 5) -> List[tuple[Document, float]]:
+    def search_similarity_with_score(
+        self,
+        user_question: str,
+        top_k: int | None = None,
+    ) -> List[tuple[Document, float]]:
+        if top_k is None:
+            top_k = settings.RAG_VECTOR_CANDIDATE_TOP_K
         return self.vector_database.similarity_search_with_score(user_question, top_k)
