@@ -14,3 +14,4 @@ jieba                # 中文分词库，RAG 中处理中文切词和关键词�
 unstructured         # 强大的文档解析库，用于解析 PDF、Word 等非结构化文件
 markdown             # 标准 Markdown 解析库，用于分析 MD 结构或转回 HTML
 python-multipart     # 表单数据解析库，FastAPI 处理文件上传 (UploadFile)
+matplotlib           # 离线评测报告绘图，生成 ROC / PR / Threshold PNG
