@@ -1,4 +1,10 @@
+import logging
 import re
+
+from services.query_alias_mapping_service import query_alias_mapping_service
+
+
+logger = logging.getLogger(__name__)
 
 
 NORMALIZATION_RULES = [
@@ -46,12 +52,33 @@ NORMALIZATION_CLEANUPS = [
 class QueryNormalizationService:
     """Rule-based Chinese query normalization for RAG retrieval."""
 
+    def __init__(self, alias_mapping_service=query_alias_mapping_service):
+        self.alias_mapping_service = alias_mapping_service
+        self.last_debug_info = {}
+
     def normalize(self, original_question: str) -> str:
         normalized = self._normalize_text(original_question)
         for source, target in ORDERED_NORMALIZATION_RULES:
             normalized = normalized.replace(source, target)
         normalized = self._cleanup_duplicates(normalized)
-        return self._normalize_text(normalized)
+        normalized = self._normalize_text(normalized)
+        alias_query = self.alias_mapping_service.map_alias(normalized)
+        alias_query = self._normalize_text(alias_query)
+        alias_applied = alias_query != normalized
+        self.last_debug_info = {
+            "original_query": original_question or "",
+            "normalized_query": normalized,
+            "alias_query": alias_query,
+            "alias_applied": alias_applied,
+        }
+        logger.debug(
+            "Query normalization alias mapping: Original Query=%r Normalized Query=%r Alias Query=%r Alias Applied=%s",
+            original_question,
+            normalized,
+            alias_query,
+            alias_applied,
+        )
+        return alias_query
 
     @staticmethod
     def _normalize_text(text: str | None) -> str:

@@ -77,6 +77,12 @@ def metric_summary(report: dict[str, Any]) -> dict[str, Any]:
         "anchor_evidence_missing_count": summary.get("anchor_evidence_missing_count", 0),
         "hard_evidence_exists_outside_topk_count": summary.get("hard_evidence_exists_outside_topk_count", 0),
         "negative_anchor_penalty_count": summary.get("negative_anchor_penalty_count", 0),
+        "bm25_mode": summary.get("bm25_mode", "off"),
+        "bm25_candidate_total": summary.get("bm25_candidate_total", 0),
+        "bm25_unique_added_total": summary.get("bm25_unique_added_total", 0),
+        "bm25_vector_overlap_total": summary.get("bm25_vector_overlap_total", 0),
+        "bm25_title_overlap_total": summary.get("bm25_title_overlap_total", 0),
+        "source_id_missing_before_rerank_total": summary.get("source_id_missing_before_rerank_total", 0),
         "missing_source_topk_count": missing_source_count(report),
         "group_metrics": summary.get("group_metrics", {}),
     }
@@ -94,6 +100,8 @@ def summarize_doc(doc: dict[str, Any]) -> dict[str, Any]:
         "hard_anchor_adjustment": doc.get("hard_anchor_adjustment"),
         "soft_anchor_adjustment": doc.get("soft_anchor_adjustment"),
         "negative_anchor_adjustment": doc.get("negative_anchor_adjustment"),
+        "retrieval_routes": doc.get("retrieval_routes") or [],
+        "bm25_score": doc.get("bm25_score"),
     }
 
 
@@ -128,6 +136,7 @@ def build_comparison() -> dict[str, Any]:
 def build_comparison_from_paths(baseline_path: Path, experiment_path: Path) -> dict[str, Any]:
     baseline = load_json(baseline_path)
     experiment = load_json(experiment_path)
+    validate_comparable_reports(baseline, experiment)
     baseline_map = result_map(baseline)
     experiment_map = result_map(experiment)
     case_ids = sorted(set(baseline_map) & set(experiment_map))
@@ -144,12 +153,97 @@ def build_comparison_from_paths(baseline_path: Path, experiment_path: Path) -> d
         },
         "top2_change_counts": dict(changed_counter),
         "analysis": build_analysis(baseline, experiment, comparisons),
+        "bm25_analysis": build_bm25_analysis(baseline, experiment, comparisons),
         "focus_cases": [item for item in comparisons if item["case_id"] in FOCUS_CASES],
         "case_comparisons": comparisons,
         "notes": [
             "expected_title_contains remains a weak label and is not treated as ground truth.",
             "Anchor rejection is based only on extracted anchors from original_question and final TopK evidence fields.",
         ],
+    }
+
+
+def validate_comparable_reports(
+    baseline: dict[str, Any],
+    experiment: dict[str, Any],
+    *,
+    expected_total_cases: int | None = None,
+) -> None:
+    baseline_summary = baseline.get("summary", {})
+    experiment_summary = experiment.get("summary", {})
+    baseline_settings = baseline.get("settings", {})
+    experiment_settings = experiment.get("settings", {})
+    baseline_total = baseline_summary.get("total_cases")
+    experiment_total = experiment_summary.get("total_cases")
+    errors = []
+
+    if baseline_total != experiment_total:
+        errors.append(f"total_cases mismatch: baseline={baseline_total}, experiment={experiment_total}")
+    if expected_total_cases is not None and baseline_total != expected_total_cases:
+        errors.append(f"baseline total_cases must be {expected_total_cases}, got {baseline_total}")
+    if expected_total_cases is not None and experiment_total != expected_total_cases:
+        errors.append(f"experiment total_cases must be {expected_total_cases}, got {experiment_total}")
+    if baseline.get("cases_file") != experiment.get("cases_file"):
+        errors.append(f"cases_file mismatch: baseline={baseline.get('cases_file')}, experiment={experiment.get('cases_file')}")
+
+    comparable_setting_keys = [
+        "collection_name",
+        "RAG_ANCHOR_EVIDENCE_MODE",
+        "EMBEDDING_MODEL",
+        "VECTOR_DISTANCE_SPACE",
+        "RAG_VECTOR_CANDIDATE_TOP_K",
+        "RAG_TITLE_CANDIDATE_TOP_K",
+        "RAG_FINAL_TOP_K",
+        "RAG_MIN_RERANK_SCORE",
+    ]
+    for key in comparable_setting_keys:
+        if baseline_settings.get(key) != experiment_settings.get(key):
+            errors.append(f"{key} mismatch: baseline={baseline_settings.get(key)}, experiment={experiment_settings.get(key)}")
+
+    baseline_bm25 = baseline_summary.get("bm25_mode") or baseline_settings.get("RAG_BM25_MODE")
+    experiment_bm25 = experiment_summary.get("bm25_mode") or experiment_settings.get("RAG_BM25_MODE")
+    if baseline_bm25 == experiment_bm25:
+        errors.append(f"bm25_mode should differ for A/B comparison, got both={baseline_bm25}")
+
+    if errors:
+        raise ValueError("Reports are not comparable: " + "; ".join(errors))
+
+
+def infer_expected_total_cases(args: argparse.Namespace) -> int | None:
+    if args.expected_total_cases is not None:
+        return args.expected_total_cases
+    if args.output_prefix and "v2_82" in args.output_prefix:
+        return 82
+    return None
+
+
+def build_bm25_analysis(
+    baseline: dict[str, Any],
+    experiment: dict[str, Any],
+    comparisons: list[dict[str, Any]],
+) -> dict[str, Any]:
+    baseline_summary = baseline.get("summary", {})
+    experiment_summary = experiment.get("summary", {})
+    changed = [item for item in comparisons if item["top2_changed"]]
+    improved = []
+    regressed = []
+    for item in comparisons:
+        baseline_hit = bool((result_map(baseline).get(item["case_id"]) or {}).get("top2_title_weak_hit"))
+        experiment_hit = bool((result_map(experiment).get(item["case_id"]) or {}).get("top2_title_weak_hit"))
+        if experiment_hit and not baseline_hit:
+            improved.append(item["case_id"])
+        if baseline_hit and not experiment_hit:
+            regressed.append(item["case_id"])
+    return {
+        "baseline_bm25_mode": baseline_summary.get("bm25_mode", "off"),
+        "experiment_bm25_mode": experiment_summary.get("bm25_mode", "off"),
+        "bm25_candidate_delta": int(experiment_summary.get("bm25_candidate_total", 0))
+        - int(baseline_summary.get("bm25_candidate_total", 0)),
+        "bm25_unique_added_delta": int(experiment_summary.get("bm25_unique_added_total", 0))
+        - int(baseline_summary.get("bm25_unique_added_total", 0)),
+        "top2_changed_cases": [item["case_id"] for item in changed],
+        "top2_weak_hit_improved_cases": improved,
+        "top2_weak_hit_regressed_cases": regressed,
     }
 
 
@@ -254,6 +348,9 @@ def render_markdown(comparison: dict[str, Any]) -> str:
     analysis = comparison.get("analysis", {})
     for key, value in analysis.items():
         lines.append(f"- {key}: {value}")
+    lines.extend(["", "## BM25 Analysis", ""])
+    for key, value in comparison.get("bm25_analysis", {}).items():
+        lines.append(f"- {key}: {value}")
     if comparison.get("three_way_analysis"):
         lines.extend(["", "## Three-way Analysis", ""])
         for key, value in comparison["three_way_analysis"].items():
@@ -293,13 +390,26 @@ def main() -> int:
     parser.add_argument("--legacy", help="Legacy anchor report JSON path.")
     parser.add_argument("--experiment", help="Experimental report JSON path.")
     parser.add_argument("--output-prefix", help="Write comparison to testdata/<prefix>.json/.md.")
+    parser.add_argument("--expected-total-cases", type=int, help="Reject comparison unless both reports have this total_cases value.")
     args = parser.parse_args()
     baseline = Path(args.baseline) if args.baseline else (BASELINE_REPORT if BASELINE_REPORT.exists() else FALLBACK_BASELINE_REPORT)
     experiment = Path(args.experiment) if args.experiment else EXPERIMENT_REPORT
-    if args.legacy:
-        comparison = build_three_way_comparison_from_paths(baseline, Path(args.legacy), experiment)
-    else:
-        comparison = build_comparison_from_paths(baseline, experiment)
+    try:
+        if args.legacy:
+            comparison = build_three_way_comparison_from_paths(baseline, Path(args.legacy), experiment)
+        else:
+            expected_total_cases = infer_expected_total_cases(args)
+            baseline_report = load_json(baseline)
+            experiment_report = load_json(experiment)
+            validate_comparable_reports(
+                baseline_report,
+                experiment_report,
+                expected_total_cases=expected_total_cases,
+            )
+            comparison = build_comparison_from_paths(baseline, experiment)
+    except ValueError as exc:
+        print(f"RAG comparison refused: {exc}")
+        return 2
     if args.output_prefix:
         safe_prefix = Path(args.output_prefix).name
         json_path = TESTDATA / f"{safe_prefix}.json"

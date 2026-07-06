@@ -9,6 +9,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from config.settings import settings
 from repositories.vector_store_repository import VectorStoreRepository
+from repositories.bm25_repository import Bm25Repository
+from repositories.reranker_repository import SiliconFlowRerankerRepository
 from services.ingestion.ingestion_processor import IngestionProcessor
 from services.anchor_evidence_service import (
     apply_anchor_adjustment,
@@ -41,6 +43,10 @@ class RetrievalService:
         anchor_require_evidence_for_block: bool | None = None,
         anchor_evidence_mode: str | None = None,
         anchor_evidence_window_size: int | None = None,
+        bm25_mode: str = "off",
+        bm25_repository: Bm25Repository | None = None,
+        reranker_mode: str | None = None,
+        reranker_repository: SiliconFlowRerankerRepository | None = None,
     ):
         self.chroma_vector = chroma_vector or VectorStoreRepository()
         self.spliter = spliter or IngestionProcessor(vector_store=self.chroma_vector)
@@ -72,6 +78,23 @@ class RetrievalService:
             else bool(anchor_require_evidence_for_block)
         )
         self._last_anchor_window_documents: list[Document] = []
+        self.bm25_mode = (bm25_mode or "off").strip().lower()
+        if self.bm25_mode not in {"off", "experimental"}:
+            self.bm25_mode = "off"
+        self.bm25_repository = bm25_repository
+        if self.bm25_mode == "experimental":
+            self.bm25_repository = self.bm25_repository or Bm25Repository()
+            self.bm25_repository.load_index()
+        self.reranker_mode = (reranker_mode or settings.RAG_RERANKER_MODE or "off").strip().lower()
+        if self.reranker_mode not in {"off", "experimental"}:
+            self.reranker_mode = "off"
+        self.reranker_repository = reranker_repository
+        if self.reranker_mode == "experimental":
+            self.reranker_repository = self.reranker_repository or SiliconFlowRerankerRepository()
+        self.reranker_success_count = 0
+        self.reranker_failure_count = 0
+        self.reranker_latency_ms: list[int] = []
+        self.reranker_invalid_result_count = 0
 
     def rough_ranking(self, user_query, mds_metadata: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if not user_query:
@@ -137,15 +160,22 @@ class RetrievalService:
         """Run vector and title retrieval for one query variant without final rerank."""
         based_vector_candidates = self._search_based_vector(query)
         based_title_candidates = self._search_based_title(query)
+        based_bm25_candidates = self._search_based_bm25(query)
         is_normalized_match = bool(original_question and query != original_question)
-        for document in based_vector_candidates + based_title_candidates:
+        for document in based_vector_candidates + based_title_candidates + based_bm25_candidates:
             document.metadata = dict(document.metadata or {})
             document.metadata["matched_by_normalized_query"] = is_normalized_match
-        return based_vector_candidates + based_title_candidates
+        return based_vector_candidates + based_title_candidates + based_bm25_candidates
 
-    def rerank_candidates(self, original_question: str, candidates: List[Document]) -> List[Document]:
+    def rerank_candidates(
+        self,
+        original_question: str,
+        candidates: List[Document],
+        *,
+        use_reranker: bool = True,
+    ) -> List[Document]:
         """Use only the original user question for final semantic rerank and MMR."""
-        return self._reranking(candidates, original_question)
+        return self._reranking(candidates, original_question, use_reranker=use_reranker)
 
     def retrieval(
         self,
@@ -242,6 +272,21 @@ class RetrievalService:
                 candidates.append(document)
         return candidates
 
+    def _search_based_bm25(self, user_query: str) -> List[Document]:
+        if self.bm25_mode != "experimental":
+            return []
+        if self.bm25_repository is None:
+            raise RuntimeError("BM25 experimental mode requires a BM25 repository")
+        documents = self.bm25_repository.search(
+            user_query,
+            top_k=settings.RAG_BM25_CANDIDATE_TOP_K,
+            query_variant=user_query,
+        )
+        for document in documents:
+            document.metadata = dict(document.metadata or {})
+            document.metadata["retrieval_route"] = "bm25"
+        return [document for document in documents if self._is_valid_document(document)]
+
     def _search_based_title(self, user_query: str) -> List[Document]:
         mds_metadata = MarkDownUtils.collect_md_metadata(settings.CRAWL_OUTPUT_DIR)
         rough_mds_metadata = self.rough_ranking(user_query, mds_metadata)
@@ -305,18 +350,45 @@ class RetrievalService:
             )
             if key not in seen:
                 seen.add(key)
+                document.metadata = dict(document.metadata or {})
+                route = document.metadata.get("retrieval_route")
+                document.metadata["retrieval_routes"] = [route] if route else []
+                if route == "bm25" and document.metadata.get("bm25_query_variants"):
+                    document.metadata["bm25_query_variants"] = list(document.metadata.get("bm25_query_variants") or [])
                 existing_by_key[key] = document
                 unique_candidates.append(document)
             else:
                 existing = existing_by_key[key]
                 existing.metadata = dict(existing.metadata or {})
+                route = document.metadata.get("retrieval_route")
+                routes = list(existing.metadata.get("retrieval_routes") or [])
+                if route and route not in routes:
+                    routes.append(route)
+                existing.metadata["retrieval_routes"] = routes
                 existing.metadata["matched_by_normalized_query"] = bool(
                     existing.metadata.get("matched_by_normalized_query")
                     or document.metadata.get("matched_by_normalized_query")
                 )
+                if document.metadata.get("bm25_score") is not None:
+                    existing.metadata["bm25_score"] = max(
+                        float(existing.metadata.get("bm25_score") or 0.0),
+                        float(document.metadata.get("bm25_score") or 0.0),
+                    )
+                    existing.metadata["matched_by_bm25_query"] = document.metadata.get("matched_by_bm25_query")
+                    variants = list(existing.metadata.get("bm25_query_variants") or [])
+                    for variant in document.metadata.get("bm25_query_variants") or []:
+                        if variant not in variants:
+                            variants.append(variant)
+                    existing.metadata["bm25_query_variants"] = variants
         return unique_candidates
 
-    def _reranking(self, unique_candidates: List[Document], user_question: str) -> List[Document]:
+    def _reranking(
+        self,
+        unique_candidates: List[Document],
+        user_question: str,
+        *,
+        use_reranker: bool = True,
+    ) -> List[Document]:
         candidates = [doc for doc in unique_candidates if self._is_valid_document(doc)]
         if not candidates:
             return []
@@ -342,9 +414,14 @@ class RetrievalService:
         for index, doc in enumerate(valid_candidates):
             score = max(float(similarities[index]), 0.0)
             doc.metadata = dict(doc.metadata or {})
+            doc.metadata["embedding_rerank_score"] = score
+            doc.metadata["ranking_base_score"] = score
             doc.metadata["final_rerank_score"] = score
             doc.metadata["canonical_embedding_text_hash"] = build_content_hash(canonical_texts[index])
             scored.append((doc, score, candidate_embeddings[index]))
+
+        if use_reranker and self.reranker_mode == "experimental":
+            scored = self._apply_experimental_reranker(user_question, scored)
 
         if self.is_anchor_evidence_enabled():
             apply_anchor_adjustment(
@@ -378,6 +455,81 @@ class RetrievalService:
             doc.metadata["mmr_score"] = float(mmr_score)
             doc.metadata["final_rank"] = rank
         return [doc for doc, _ in selected]
+
+    def _apply_experimental_reranker(
+        self,
+        user_question: str,
+        scored: list[tuple[Document, float, list[float]]],
+    ) -> list[tuple[Document, float, list[float]]]:
+        if not scored:
+            return scored
+        if self.reranker_repository is None:
+            raise RuntimeError("Reranker experimental mode requires a reranker repository")
+        documents = [
+            self._build_reranker_document_text(doc)
+            for doc, _, _ in scored
+        ]
+        try:
+            results = self.reranker_repository.rerank(
+                user_question,
+                documents,
+                top_n=len(documents),
+            )
+        except Exception:
+            self.reranker_failure_count += 1
+            raise
+        if len(results) != len(scored):
+            self.reranker_invalid_result_count += 1
+            raise RuntimeError(
+                f"Reranker returned {len(results)} results for {len(scored)} candidates"
+            )
+        result_by_index = {result.candidate_index: result for result in results}
+        if len(result_by_index) != len(results):
+            self.reranker_invalid_result_count += 1
+            raise RuntimeError("Reranker returned duplicate candidate indexes")
+
+        reranked = []
+        for index, (doc, _, embedding) in enumerate(scored):
+            result = result_by_index.get(index)
+            if result is None:
+                self.reranker_invalid_result_count += 1
+                raise RuntimeError(f"Reranker missing candidate index {index}")
+            doc.metadata = dict(doc.metadata or {})
+            doc.metadata["reranker_provider"] = getattr(self.reranker_repository, "provider", "unknown")
+            doc.metadata["reranker_model"] = getattr(self.reranker_repository, "model", settings.RAG_RERANKER_MODEL)
+            doc.metadata["reranker_score"] = float(result.reranker_score)
+            doc.metadata["reranker_rank"] = int(result.rank)
+            doc.metadata["ranking_base_score"] = float(result.reranker_score)
+            doc.metadata["final_rerank_score"] = float(result.reranker_score)
+            reranked.append((doc, float(result.reranker_score), embedding))
+
+        call_stats = getattr(self.reranker_repository, "last_call_stats", None)
+        if call_stats is not None:
+            self.reranker_latency_ms.append(int(call_stats.duration_ms))
+        self.reranker_success_count += 1
+        return reranked
+
+    def _build_reranker_document_text(self, document: Document) -> str:
+        metadata = document.metadata or {}
+        title = str(metadata.get("title") or "").strip()
+        keywords = metadata.get("keywords") or metadata.get("keyword") or metadata.get("tags") or []
+        if isinstance(keywords, str):
+            keyword_text = keywords.strip()
+        elif isinstance(keywords, (list, tuple, set)):
+            keyword_text = " ".join(str(item).strip() for item in keywords if str(item).strip())
+        else:
+            keyword_text = ""
+        content = strip_existing_source_prefixes(document.page_content or "")
+        max_chars = max(int(settings.RAG_RERANKER_MAX_DOCUMENT_CHARS), 200)
+        if len(content) > max_chars:
+            content = content[:max_chars]
+        parts = []
+        if title:
+            parts.append(f"标题:\n{title}")
+        if keyword_text:
+            parts.append(f"关键词:\n{keyword_text}")
+        parts.append(f"正文:\n{content}")
+        return "\n\n".join(parts).strip()
 
     def _select_mmr(self, scored: list[tuple[Document, float, list[float]]], top_k: int) -> list[tuple[Document, float]]:
         if not scored or top_k <= 0:
