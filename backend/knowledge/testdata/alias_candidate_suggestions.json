@@ -1,0 +1,1857 @@
+{
+  "schema_version": "alias-candidate-mining-v1",
+  "inputs": {
+    "alias_file": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\config\\query_aliases.yaml",
+    "cases_file": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_cases_v2.json",
+    "reranker_report_file": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_siliconflow_reranker.json",
+    "bm25_report_file": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_experimental.json",
+    "threshold_analysis_file": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_threshold_analysis.json"
+  },
+  "summary": {
+    "total_candidates": 15,
+    "new_suggestion_count": 5,
+    "existing_alias_count": 10,
+    "high_confidence_count": 11,
+    "medium_confidence_count": 3,
+    "low_confidence_count": 1,
+    "risk_counts": {
+      "existing": 10,
+      "low": 3,
+      "medium": 2
+    },
+    "problem_reason_counts": {
+      "CANDIDATE_LOST_AFTER_RERANKER": 12,
+      "FALSE_REJECTION": 15,
+      "RERANKER_REGRESSION": 1,
+      "TOP2_TITLE_MISS": 21
+    },
+    "threshold_recommendation": {
+      "current_threshold": 0.35,
+      "recommended_threshold": 0.2,
+      "decision": "recommend_change",
+      "message": "建议将生产 Threshold 调整为 0.20，F1 从 0.8544 提升到 0.8704。",
+      "current_metrics": {
+        "threshold": 0.35,
+        "precision": 1.0,
+        "recall": 0.745763,
+        "f1": 0.854369,
+        "accuracy": 0.817073,
+        "FP": 0,
+        "FN": 15,
+        "reject_rate": 0.463415,
+        "accepted_rate": 0.536585
+      },
+      "best_precision": {
+        "threshold": 0.35,
+        "precision": 1.0,
+        "recall": 0.745763,
+        "f1": 0.854369,
+        "accuracy": 0.817073,
+        "FP": 0,
+        "FN": 15,
+        "reject_rate": 0.463415,
+        "accepted_rate": 0.536585
+      },
+      "best_recall": {
+        "threshold": 0.2,
+        "precision": 0.959184,
+        "recall": 0.79661,
+        "f1": 0.87037,
+        "accuracy": 0.829268,
+        "FP": 2,
+        "FN": 12,
+        "reject_rate": 0.402439,
+        "accepted_rate": 0.597561
+      },
+      "best_f1": {
+        "threshold": 0.2,
+        "precision": 0.959184,
+        "recall": 0.79661,
+        "f1": 0.87037,
+        "accuracy": 0.829268,
+        "FP": 2,
+        "FN": 12,
+        "reject_rate": 0.402439,
+        "accepted_rate": 0.597561
+      },
+      "best_accuracy": {
+        "threshold": 0.25,
+        "precision": 0.978723,
+        "recall": 0.779661,
+        "f1": 0.867924,
+        "accuracy": 0.829268,
+        "FP": 1,
+        "FN": 13,
+        "reject_rate": 0.426829,
+        "accepted_rate": 0.573171
+      },
+      "f1_delta_vs_current": 0.016001,
+      "fp_delta_at_best_f1": 2,
+      "fn_delta_at_best_f1": -3,
+      "top_changed_cases": [
+        {
+          "case_id": "case_023",
+          "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+          "expected_answerability": "unanswerable",
+          "score": 0.32175037264823914,
+          "change_count": 6,
+          "thresholds": [
+            0.2,
+            0.25,
+            0.3
+          ],
+          "change_types": [
+            "newly_accepted_cases",
+            "regressed_cases"
+          ]
+        },
+        {
+          "case_id": "case_021",
+          "question": "风扇声音大但电脑能正常开机怎么办",
+          "expected_answerability": "answerable",
+          "score": 0.26707783341407776,
+          "change_count": 4,
+          "thresholds": [
+            0.2,
+            0.25
+          ],
+          "change_types": [
+            "improved_cases",
+            "newly_accepted_cases"
+          ]
+        },
+        {
+          "case_id": "case_069",
+          "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+          "expected_answerability": "answerable",
+          "score": 0.2679237723350525,
+          "change_count": 4,
+          "thresholds": [
+            0.2,
+            0.25
+          ],
+          "change_types": [
+            "improved_cases",
+            "newly_accepted_cases"
+          ]
+        },
+        {
+          "case_id": "case_045",
+          "question": "System error E9999 repair",
+          "expected_answerability": "unanswerable",
+          "score": 0.2478993982076645,
+          "change_count": 2,
+          "thresholds": [
+            0.2
+          ],
+          "change_types": [
+            "newly_accepted_cases",
+            "regressed_cases"
+          ]
+        },
+        {
+          "case_id": "case_058",
+          "question": "Computer starts automatically by itself",
+          "expected_answerability": "answerable",
+          "score": 0.2097383290529251,
+          "change_count": 2,
+          "thresholds": [
+            0.2
+          ],
+          "change_types": [
+            "improved_cases",
+            "newly_accepted_cases"
+          ]
+        },
+        {
+          "case_id": "case_074",
+          "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+          "expected_answerability": "answerable",
+          "score": 0.5562381148338318,
+          "change_count": 2,
+          "thresholds": [
+            0.6
+          ],
+          "change_types": [
+            "newly_rejected_cases",
+            "regressed_cases"
+          ]
+        },
+        {
+          "case_id": "case_077",
+          "question": "Generic blue screen cannot enter system but no error code",
+          "expected_answerability": "answerable",
+          "score": 0.5515531301498413,
+          "change_count": 2,
+          "thresholds": [
+            0.6
+          ],
+          "change_types": [
+            "newly_rejected_cases",
+            "regressed_cases"
+          ]
+        }
+      ]
+    }
+  },
+  "suggestions": [
+    {
+      "canonical": "Windows 7",
+      "aliases": [
+        "Windows 7",
+        "win7",
+        "Win7"
+      ],
+      "new_aliases": [
+        "Windows 7",
+        "win7",
+        "Win7"
+      ],
+      "confidence_score": 1.0,
+      "confidence_band": "high",
+      "status": "new_suggestion",
+      "risk": "low",
+      "evidence_cases": [
+        "case_007",
+        "case_018",
+        "case_022",
+        "case_031",
+        "case_038",
+        "case_042",
+        "case_045",
+        "case_082"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_007",
+          "question_term": null,
+          "document_term": "Windows 7",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_018",
+          "question_term": "Windows 7",
+          "document_term": "Windows 7",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_022",
+          "question_term": null,
+          "document_term": "Win7",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_022",
+          "question_term": null,
+          "document_term": "Win7",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_031",
+          "question_term": "Windows 7",
+          "document_term": "Windows 7",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": "Windows 7",
+          "document_term": "Windows 7",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_042",
+          "question_term": null,
+          "document_term": "Windows 7",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_045",
+          "question_term": null,
+          "document_term": "Windows 7",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_082",
+          "question_term": null,
+          "document_term": "Windows 7",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        }
+      ]
+    },
+    {
+      "canonical": "Windows XP",
+      "aliases": [
+        "windows xp",
+        "Windows XP",
+        "xp",
+        "XP"
+      ],
+      "new_aliases": [
+        "windows xp",
+        "Windows XP",
+        "xp",
+        "XP"
+      ],
+      "confidence_score": 1.0,
+      "confidence_band": "high",
+      "status": "new_suggestion",
+      "risk": "low",
+      "evidence_cases": [
+        "case_003",
+        "case_004",
+        "case_011",
+        "case_022",
+        "case_037",
+        "case_047",
+        "case_048",
+        "case_050",
+        "case_053",
+        "case_055",
+        "case_056",
+        "case_062",
+        "case_064",
+        "case_067",
+        "case_073"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_003",
+          "question_term": null,
+          "document_term": "XP",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;RERANKER_REGRESSION;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_003",
+          "question_term": null,
+          "document_term": "XP",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;RERANKER_REGRESSION;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_004",
+          "question_term": null,
+          "document_term": "XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_004",
+          "question_term": null,
+          "document_term": "XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_011",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_011",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_011",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_011",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_022",
+          "question_term": null,
+          "document_term": "XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_022",
+          "question_term": null,
+          "document_term": "XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_037",
+          "question_term": "Windows XP",
+          "document_term": "Windows XP",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_037",
+          "question_term": "Windows XP",
+          "document_term": "Windows XP",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_037",
+          "question_term": "Windows XP",
+          "document_term": "Windows XP",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_037",
+          "question_term": "Windows XP",
+          "document_term": "Windows XP",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_047",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_047",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_047",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_047",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_048",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_048",
+          "question_term": null,
+          "document_term": "Windows XP",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "打印机",
+      "aliases": [
+        "Printer",
+        "printer",
+        "打印机"
+      ],
+      "new_aliases": [
+        "Printer",
+        "printer",
+        "打印机"
+      ],
+      "confidence_score": 1.0,
+      "confidence_band": "high",
+      "status": "new_suggestion",
+      "risk": "low",
+      "evidence_cases": [
+        "case_022",
+        "case_041",
+        "case_058",
+        "case_082"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_022",
+          "question_term": "打印机",
+          "document_term": "打印机",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_041",
+          "question_term": "printer",
+          "document_term": null,
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_041",
+          "question_term": "printer",
+          "document_term": null,
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_058",
+          "question_term": null,
+          "document_term": "打印机",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_082",
+          "question_term": "printer",
+          "document_term": null,
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_082",
+          "question_term": "printer",
+          "document_term": null,
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        }
+      ]
+    },
+    {
+      "canonical": "PowerPoint",
+      "aliases": [
+        "powerpoint",
+        "PowerPoint",
+        "PPT",
+        "ppt"
+      ],
+      "new_aliases": [
+        "powerpoint",
+        "PowerPoint",
+        "PPT",
+        "ppt"
+      ],
+      "confidence_score": 0.68,
+      "confidence_band": "medium",
+      "status": "new_suggestion",
+      "risk": "medium",
+      "evidence_cases": [
+        "case_025"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_025",
+          "question_term": "PowerPoint",
+          "document_term": "PowerPoint",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_025",
+          "question_term": "PowerPoint",
+          "document_term": "PowerPoint",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_025",
+          "question_term": "PowerPoint",
+          "document_term": "PowerPoint",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_025",
+          "question_term": "PowerPoint",
+          "document_term": "PowerPoint",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "任务栏输入法图标",
+      "aliases": [
+        "任务栏输入法图标",
+        "输入法图标"
+      ],
+      "new_aliases": [
+        "任务栏输入法图标",
+        "输入法图标"
+      ],
+      "confidence_score": 0.56,
+      "confidence_band": "medium",
+      "status": "new_suggestion",
+      "risk": "medium",
+      "evidence_cases": [
+        "case_080"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_080",
+          "question_term": null,
+          "document_term": "任务栏输入法图标",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_080",
+          "question_term": null,
+          "document_term": "任务栏输入法图标",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        }
+      ]
+    },
+    {
+      "canonical": "Lenovo",
+      "aliases": [
+        "Lenovo",
+        "lenovo",
+        "LENOVO",
+        "联想电脑",
+        "联想"
+      ],
+      "new_aliases": [
+        "联想"
+      ],
+      "confidence_score": 1.0,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_002",
+        "case_012",
+        "case_013",
+        "case_021",
+        "case_023",
+        "case_027",
+        "case_032",
+        "case_034",
+        "case_035",
+        "case_036",
+        "case_038",
+        "case_041",
+        "case_047",
+        "case_049",
+        "case_051",
+        "case_055",
+        "case_058",
+        "case_059",
+        "case_060",
+        "case_061",
+        "case_063",
+        "case_065",
+        "case_069",
+        "case_074",
+        "case_076",
+        "case_077",
+        "case_081"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_002",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_012",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_013",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_021",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_023",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_027",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_034",
+          "question_term": null,
+          "document_term": "联想",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_035",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_035",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_035",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_035",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_036",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_036",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_036",
+          "question_term": "Lenovo",
+          "document_term": "Lenovo",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": null,
+          "document_term": "Lenovo",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": null,
+          "document_term": "Lenovo",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": null,
+          "document_term": "Lenovo",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "Wi-Fi",
+      "aliases": [
+        "wireless",
+        "Wireless",
+        "Wi-Fi",
+        "WiFi",
+        "WIFI",
+        "wifi",
+        "wlan",
+        "WLAN",
+        "无线网络",
+        "无线连接",
+        "无线网"
+      ],
+      "new_aliases": [
+        "wireless",
+        "Wireless"
+      ],
+      "confidence_score": 1.0,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_006",
+        "case_031",
+        "case_032",
+        "case_038",
+        "case_060",
+        "case_069",
+        "case_070",
+        "case_074",
+        "case_079"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_006",
+          "question_term": "无线网",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_006",
+          "question_term": "无线网",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_006",
+          "question_term": "无线网",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_031",
+          "question_term": null,
+          "document_term": "无线网",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": "Wi-Fi",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": "Wi-Fi",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": "Wi-Fi",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_038",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_060",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_060",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_060",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_060",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_060",
+          "question_term": "wireless",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_069",
+          "question_term": "Wi-Fi",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_069",
+          "question_term": "Wi-Fi",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_069",
+          "question_term": "Wi-Fi",
+          "document_term": "Wi-Fi",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        }
+      ]
+    },
+    {
+      "canonical": "Windows",
+      "aliases": [
+        "Windows10",
+        "windows10",
+        "windows11",
+        "Windows11",
+        "windows",
+        "Windows",
+        "win10",
+        "Win10",
+        "Win11",
+        "win11"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.99,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_005",
+        "case_006",
+        "case_007",
+        "case_011",
+        "case_018",
+        "case_020",
+        "case_022",
+        "case_027",
+        "case_031",
+        "case_032",
+        "case_033",
+        "case_034",
+        "case_037",
+        "case_038",
+        "case_041",
+        "case_042",
+        "case_043",
+        "case_044",
+        "case_045",
+        "case_047",
+        "case_048",
+        "case_051",
+        "case_052",
+        "case_053",
+        "case_055",
+        "case_056",
+        "case_057",
+        "case_059",
+        "case_060",
+        "case_061",
+        "case_063",
+        "case_065",
+        "case_067",
+        "case_069",
+        "case_074",
+        "case_077",
+        "case_078",
+        "case_081",
+        "case_082"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_005",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_005",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_006",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_006",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_007",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_007",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_011",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_011",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_018",
+          "question_term": "Windows",
+          "document_term": "Windows",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_018",
+          "question_term": "Windows",
+          "document_term": "Windows",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_020",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_020",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_022",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_022",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_027",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_027",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_031",
+          "question_term": "Windows",
+          "document_term": "Windows",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_031",
+          "question_term": "Windows",
+          "document_term": "Windows",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_032",
+          "question_term": null,
+          "document_term": "Windows",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "BIOS",
+      "aliases": [
+        "BIOS",
+        "bios",
+        "UEFI",
+        "uefi"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.94,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_034",
+        "case_051",
+        "case_059",
+        "case_070",
+        "case_071",
+        "case_080"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_034",
+          "question_term": "BIOS",
+          "document_term": "BIOS",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_034",
+          "question_term": "BIOS",
+          "document_term": "BIOS",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_051",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_051",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_059",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_059",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS;CANDIDATE_LOST_AFTER_RERANKER"
+        },
+        {
+          "case_id": "case_070",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_070",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_071",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_071",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_080",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_080",
+          "question_term": null,
+          "document_term": "BIOS",
+          "source": "problem_case_observed",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        }
+      ]
+    },
+    {
+      "canonical": "Word",
+      "aliases": [
+        "Microsoft Word",
+        "docx",
+        "word",
+        "WORD",
+        "Word",
+        "doc"
+      ],
+      "new_aliases": [
+        "Microsoft Word"
+      ],
+      "confidence_score": 0.94,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_015",
+        "case_026",
+        "case_063",
+        "case_071",
+        "case_072",
+        "case_073",
+        "case_080"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_015",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_015",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_015",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_026",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_026",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_026",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_026",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_063",
+          "question_term": "doc",
+          "document_term": null,
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_071",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_071",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_071",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_072",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_072",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_072",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_073",
+          "question_term": "doc",
+          "document_term": null,
+          "source": "observed_non_problem_case",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_080",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_080",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_080",
+          "question_term": "Word",
+          "document_term": "Word",
+          "source": "question_document_pair",
+          "reason": "FALSE_REJECTION;TOP2_TITLE_MISS"
+        }
+      ]
+    },
+    {
+      "canonical": "蓝牙",
+      "aliases": [
+        "Bluetooth",
+        "bluetooth",
+        "蓝牙设备",
+        "BT",
+        "bt",
+        "蓝牙"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.89,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_009",
+        "case_010",
+        "case_039",
+        "case_040",
+        "case_074"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_009",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_009",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_009",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_009",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_010",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_010",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_010",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_010",
+          "question_term": "蓝牙",
+          "document_term": "蓝牙",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_039",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_039",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_039",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_039",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_040",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_040",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_040",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_040",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_074",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_074",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_074",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        },
+        {
+          "case_id": "case_074",
+          "question_term": "Bluetooth",
+          "document_term": "蓝牙",
+          "source": "question_document_pair",
+          "reason": "TOP2_TITLE_MISS"
+        }
+      ]
+    },
+    {
+      "canonical": "Excel",
+      "aliases": [
+        "excel",
+        "EXCEL",
+        "Excel",
+        "xlsx",
+        "xls"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.76,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_014",
+        "case_030",
+        "case_073"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_014",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_014",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_014",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_030",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_030",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_030",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_073",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_073",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_073",
+          "question_term": "Excel",
+          "document_term": "Excel",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "Outlook",
+      "aliases": [
+        "OUTLOOK",
+        "outlook",
+        "Outlook"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.76,
+      "confidence_band": "high",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_016",
+        "case_027",
+        "case_028"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_016",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_016",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_016",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_027",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_027",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_027",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_028",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_028",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_028",
+          "question_term": "Outlook",
+          "document_term": "Outlook",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "Microsoft Office",
+      "aliases": [
+        "Microsoft Office",
+        "Microsoft 365",
+        "microsoft365",
+        "Office365",
+        "office365",
+        "Office",
+        "office",
+        "O365",
+        "o365"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.6,
+      "confidence_band": "medium",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "case_073"
+      ],
+      "evidence": [
+        {
+          "case_id": "case_073",
+          "question_term": "Office",
+          "document_term": "Office",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        },
+        {
+          "case_id": "case_073",
+          "question_term": "Office",
+          "document_term": "Office",
+          "source": "expected_document_pair",
+          "reason": "OBSERVED_ALIAS_VARIANT"
+        }
+      ]
+    },
+    {
+      "canonical": "ThinkPad",
+      "aliases": [
+        "Think Pad",
+        "think pad",
+        "ThinkPad",
+        "tp",
+        "TP"
+      ],
+      "new_aliases": [],
+      "confidence_score": 0.48,
+      "confidence_band": "low",
+      "status": "existing_alias",
+      "risk": "existing",
+      "evidence_cases": [
+        "existing_config"
+      ],
+      "evidence": [
+        {
+          "case_id": "existing_config",
+          "question_term": null,
+          "document_term": null,
+          "source": "query_aliases.yaml",
+          "reason": "ALREADY_CONFIGURED"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "This is offline analysis only.",
+    "query_aliases.yaml is read but not modified.",
+    "Existing aliases are marked as existing_alias and are not duplicated as new suggestions.",
+    "Generic terms are filtered from standalone suggestions."
+  ]
+}

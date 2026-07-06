@@ -1,0 +1,514 @@
+{
+  "input_report": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_siliconflow_reranker.json",
+  "thresholds": [
+    {
+      "threshold": 0.2,
+      "TP": 47,
+      "FP": 2,
+      "TN": 21,
+      "FN": 12,
+      "precision": 0.959184,
+      "recall": 0.79661,
+      "accuracy": 0.829268,
+      "f1": 0.87037,
+      "false_positive_rate": 0.086957,
+      "false_negative_rate": 0.20339,
+      "reject_rate": 0.402439,
+      "accepted_rate": 0.597561,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [
+        "case_021",
+        "case_023",
+        "case_045",
+        "case_058",
+        "case_069"
+      ],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [
+        "case_023",
+        "case_045"
+      ],
+      "improved_cases": [
+        "case_021",
+        "case_058",
+        "case_069"
+      ],
+      "regressed_cases": [
+        "case_023",
+        "case_045"
+      ]
+    },
+    {
+      "threshold": 0.25,
+      "TP": 46,
+      "FP": 1,
+      "TN": 22,
+      "FN": 13,
+      "precision": 0.978723,
+      "recall": 0.779661,
+      "accuracy": 0.829268,
+      "f1": 0.867924,
+      "false_positive_rate": 0.043478,
+      "false_negative_rate": 0.220339,
+      "reject_rate": 0.426829,
+      "accepted_rate": 0.573171,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [
+        "case_021",
+        "case_023",
+        "case_069"
+      ],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [
+        "case_023"
+      ],
+      "improved_cases": [
+        "case_021",
+        "case_069"
+      ],
+      "regressed_cases": [
+        "case_023"
+      ]
+    },
+    {
+      "threshold": 0.3,
+      "TP": 44,
+      "FP": 1,
+      "TN": 22,
+      "FN": 15,
+      "precision": 0.977778,
+      "recall": 0.745763,
+      "accuracy": 0.804878,
+      "f1": 0.846154,
+      "false_positive_rate": 0.043478,
+      "false_negative_rate": 0.254237,
+      "reject_rate": 0.45122,
+      "accepted_rate": 0.54878,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [
+        "case_023"
+      ],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [
+        "case_023"
+      ],
+      "improved_cases": [],
+      "regressed_cases": [
+        "case_023"
+      ]
+    },
+    {
+      "threshold": 0.35,
+      "TP": 44,
+      "FP": 0,
+      "TN": 23,
+      "FN": 15,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "accuracy": 0.817073,
+      "f1": 0.854369,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.254237,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [],
+      "improved_cases": [],
+      "regressed_cases": []
+    },
+    {
+      "threshold": 0.4,
+      "TP": 44,
+      "FP": 0,
+      "TN": 23,
+      "FN": 15,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "accuracy": 0.817073,
+      "f1": 0.854369,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.254237,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [],
+      "improved_cases": [],
+      "regressed_cases": []
+    },
+    {
+      "threshold": 0.45,
+      "TP": 44,
+      "FP": 0,
+      "TN": 23,
+      "FN": 15,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "accuracy": 0.817073,
+      "f1": 0.854369,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.254237,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [],
+      "improved_cases": [],
+      "regressed_cases": []
+    },
+    {
+      "threshold": 0.5,
+      "TP": 44,
+      "FP": 0,
+      "TN": 23,
+      "FN": 15,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "accuracy": 0.817073,
+      "f1": 0.854369,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.254237,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [],
+      "improved_cases": [],
+      "regressed_cases": []
+    },
+    {
+      "threshold": 0.55,
+      "TP": 44,
+      "FP": 0,
+      "TN": 23,
+      "FN": 15,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "accuracy": 0.817073,
+      "f1": 0.854369,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.254237,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585,
+      "newly_rejected_cases": [],
+      "newly_accepted_cases": [],
+      "false_reject_increase_cases": [],
+      "false_accept_increase_cases": [],
+      "improved_cases": [],
+      "regressed_cases": []
+    },
+    {
+      "threshold": 0.6,
+      "TP": 42,
+      "FP": 0,
+      "TN": 23,
+      "FN": 17,
+      "precision": 1.0,
+      "recall": 0.711864,
+      "accuracy": 0.792683,
+      "f1": 0.831683,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.288136,
+      "reject_rate": 0.487805,
+      "accepted_rate": 0.512195,
+      "newly_rejected_cases": [
+        "case_074",
+        "case_077"
+      ],
+      "newly_accepted_cases": [],
+      "false_reject_increase_cases": [
+        "case_074",
+        "case_077"
+      ],
+      "false_accept_increase_cases": [],
+      "improved_cases": [],
+      "regressed_cases": [
+        "case_074",
+        "case_077"
+      ]
+    }
+  ],
+  "top_changed_cases": [
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "expected_answerability": "unanswerable",
+      "score": 0.32175037264823914,
+      "change_count": 6,
+      "thresholds": [
+        0.2,
+        0.25,
+        0.3
+      ],
+      "change_types": [
+        "newly_accepted_cases",
+        "regressed_cases"
+      ]
+    },
+    {
+      "case_id": "case_021",
+      "question": "风扇声音大但电脑能正常开机怎么办",
+      "expected_answerability": "answerable",
+      "score": 0.26707783341407776,
+      "change_count": 4,
+      "thresholds": [
+        0.2,
+        0.25
+      ],
+      "change_types": [
+        "improved_cases",
+        "newly_accepted_cases"
+      ]
+    },
+    {
+      "case_id": "case_069",
+      "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+      "expected_answerability": "answerable",
+      "score": 0.2679237723350525,
+      "change_count": 4,
+      "thresholds": [
+        0.2,
+        0.25
+      ],
+      "change_types": [
+        "improved_cases",
+        "newly_accepted_cases"
+      ]
+    },
+    {
+      "case_id": "case_045",
+      "question": "System error E9999 repair",
+      "expected_answerability": "unanswerable",
+      "score": 0.2478993982076645,
+      "change_count": 2,
+      "thresholds": [
+        0.2
+      ],
+      "change_types": [
+        "newly_accepted_cases",
+        "regressed_cases"
+      ]
+    },
+    {
+      "case_id": "case_058",
+      "question": "Computer starts automatically by itself",
+      "expected_answerability": "answerable",
+      "score": 0.2097383290529251,
+      "change_count": 2,
+      "thresholds": [
+        0.2
+      ],
+      "change_types": [
+        "improved_cases",
+        "newly_accepted_cases"
+      ]
+    },
+    {
+      "case_id": "case_074",
+      "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+      "expected_answerability": "answerable",
+      "score": 0.5562381148338318,
+      "change_count": 2,
+      "thresholds": [
+        0.6
+      ],
+      "change_types": [
+        "newly_rejected_cases",
+        "regressed_cases"
+      ]
+    },
+    {
+      "case_id": "case_077",
+      "question": "Generic blue screen cannot enter system but no error code",
+      "expected_answerability": "answerable",
+      "score": 0.5515531301498413,
+      "change_count": 2,
+      "thresholds": [
+        0.6
+      ],
+      "change_types": [
+        "newly_rejected_cases",
+        "regressed_cases"
+      ]
+    }
+  ],
+  "recommendation": {
+    "current_threshold": 0.35,
+    "recommended_threshold": 0.2,
+    "decision": "recommend_change",
+    "message": "建议将生产 Threshold 调整为 0.20，F1 从 0.8544 提升到 0.8704。",
+    "current_metrics": {
+      "threshold": 0.35,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "f1": 0.854369,
+      "accuracy": 0.817073,
+      "FP": 0,
+      "FN": 15,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585
+    },
+    "best_precision": {
+      "threshold": 0.35,
+      "precision": 1.0,
+      "recall": 0.745763,
+      "f1": 0.854369,
+      "accuracy": 0.817073,
+      "FP": 0,
+      "FN": 15,
+      "reject_rate": 0.463415,
+      "accepted_rate": 0.536585
+    },
+    "best_recall": {
+      "threshold": 0.2,
+      "precision": 0.959184,
+      "recall": 0.79661,
+      "f1": 0.87037,
+      "accuracy": 0.829268,
+      "FP": 2,
+      "FN": 12,
+      "reject_rate": 0.402439,
+      "accepted_rate": 0.597561
+    },
+    "best_f1": {
+      "threshold": 0.2,
+      "precision": 0.959184,
+      "recall": 0.79661,
+      "f1": 0.87037,
+      "accuracy": 0.829268,
+      "FP": 2,
+      "FN": 12,
+      "reject_rate": 0.402439,
+      "accepted_rate": 0.597561
+    },
+    "best_accuracy": {
+      "threshold": 0.25,
+      "precision": 0.978723,
+      "recall": 0.779661,
+      "f1": 0.867924,
+      "accuracy": 0.829268,
+      "FP": 1,
+      "FN": 13,
+      "reject_rate": 0.426829,
+      "accepted_rate": 0.573171
+    },
+    "f1_delta_vs_current": 0.016001,
+    "fp_delta_at_best_f1": 2,
+    "fn_delta_at_best_f1": -3,
+    "top_changed_cases": [
+      {
+        "case_id": "case_023",
+        "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+        "expected_answerability": "unanswerable",
+        "score": 0.32175037264823914,
+        "change_count": 6,
+        "thresholds": [
+          0.2,
+          0.25,
+          0.3
+        ],
+        "change_types": [
+          "newly_accepted_cases",
+          "regressed_cases"
+        ]
+      },
+      {
+        "case_id": "case_021",
+        "question": "风扇声音大但电脑能正常开机怎么办",
+        "expected_answerability": "answerable",
+        "score": 0.26707783341407776,
+        "change_count": 4,
+        "thresholds": [
+          0.2,
+          0.25
+        ],
+        "change_types": [
+          "improved_cases",
+          "newly_accepted_cases"
+        ]
+      },
+      {
+        "case_id": "case_069",
+        "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+        "expected_answerability": "answerable",
+        "score": 0.2679237723350525,
+        "change_count": 4,
+        "thresholds": [
+          0.2,
+          0.25
+        ],
+        "change_types": [
+          "improved_cases",
+          "newly_accepted_cases"
+        ]
+      },
+      {
+        "case_id": "case_045",
+        "question": "System error E9999 repair",
+        "expected_answerability": "unanswerable",
+        "score": 0.2478993982076645,
+        "change_count": 2,
+        "thresholds": [
+          0.2
+        ],
+        "change_types": [
+          "newly_accepted_cases",
+          "regressed_cases"
+        ]
+      },
+      {
+        "case_id": "case_058",
+        "question": "Computer starts automatically by itself",
+        "expected_answerability": "answerable",
+        "score": 0.2097383290529251,
+        "change_count": 2,
+        "thresholds": [
+          0.2
+        ],
+        "change_types": [
+          "improved_cases",
+          "newly_accepted_cases"
+        ]
+      },
+      {
+        "case_id": "case_074",
+        "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+        "expected_answerability": "answerable",
+        "score": 0.5562381148338318,
+        "change_count": 2,
+        "thresholds": [
+          0.6
+        ],
+        "change_types": [
+          "newly_rejected_cases",
+          "regressed_cases"
+        ]
+      },
+      {
+        "case_id": "case_077",
+        "question": "Generic blue screen cannot enter system but no error code",
+        "expected_answerability": "answerable",
+        "score": 0.5515531301498413,
+        "change_count": 2,
+        "thresholds": [
+          0.6
+        ],
+        "change_types": [
+          "newly_rejected_cases",
+          "regressed_cases"
+        ]
+      }
+    ]
+  },
+  "plots": {
+    "roc_curve": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\roc_curve.png",
+    "pr_curve": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\pr_curve.png",
+    "threshold_f1": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\threshold_f1.png",
+    "threshold_precision_recall": "D:\\sgg-agent\\code\\its_multi_agent\\backend\\knowledge\\testdata\\threshold_precision_recall.png"
+  }
+}

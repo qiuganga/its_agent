@@ -1,0 +1,506 @@
+{
+  "generated_at": "2026-07-06T22:05:38",
+  "final_report": "backend/knowledge/testdata/rag_eval_report_v2_82_hsn_bm25_siliconflow_reranker_alias_v2.json",
+  "current_configuration": {
+    "collection": "its-knowledge-clean-v1",
+    "embedding": "Qwen/Qwen3-Embedding-8B",
+    "reranker": "Qwen/Qwen3-Reranker-8B",
+    "reranker_provider": "siliconflow",
+    "bm25_mode": "experimental",
+    "anchor_mode": "hard-soft-negative",
+    "alias_enabled": true,
+    "production_threshold_recommended": 0.35,
+    "gray_threshold_candidate": 0.2,
+    "vector_candidate_top_k": 15,
+    "title_candidate_top_k": 10,
+    "bm25_candidate_top_k": 10,
+    "final_top_k": 2
+  },
+  "final_metrics": {
+    "total_cases": 82,
+    "accepted_count": 45,
+    "total_rejected_count": 37,
+    "top1_title_weak_hit_count": 37,
+    "top1_title_weak_hit_rate": 0.4512,
+    "top2_title_weak_hit_count": 38,
+    "top2_title_weak_hit_rate": 0.4634,
+    "expected_answer_false_rejected": 14,
+    "expected_no_answer_correctly_rejected": 21,
+    "expected_no_answer_not_rejected": 0,
+    "reranker_success_count": 82,
+    "reranker_failure_count": 0,
+    "reranker_latency_avg_ms": 3385.0365853658536,
+    "reranker_latency_p95_ms": 5928.0,
+    "bm25_unique_added_total": 718,
+    "source_id_missing_before_rerank_total": 0
+  },
+  "experiment_highlights": {
+    "clean_collection": {
+      "old": {
+        "collection_name": "its-knowledge",
+        "indexable_documents": null,
+        "skipped_documents": null,
+        "chunk_count": 1101,
+        "average_chunks_per_document": null,
+        "metadata_complete_rate": 0.0,
+        "top1_title_weak_hit_count": 4,
+        "top2_title_weak_hit_count": 6,
+        "expected_no_answer_not_rejected": 3,
+        "expected_no_answer_correctly_rejected": 0,
+        "low_effective_topk_count": 0,
+        "low_effective_topk_unknown_count": 36,
+        "missing_source_topk_count": 36,
+        "accepted_count": 24,
+        "low_confidence_rejected_count": 0
+      },
+      "clean": {
+        "collection_name": "its-knowledge-clean-v1",
+        "indexable_documents": 733,
+        "skipped_documents": 0,
+        "chunk_count": 834,
+        "average_chunks_per_document": 1.1378,
+        "metadata_complete_rate": 1.0,
+        "top1_title_weak_hit_count": 7,
+        "top2_title_weak_hit_count": 9,
+        "expected_no_answer_not_rejected": 3,
+        "expected_no_answer_correctly_rejected": 0,
+        "low_effective_topk_count": 0,
+        "low_effective_topk_unknown_count": 0,
+        "missing_source_topk_count": 0,
+        "accepted_count": 24,
+        "low_confidence_rejected_count": 0
+      },
+      "clean_small_chunk": {
+        "collection_name": "its-knowledge-clean-chunk1000-v1",
+        "indexable_documents": 733,
+        "skipped_documents": 0,
+        "chunk_count": 974,
+        "average_chunks_per_document": 1.3288,
+        "metadata_complete_rate": 1.0,
+        "top1_title_weak_hit_count": 4,
+        "top2_title_weak_hit_count": 6,
+        "expected_no_answer_not_rejected": 3,
+        "expected_no_answer_correctly_rejected": 0,
+        "low_effective_topk_count": 0,
+        "low_effective_topk_unknown_count": 0,
+        "missing_source_topk_count": 0,
+        "accepted_count": 24,
+        "low_confidence_rejected_count": 0
+      }
+    },
+    "anchor_metrics": {
+      "total_cases": 82,
+      "strong_anchor_case_count": 60,
+      "hard_anchor_case_count": 18,
+      "soft_anchor_case_count": 39,
+      "negative_anchor_case_count": 5,
+      "no_anchor_case_count": 33,
+      "no_strong_anchor_case_count": 22,
+      "top1_title_weak_hit_count": 10,
+      "top2_title_weak_hit_count": 15,
+      "expected_no_answer_correctly_rejected": 1,
+      "expected_no_answer_anchor_rejected": 9,
+      "expected_no_answer_not_rejected": 13,
+      "expected_answer_false_rejected": 4,
+      "anchor_evidence_missing_count": 12,
+      "hard_evidence_exists_outside_topk_count": 0,
+      "negative_anchor_penalty_count": 0,
+      "missing_source_topk_count": 0,
+      "group_metrics": {
+        "C_generic_answerable": {
+          "total": 18,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 1,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 17,
+          "needs_manual_review_cases": [
+            "case_001",
+            "case_007",
+            "case_011",
+            "case_012",
+            "case_017",
+            "case_019",
+            "case_020",
+            "case_053",
+            "case_054",
+            "case_055",
+            "case_056",
+            "case_057",
+            "case_058",
+            "case_059",
+            "case_060",
+            "case_081",
+            "case_082"
+          ]
+        },
+        "A_anchor_answerable": {
+          "total": 26,
+          "top1_title_weak_hit_count": 8,
+          "top2_title_weak_hit_count": 10,
+          "expected_answer_false_rejected_count": 1,
+          "expected_answer_false_rejected_cases": [
+            "case_025"
+          ],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 16,
+          "needs_manual_review_cases": [
+            "case_004",
+            "case_015",
+            "case_018",
+            "case_025",
+            "case_026",
+            "case_027",
+            "case_028",
+            "case_029",
+            "case_030",
+            "case_031",
+            "case_033",
+            "case_034",
+            "case_037",
+            "case_038",
+            "case_039",
+            "case_040"
+          ]
+        },
+        "E_confusing": {
+          "total": 15,
+          "top1_title_weak_hit_count": 2,
+          "top2_title_weak_hit_count": 4,
+          "expected_answer_false_rejected_count": 3,
+          "expected_answer_false_rejected_cases": [
+            "case_069",
+            "case_070",
+            "case_080"
+          ],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 3,
+          "needs_manual_review_count": 11,
+          "needs_manual_review_cases": [
+            "case_021",
+            "case_069",
+            "case_070",
+            "case_071",
+            "case_072",
+            "case_073",
+            "case_074",
+            "case_075",
+            "case_077",
+            "case_079",
+            "case_080"
+          ]
+        },
+        "B_anchor_unanswerable": {
+          "total": 15,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 0,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 10,
+          "expected_no_answer_correctly_rejected_cases": [
+            "case_022",
+            "case_023",
+            "case_024",
+            "case_041",
+            "case_044",
+            "case_045",
+            "case_046",
+            "case_049",
+            "case_050",
+            "case_051"
+          ],
+          "expected_no_answer_still_accepted_count": 5,
+          "expected_no_answer_still_accepted_cases": [
+            "case_042",
+            "case_043",
+            "case_047",
+            "case_048",
+            "case_052"
+          ],
+          "anchor_evidence_missing_count": 9,
+          "needs_manual_review_count": 5,
+          "needs_manual_review_cases": [
+            "case_042",
+            "case_043",
+            "case_047",
+            "case_048",
+            "case_052"
+          ]
+        },
+        "D_generic_unanswerable": {
+          "total": 8,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 0,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 8,
+          "expected_no_answer_still_accepted_cases": [
+            "case_061",
+            "case_062",
+            "case_063",
+            "case_064",
+            "case_065",
+            "case_066",
+            "case_067",
+            "case_068"
+          ],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 8,
+          "needs_manual_review_cases": [
+            "case_061",
+            "case_062",
+            "case_063",
+            "case_064",
+            "case_065",
+            "case_066",
+            "case_067",
+            "case_068"
+          ]
+        }
+      }
+    },
+    "bm25_metrics": {
+      "baseline_bm25_mode": "off",
+      "experiment_bm25_mode": "experimental",
+      "bm25_candidate_delta": 889,
+      "bm25_unique_added_delta": 687,
+      "top2_changed_cases": [
+        "case_005",
+        "case_027",
+        "case_035",
+        "case_040",
+        "case_046",
+        "case_048",
+        "case_052",
+        "case_063",
+        "case_068",
+        "case_078"
+      ],
+      "top2_weak_hit_improved_cases": [],
+      "top2_weak_hit_regressed_cases": []
+    },
+    "reranker_metrics": {
+      "top1_title_weak_hit_delta": 26,
+      "top2_title_weak_hit_delta": 23,
+      "expected_answer_false_rejected_delta": 11,
+      "expected_no_answer_anchor_rejected_delta": -7,
+      "expected_no_answer_still_accepted_delta": -13,
+      "top2_changed_count": 79,
+      "bm25_added_to_top2_count": 71,
+      "reranker_latency_avg_ms": 3309.5853658536585,
+      "reranker_latency_p95_ms": 5814.0,
+      "reranker_success_count": 82,
+      "reranker_failure_count": 0,
+      "reranker_invalid_result_count": 0
+    },
+    "threshold_recommendation": {
+      "current_threshold": 0.35,
+      "recommended_threshold": 0.2,
+      "decision": "recommend_change",
+      "message": "建议将生产 Threshold 调整为 0.20，F1 从 0.8544 提升到 0.8704。",
+      "current_metrics": {
+        "threshold": 0.35,
+        "precision": 1.0,
+        "recall": 0.745763,
+        "f1": 0.854369,
+        "accuracy": 0.817073,
+        "FP": 0,
+        "FN": 15,
+        "reject_rate": 0.463415,
+        "accepted_rate": 0.536585
+      },
+      "best_precision": {
+        "threshold": 0.35,
+        "precision": 1.0,
+        "recall": 0.745763,
+        "f1": 0.854369,
+        "accuracy": 0.817073,
+        "FP": 0,
+        "FN": 15,
+        "reject_rate": 0.463415,
+        "accepted_rate": 0.536585
+      },
+      "best_recall": {
+        "threshold": 0.2,
+        "precision": 0.959184,
+        "recall": 0.79661,
+        "f1": 0.87037,
+        "accuracy": 0.829268,
+        "FP": 2,
+        "FN": 12,
+        "reject_rate": 0.402439,
+        "accepted_rate": 0.597561
+      },
+      "best_f1": {
+        "threshold": 0.2,
+        "precision": 0.959184,
+        "recall": 0.79661,
+        "f1": 0.87037,
+        "accuracy": 0.829268,
+        "FP": 2,
+        "FN": 12,
+        "reject_rate": 0.402439,
+        "accepted_rate": 0.597561
+      },
+      "best_accuracy": {
+        "threshold": 0.25,
+        "precision": 0.978723,
+        "recall": 0.779661,
+        "f1": 0.867924,
+        "accuracy": 0.829268,
+        "FP": 1,
+        "FN": 13,
+        "reject_rate": 0.426829,
+        "accepted_rate": 0.573171
+      },
+      "f1_delta_vs_current": 0.016001,
+      "fp_delta_at_best_f1": 2,
+      "fn_delta_at_best_f1": -3,
+      "top_changed_cases": [
+        {
+          "case_id": "case_023",
+          "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+          "expected_answerability": "unanswerable",
+          "score": 0.32175037264823914,
+          "change_count": 6,
+          "thresholds": [
+            0.2,
+            0.25,
+            0.3
+          ],
+          "change_types": [
+            "newly_accepted_cases",
+            "regressed_cases"
+          ]
+        },
+        {
+          "case_id": "case_021",
+          "question": "风扇声音大但电脑能正常开机怎么办",
+          "expected_answerability": "answerable",
+          "score": 0.26707783341407776,
+          "change_count": 4,
+          "thresholds": [
+            0.2,
+            0.25
+          ],
+          "change_types": [
+            "improved_cases",
+            "newly_accepted_cases"
+          ]
+        },
+        {
+          "case_id": "case_069",
+          "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+          "expected_answerability": "answerable",
+          "score": 0.2679237723350525,
+          "change_count": 4,
+          "thresholds": [
+            0.2,
+            0.25
+          ],
+          "change_types": [
+            "improved_cases",
+            "newly_accepted_cases"
+          ]
+        },
+        {
+          "case_id": "case_045",
+          "question": "System error E9999 repair",
+          "expected_answerability": "unanswerable",
+          "score": 0.2478993982076645,
+          "change_count": 2,
+          "thresholds": [
+            0.2
+          ],
+          "change_types": [
+            "newly_accepted_cases",
+            "regressed_cases"
+          ]
+        },
+        {
+          "case_id": "case_058",
+          "question": "Computer starts automatically by itself",
+          "expected_answerability": "answerable",
+          "score": 0.2097383290529251,
+          "change_count": 2,
+          "thresholds": [
+            0.2
+          ],
+          "change_types": [
+            "improved_cases",
+            "newly_accepted_cases"
+          ]
+        },
+        {
+          "case_id": "case_074",
+          "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+          "expected_answerability": "answerable",
+          "score": 0.5562381148338318,
+          "change_count": 2,
+          "thresholds": [
+            0.6
+          ],
+          "change_types": [
+            "newly_rejected_cases",
+            "regressed_cases"
+          ]
+        },
+        {
+          "case_id": "case_077",
+          "question": "Generic blue screen cannot enter system but no error code",
+          "expected_answerability": "answerable",
+          "score": 0.5515531301498413,
+          "change_count": 2,
+          "thresholds": [
+            0.6
+          ],
+          "change_types": [
+            "newly_rejected_cases",
+            "regressed_cases"
+          ]
+        }
+      ]
+    },
+    "alias_metrics": {
+      "top1_title_weak_hit_before": 37,
+      "top1_title_weak_hit_after": 37,
+      "top1_title_weak_hit_delta": 0,
+      "top2_title_weak_hit_before": 38,
+      "top2_title_weak_hit_after": 38,
+      "top2_title_weak_hit_delta": 0,
+      "expected_answer_false_rejected_before": 15,
+      "expected_answer_false_rejected_after": 14,
+      "expected_answer_false_rejected_delta": -1,
+      "expected_no_answer_anchor_rejected_delta": 0,
+      "expected_no_answer_still_accepted_delta": 0,
+      "accepted_delta": 1,
+      "rejected_delta": -1,
+      "top1_changed_count": 8,
+      "top2_changed_count": 14,
+      "alias_applied_case_count": 7,
+      "new_alias_hit_case_count": 6,
+      "reranker_latency_avg_ms_before": 3309.5853658536585,
+      "reranker_latency_avg_ms_after": 3385.0365853658536,
+      "reranker_latency_avg_ms_delta": 75.4512,
+      "reranker_latency_p95_ms_before": 5814.0,
+      "reranker_latency_p95_ms_after": 5928.0,
+      "reranker_latency_p95_ms_delta": 114.0,
+      "source_id_missing_before_rerank_delta": 0
+    }
+  },
+  "missing_reports": []
+}

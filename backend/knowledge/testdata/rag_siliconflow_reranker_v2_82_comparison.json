@@ -1,0 +1,6107 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-06T16:56:00",
+  "baseline_report": "backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_experimental.json",
+  "experiment_report": "backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_siliconflow_reranker.json",
+  "metrics": {
+    "top1_title_weak_hit_delta": 26,
+    "top2_title_weak_hit_delta": 23,
+    "expected_answer_false_rejected_delta": 11,
+    "expected_no_answer_anchor_rejected_delta": -7,
+    "expected_no_answer_still_accepted_delta": -13,
+    "top2_changed_count": 79,
+    "bm25_added_to_top2_count": 71,
+    "reranker_latency_avg_ms": 3309.5853658536585,
+    "reranker_latency_p95_ms": 5814.0,
+    "reranker_success_count": 82,
+    "reranker_failure_count": 0,
+    "reranker_invalid_result_count": 0
+  },
+  "classification_counts": {
+    "RERANKER_IMPROVED": 24,
+    "NEEDS_MANUAL_REVIEW": 54,
+    "RERANKER_REGRESSION": 1,
+    "RERANKER_NO_EFFECT": 3
+  },
+  "focus_cases": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "candidate_count": 52,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5996320427889443
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5447291700143007
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 27.44522954400464,
+          "embedding_rerank_score": 0.5392592306959463,
+          "reranker_score": 0.8071717023849487,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.8071717023849487
+        },
+        {
+          "title": "开机之后无任何反应怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.638705813210766,
+          "embedding_rerank_score": 0.5118397456451795,
+          "reranker_score": 0.7532027959823608,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7532027959823608
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6701231649996153
+        },
+        {
+          "title": "智能电视在观看过程中出现了花屏是什么原因？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6370662138275553
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机蓝屏或提示登录进程初始化失败问题的解决方案（Vista）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 43.335115426351294,
+          "embedding_rerank_score": 0.4648161287342716,
+          "reranker_score": 0.9992200136184692,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0292200136184693
+        },
+        {
+          "title": "开机蓝屏或提示登录进程初始化失败问题的解决方案（XP）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 42.93637129097348,
+          "embedding_rerank_score": 0.43233875970583835,
+          "reranker_score": 0.9989031553268433,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0289031553268433
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 39.74076580446724,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.7247667868352691
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.419126408866429,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5863242945999526
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 27.373538627134128,
+          "embedding_rerank_score": 0.5213593927036542,
+          "reranker_score": 0.9973306655883789,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 1.107330665588379
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.419126408866429,
+          "embedding_rerank_score": 0.47760922119316807,
+          "reranker_score": 0.868959903717041,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.978959903717041
+        }
+      ],
+      "top2_changed": false,
+      "classification": "RERANKER_NO_EFFECT",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "candidate_count": 33,
+      "baseline_top2": [
+        {
+          "title": "在Windows 7下如何配置无线网络",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.707661584423183,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5840881137202314
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5718608173769821
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "手动添加无线网络方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.412235453003781,
+          "embedding_rerank_score": 0.5153891260828762,
+          "reranker_score": 0.8817823529243469,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.911782352924347
+        },
+        {
+          "title": "在Windows 8下连接无线网络",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.943229006620193,
+          "embedding_rerank_score": 0.47423873374594705,
+          "reranker_score": 0.8694901466369629,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.8994901466369629
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "candidate_count": 48,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6742379014731175
+        },
+        {
+          "title": "WPS Office中如何打印稿纸",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6190824948325921
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在Windows 7下如何检查判断网络是否通畅",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 30.215074911938586,
+          "embedding_rerank_score": 0.5645571212985951,
+          "reranker_score": 0.9956055283546448,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9956055283546448
+        },
+        {
+          "title": "在Windows 8系统下如何检查网络连接",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5861176662205072,
+          "reranker_score": 0.5486487746238708,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5486487746238708
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "candidate_count": 50,
+      "baseline_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 13.037648546857325,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6068177504998382
+        },
+        {
+          "title": "如何确认触控板的品牌（厂商）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.547108736173243
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.818784841572654,
+          "embedding_rerank_score": 0.43886947042768537,
+          "reranker_score": 0.767392635345459,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.797392635345459
+        },
+        {
+          "title": "如何开启蓝牙模块功能",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 17.170273443920212,
+          "embedding_rerank_score": 0.5143687342449058,
+          "reranker_score": 0.27394217252731323,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.30394217252731326
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "candidate_count": 53,
+      "baseline_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 18.654863978376817,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5620595853126088
+        },
+        {
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5023036311132099
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.399512656937965,
+          "embedding_rerank_score": 0.40150528344108705,
+          "reranker_score": 0.9875989556312561,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0175989556312561
+        },
+        {
+          "title": "如何开启蓝牙模块功能",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 16.363680833507015,
+          "embedding_rerank_score": 0.44514785003301227,
+          "reranker_score": 0.16320781409740448,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.19320781409740448
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "candidate_count": 36,
+      "baseline_top2": [
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5952934264133287
+        },
+        {
+          "title": "一键恢复功能键在什么位置？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4696074922044381
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows XP下如何调节音量大小",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3751000892731296,
+          "reranker_score": 0.7665728330612183,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7665728330612183
+        },
+        {
+          "title": "如何调整合成器内应用程序音量控制",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.69931524318647,
+          "embedding_rerank_score": 0.3590299205136481,
+          "reranker_score": 0.168452650308609,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.168452650308609
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "candidate_count": 42,
+      "baseline_top2": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5527975914307299
+        },
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5451647526708359
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机之后无任何反应怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.933756510278461,
+          "embedding_rerank_score": 0.4665023325578116,
+          "reranker_score": 0.043878402560949326,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.043878402560949326
+        },
+        {
+          "title": "联想手机K900常见问题汇总",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5191384518905953,
+          "reranker_score": 0.0033922679722309113,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.0033922679722309113
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6572369918142773
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6114836548508573
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 50.67448732378459,
+          "embedding_rerank_score": 0.5528659237721241,
+          "reranker_score": 0.9990870952606201,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0290870952606201
+        },
+        {
+          "title": "暴风影音的DLNA功能怎么用",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4080253179901444,
+          "reranker_score": 7.467594400623057e-07,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 7.467594400623057e-07
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6227000585535514
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5984999285816919
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 50.59111986642176,
+          "embedding_rerank_score": 0.5237832136697624,
+          "reranker_score": 0.9979518055915833,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0279518055915833
+        },
+        {
+          "title": "如何观看SD卡、U盘及移动硬盘中的文件",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 21.503759114176905,
+          "embedding_rerank_score": 0.4557739491145304,
+          "reranker_score": 6.790128281863872e-06,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.030006790128281863
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5251690254848732
+        },
+        {
+          "title": "暴风影音在播放高清视频时占用的CPU高怎么办-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.486062480401402
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6237802269350327,
+          "reranker_score": 2.408650288998615e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "如何安装网络打印机（XP Win7 Win8）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.836301034504666,
+          "embedding_rerank_score": 0.4115271375260268,
+          "reranker_score": 0.04583684727549553,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42312945665389823
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.40503238585141266
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "宽带连接频繁掉线",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.605220688900655,
+          "embedding_rerank_score": 0.4741662773977505,
+          "reranker_score": 0.32175037264823914,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.22175037264823913
+        },
+        {
+          "title": "联想台式机模式转换功能介绍",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5076112349702904,
+          "reranker_score": 0.0001643019641051069,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.6026640656366148
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5471785905126129
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.7026218458851831,
+          "reranker_score": 1.1593757335504051e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "如何用一个手机号注册多个微信帐号",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3480658946549867,
+          "reranker_score": 1.320307819696609e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_025",
+      "question": "PowerPoint 2007 cannot input Chinese",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "ET960如何启动“照相机”软件的方法及“照相机”软件功能按键说明-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.2301961425105425
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.21444897592115697
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在 PowerPoint 2007 中无法输入中文怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.732583534171642,
+          "embedding_rerank_score": 0.10868028020815512,
+          "reranker_score": 0.999377429485321,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.999377429485321
+        },
+        {
+          "title": "在Lync中如何共享桌面、ppt等？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 15.17370896887373,
+          "embedding_rerank_score": 0.15870943050041567,
+          "reranker_score": 0.5679397583007812,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5679397583007812
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_026",
+      "question": "How to modify Microsoft Word default style",
+      "candidate_count": 41,
+      "baseline_top2": [
+        {
+          "title": "Windows 8.1 Update （KB2919355）常见问题",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5515785336583123
+        },
+        {
+          "title": "联想手机如何在桌面上添加文件夹",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5515639176580337
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何修改 Microsoft Word 的默认样式？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 15.615303850286661,
+          "embedding_rerank_score": 0.3680590249580682,
+          "reranker_score": 0.9993163347244263,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0293163347244263
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 7.6793840961580395,
+          "embedding_rerank_score": 0.43843563047121953,
+          "reranker_score": 1.835942725847417e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.835942725847417e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_027",
+      "question": "Outlook paragraph marks should be hidden",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6761999398068057
+        },
+        {
+          "title": "万全T168板载SATA RAID系统设置",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6503104488680457
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何去掉Outlook中的段落标记等符号-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.618499351090765,
+          "embedding_rerank_score": 0.3950304046261608,
+          "reranker_score": 0.9994009733200073,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0294009733200074
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.662751353525654,
+          "reranker_score": 2.8999324968026485e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.8999324968026485e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_030",
+      "question": "Excel shows #VALUE! error",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7694264434970439
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.713552596853599
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何解决 Excel 显示 #VALUE! 错误信息的问题-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 37.85999027896884,
+          "embedding_rerank_score": 0.4693393918037059,
+          "reranker_score": 0.9914351105690002,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0214351105690003
+        },
+        {
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.544990046807637,
+          "embedding_rerank_score": 0.24440660930628896,
+          "reranker_score": 0.02854776568710804,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.05854776568710804
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_039",
+      "question": "How to turn on Bluetooth module",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "S620充电时充电指示灯为常绿并伴有橙色闪烁",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4866467449461317
+        },
+        {
+          "title": "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4756331770182505
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.253852900868202,
+          "embedding_rerank_score": 0.37382959947128636,
+          "reranker_score": 0.7044607996940613,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.7344607996940613
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.068910497745694,
+          "embedding_rerank_score": 0.38927384728241776,
+          "reranker_score": 9.410902748641092e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 9.410902748641092e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_040",
+      "question": "How to add Bluetooth device",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5774432860193506
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.62827562269993,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5564379815825946
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.253852900868202,
+          "embedding_rerank_score": 0.3698500034821046,
+          "reranker_score": 0.9966362714767456,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0266362714767456
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.6793840961580395,
+          "embedding_rerank_score": 0.5462280652675704,
+          "reranker_score": 2.04130574275041e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.04130574275041e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_069",
+      "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5579334828380061
+        },
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5438640083328041
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.843931389106734,
+          "embedding_rerank_score": 0.3642669312158313,
+          "reranker_score": 0.2679237723350525,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.19792377233505248
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6064371410731219,
+          "reranker_score": 3.381775240995921e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_070",
+      "question": "Wireless keyboard and mouse suddenly fail, not Wi-Fi",
+      "candidate_count": 36,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5542807274482738
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5539770621587434
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6545358317659536,
+          "reranker_score": 2.1045803805463947e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.54076675346431,
+          "embedding_rerank_score": 0.22292323349928916,
+          "reranker_score": 1.2501397577580065e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_071",
+      "question": "Word inserted pictures become blank boxes, not black screen",
+      "candidate_count": 44,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5370798347973094
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.533394865102885
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.906045221284073,
+          "embedding_rerank_score": 0.39238796850637586,
+          "reranker_score": 0.9973576664924622,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0273576664924622
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.182747110248272,
+          "embedding_rerank_score": 0.21042313351631126,
+          "reranker_score": 7.447641110047698e-06,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.030007447641110047
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_072",
+      "question": "Screen brightness is too low, not Word blank picture",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7160169066260733
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6859496275518419
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.906045221284073,
+          "embedding_rerank_score": 0.4333607072666167,
+          "reranker_score": 0.9876378774642944,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.8876378774642945
+        },
+        {
+          "title": "在按下键盘上取消CapsLock,NumLock,ScrLock声音",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3634536613375816,
+          "reranker_score": 0.00014083069982007146,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.00014083069982007146
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_074",
+      "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+      "candidate_count": 40,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.637383382915997
+        },
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6317478202997024
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.253852900868202,
+          "embedding_rerank_score": 0.4163041945524336,
+          "reranker_score": 0.5562381148338318,
+          "anchor_adjustment": 0.019999999999999997,
+          "evidence_adjusted_score": 0.5762381148338318
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6034730760646188,
+          "reranker_score": 6.392203067662194e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 6.392203067662194e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_080",
+      "question": "Taskbar input method icon disappeared, not Word input issue",
+      "candidate_count": 45,
+      "baseline_top2": [
+        {
+          "title": "在联系人窗口中怎样查看SIM卡上的号码？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4508324153330855
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42383293750803597
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在联系人窗口中怎样查看SIM卡上的号码？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5491564850554483,
+          "reranker_score": 8.636010534246452e-06,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.182747110248272,
+          "embedding_rerank_score": 0.2189002171042625,
+          "reranker_score": 6.068598850106355e-06,
+          "anchor_adjustment": -0.2,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    }
+  ],
+  "case_comparisons": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "candidate_count": 52,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5996320427889443
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5447291700143007
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 27.44522954400464,
+          "embedding_rerank_score": 0.5392592306959463,
+          "reranker_score": 0.8071717023849487,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.8071717023849487
+        },
+        {
+          "title": "开机之后无任何反应怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.638705813210766,
+          "embedding_rerank_score": 0.5118397456451795,
+          "reranker_score": 0.7532027959823608,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7532027959823608
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "candidate_count": 42,
+      "baseline_top2": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5705179173684178
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5273132290295546
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机之后无任何反应怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 21.16211999323609,
+          "embedding_rerank_score": 0.4653893722296495,
+          "reranker_score": 0.9965394735336304,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0265394735336304
+        },
+        {
+          "title": "联想手机S680不能开机如何解决",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.570098210838234,
+          "embedding_rerank_score": 0.4720164906602689,
+          "reranker_score": 0.41879725456237793,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.44879725456237796
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "candidate_count": 51,
+      "baseline_top2": [
+        {
+          "title": "宽带连接频繁掉线",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5334220277942212
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 12.918497972447756,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5163298738094788
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "关于扬天机型安装XP SP2黑屏问题",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.689731992766621,
+          "embedding_rerank_score": 0.45501597645186415,
+          "reranker_score": 0.0506281778216362,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.0506281778216362
+        },
+        {
+          "title": "暴风影音的DLNA功能怎么用",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3115197909343913,
+          "reranker_score": 2.572996891103685e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.572996891103685e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_REGRESSION",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6701231649996153
+        },
+        {
+          "title": "智能电视在观看过程中出现了花屏是什么原因？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6370662138275553
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机蓝屏或提示登录进程初始化失败问题的解决方案（Vista）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 43.335115426351294,
+          "embedding_rerank_score": 0.4648161287342716,
+          "reranker_score": 0.9992200136184692,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0292200136184693
+        },
+        {
+          "title": "开机蓝屏或提示登录进程初始化失败问题的解决方案（XP）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 42.93637129097348,
+          "embedding_rerank_score": 0.43233875970583835,
+          "reranker_score": 0.9989031553268433,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0289031553268433
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 39.74076580446724,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.7247667868352691
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.419126408866429,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5863242945999526
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 27.373538627134128,
+          "embedding_rerank_score": 0.5213593927036542,
+          "reranker_score": 0.9973306655883789,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 1.107330665588379
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.419126408866429,
+          "embedding_rerank_score": 0.47760922119316807,
+          "reranker_score": 0.868959903717041,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.978959903717041
+        }
+      ],
+      "top2_changed": false,
+      "classification": "RERANKER_NO_EFFECT",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "candidate_count": 33,
+      "baseline_top2": [
+        {
+          "title": "在Windows 7下如何配置无线网络",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.707661584423183,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5840881137202314
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5718608173769821
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "手动添加无线网络方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.412235453003781,
+          "embedding_rerank_score": 0.5153891260828762,
+          "reranker_score": 0.8817823529243469,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.911782352924347
+        },
+        {
+          "title": "在Windows 8下连接无线网络",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.943229006620193,
+          "embedding_rerank_score": 0.47423873374594705,
+          "reranker_score": 0.8694901466369629,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.8994901466369629
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "candidate_count": 48,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6742379014731175
+        },
+        {
+          "title": "WPS Office中如何打印稿纸",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6190824948325921
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在Windows 7下如何检查判断网络是否通畅",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 30.215074911938586,
+          "embedding_rerank_score": 0.5645571212985951,
+          "reranker_score": 0.9956055283546448,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9956055283546448
+        },
+        {
+          "title": "在Windows 8系统下如何检查网络连接",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5861176662205072,
+          "reranker_score": 0.5486487746238708,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5486487746238708
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_008",
+      "question": "只使用电池有时找不到网络设备怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6482720907416888
+        },
+        {
+          "title": "关于电池充电、保养、设置、较准的方法汇总",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 9.058204710373035,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6006933510347772
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "昭阳K43 E43系列机型只使用电池有时找不到网络设备的解决方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 32.49769122499336,
+          "embedding_rerank_score": 0.5755872662991943,
+          "reranker_score": 0.9995704293251038,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9995704293251038
+        },
+        {
+          "title": "Visio 2010-2007 形状面板不见了怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.881410603574093,
+          "embedding_rerank_score": 0.43003980378037066,
+          "reranker_score": 2.495011722203344e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.495011722203344e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "candidate_count": 50,
+      "baseline_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 13.037648546857325,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6068177504998382
+        },
+        {
+          "title": "如何确认触控板的品牌（厂商）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.547108736173243
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.818784841572654,
+          "embedding_rerank_score": 0.43886947042768537,
+          "reranker_score": 0.767392635345459,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.797392635345459
+        },
+        {
+          "title": "如何开启蓝牙模块功能",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 17.170273443920212,
+          "embedding_rerank_score": 0.5143687342449058,
+          "reranker_score": 0.27394217252731323,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.30394217252731326
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "candidate_count": 53,
+      "baseline_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 18.654863978376817,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5620595853126088
+        },
+        {
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5023036311132099
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.399512656937965,
+          "embedding_rerank_score": 0.40150528344108705,
+          "reranker_score": 0.9875989556312561,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0175989556312561
+        },
+        {
+          "title": "如何开启蓝牙模块功能",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 16.363680833507015,
+          "embedding_rerank_score": 0.44514785003301227,
+          "reranker_score": 0.16320781409740448,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.19320781409740448
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "candidate_count": 36,
+      "baseline_top2": [
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5952934264133287
+        },
+        {
+          "title": "一键恢复功能键在什么位置？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4696074922044381
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows XP下如何调节音量大小",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3751000892731296,
+          "reranker_score": 0.7665728330612183,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7665728330612183
+        },
+        {
+          "title": "如何调整合成器内应用程序音量控制",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.69931524318647,
+          "embedding_rerank_score": 0.3590299205136481,
+          "reranker_score": 0.168452650308609,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.168452650308609
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "candidate_count": 42,
+      "baseline_top2": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5527975914307299
+        },
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5451647526708359
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机之后无任何反应怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.933756510278461,
+          "embedding_rerank_score": 0.4665023325578116,
+          "reranker_score": 0.043878402560949326,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.043878402560949326
+        },
+        {
+          "title": "联想手机K900常见问题汇总",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5191384518905953,
+          "reranker_score": 0.0033922679722309113,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.0033922679722309113
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_013",
+      "question": "电脑运行游戏卡怎么办",
+      "candidate_count": 33,
+      "baseline_top2": [
+        {
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6091339920284081
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.596290999563986
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "新圆梦F系列电脑运行游戏卡",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 16.31253610876204,
+          "embedding_rerank_score": 0.5518912977132588,
+          "reranker_score": 0.9892126321792603,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9892126321792603
+        },
+        {
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 16.1647124958795,
+          "embedding_rerank_score": 0.5496316645759923,
+          "reranker_score": 0.8808878660202026,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.8808878660202026
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6572369918142773
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6114836548508573
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 50.67448732378459,
+          "embedding_rerank_score": 0.5528659237721241,
+          "reranker_score": 0.9990870952606201,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0290870952606201
+        },
+        {
+          "title": "暴风影音的DLNA功能怎么用",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4080253179901444,
+          "reranker_score": 7.467594400623057e-07,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 7.467594400623057e-07
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6227000585535514
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5984999285816919
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 50.59111986642176,
+          "embedding_rerank_score": 0.5237832136697624,
+          "reranker_score": 0.9979518055915833,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0279518055915833
+        },
+        {
+          "title": "如何观看SD卡、U盘及移动硬盘中的文件",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 21.503759114176905,
+          "embedding_rerank_score": 0.4557739491145304,
+          "reranker_score": 6.790128281863872e-06,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.030006790128281863
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_016",
+      "question": "Outlook 为什么没有已发送邮件的记录",
+      "candidate_count": 33,
+      "baseline_top2": [
+        {
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 56.26668669530043,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5968078741846164
+        },
+        {
+          "title": "彩色喷墨多功能一体机M920校准墨盒的操作",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5292942749454274
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 56.26668669530043,
+          "embedding_rerank_score": 0.5655762433393852,
+          "reranker_score": 0.9990443587303162,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0290443587303162
+        },
+        {
+          "title": "Outlook下我如何查看我的对话历史记录？",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.43591678039475723,
+          "reranker_score": 0.38216927647590637,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.4121692764759064
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_017",
+      "question": "IE 只能打开首页，其他链接打不开怎么办",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5717234130437897
+        },
+        {
+          "title": "Vista系统下随机软件的安装与卸载",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5411190001354113
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 46.758643094311815,
+          "embedding_rerank_score": 0.3495456282160597,
+          "reranker_score": 0.9995357990264893,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9995357990264893
+        },
+        {
+          "title": "QQ可以登录但网页打不开或者很慢",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4545228756852072,
+          "reranker_score": 0.8019292950630188,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.8019292950630188
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_018",
+      "question": "如何使用U盘安装Windows 7操作系统",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.8267312073445401
+        },
+        {
+          "title": "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5562320187479461
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何使用U盘安装Windows 7操作系统",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4243287779125503,
+          "reranker_score": 0.9994327425956726,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0294327425956726
+        },
+        {
+          "title": "Windows操作系统安装、改装、升级的操作指导汇总",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 20.350944126410123,
+          "embedding_rerank_score": 0.440156228974934,
+          "reranker_score": 0.9829948544502258,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0129948544502259
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_019",
+      "question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6331707291441115
+        },
+        {
+          "title": "两台电脑如何共享访问",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6067346194391587
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "手机或平板电脑无法访问百度相关网站的解决办法",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 40.849263307060475,
+          "embedding_rerank_score": 0.6115537262539288,
+          "reranker_score": 0.998807430267334,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.998807430267334
+        },
+        {
+          "title": "12306网站打不开怎么办",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 19.921067436963924,
+          "embedding_rerank_score": 0.6020602029675746,
+          "reranker_score": 0.09745591133832932,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.09745591133832932
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_020",
+      "question": "屏幕保护怎么关闭或取消",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.610711747446053
+        },
+        {
+          "title": "天权2000产品示意图及功能键说明",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5688090557743186
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.64529007161732,
+          "embedding_rerank_score": 0.4820987197837857,
+          "reranker_score": 0.9854105710983276,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9854105710983276
+        },
+        {
+          "title": "如何设置或禁用Windows Media Player播放时允许运行屏幕保护程序",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.805856581181725,
+          "embedding_rerank_score": 0.38232766192437384,
+          "reranker_score": 0.20084838569164276,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.20084838569164276
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_021",
+      "question": "风扇声音大但电脑能正常开机怎么办",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6038168759610325
+        },
+        {
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5977804941681856
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "风扇除尘功能说明：联想电源管理V1.0、V7.0、V8.0及早期机型除尘说明",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.040518068051322,
+          "embedding_rerank_score": 0.5415607148651573,
+          "reranker_score": 0.26707783341407776,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.2970778334140778
+        },
+        {
+          "title": "联想ET960电脑手机每次复位或者冷启动后，关闭视频声音或者不播放视频？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.096055603961107,
+          "embedding_rerank_score": 0.3707873511932186,
+          "reranker_score": 0.0001347547076875344,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.030134754707687533
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5251690254848732
+        },
+        {
+          "title": "暴风影音在播放高清视频时占用的CPU高怎么办-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.486062480401402
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6237802269350327,
+          "reranker_score": 2.408650288998615e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "如何安装网络打印机（XP Win7 Win8）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.836301034504666,
+          "embedding_rerank_score": 0.4115271375260268,
+          "reranker_score": 0.04583684727549553,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42312945665389823
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.40503238585141266
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "宽带连接频繁掉线",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.605220688900655,
+          "embedding_rerank_score": 0.4741662773977505,
+          "reranker_score": 0.32175037264823914,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.22175037264823913
+        },
+        {
+          "title": "联想台式机模式转换功能介绍",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5076112349702904,
+          "reranker_score": 0.0001643019641051069,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.6026640656366148
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5471785905126129
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.7026218458851831,
+          "reranker_score": 1.1593757335504051e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "如何用一个手机号注册多个微信帐号",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3480658946549867,
+          "reranker_score": 1.320307819696609e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_025",
+      "question": "PowerPoint 2007 cannot input Chinese",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "ET960如何启动“照相机”软件的方法及“照相机”软件功能按键说明-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.2301961425105425
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.21444897592115697
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在 PowerPoint 2007 中无法输入中文怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.732583534171642,
+          "embedding_rerank_score": 0.10868028020815512,
+          "reranker_score": 0.999377429485321,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.999377429485321
+        },
+        {
+          "title": "在Lync中如何共享桌面、ppt等？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 15.17370896887373,
+          "embedding_rerank_score": 0.15870943050041567,
+          "reranker_score": 0.5679397583007812,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5679397583007812
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_026",
+      "question": "How to modify Microsoft Word default style",
+      "candidate_count": 41,
+      "baseline_top2": [
+        {
+          "title": "Windows 8.1 Update （KB2919355）常见问题",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5515785336583123
+        },
+        {
+          "title": "联想手机如何在桌面上添加文件夹",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5515639176580337
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何修改 Microsoft Word 的默认样式？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 15.615303850286661,
+          "embedding_rerank_score": 0.3680590249580682,
+          "reranker_score": 0.9993163347244263,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0293163347244263
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 7.6793840961580395,
+          "embedding_rerank_score": 0.43843563047121953,
+          "reranker_score": 1.835942725847417e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.835942725847417e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_027",
+      "question": "Outlook paragraph marks should be hidden",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6761999398068057
+        },
+        {
+          "title": "万全T168板载SATA RAID系统设置",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6503104488680457
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何去掉Outlook中的段落标记等符号-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.618499351090765,
+          "embedding_rerank_score": 0.3950304046261608,
+          "reranker_score": 0.9994009733200073,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0294009733200074
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.662751353525654,
+          "reranker_score": 2.8999324968026485e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.8999324968026485e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_028",
+      "question": "Outlook sent mail record is missing",
+      "candidate_count": 38,
+      "baseline_top2": [
+        {
+          "title": "万全T110 1510如何清除主板CMOS-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4913875417897158
+        },
+        {
+          "title": "万全3200C 系统用户手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.46432929961493014
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.694653306885364,
+          "embedding_rerank_score": 0.4555929780219475,
+          "reranker_score": 0.999550998210907,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.029550998210907
+        },
+        {
+          "title": "Outlook下我如何查看我的对话历史记录？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.792643332263761,
+          "embedding_rerank_score": 0.3277387977285864,
+          "reranker_score": 0.22541722655296326,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.2554172265529633
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_029",
+      "question": "Visio 2010 shapes panel disappeared",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6703322920544253
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6408105442469163
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Visio 2010-2007 形状面板不见了怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 16.79153774535098,
+          "embedding_rerank_score": 0.5124371432000194,
+          "reranker_score": 0.9990635514259338,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9990635514259338
+        },
+        {
+          "title": "如何将 Visio 2010-2007 时间表更改为垂直方向？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.90748305644857,
+          "embedding_rerank_score": 0.3074930578020855,
+          "reranker_score": 0.33938243985176086,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.33938243985176086
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_030",
+      "question": "Excel shows #VALUE! error",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7694264434970439
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.713552596853599
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何解决 Excel 显示 #VALUE! 错误信息的问题-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 37.85999027896884,
+          "embedding_rerank_score": 0.4693393918037059,
+          "reranker_score": 0.9914351105690002,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0214351105690003
+        },
+        {
+          "title": "Excel表导入 Access 2010 后时间显示错误怎么办-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.544990046807637,
+          "embedding_rerank_score": 0.24440660930628896,
+          "reranker_score": 0.02854776568710804,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.05854776568710804
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_031",
+      "question": "Windows 7 group policy client service failed login",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.7527918723439954
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7088217025622161
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows 7 开机提示group policy client 服务器未登录",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 35.31793065648557,
+          "embedding_rerank_score": 0.5099713049759096,
+          "reranker_score": 0.999380350112915,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.029380350112915
+        },
+        {
+          "title": "如何卸载Windows 7的无线网卡设备驱动程序",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4669953072129749,
+          "reranker_score": 0.00011931323388125747,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.030119313233881256
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_032",
+      "question": "Lenovo G485 Wi-Fi cannot connect",
+      "candidate_count": 31,
+      "baseline_top2": [
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5173459372629092
+        },
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 10.087381529957554,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5104620688298797
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.236856626326883,
+          "embedding_rerank_score": 0.3608310654035806,
+          "reranker_score": 0.99814772605896,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 1.10814772605896
+        },
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 10.087381529957554,
+          "embedding_rerank_score": 0.4313947779126701,
+          "reranker_score": 0.22454731166362762,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.30454731166362764
+        }
+      ],
+      "top2_changed": false,
+      "classification": "RERANKER_NO_EFFECT",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_033",
+      "question": "Upgrade to Windows 8.1 from app store",
+      "candidate_count": 41,
+      "baseline_top2": [
+        {
+          "title": "关于系统提示登录进程初始化失败问题的解决方案",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.4630428384212256
+        },
+        {
+          "title": "常用的文件名后缀（扩展名）汇总",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.41946924363169236
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何通过应用商店升级到Windows 8.1",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3219884858103256,
+          "reranker_score": 0.9989792108535767,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0289792108535767
+        },
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.35788962245413347,
+          "reranker_score": 0.9957336783409119,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.025733678340912
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_034",
+      "question": "BIOS fingerprint option disable and enable",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6975414162201741
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6679059742825616
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "BIOS中如何关闭指纹识别并再次开启",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 16.695341059852414,
+          "embedding_rerank_score": 0.41584395538753693,
+          "reranker_score": 0.9992252588272095,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0292252588272095
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6660931467164959,
+          "reranker_score": 1.9418237570789643e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.9418237570789643e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_035",
+      "question": "Lenovo G470 black screen or blue screen cannot enter system",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 19.010952552318273,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5903409958595578
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5002715456704455
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 19.010952552318273,
+          "embedding_rerank_score": 0.4794843053622719,
+          "reranker_score": 0.9986353516578674,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 1.1086353516578675
+        },
+        {
+          "title": "联想G470笔记本亮度无法调节的解决方案",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.60138345546707,
+          "embedding_rerank_score": 0.30701131698912487,
+          "reranker_score": 0.10923808068037033,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.18923808068037035
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_036",
+      "question": "Lenovo G485 USB3.0 driver cannot be installed",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.473405029887053
+        },
+        {
+          "title": "Lenovo G485 USB3.0驱动程序安装不上的解决方法",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.4074940720067104
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Lenovo G485 USB3.0驱动程序安装不上的解决方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 31.991588840156908,
+          "embedding_rerank_score": 0.2456477317461111,
+          "reranker_score": 0.9997069239616394,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 1.0797069239616395
+        },
+        {
+          "title": "驱动查找、下载、安装及相关问题操作指导汇总",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 18.119907970591917,
+          "embedding_rerank_score": 0.2977710429082382,
+          "reranker_score": 0.9943056702613831,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 1.0743056702613831
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_037",
+      "question": "Windows XP safe mode startup",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7303373159846918
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6931176049151244
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何启动到Windows XP的安全模式",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.375182773535498,
+          "embedding_rerank_score": 0.4990806028280873,
+          "reranker_score": 0.9992679953575134,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0292679953575135
+        },
+        {
+          "title": "如何安装和使用 Windows XP 的故障恢复控制台",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.369528739425091,
+          "embedding_rerank_score": 0.39954373414286726,
+          "reranker_score": 0.18334679305553436,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.19834679305553438
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_038",
+      "question": "Configure wireless network on Windows 7",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除（2）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6773396884185581
+        },
+        {
+          "title": "彩色喷墨多功能一体机M920用户使用手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5794143569304369
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows 7下如何建立无线局域网",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4598700820331885,
+          "reranker_score": 0.9916025996208191,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0216025996208191
+        },
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 7.300268837952908,
+          "embedding_rerank_score": 0.3869793780736589,
+          "reranker_score": 0.4051324725151062,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.43513247251510623
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_039",
+      "question": "How to turn on Bluetooth module",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "S620充电时充电指示灯为常绿并伴有橙色闪烁",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4866467449461317
+        },
+        {
+          "title": "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4756331770182505
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.253852900868202,
+          "embedding_rerank_score": 0.37382959947128636,
+          "reranker_score": 0.7044607996940613,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.7344607996940613
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 14.068910497745694,
+          "embedding_rerank_score": 0.38927384728241776,
+          "reranker_score": 9.410902748641092e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 9.410902748641092e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_040",
+      "question": "How to add Bluetooth device",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5774432860193506
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.62827562269993,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5564379815825946
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.253852900868202,
+          "embedding_rerank_score": 0.3698500034821046,
+          "reranker_score": 0.9966362714767456,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0266362714767456
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.6793840961580395,
+          "embedding_rerank_score": 0.5462280652675704,
+          "reranker_score": 2.04130574275041e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.04130574275041e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_041",
+      "question": "Moon base printer connect to quantum network",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.6481672560608225
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5954822099667646
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.7484844635338607,
+          "reranker_score": 4.389020887174411e-06,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "Windows 8系统关闭触控屏的方法",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.25202541538658374,
+          "reranker_score": 3.5336122437001904e-06,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_042",
+      "question": "Foldable screen hinge replacement for tablet",
+      "candidate_count": 41,
+      "baseline_top2": [
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4613969787138972
+        },
+        {
+          "title": "联想ET360摄像头用户使用手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4321483709933599
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows 7系统关闭触控屏的方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.545116926301759,
+          "embedding_rerank_score": 0.32868261055887815,
+          "reranker_score": 3.826208194368519e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 3.826208194368519e-05
+        },
+        {
+          "title": "K900乐系列应用介绍：乐安全 乐商店 乐同步 乐关联 乐桌面",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.42258792908104814,
+          "reranker_score": 1.362434068141738e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.362434068141738e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_043",
+      "question": "Freezer compartment temperature sensor repair",
+      "candidate_count": 26,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5850820062323496
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5651551546994332
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.001980113193866,
+          "embedding_rerank_score": 0.47429080899630705,
+          "reranker_score": 2.0763338397955522e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.0763338397955522e-05
+        },
+        {
+          "title": "Windows 8系统关闭触控屏的方法",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.30223953922684615,
+          "reranker_score": 2.8151778224128066e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.8151778224128066e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_044",
+      "question": "Blue screen error 0xDEADBEEF",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.267508447667826
+        },
+        {
+          "title": "视频指导：如何使用ideaPad的一键恢复功能",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.24524358168629143
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除（2）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 7.086196467837437,
+          "embedding_rerank_score": 0.2675948843188475,
+          "reranker_score": 0.8356346487998962,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.7656346487998962
+        },
+        {
+          "title": "K900乐系列应用介绍：乐安全 乐商店 乐同步 乐关联 乐桌面",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3224208916945738,
+          "reranker_score": 9.627961844671518e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_045",
+      "question": "System error E9999 repair",
+      "candidate_count": 36,
+      "baseline_top2": [
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4600046220033246
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4396426437104295
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 12.375186571201272,
+          "embedding_rerank_score": 0.4841528796998863,
+          "reranker_score": 0.2478993982076645,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.14789939820766448
+        },
+        {
+          "title": "Windows 7下如何实现共享上网",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.39595216589572346,
+          "reranker_score": 1.5600669939885847e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_046",
+      "question": "Quantum network router configuration",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.3564517685225673
+        },
+        {
+          "title": "万全R510 5B20 第一章 产品简介",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.35618886733980304
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "万全R510 5B20 第一章 产品简介",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4567315252695411,
+          "reranker_score": 2.7083633540314622e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 4.143172527388979,
+          "embedding_rerank_score": 0.24308691196742627,
+          "reranker_score": 3.8311885873554274e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_047",
+      "question": "Foldable screen hinge water damage",
+      "candidate_count": 32,
+      "baseline_top2": [
+        {
+          "title": "万全T220&#38;amp;#38;270 G5系统用户手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5626694949818749
+        },
+        {
+          "title": "彩色喷墨多功能一体机M920用户使用手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5572741992081546
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "联想平板A3000恢复出厂设置的方法",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5471103904987089,
+          "reranker_score": 3.849397398880683e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 3.849397398880683e-05
+        },
+        {
+          "title": "Windows XP下如何实现共享上网",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4123264371622686,
+          "reranker_score": 6.30986096439301e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 6.30986096439301e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_048",
+      "question": "Freezer compartment fan stopped spinning",
+      "candidate_count": 29,
+      "baseline_top2": [
+        {
+          "title": "如何使用鲁大师跑分？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4794584624668775
+        },
+        {
+          "title": "如何关闭网卡的电源管理选项",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.3586641655805637
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.36035552948102423,
+          "reranker_score": 2.4990886231535114e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.4990886231535114e-05
+        },
+        {
+          "title": "Windows XP下如何实现共享上网",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.26720606741666647,
+          "reranker_score": 5.097544089949224e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 5.097544089949224e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_049",
+      "question": "Boot error 0xBADF00D cannot enter system",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5779970838121921
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 20.95206727634678,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.5553759296214169
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.334160685085735,
+          "embedding_rerank_score": 0.6047541265195837,
+          "reranker_score": 0.5058895349502563,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.43588953495025634
+        },
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.896515506500998,
+          "embedding_rerank_score": 0.5079554823882475,
+          "reranker_score": 0.4381835162639618,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.3681835162639618
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_050",
+      "question": "Startup protocol error E654321",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.27733665017226705
+        },
+        {
+          "title": "万全R510 5B20 第一章 产品简介",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.25624713014035183
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 4.768460370854738,
+          "embedding_rerank_score": 0.28678662532073246,
+          "reranker_score": 0.083808533847332,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.013808533847331994
+        },
+        {
+          "title": "Internet Explorer版本升级说明",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.19587439674888646,
+          "reranker_score": 0.0001858769974205643,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_051",
+      "question": "Mars projector access quantum network",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4943040011723294
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.49349433688155464
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5959733580638135,
+          "reranker_score": 1.0333568752685096e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 4.748145679853028,
+          "embedding_rerank_score": 0.2448408639180591,
+          "reranker_score": 8.643278124509379e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_052",
+      "question": "Foldable screen hinge calibration",
+      "candidate_count": 36,
+      "baseline_top2": [
+        {
+          "title": "数码学习机D100如何播放SD-MMC存储卡上的MP3歌曲",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4586329542919718
+        },
+        {
+          "title": "联想手机A820t备份联系人与短信的方法",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.45800385828337986
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "windows 系统进程",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4417873763071072,
+          "reranker_score": 0.00012217166658956558,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.00012217166658956558
+        },
+        {
+          "title": "Windows 8.1 Update （KB2919355）常见问题",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.33670607978352285,
+          "reranker_score": 1.0562289389781654e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.0562289389781654e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_053",
+      "question": "Power button pressed but no response",
+      "candidate_count": 40,
+      "baseline_top2": [
+        {
+          "title": "联想智能电视可以像电脑一样观看网页么？能看网页中的视频么？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4994850421112261
+        },
+        {
+          "title": "万全T200 2020 第五章 常用操作系统安装指南",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.48614573065127953
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows XP 关机故障",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 4.3914895011192,
+          "embedding_rerank_score": 0.36851227709960654,
+          "reranker_score": 0.031999699771404266,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.031999699771404266
+        },
+        {
+          "title": "windows 系统进程",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4378061793422381,
+          "reranker_score": 0.00013089166895952076,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.00013089166895952076
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_054",
+      "question": "Internet and driver download are slow because of DNS",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.651195447649748
+        },
+        {
+          "title": "启天IV代保护卡多媒体教程",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5975122437575106
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "设置正确的DNS解决上网慢下驱动慢的问题",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 24.90023802006594,
+          "embedding_rerank_score": 0.4010708352964165,
+          "reranker_score": 0.9989393353462219,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9989393353462219
+        },
+        {
+          "title": "如何解决ASDL上网慢的故障",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 15.722585461838513,
+          "embedding_rerank_score": 0.5038855488857404,
+          "reranker_score": 0.37087512016296387,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.37087512016296387
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_055",
+      "question": "Broadband connection drops frequently",
+      "candidate_count": 30,
+      "baseline_top2": [
+        {
+          "title": "万全T200 2020 第五章 常用操作系统安装指南",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.500155617117753
+        },
+        {
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.493878163745493
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows XP下如何实现共享上网",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.33389606692353097,
+          "reranker_score": 0.00017997188842855394,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.00017997188842855394
+        },
+        {
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4935075928415169,
+          "reranker_score": 2.2130909655970754e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 2.2130909655970754e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_056",
+      "question": "QQ can log in but web pages cannot open",
+      "candidate_count": 38,
+      "baseline_top2": [
+        {
+          "title": "暴风影音的DLNA功能怎么用",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5107666287421324
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5097448015905373
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Internet Explorer版本升级说明",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.45064249548554614,
+          "reranker_score": 0.0008007353753782809,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.0008007353753782809
+        },
+        {
+          "title": "Windows 8.1 Update （KB2919355）常见问题",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3450175707044658,
+          "reranker_score": 0.00011751599959097803,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.00011751599959097803
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_057",
+      "question": "Adjust screen brightness",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "票据打印机DP600、DP8000用户手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5160514971803299
+        },
+        {
+          "title": "Lenovo Miix3-830使用说明书",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5010850779073797
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 3.2504181831251726,
+          "embedding_rerank_score": 0.3719194191474547,
+          "reranker_score": 0.0006234481115825474,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.0006234481115825474
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.47826327870123087,
+          "reranker_score": 1.3985960322315805e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.3985960322315805e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_058",
+      "question": "Computer starts automatically by itself",
+      "candidate_count": 29,
+      "baseline_top2": [
+        {
+          "title": "WPS Office中如何打印稿纸",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.46263883452187965
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除（2）",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.444285975814127
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "电脑设置定时开机的操作方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.821618307175737,
+          "embedding_rerank_score": 0.3161952738577625,
+          "reranker_score": 0.2097383290529251,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.2097383290529251
+        },
+        {
+          "title": "联想2200、2210彩色喷墨打印机",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.41228266280909864,
+          "reranker_score": 6.614517587877344e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 6.614517587877344e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_059",
+      "question": "Check if network is reachable",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6891552600588797
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6523620262538923
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "台式机、一体机在BIOS中开启网卡的方法",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.840395413095516,
+          "embedding_rerank_score": 0.4191384715017093,
+          "reranker_score": 0.005339017137885094,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.005339017137885094
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6885607355967117,
+          "reranker_score": 1.6995030819089152e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.6995030819089152e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_060",
+      "question": "Manually add wireless network",
+      "candidate_count": 30,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6383940675199511
+        },
+        {
+          "title": "如何在任务栏显示或隐藏电池图标",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5813839477851361
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.843931389106734,
+          "embedding_rerank_score": 0.34265967453957236,
+          "reranker_score": 0.010460712015628815,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.040460712015628814
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.641516110522186,
+          "reranker_score": 7.7881650213385e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 7.7881650213385e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_061",
+      "question": "Where should I place a home router near the TV",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "TR280 G3-TR350 G7 如何查看和清除主板BMC的 SEL日志？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6020644488434539
+        },
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5903960596819366
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "有线、天线如何连接智能电视及搜台方法介绍",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.71794054787757,
+          "embedding_rerank_score": 0.41393793210271773,
+          "reranker_score": 7.73672727518715e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 7.73672727518715e-05
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5687171920522873,
+          "reranker_score": 4.965418611391215e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 4.965418611391215e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_062",
+      "question": "Washing machine shakes during spin cycle",
+      "candidate_count": 29,
+      "baseline_top2": [
+        {
+          "title": "联想ET360摄像头应用程序帮助文档",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4400687884522618
+        },
+        {
+          "title": "LJ1700用户使用手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4117903814554249
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "U160产品图示及功能键说明",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.41348808177083374,
+          "reranker_score": 1.1655773050733842e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.1655773050733842e-05
+        },
+        {
+          "title": "Internet Explorer版本升级说明",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.322970741909356,
+          "reranker_score": 6.644293080171337e-07,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 6.644293080171337e-07
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_063",
+      "question": "Robot vacuum cannot return to charging dock",
+      "candidate_count": 32,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4488379973062919
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4155821873118777
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 8.520535105127484,
+          "embedding_rerank_score": 0.25312542359317264,
+          "reranker_score": 1.4064929018786643e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.4064929018786643e-05
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4283091573790748,
+          "reranker_score": 8.498065540152311e-07,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 8.498065540152311e-07
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_064",
+      "question": "Gas stove turns off immediately after ignition",
+      "candidate_count": 31,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5803497029870254
+        },
+        {
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.542324909026307
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "电脑会自动开机启动，是什么问题？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.521385590469913,
+          "embedding_rerank_score": 0.39523387380071173,
+          "reranker_score": 1.306730518990662e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.306730518990662e-05
+        },
+        {
+          "title": "Internet Explorer版本升级说明",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3382293176820798,
+          "reranker_score": 1.0801011285366258e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.0801011285366258e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_065",
+      "question": "Air fryer heats unevenly",
+      "candidate_count": 26,
+      "baseline_top2": [
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.568932031510013
+        },
+        {
+          "title": "如何备份幸福之家4.X中的日记",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5602768717269655
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "联想一键恢复各版本的恢复、备份方法汇总",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.586070813859362,
+          "embedding_rerank_score": 0.4574579163351507,
+          "reranker_score": 1.0283608389727306e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.0283608389727306e-05
+        },
+        {
+          "title": "如何设置或禁用Windows Media Player播放时允许运行屏幕保护程序",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.434114353723114,
+          "reranker_score": 3.924948487110669e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 3.924948487110669e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_066",
+      "question": "Car navigation location keeps drifting",
+      "candidate_count": 30,
+      "baseline_top2": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.3995650098544243
+        },
+        {
+          "title": "联想手机A820t备份联系人与短信的方法",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.3854079711508132
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "宽带连接频繁掉线",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.37844267828019795,
+          "reranker_score": 9.539927123114467e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 9.539927123114467e-05
+        },
+        {
+          "title": "HighPoint Rocket 1640 RAID支持RAID级别？",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.22925689748657602,
+          "reranker_score": 6.34373373031849e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 6.34373373031849e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    },
+    {
+      "case_id": "case_067",
+      "question": "Smart door lock fingerprint recognition fails",
+      "candidate_count": 35,
+      "baseline_top2": [
+        {
+          "title": "启天IV代保护卡多媒体教程",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4637692557179496
+        },
+        {
+          "title": "笔记本双显卡如何切换",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4355233814424647
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "windows系统安装应用软件或者某些设备驱动时，提示错误。",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.994972960193023,
+          "embedding_rerank_score": 0.3567834598276016,
+          "reranker_score": 0.0019231947371736169,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.0019231947371736169
+        },
+        {
+          "title": "Internet Explorer版本升级说明",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3851868488978613,
+          "reranker_score": 8.564655217924155e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 8.564655217924155e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_068",
+      "question": "Home projector image keystone distortion",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "宽带连接频繁掉线",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5463177922543804
+        },
+        {
+          "title": "外接VGA设备后笔记本LCD没有显示而VGA显示正常",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5375855171025111
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "智能电视在观看过程中出现了花屏是什么原因？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5344992900038694,
+          "reranker_score": 9.334813512396067e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 9.334813512396067e-05
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 4.5244141661609465,
+          "embedding_rerank_score": 0.3395366507384816,
+          "reranker_score": 1.0257896065013483e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.0257896065013483e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_069",
+      "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5579334828380061
+        },
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5438640083328041
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.843931389106734,
+          "embedding_rerank_score": 0.3642669312158313,
+          "reranker_score": 0.2679237723350525,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.19792377233505248
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6064371410731219,
+          "reranker_score": 3.381775240995921e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_070",
+      "question": "Wireless keyboard and mouse suddenly fail, not Wi-Fi",
+      "candidate_count": 36,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5542807274482738
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5539770621587434
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6545358317659536,
+          "reranker_score": 2.1045803805463947e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.54076675346431,
+          "embedding_rerank_score": 0.22292323349928916,
+          "reranker_score": 1.2501397577580065e-05,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_071",
+      "question": "Word inserted pictures become blank boxes, not black screen",
+      "candidate_count": 44,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5370798347973094
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.533394865102885
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.906045221284073,
+          "embedding_rerank_score": 0.39238796850637586,
+          "reranker_score": 0.9973576664924622,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0273576664924622
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.182747110248272,
+          "embedding_rerank_score": 0.21042313351631126,
+          "reranker_score": 7.447641110047698e-06,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.030007447641110047
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_072",
+      "question": "Screen brightness is too low, not Word blank picture",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7160169066260733
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6859496275518419
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "为什么 Word 2010-2007 中插入的图片都变成空白框了？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.906045221284073,
+          "embedding_rerank_score": 0.4333607072666167,
+          "reranker_score": 0.9876378774642944,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.8876378774642945
+        },
+        {
+          "title": "在按下键盘上取消CapsLock,NumLock,ScrLock声音",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3634536613375816,
+          "reranker_score": 0.00014083069982007146,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.00014083069982007146
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_073",
+      "question": "Excel file menu is gray, not other Office document problem",
+      "candidate_count": 50,
+      "baseline_top2": [
+        {
+          "title": "天权2000产品示意图及功能键说明",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5740606740604651
+        },
+        {
+          "title": "如何控制 Internet Explorer 浏览器的进程数量？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.559460738230237
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 13.299575399218277,
+          "embedding_rerank_score": 0.46145786810481326,
+          "reranker_score": 0.9972783923149109,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.027278392314911
+        },
+        {
+          "title": "Internet Explorer版本升级说明",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.32251325219647076,
+          "reranker_score": 1.970460289157927e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.970460289157927e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_074",
+      "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+      "candidate_count": 40,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.637383382915997
+        },
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6317478202997024
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.253852900868202,
+          "embedding_rerank_score": 0.4163041945524336,
+          "reranker_score": 0.5562381148338318,
+          "anchor_adjustment": 0.019999999999999997,
+          "evidence_adjusted_score": 0.5762381148338318
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.6034730760646188,
+          "reranker_score": 6.392203067662194e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 6.392203067662194e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_075",
+      "question": "Need to press F1 or F2 to continue startup, not shutdown problem",
+      "candidate_count": 42,
+      "baseline_top2": [
+        {
+          "title": "万全2100如何设置启动顺序-",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6529510704957582
+        },
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6421638404007288
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 54.07532448664255,
+          "embedding_rerank_score": 0.3309333456048152,
+          "reranker_score": 0.9988322854042053,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0288322854042053
+        },
+        {
+          "title": "如何设置从光驱启动-",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.676786687825405,
+          "embedding_rerank_score": 0.4617984469094064,
+          "reranker_score": 0.9202166795730591,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.9502166795730591
+        }
+      ],
+      "top2_changed": true,
+      "classification": "RERANKER_IMPROVED",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_076",
+      "question": "Blue screen shows 0x0000007B, not generic blue screen",
+      "candidate_count": 43,
+      "baseline_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 11.628176094847053,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5421035101960469
+        },
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.051618241742074,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.4677100699538562
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 7.900569003831969,
+          "embedding_rerank_score": 0.3055375650110487,
+          "reranker_score": 0.9905649423599243,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 1.1005649423599244
+        },
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3414740724854475,
+          "reranker_score": 0.5401297807693481,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.6501297807693481
+        }
+      ],
+      "top2_changed": false,
+      "classification": "RERANKER_NO_EFFECT",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_077",
+      "question": "Generic blue screen cannot enter system but no error code",
+      "candidate_count": 37,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6395282230423638
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6084579683135896
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除（2）",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 11.29718256768562,
+          "embedding_rerank_score": 0.2856101198650812,
+          "reranker_score": 0.5515531301498413,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5815531301498413
+        },
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 6.896515506500998,
+          "embedding_rerank_score": 0.425643441087401,
+          "reranker_score": 0.5462931990623474,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5762931990623474
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_078",
+      "question": "Windows 8.1 update failed, not startup fault",
+      "candidate_count": 38,
+      "baseline_top2": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6052978676680185
+        },
+        {
+          "title": "Windows 8.1 update：更新到OneDrive",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 21.610421438205538,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5125219364476334
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "安装最新的 Windows 8.1 Update",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 17.060214451536012,
+          "embedding_rerank_score": 0.2553096089172809,
+          "reranker_score": 0.9954434633255005,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0254434633255005
+        },
+        {
+          "title": "Windows 8.1 Update （KB2919355）常见问题",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 21.955877732154807,
+          "embedding_rerank_score": 0.2775097602299816,
+          "reranker_score": 0.9797693490982056,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 1.0097693490982056
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_079",
+      "question": "Network adapter power management causes disconnect, not wireless mouse",
+      "candidate_count": 41,
+      "baseline_top2": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.642533031810822
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6160188278106432
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "电脑会自动开机启动，是什么问题？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.415999951775742,
+          "embedding_rerank_score": 0.45859035684406374,
+          "reranker_score": 0.03684074804186821,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.03684074804186821
+        },
+        {
+          "title": "在按下键盘上取消CapsLock,NumLock,ScrLock声音",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.3858737684803089,
+          "reranker_score": 1.3614780982607044e-05,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 1.3614780982607044e-05
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_080",
+      "question": "Taskbar input method icon disappeared, not Word input issue",
+      "candidate_count": 45,
+      "baseline_top2": [
+        {
+          "title": "在联系人窗口中怎样查看SIM卡上的号码？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4508324153330855
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42383293750803597
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "在联系人窗口中怎样查看SIM卡上的号码？",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.5491564850554483,
+          "reranker_score": 8.636010534246452e-06,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.0
+        },
+        {
+          "title": "DPSD 865PE主板的商用机型如何设置开机密码及BIOS密码？",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 10.182747110248272,
+          "embedding_rerank_score": 0.2189002171042625,
+          "reranker_score": 6.068598850106355e-06,
+          "anchor_adjustment": -0.2,
+          "evidence_adjusted_score": 0.0
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_081",
+      "question": "How to update network card IP address",
+      "candidate_count": 34,
+      "baseline_top2": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.719768129158288
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7119769881097007
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何更新网卡的IP地址",
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 15.773541690026715,
+          "embedding_rerank_score": 0.46191422610217836,
+          "reranker_score": 0.9994240999221802,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.9994240999221802
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.7119769881097007,
+          "reranker_score": 3.24675056617707e-06,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 3.24675056617707e-06
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": true
+    },
+    {
+      "case_id": "case_082",
+      "question": "How to install printer hardware driver on Windows",
+      "candidate_count": 39,
+      "baseline_top2": [
+        {
+          "title": "彩色喷墨多功能一体机M920用户使用手册",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5594157508860635
+        },
+        {
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": null,
+          "reranker_score": null,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5255141245782448
+        }
+      ],
+      "reranker_top2": [
+        {
+          "title": "如何卸载Windows 7的网卡设备驱动程序",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.40336127078534,
+          "reranker_score": 0.0013845262583345175,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.031384526258334516
+        },
+        {
+          "title": "安装最新的 Windows 8.1 Update",
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null,
+          "embedding_rerank_score": 0.4500213469972151,
+          "reranker_score": 0.0002378120698267594,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.03023781206982676
+        }
+      ],
+      "top2_changed": true,
+      "classification": "NEEDS_MANUAL_REVIEW",
+      "bm25_added_to_top2": false
+    }
+  ]
+}

@@ -1,0 +1,5597 @@
+{
+  "status": "success",
+  "generated_at": "2026-07-06T14:51:54",
+  "baseline_report": "backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_baseline.json",
+  "experiment_report": "backend\\knowledge\\testdata\\rag_eval_report_v2_82_hsn_bm25_experimental.json",
+  "metrics": {
+    "baseline": {
+      "total_cases": 82,
+      "strong_anchor_case_count": 60,
+      "hard_anchor_case_count": 18,
+      "soft_anchor_case_count": 39,
+      "negative_anchor_case_count": 5,
+      "no_anchor_case_count": 33,
+      "no_strong_anchor_case_count": 22,
+      "top1_title_weak_hit_count": 10,
+      "top2_title_weak_hit_count": 15,
+      "expected_no_answer_correctly_rejected": 1,
+      "expected_no_answer_anchor_rejected": 9,
+      "expected_no_answer_not_rejected": 13,
+      "expected_answer_false_rejected": 4,
+      "anchor_evidence_missing_count": 12,
+      "hard_evidence_exists_outside_topk_count": 0,
+      "negative_anchor_penalty_count": 0,
+      "bm25_mode": "off",
+      "bm25_candidate_total": 0,
+      "bm25_unique_added_total": 0,
+      "bm25_vector_overlap_total": 0,
+      "bm25_title_overlap_total": 0,
+      "source_id_missing_before_rerank_total": 0,
+      "missing_source_topk_count": 0,
+      "group_metrics": {
+        "C_generic_answerable": {
+          "total": 18,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 1,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 17,
+          "needs_manual_review_cases": [
+            "case_001",
+            "case_007",
+            "case_011",
+            "case_012",
+            "case_017",
+            "case_019",
+            "case_020",
+            "case_053",
+            "case_054",
+            "case_055",
+            "case_056",
+            "case_057",
+            "case_058",
+            "case_059",
+            "case_060",
+            "case_081",
+            "case_082"
+          ]
+        },
+        "A_anchor_answerable": {
+          "total": 26,
+          "top1_title_weak_hit_count": 8,
+          "top2_title_weak_hit_count": 10,
+          "expected_answer_false_rejected_count": 1,
+          "expected_answer_false_rejected_cases": [
+            "case_025"
+          ],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 16,
+          "needs_manual_review_cases": [
+            "case_004",
+            "case_015",
+            "case_018",
+            "case_025",
+            "case_026",
+            "case_027",
+            "case_028",
+            "case_029",
+            "case_030",
+            "case_031",
+            "case_033",
+            "case_034",
+            "case_037",
+            "case_038",
+            "case_039",
+            "case_040"
+          ]
+        },
+        "E_confusing": {
+          "total": 15,
+          "top1_title_weak_hit_count": 2,
+          "top2_title_weak_hit_count": 4,
+          "expected_answer_false_rejected_count": 3,
+          "expected_answer_false_rejected_cases": [
+            "case_069",
+            "case_070",
+            "case_080"
+          ],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 3,
+          "needs_manual_review_count": 11,
+          "needs_manual_review_cases": [
+            "case_021",
+            "case_069",
+            "case_070",
+            "case_071",
+            "case_072",
+            "case_073",
+            "case_074",
+            "case_075",
+            "case_077",
+            "case_079",
+            "case_080"
+          ]
+        },
+        "B_anchor_unanswerable": {
+          "total": 15,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 0,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 10,
+          "expected_no_answer_correctly_rejected_cases": [
+            "case_022",
+            "case_023",
+            "case_024",
+            "case_041",
+            "case_044",
+            "case_045",
+            "case_046",
+            "case_049",
+            "case_050",
+            "case_051"
+          ],
+          "expected_no_answer_still_accepted_count": 5,
+          "expected_no_answer_still_accepted_cases": [
+            "case_042",
+            "case_043",
+            "case_047",
+            "case_048",
+            "case_052"
+          ],
+          "anchor_evidence_missing_count": 9,
+          "needs_manual_review_count": 5,
+          "needs_manual_review_cases": [
+            "case_042",
+            "case_043",
+            "case_047",
+            "case_048",
+            "case_052"
+          ]
+        },
+        "D_generic_unanswerable": {
+          "total": 8,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 0,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 8,
+          "expected_no_answer_still_accepted_cases": [
+            "case_061",
+            "case_062",
+            "case_063",
+            "case_064",
+            "case_065",
+            "case_066",
+            "case_067",
+            "case_068"
+          ],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 8,
+          "needs_manual_review_cases": [
+            "case_061",
+            "case_062",
+            "case_063",
+            "case_064",
+            "case_065",
+            "case_066",
+            "case_067",
+            "case_068"
+          ]
+        }
+      }
+    },
+    "experiment": {
+      "total_cases": 82,
+      "strong_anchor_case_count": 60,
+      "hard_anchor_case_count": 18,
+      "soft_anchor_case_count": 39,
+      "negative_anchor_case_count": 5,
+      "no_anchor_case_count": 33,
+      "no_strong_anchor_case_count": 22,
+      "top1_title_weak_hit_count": 11,
+      "top2_title_weak_hit_count": 15,
+      "expected_no_answer_correctly_rejected": 1,
+      "expected_no_answer_anchor_rejected": 9,
+      "expected_no_answer_not_rejected": 13,
+      "expected_answer_false_rejected": 4,
+      "anchor_evidence_missing_count": 12,
+      "hard_evidence_exists_outside_topk_count": 0,
+      "negative_anchor_penalty_count": 0,
+      "bm25_mode": "experimental",
+      "bm25_candidate_total": 889,
+      "bm25_unique_added_total": 687,
+      "bm25_vector_overlap_total": 38,
+      "bm25_title_overlap_total": 0,
+      "source_id_missing_before_rerank_total": 0,
+      "missing_source_topk_count": 0,
+      "group_metrics": {
+        "C_generic_answerable": {
+          "total": 18,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 1,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 17,
+          "needs_manual_review_cases": [
+            "case_001",
+            "case_007",
+            "case_011",
+            "case_012",
+            "case_017",
+            "case_019",
+            "case_020",
+            "case_053",
+            "case_054",
+            "case_055",
+            "case_056",
+            "case_057",
+            "case_058",
+            "case_059",
+            "case_060",
+            "case_081",
+            "case_082"
+          ]
+        },
+        "A_anchor_answerable": {
+          "total": 26,
+          "top1_title_weak_hit_count": 9,
+          "top2_title_weak_hit_count": 10,
+          "expected_answer_false_rejected_count": 1,
+          "expected_answer_false_rejected_cases": [
+            "case_025"
+          ],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 16,
+          "needs_manual_review_cases": [
+            "case_004",
+            "case_015",
+            "case_018",
+            "case_025",
+            "case_026",
+            "case_027",
+            "case_028",
+            "case_029",
+            "case_030",
+            "case_031",
+            "case_033",
+            "case_034",
+            "case_037",
+            "case_038",
+            "case_039",
+            "case_040"
+          ]
+        },
+        "E_confusing": {
+          "total": 15,
+          "top1_title_weak_hit_count": 2,
+          "top2_title_weak_hit_count": 4,
+          "expected_answer_false_rejected_count": 3,
+          "expected_answer_false_rejected_cases": [
+            "case_069",
+            "case_070",
+            "case_080"
+          ],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 0,
+          "expected_no_answer_still_accepted_cases": [],
+          "anchor_evidence_missing_count": 3,
+          "needs_manual_review_count": 11,
+          "needs_manual_review_cases": [
+            "case_021",
+            "case_069",
+            "case_070",
+            "case_071",
+            "case_072",
+            "case_073",
+            "case_074",
+            "case_075",
+            "case_077",
+            "case_079",
+            "case_080"
+          ]
+        },
+        "B_anchor_unanswerable": {
+          "total": 15,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 0,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 10,
+          "expected_no_answer_correctly_rejected_cases": [
+            "case_022",
+            "case_023",
+            "case_024",
+            "case_041",
+            "case_044",
+            "case_045",
+            "case_046",
+            "case_049",
+            "case_050",
+            "case_051"
+          ],
+          "expected_no_answer_still_accepted_count": 5,
+          "expected_no_answer_still_accepted_cases": [
+            "case_042",
+            "case_043",
+            "case_047",
+            "case_048",
+            "case_052"
+          ],
+          "anchor_evidence_missing_count": 9,
+          "needs_manual_review_count": 5,
+          "needs_manual_review_cases": [
+            "case_042",
+            "case_043",
+            "case_047",
+            "case_048",
+            "case_052"
+          ]
+        },
+        "D_generic_unanswerable": {
+          "total": 8,
+          "top1_title_weak_hit_count": 0,
+          "top2_title_weak_hit_count": 0,
+          "expected_answer_false_rejected_count": 0,
+          "expected_answer_false_rejected_cases": [],
+          "expected_no_answer_correctly_rejected_count": 0,
+          "expected_no_answer_correctly_rejected_cases": [],
+          "expected_no_answer_still_accepted_count": 8,
+          "expected_no_answer_still_accepted_cases": [
+            "case_061",
+            "case_062",
+            "case_063",
+            "case_064",
+            "case_065",
+            "case_066",
+            "case_067",
+            "case_068"
+          ],
+          "anchor_evidence_missing_count": 0,
+          "needs_manual_review_count": 8,
+          "needs_manual_review_cases": [
+            "case_061",
+            "case_062",
+            "case_063",
+            "case_064",
+            "case_065",
+            "case_066",
+            "case_067",
+            "case_068"
+          ]
+        }
+      }
+    }
+  },
+  "top2_change_counts": {
+    "unchanged": 72,
+    "changed": 10
+  },
+  "analysis": {
+    "anchor_gate_rejects_anchor_unanswerable": 10,
+    "anchor_gate_false_rejected_answerable": [
+      "case_025",
+      "case_069",
+      "case_070",
+      "case_080"
+    ],
+    "no_strong_anchor_answerable_false_rejected": [],
+    "remaining_unanswerable_accepted": [
+      "case_042",
+      "case_043",
+      "case_047",
+      "case_048",
+      "case_052",
+      "case_061",
+      "case_062",
+      "case_063",
+      "case_064",
+      "case_065",
+      "case_066",
+      "case_067",
+      "case_068"
+    ],
+    "anchor_missing_cases": [
+      "case_022",
+      "case_023",
+      "case_024",
+      "case_041",
+      "case_045",
+      "case_046",
+      "case_049",
+      "case_050",
+      "case_051",
+      "case_069",
+      "case_070",
+      "case_080"
+    ],
+    "top2_changed_cases": [
+      "case_005",
+      "case_027",
+      "case_035",
+      "case_040",
+      "case_046",
+      "case_048",
+      "case_052",
+      "case_063",
+      "case_068",
+      "case_078"
+    ],
+    "likely_anchor_help_cases": [
+      "case_005",
+      "case_035",
+      "case_078"
+    ],
+    "requires_reranker_groups": [
+      "C_generic_answerable",
+      "A_anchor_answerable",
+      "E_confusing",
+      "D_generic_unanswerable"
+    ],
+    "boost_penalty_side_effect_note": "Review top2_changed_cases and likely_anchor_help_cases; the script does not tune boost or penalty."
+  },
+  "bm25_analysis": {
+    "baseline_bm25_mode": "off",
+    "experiment_bm25_mode": "experimental",
+    "bm25_candidate_delta": 889,
+    "bm25_unique_added_delta": 687,
+    "top2_changed_cases": [
+      "case_005",
+      "case_027",
+      "case_035",
+      "case_040",
+      "case_046",
+      "case_048",
+      "case_052",
+      "case_063",
+      "case_068",
+      "case_078"
+    ],
+    "top2_weak_hit_improved_cases": [],
+    "top2_weak_hit_regressed_cases": []
+  },
+  "focus_cases": [
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "extracted_anchors": [
+        "startup",
+        "开机"
+      ],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5405179173684178,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5705179173684178,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5273132290295546,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5273132290295546,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "extracted_anchors": [
+        "0x0000007B",
+        "blue screen",
+        "电脑"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "Windows 2000蓝屏死机故障分析与排除"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6147667868352691,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.7247667868352691,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 39.74076580446724
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "0693-Windows 2000蓝屏死机故障分析与排除.md",
+          "final_rerank_score": 0.47632429459995257,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5863242945999526,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.419126408866429
+        }
+      ]
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "extracted_anchors": [
+        "Wi-Fi",
+        "网络"
+      ],
+      "baseline_top2": [
+        "在Windows 7下如何配置无线网络",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "在Windows 7下如何配置无线网络",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 7下如何配置无线网络",
+          "source_id": "0353-在Windows 7下如何配置无线网络.md",
+          "final_rerank_score": 0.5540881137202314,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5840881137202314,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Wi-Fi"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.707661584423183
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.5718608173769821,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5718608173769821,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何确认触控板的品牌（厂商）"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何确认触控板的品牌（厂商）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.5768177504998382,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6068177504998382,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Bluetooth",
+            "蓝牙设备"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 13.037648546857325
+        },
+        {
+          "title": "如何确认触控板的品牌（厂商）",
+          "source_id": "0382-如何确认触控板的品牌（厂商）.md",
+          "final_rerank_score": 0.547108736173243,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.547108736173243,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.5320595853126088,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5620595853126088,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Bluetooth",
+            "蓝牙设备"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 18.654863978376817
+        },
+        {
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+          "final_rerank_score": 0.4723036311132099,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5023036311132099,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Bluetooth",
+            "蓝牙设备"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "extracted_anchors": [
+        "Excel",
+        "文件"
+      ],
+      "baseline_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "final_rerank_score": 0.6272369918142773,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6572369918142773,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6114836548508573,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6114836548508573,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "extracted_anchors": [
+        "Word",
+        "图片"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6227000585535514,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6227000585535514,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5984999285816919,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5984999285816919,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "extracted_anchors": [
+        "量子网络",
+        "网络"
+      ],
+      "baseline_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "暴风影音在播放高清视频时占用的CPU高怎么办-"
+      ],
+      "experiment_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "暴风影音在播放高清视频时占用的CPU高怎么办-"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "final_rerank_score": 0.6251690254848732,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5251690254848732,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "暴风影音在播放高清视频时占用的CPU高怎么办-",
+          "source_id": "0487-暴风影音在播放高清视频时占用的CPU高怎么办-.md",
+          "final_rerank_score": 0.586062480401402,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.486062480401402,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "extracted_anchors": [
+        "冰箱冷冻室",
+        "电脑"
+      ],
+      "baseline_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.5231294566538982,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42312945665389823,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5050323858514126,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.40503238585141266,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "extracted_anchors": [
+        "折叠屏铰链"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7026640656366148,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.6026640656366148,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.6471785905126128,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5471785905126129,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    }
+  ],
+  "case_comparisons": [
+    {
+      "case_id": "case_001",
+      "question": "开不了机，屏幕不亮怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.5996320427889443,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5996320427889443,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5447291700143007,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5447291700143007,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_002",
+      "question": "开机没反应怎么办",
+      "extracted_anchors": [
+        "startup",
+        "开机"
+      ],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5405179173684178,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5705179173684178,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5273132290295546,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5273132290295546,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_003",
+      "question": "屏幕不亮但风扇会转，电脑黑屏怎么处理",
+      "extracted_anchors": [
+        "电脑",
+        "黑屏"
+      ],
+      "baseline_top2": [
+        "宽带连接频繁掉线",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "宽带连接频繁掉线",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "final_rerank_score": 0.5334220277942212,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5334220277942212,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5163298738094788,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5163298738094788,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 12.918497972447756
+        }
+      ]
+    },
+    {
+      "case_id": "case_004",
+      "question": "开机蓝屏提示登录进程初始化失败怎么解决",
+      "extracted_anchors": [
+        "blue screen",
+        "startup",
+        "开机"
+      ],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "智能电视在观看过程中出现了花屏是什么原因？"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "智能电视在观看过程中出现了花屏是什么原因？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.6401231649996153,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6701231649996153,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "blue screen",
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "智能电视在观看过程中出现了花屏是什么原因？",
+          "source_id": "0195-智能电视在观看过程中出现了花屏是什么原因？.md",
+          "final_rerank_score": 0.6220662138275553,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6370662138275553,
+          "anchor_evidence_status": "PARTIAL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.015,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_005",
+      "question": "电脑蓝屏报错0x0000007B怎么办",
+      "extracted_anchors": [
+        "0x0000007B",
+        "blue screen",
+        "电脑"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "Windows 2000蓝屏死机故障分析与排除"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6147667868352691,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.7247667868352691,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 39.74076580446724
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "0693-Windows 2000蓝屏死机故障分析与排除.md",
+          "final_rerank_score": 0.47632429459995257,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5863242945999526,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 9.419126408866429
+        }
+      ]
+    },
+    {
+      "case_id": "case_006",
+      "question": "无线网络连不上怎么办",
+      "extracted_anchors": [
+        "Wi-Fi",
+        "网络"
+      ],
+      "baseline_top2": [
+        "在Windows 7下如何配置无线网络",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "在Windows 7下如何配置无线网络",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 7下如何配置无线网络",
+          "source_id": "0353-在Windows 7下如何配置无线网络.md",
+          "final_rerank_score": 0.5540881137202314,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5840881137202314,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Wi-Fi"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.707661584423183
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.5718608173769821,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5718608173769821,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_007",
+      "question": "连不上网，怎么检查网络是否通畅",
+      "extracted_anchors": [
+        "网络"
+      ],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "WPS Office中如何打印稿纸"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "WPS Office中如何打印稿纸"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.6742379014731175,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6742379014731175,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "WPS Office中如何打印稿纸",
+          "source_id": "0914-WPS Office中如何打印稿纸.md",
+          "final_rerank_score": 0.6190824948325921,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6190824948325921,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_008",
+      "question": "只使用电池有时找不到网络设备怎么办",
+      "extracted_anchors": [
+        "设备",
+        "网络"
+      ],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "关于电池充电、保养、设置、较准的方法汇总"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "关于电池充电、保养、设置、较准的方法汇总"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.6482720907416888,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6482720907416888,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "关于电池充电、保养、设置、较准的方法汇总",
+          "source_id": "0420-关于电池充电、保养、设置、较准的方法汇总.md",
+          "final_rerank_score": 0.6006933510347772,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6006933510347772,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 9.058204710373035
+        }
+      ]
+    },
+    {
+      "case_id": "case_009",
+      "question": "搜不到蓝牙设备怎么办",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何确认触控板的品牌（厂商）"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "如何确认触控板的品牌（厂商）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.5768177504998382,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6068177504998382,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Bluetooth",
+            "蓝牙设备"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 13.037648546857325
+        },
+        {
+          "title": "如何确认触控板的品牌（厂商）",
+          "source_id": "0382-如何确认触控板的品牌（厂商）.md",
+          "final_rerank_score": 0.547108736173243,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.547108736173243,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_010",
+      "question": "连不上蓝牙设备怎么添加",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "设备"
+      ],
+      "baseline_top2": [
+        "如何添加启用蓝牙的设备",
+        "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+      ],
+      "experiment_top2": [
+        "如何添加启用蓝牙的设备",
+        "蓝牙设备在Win XP SP2操作系统下的设置与使用"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何添加启用蓝牙的设备",
+          "source_id": "0356-如何添加启用蓝牙的设备.md",
+          "final_rerank_score": 0.5320595853126088,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5620595853126088,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Bluetooth",
+            "蓝牙设备"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 18.654863978376817
+        },
+        {
+          "title": "蓝牙设备在Win XP SP2操作系统下的设置与使用",
+          "source_id": "0994-蓝牙设备在Win XP SP2操作系统下的设置与使用.md",
+          "final_rerank_score": 0.4723036311132099,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5023036311132099,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Bluetooth",
+            "蓝牙设备"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_011",
+      "question": "电脑没声音，音量怎么调",
+      "extracted_anchors": [
+        "电脑"
+      ],
+      "baseline_top2": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "一键恢复功能键在什么位置？"
+      ],
+      "experiment_top2": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "一键恢复功能键在什么位置？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5952934264133287,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5952934264133287,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "一键恢复功能键在什么位置？",
+          "source_id": "0235-一键恢复功能键在什么位置？.md",
+          "final_rerank_score": 0.4696074922044381,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4696074922044381,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_012",
+      "question": "系统卡死没有响应怎么办",
+      "extracted_anchors": [
+        "系统"
+      ],
+      "baseline_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "experiment_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "开机时，需要按F1（或F2）键后才能继续启动"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.5527975914307299,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5527975914307299,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5451647526708359,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5451647526708359,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_013",
+      "question": "电脑运行游戏卡怎么办",
+      "extracted_anchors": [
+        "电脑"
+      ],
+      "baseline_top2": [
+        "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想新圆梦F系列机型运行游戏卡或无法运行的解决方案",
+          "source_id": "0077-联想新圆梦F系列机型运行游戏卡或无法运行的解决方案.md",
+          "final_rerank_score": 0.6091339920284081,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6091339920284081,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.596290999563986,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.596290999563986,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_014",
+      "question": "Excel 文件菜单和相关功能灰色不可用怎么办",
+      "extracted_anchors": [
+        "Excel",
+        "文件"
+      ],
+      "baseline_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "experiment_top2": [
+        "Excel文件菜单及相关功能灰色不可用怎么办？",
+        "台式和一体机蓝屏报错代码：0x0000007B"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Excel文件菜单及相关功能灰色不可用怎么办？",
+          "source_id": "0025-Excel文件菜单及相关功能灰色不可用怎么办？.md",
+          "final_rerank_score": 0.6272369918142773,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6572369918142773,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Excel"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6114836548508573,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6114836548508573,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_015",
+      "question": "Word 插入的图片都变成空白框了怎么办",
+      "extracted_anchors": [
+        "Word",
+        "图片"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6227000585535514,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6227000585535514,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5984999285816919,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5984999285816919,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_016",
+      "question": "Outlook 为什么没有已发送邮件的记录",
+      "extracted_anchors": [
+        "Outlook"
+      ],
+      "baseline_top2": [
+        "Outlook为何没有已发送邮件的记录-",
+        "彩色喷墨多功能一体机M920校准墨盒的操作"
+      ],
+      "experiment_top2": [
+        "Outlook为何没有已发送邮件的记录-",
+        "彩色喷墨多功能一体机M920校准墨盒的操作"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Outlook为何没有已发送邮件的记录-",
+          "source_id": "0011-Outlook为何没有已发送邮件的记录-.md",
+          "final_rerank_score": 0.5668078741846164,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5968078741846164,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Outlook"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 56.26668669530043
+        },
+        {
+          "title": "彩色喷墨多功能一体机M920校准墨盒的操作",
+          "source_id": "0820-彩色喷墨多功能一体机M920校准墨盒的操作.md",
+          "final_rerank_score": 0.5292942749454274,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5292942749454274,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_017",
+      "question": "IE 只能打开首页，其他链接打不开怎么办",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "Vista系统下随机软件的安装与卸载"
+      ],
+      "experiment_top2": [
+        "开机时，需要按F1（或F2）键后才能继续启动",
+        "Vista系统下随机软件的安装与卸载"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "开机时，需要按F1（或F2）键后才能继续启动",
+          "source_id": "0406-开机时，需要按F1（或F2）键后才能继续启动.md",
+          "final_rerank_score": 0.5717234130437897,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5717234130437897,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Vista系统下随机软件的安装与卸载",
+          "source_id": "0003-Vista系统下随机软件的安装与卸载.md",
+          "final_rerank_score": 0.5411190001354113,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5411190001354113,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_018",
+      "question": "如何使用U盘安装Windows 7操作系统",
+      "extracted_anchors": [
+        "Windows",
+        "系统"
+      ],
+      "baseline_top2": [
+        "联想硬盘保护EDU7.X的安装方法",
+        "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-"
+      ],
+      "experiment_top2": [
+        "联想硬盘保护EDU7.X的安装方法",
+        "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "final_rerank_score": 0.8267312073445401,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.8267312073445401,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-",
+          "source_id": "0970-使用导航光盘安装操作系统时提示CD-KEY序列号从何处查找-.md",
+          "final_rerank_score": 0.5262320187479461,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5562320187479461,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_019",
+      "question": "手机或平板电脑无法访问百度相关网站怎么办",
+      "extracted_anchors": [
+        "电脑"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "两台电脑如何共享访问"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "两台电脑如何共享访问"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.6331707291441115,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6331707291441115,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "两台电脑如何共享访问",
+          "source_id": "0284-两台电脑如何共享访问.md",
+          "final_rerank_score": 0.6067346194391587,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6067346194391587,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_020",
+      "question": "屏幕保护怎么关闭或取消",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "万全T100-T400-T468 1008的硬盘配置方案",
+        "天权2000产品示意图及功能键说明"
+      ],
+      "experiment_top2": [
+        "万全T100-T400-T468 1008的硬盘配置方案",
+        "天权2000产品示意图及功能键说明"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "万全T100-T400-T468 1008的硬盘配置方案",
+          "source_id": "0618-万全T100-T400-T468 1008的硬盘配置方案.md",
+          "final_rerank_score": 0.610711747446053,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.610711747446053,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "final_rerank_score": 0.5688090557743186,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5688090557743186,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_021",
+      "question": "风扇声音大但电脑能正常开机怎么办",
+      "extracted_anchors": [
+        "startup",
+        "电脑",
+        "开机"
+      ],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "智能电视开不了机并且指示灯都不亮怎么办？"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "智能电视开不了机并且指示灯都不亮怎么办？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.5738168759610325,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6038168759610325,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "智能电视开不了机并且指示灯都不亮怎么办？",
+          "source_id": "0192-智能电视开不了机并且指示灯都不亮怎么办？.md",
+          "final_rerank_score": 0.5677804941681855,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5977804941681856,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_022",
+      "question": "火星基地打印机怎么连接量子网络",
+      "extracted_anchors": [
+        "量子网络",
+        "网络"
+      ],
+      "baseline_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "暴风影音在播放高清视频时占用的CPU高怎么办-"
+      ],
+      "experiment_top2": [
+        "在Windows 8系统下如何查看网络IP地址",
+        "暴风影音在播放高清视频时占用的CPU高怎么办-"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在Windows 8系统下如何查看网络IP地址",
+          "source_id": "0209-在Windows 8系统下如何查看网络IP地址.md",
+          "final_rerank_score": 0.6251690254848732,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5251690254848732,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "暴风影音在播放高清视频时占用的CPU高怎么办-",
+          "source_id": "0487-暴风影音在播放高清视频时占用的CPU高怎么办-.md",
+          "final_rerank_score": 0.586062480401402,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.486062480401402,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_023",
+      "question": "冰箱冷冻室结霜导致电脑不能上网怎么办",
+      "extracted_anchors": [
+        "冰箱冷冻室",
+        "电脑"
+      ],
+      "baseline_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "experiment_top2": [
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.5231294566538982,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42312945665389823,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.5050323858514126,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.40503238585141266,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_024",
+      "question": "手机屏幕进水后如何更换折叠屏铰链",
+      "extracted_anchors": [
+        "折叠屏铰链"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7026640656366148,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.6026640656366148,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.6471785905126128,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5471785905126129,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_025",
+      "question": "PowerPoint 2007 cannot input Chinese",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "ET960如何启动“照相机”软件的方法及“照相机”软件功能按键说明-",
+        "Windows 2000蓝屏死机故障分析与排除"
+      ],
+      "experiment_top2": [
+        "ET960如何启动“照相机”软件的方法及“照相机”软件功能按键说明-",
+        "Windows 2000蓝屏死机故障分析与排除"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "ET960如何启动“照相机”软件的方法及“照相机”软件功能按键说明-",
+          "source_id": "0844-ET960如何启动“照相机”软件的方法及“照相机”软件功能按键说明-.md",
+          "final_rerank_score": 0.2301961425105425,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.2301961425105425,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除",
+          "source_id": "0693-Windows 2000蓝屏死机故障分析与排除.md",
+          "final_rerank_score": 0.21444897592115697,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.21444897592115697,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_026",
+      "question": "How to modify Microsoft Word default style",
+      "extracted_anchors": [
+        "Word"
+      ],
+      "baseline_top2": [
+        "Windows 8.1 Update （KB2919355）常见问题",
+        "联想手机如何在桌面上添加文件夹"
+      ],
+      "experiment_top2": [
+        "Windows 8.1 Update （KB2919355）常见问题",
+        "联想手机如何在桌面上添加文件夹"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows 8.1 Update （KB2919355）常见问题",
+          "source_id": "0418-Windows 8.1 Update （KB2919355）常见问题.md",
+          "final_rerank_score": 0.5515785336583123,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5515785336583123,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想手机如何在桌面上添加文件夹",
+          "source_id": "0154-联想手机如何在桌面上添加文件夹.md",
+          "final_rerank_score": 0.5515639176580337,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5515639176580337,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_027",
+      "question": "Outlook paragraph marks should be hidden",
+      "extracted_anchors": [
+        "Outlook"
+      ],
+      "baseline_top2": [
+        "没有并口的笔记本如何接加密狗等并口设备？",
+        "万全T168板载SATA RAID系统设置"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "万全T168板载SATA RAID系统设置"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6761999398068057,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6761999398068057,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "万全T168板载SATA RAID系统设置",
+          "source_id": "0619-万全T168板载SATA RAID系统设置.md",
+          "final_rerank_score": 0.6503104488680457,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6503104488680457,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_028",
+      "question": "Outlook sent mail record is missing",
+      "extracted_anchors": [
+        "Outlook"
+      ],
+      "baseline_top2": [
+        "万全T110 1510如何清除主板CMOS-",
+        "万全3200C 系统用户手册"
+      ],
+      "experiment_top2": [
+        "万全T110 1510如何清除主板CMOS-",
+        "万全3200C 系统用户手册"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "万全T110 1510如何清除主板CMOS-",
+          "source_id": "0718-万全T110 1510如何清除主板CMOS-.md",
+          "final_rerank_score": 0.4913875417897158,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4913875417897158,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "万全3200C 系统用户手册",
+          "source_id": "0691-万全3200C 系统用户手册.md",
+          "final_rerank_score": 0.46432929961493014,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.46432929961493014,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_029",
+      "question": "Visio 2010 shapes panel disappeared",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6703322920544253,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6703322920544253,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6408105442469163,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6408105442469163,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_030",
+      "question": "Excel shows #VALUE! error",
+      "extracted_anchors": [
+        "Excel"
+      ],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.7694264434970439,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7694264434970439,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.713552596853599,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.713552596853599,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_031",
+      "question": "Windows 7 group policy client service failed login",
+      "extracted_anchors": [
+        "Windows"
+      ],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.7227918723439953,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.7527918723439954,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7088217025622161,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7088217025622161,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_032",
+      "question": "Lenovo G485 Wi-Fi cannot connect",
+      "extracted_anchors": [
+        "G485",
+        "Lenovo G485",
+        "Wi-Fi"
+      ],
+      "baseline_top2": [
+        "Lenovo G485无线网络连接不上的解决方案",
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”"
+      ],
+      "experiment_top2": [
+        "Lenovo G485无线网络连接不上的解决方案",
+        "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Lenovo G485无线网络连接不上的解决方案",
+          "source_id": "0082-Lenovo G485无线网络连接不上的解决方案.md",
+          "final_rerank_score": 0.4073459372629092,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5173459372629092,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "G485",
+            "Lenovo G485",
+            "Wi-Fi"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "更新Windows 8.1过程中，提示“无法更新到Windows 8.1”",
+          "source_id": "0388-更新Windows 8.1过程中，提示“无法更新到Windows 8.1”.md",
+          "final_rerank_score": 0.43046206882987964,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.5104620688298797,
+          "anchor_evidence_status": "PARTIAL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "G485",
+            "Lenovo G485"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 10.087381529957554
+        }
+      ]
+    },
+    {
+      "case_id": "case_033",
+      "question": "Upgrade to Windows 8.1 from app store",
+      "extracted_anchors": [
+        "Windows"
+      ],
+      "baseline_top2": [
+        "关于系统提示登录进程初始化失败问题的解决方案",
+        "常用的文件名后缀（扩展名）汇总"
+      ],
+      "experiment_top2": [
+        "关于系统提示登录进程初始化失败问题的解决方案",
+        "常用的文件名后缀（扩展名）汇总"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "关于系统提示登录进程初始化失败问题的解决方案",
+          "source_id": "0068-关于系统提示登录进程初始化失败问题的解决方案.md",
+          "final_rerank_score": 0.4330428384212256,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.4630428384212256,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "常用的文件名后缀（扩展名）汇总",
+          "source_id": "0791-常用的文件名后缀（扩展名）汇总.md",
+          "final_rerank_score": 0.38946924363169233,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.41946924363169236,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_034",
+      "question": "BIOS fingerprint option disable and enable",
+      "extracted_anchors": [
+        "BIOS"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6975414162201741,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6975414162201741,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6679059742825616,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6679059742825616,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_035",
+      "question": "Lenovo G470 black screen or blue screen cannot enter system",
+      "extracted_anchors": [
+        "G470",
+        "Lenovo G470",
+        "blue screen",
+        "black screen",
+        "system"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+      ],
+      "experiment_top2": [
+        "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "final_rerank_score": 0.4803409958595578,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5903409958595578,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "G470",
+            "Lenovo G470",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 19.010952552318273
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6002715456704455,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5002715456704455,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_036",
+      "question": "Lenovo G485 USB3.0 driver cannot be installed",
+      "extracted_anchors": [
+        "G485",
+        "Lenovo G485"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "Lenovo G485 USB3.0驱动程序安装不上的解决方法"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "Lenovo G485 USB3.0驱动程序安装不上的解决方法"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.573405029887053,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.473405029887053,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Lenovo G485 USB3.0驱动程序安装不上的解决方法",
+          "source_id": "0081-Lenovo G485 USB3.0驱动程序安装不上的解决方法.md",
+          "final_rerank_score": 0.3274940720067104,
+          "anchor_adjustment": 0.08,
+          "evidence_adjusted_score": 0.4074940720067104,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "G485",
+            "Lenovo G485"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_037",
+      "question": "Windows XP safe mode startup",
+      "extracted_anchors": [
+        "Windows",
+        "startup",
+        "startup"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7303373159846918,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7303373159846918,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6781176049151244,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6931176049151244,
+          "anchor_evidence_status": "PARTIAL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.015,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_038",
+      "question": "Configure wireless network on Windows 7",
+      "extracted_anchors": [
+        "Windows",
+        "Wi-Fi",
+        "network"
+      ],
+      "baseline_top2": [
+        "Windows 2000蓝屏死机故障分析与排除（2）",
+        "彩色喷墨多功能一体机M920用户使用手册"
+      ],
+      "experiment_top2": [
+        "Windows 2000蓝屏死机故障分析与排除（2）",
+        "彩色喷墨多功能一体机M920用户使用手册"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除（2）",
+          "source_id": "0781-Windows 2000蓝屏死机故障分析与排除（2）.md",
+          "final_rerank_score": 0.6623396884185581,
+          "anchor_adjustment": 0.015,
+          "evidence_adjusted_score": 0.6773396884185581,
+          "anchor_evidence_status": "PARTIAL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.015,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "彩色喷墨多功能一体机M920用户使用手册",
+          "source_id": "0799-彩色喷墨多功能一体机M920用户使用手册.md",
+          "final_rerank_score": 0.5794143569304369,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5794143569304369,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_039",
+      "question": "How to turn on Bluetooth module",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备"
+      ],
+      "baseline_top2": [
+        "S620充电时充电指示灯为常绿并伴有橙色闪烁",
+        "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能"
+      ],
+      "experiment_top2": [
+        "S620充电时充电指示灯为常绿并伴有橙色闪烁",
+        "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "S620充电时充电指示灯为常绿并伴有橙色闪烁",
+          "source_id": "0849-S620充电时充电指示灯为常绿并伴有橙色闪烁.md",
+          "final_rerank_score": 0.4866467449461317,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4866467449461317,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能",
+          "source_id": "0344-屏幕保护功能介绍以及不同系统下如何设置或取消屏幕保护（屏保）功能.md",
+          "final_rerank_score": 0.4756331770182505,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4756331770182505,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_040",
+      "question": "How to add Bluetooth device",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "device"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "Intel SE7501HG2 服务器主板的故障代码。"
+      ],
+      "experiment_top2": [
+        "没有并口的笔记本如何接加密狗等并口设备？",
+        "Intel SE7501HG2 服务器主板的故障代码。"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "source_id": "0971-没有并口的笔记本如何接加密狗等并口设备？.md",
+          "final_rerank_score": 0.5774432860193506,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5774432860193506,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "source_id": "0598-Intel SE7501HG2 服务器主板的故障代码。.md",
+          "final_rerank_score": 0.5564379815825946,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5564379815825946,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 7.62827562269993
+        }
+      ]
+    },
+    {
+      "case_id": "case_041",
+      "question": "Moon base printer connect to quantum network",
+      "extracted_anchors": [
+        "量子网络",
+        "network"
+      ],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.7481672560608225,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.6481672560608225,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6954822099667646,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5954822099667646,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_042",
+      "question": "Foldable screen hinge replacement for tablet",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "联想ET360摄像头用户使用手册"
+      ],
+      "experiment_top2": [
+        "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+        "联想ET360摄像头用户使用手册"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "如何设置显示屏幕的亮度（电脑屏幕亮度怎么调）",
+          "source_id": "0401-如何设置显示屏幕的亮度（电脑屏幕亮度怎么调） .md",
+          "final_rerank_score": 0.4613969787138972,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4613969787138972,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想ET360摄像头用户使用手册",
+          "source_id": "0798-联想ET360摄像头用户使用手册.md",
+          "final_rerank_score": 0.4321483709933599,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4321483709933599,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_043",
+      "question": "Freezer compartment temperature sensor repair",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.5850820062323496,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5850820062323496,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "source_id": "0719-如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？.md",
+          "final_rerank_score": 0.5651551546994332,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5651551546994332,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_044",
+      "question": "Blue screen error 0xDEADBEEF",
+      "extracted_anchors": [
+        "0xDEADBEEF",
+        "blue screen",
+        "0xDEADBEEF",
+        "blue screen"
+      ],
+      "baseline_top2": [
+        "Windows XP 关机故障",
+        "视频指导：如何使用ideaPad的一键恢复功能"
+      ],
+      "experiment_top2": [
+        "Windows XP 关机故障",
+        "视频指导：如何使用ideaPad的一键恢复功能"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "Windows XP 关机故障",
+          "source_id": "0759-Windows XP 关机故障.md",
+          "final_rerank_score": 0.337508447667826,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.267508447667826,
+          "anchor_evidence_status": "PARTIAL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "视频指导：如何使用ideaPad的一键恢复功能",
+          "source_id": "0546-视频指导：如何使用ideaPad的一键恢复功能.md",
+          "final_rerank_score": 0.34524358168629143,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.24524358168629143,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_045",
+      "question": "System error E9999 repair",
+      "extracted_anchors": [
+        "E9999",
+        "system"
+      ],
+      "baseline_top2": [
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "experiment_top2": [
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "source_id": "0061-如何解决IE浏览器只能打开首页无法打开其他链接故障.md",
+          "final_rerank_score": 0.5600046220033246,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4600046220033246,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "source_id": "0719-如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？.md",
+          "final_rerank_score": 0.5396426437104295,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4396426437104295,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_046",
+      "question": "Quantum network router configuration",
+      "extracted_anchors": [
+        "量子网络",
+        "network"
+      ],
+      "baseline_top2": [
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+        "如何在Windows XP下对文件或者文件夹进行EFS加密、解密"
+      ],
+      "experiment_top2": [
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+        "万全R510 5B20 第一章 产品简介"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "source_id": "0719-如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？.md",
+          "final_rerank_score": 0.4564517685225673,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.3564517685225673,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "万全R510 5B20 第一章 产品简介",
+          "source_id": "0750-万全R510 5B20 第一章 产品简介.md",
+          "final_rerank_score": 0.456188867339803,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.35618886733980304,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_047",
+      "question": "Foldable screen hinge water damage",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "万全T220&#38;amp;#38;270 G5系统用户手册",
+        "彩色喷墨多功能一体机M920用户使用手册"
+      ],
+      "experiment_top2": [
+        "万全T220&#38;amp;#38;270 G5系统用户手册",
+        "彩色喷墨多功能一体机M920用户使用手册"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "万全T220&#38;amp;#38;270 G5系统用户手册",
+          "source_id": "0966-万全T220&#38;amp;#38;270 G5系统用户手册.md",
+          "final_rerank_score": 0.5626694949818749,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5626694949818749,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "彩色喷墨多功能一体机M920用户使用手册",
+          "source_id": "0799-彩色喷墨多功能一体机M920用户使用手册.md",
+          "final_rerank_score": 0.5572741992081546,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5572741992081546,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_048",
+      "question": "Freezer compartment fan stopped spinning",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "Windows 7 Windows 8下如何打开麦克风",
+        "使用微软cleanup_tool清除Microsoft .NET Framework"
+      ],
+      "experiment_top2": [
+        "如何使用鲁大师跑分？",
+        "如何关闭网卡的电源管理选项"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "如何使用鲁大师跑分？",
+          "source_id": "0501-如何使用鲁大师跑分？.md",
+          "final_rerank_score": 0.4794584624668775,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4794584624668775,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何关闭网卡的电源管理选项",
+          "source_id": "0363-如何关闭网卡的电源管理选项.md",
+          "final_rerank_score": 0.3586641655805637,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.3586641655805637,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_049",
+      "question": "Boot error 0xBADF00D cannot enter system",
+      "extracted_anchors": [
+        "0xBADF00D",
+        "startup",
+        "system",
+        "boot"
+      ],
+      "baseline_top2": [
+        "没有并口的笔记本如何接加密狗等并口设备？",
+        "Intel SE7501HG2 服务器主板的故障代码。"
+      ],
+      "experiment_top2": [
+        "没有并口的笔记本如何接加密狗等并口设备？",
+        "Intel SE7501HG2 服务器主板的故障代码。"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "source_id": "0971-没有并口的笔记本如何接加密狗等并口设备？.md",
+          "final_rerank_score": 0.677997083812192,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5779970838121921,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "source_id": "0598-Intel SE7501HG2 服务器主板的故障代码。.md",
+          "final_rerank_score": 0.6253759296214169,
+          "anchor_adjustment": -0.07,
+          "evidence_adjusted_score": 0.5553759296214169,
+          "anchor_evidence_status": "PARTIAL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 20.95206727634678
+        }
+      ]
+    },
+    {
+      "case_id": "case_050",
+      "question": "Startup protocol error E654321",
+      "extracted_anchors": [
+        "E654321",
+        "startup",
+        "startup"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "万全R510 5B20 第一章 产品简介"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "万全R510 5B20 第一章 产品简介"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.3773366501722671,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.27733665017226705,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "万全R510 5B20 第一章 产品简介",
+          "source_id": "0750-万全R510 5B20 第一章 产品简介.md",
+          "final_rerank_score": 0.3562471301403518,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.25624713014035183,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_051",
+      "question": "Mars projector access quantum network",
+      "extracted_anchors": [
+        "量子网络",
+        "network"
+      ],
+      "baseline_top2": [
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "source_id": "0061-如何解决IE浏览器只能打开首页无法打开其他链接故障.md",
+          "final_rerank_score": 0.5943040011723294,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4943040011723294,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.5934943368815546,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.49349433688155464,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_052",
+      "question": "Foldable screen hinge calibration",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "联想手机A820t备份联系人与短信的方法",
+        "彩色喷墨多功能一体机M920用户使用手册"
+      ],
+      "experiment_top2": [
+        "数码学习机D100如何播放SD-MMC存储卡上的MP3歌曲",
+        "联想手机A820t备份联系人与短信的方法"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "数码学习机D100如何播放SD-MMC存储卡上的MP3歌曲",
+          "source_id": "0856-数码学习机D100如何播放SD-MMC存储卡上的MP3歌曲.md",
+          "final_rerank_score": 0.4586329542919718,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4586329542919718,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想手机A820t备份联系人与短信的方法",
+          "source_id": "0432-联想手机A820t备份联系人与短信的方法.md",
+          "final_rerank_score": 0.45800385828337986,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.45800385828337986,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_053",
+      "question": "Power button pressed but no response",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "联想智能电视可以像电脑一样观看网页么？能看网页中的视频么？",
+        "万全T200 2020 第五章 常用操作系统安装指南"
+      ],
+      "experiment_top2": [
+        "联想智能电视可以像电脑一样观看网页么？能看网页中的视频么？",
+        "万全T200 2020 第五章 常用操作系统安装指南"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想智能电视可以像电脑一样观看网页么？能看网页中的视频么？",
+          "source_id": "0179-联想智能电视可以像电脑一样观看网页么？能看网页中的视频么？.md",
+          "final_rerank_score": 0.4994850421112261,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4994850421112261,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "万全T200 2020 第五章 常用操作系统安装指南",
+          "source_id": "0938-万全T200 2020 第五章 常用操作系统安装指南.md",
+          "final_rerank_score": 0.48614573065127953,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.48614573065127953,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_054",
+      "question": "Internet and driver download are slow because of DNS",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "启天IV代保护卡多媒体教程"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "启天IV代保护卡多媒体教程"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.651195447649748,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.651195447649748,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "启天IV代保护卡多媒体教程",
+          "source_id": "0740-启天IV代保护卡多媒体教程.md",
+          "final_rerank_score": 0.5975122437575106,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5975122437575106,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_055",
+      "question": "Broadband connection drops frequently",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "万全T200 2020 第五章 常用操作系统安装指南",
+        "联想硬盘保护EDU7.X的安装方法"
+      ],
+      "experiment_top2": [
+        "万全T200 2020 第五章 常用操作系统安装指南",
+        "联想硬盘保护EDU7.X的安装方法"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "万全T200 2020 第五章 常用操作系统安装指南",
+          "source_id": "0938-万全T200 2020 第五章 常用操作系统安装指南.md",
+          "final_rerank_score": 0.500155617117753,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.500155617117753,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想硬盘保护EDU7.X的安装方法",
+          "source_id": "0238-联想硬盘保护EDU7.X的安装方法.md",
+          "final_rerank_score": 0.493878163745493,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.493878163745493,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_056",
+      "question": "QQ can log in but web pages cannot open",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "暴风影音的DLNA功能怎么用",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "experiment_top2": [
+        "暴风影音的DLNA功能怎么用",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "暴风影音的DLNA功能怎么用",
+          "source_id": "0523-暴风影音的DLNA功能怎么用.md",
+          "final_rerank_score": 0.5107666287421324,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5107666287421324,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.5097448015905373,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5097448015905373,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_057",
+      "question": "Adjust screen brightness",
+      "extracted_anchors": [
+        "display brightness"
+      ],
+      "baseline_top2": [
+        "票据打印机DP600、DP8000用户手册",
+        "Lenovo Miix3-830使用说明书"
+      ],
+      "experiment_top2": [
+        "票据打印机DP600、DP8000用户手册",
+        "Lenovo Miix3-830使用说明书"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "票据打印机DP600、DP8000用户手册",
+          "source_id": "0968-票据打印机DP600、DP8000用户手册.md",
+          "final_rerank_score": 0.5160514971803299,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5160514971803299,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Lenovo Miix3-830使用说明书",
+          "source_id": "0421-Lenovo Miix3-830使用说明书.md",
+          "final_rerank_score": 0.5010850779073797,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5010850779073797,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "title"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_058",
+      "question": "Computer starts automatically by itself",
+      "extracted_anchors": [
+        "computer"
+      ],
+      "baseline_top2": [
+        "WPS Office中如何打印稿纸",
+        "Windows 2000蓝屏死机故障分析与排除（2）"
+      ],
+      "experiment_top2": [
+        "WPS Office中如何打印稿纸",
+        "Windows 2000蓝屏死机故障分析与排除（2）"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "WPS Office中如何打印稿纸",
+          "source_id": "0914-WPS Office中如何打印稿纸.md",
+          "final_rerank_score": 0.46263883452187965,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.46263883452187965,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Windows 2000蓝屏死机故障分析与排除（2）",
+          "source_id": "0781-Windows 2000蓝屏死机故障分析与排除（2）.md",
+          "final_rerank_score": 0.444285975814127,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.444285975814127,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_059",
+      "question": "Check if network is reachable",
+      "extracted_anchors": [
+        "network"
+      ],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "同禧有内置音箱的机型如何屏蔽内置音箱"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6891552600588797,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6891552600588797,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6523620262538923,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6523620262538923,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_060",
+      "question": "Manually add wireless network",
+      "extracted_anchors": [
+        "Wi-Fi",
+        "network"
+      ],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "如何在任务栏显示或隐藏电池图标"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "如何在任务栏显示或隐藏电池图标"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6383940675199511,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6383940675199511,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何在任务栏显示或隐藏电池图标",
+          "source_id": "0336-如何在任务栏显示或隐藏电池图标.md",
+          "final_rerank_score": 0.5813839477851361,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5813839477851361,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_061",
+      "question": "Where should I place a home router near the TV",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "TR280 G3-TR350 G7 如何查看和清除主板BMC的 SEL日志？",
+        "没有并口的笔记本如何接加密狗等并口设备？"
+      ],
+      "experiment_top2": [
+        "TR280 G3-TR350 G7 如何查看和清除主板BMC的 SEL日志？",
+        "没有并口的笔记本如何接加密狗等并口设备？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "TR280 G3-TR350 G7 如何查看和清除主板BMC的 SEL日志？",
+          "source_id": "0642-TR280 G3-TR350 G7 如何查看和清除主板BMC的 SEL日志？.md",
+          "final_rerank_score": 0.6020644488434539,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6020644488434539,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "source_id": "0971-没有并口的笔记本如何接加密狗等并口设备？.md",
+          "final_rerank_score": 0.5903960596819366,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5903960596819366,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_062",
+      "question": "Washing machine shakes during spin cycle",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "联想ET360摄像头应用程序帮助文档",
+        "LJ1700用户使用手册"
+      ],
+      "experiment_top2": [
+        "联想ET360摄像头应用程序帮助文档",
+        "LJ1700用户使用手册"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "联想ET360摄像头应用程序帮助文档",
+          "source_id": "0894-联想ET360摄像头应用程序帮助文档.md",
+          "final_rerank_score": 0.4400687884522618,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4400687884522618,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "LJ1700用户使用手册",
+          "source_id": "0955-LJ1700用户使用手册.md",
+          "final_rerank_score": 0.4117903814554249,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4117903814554249,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_063",
+      "question": "Robot vacuum cannot return to charging dock",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "使用联想系统恢复光盘安装WIN98操作系统（CHM格式）"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.4488379973062919,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4488379973062919,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "source_id": "0719-如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？.md",
+          "final_rerank_score": 0.4155821873118777,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4155821873118777,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_064",
+      "question": "Gas stove turns off immediately after ignition",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "WinXP从待机状态唤醒后网络连接断开"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "WinXP从待机状态唤醒后网络连接断开"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.5803497029870254,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5803497029870254,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "source_id": "0896-WinXP从待机状态唤醒后网络连接断开.md",
+          "final_rerank_score": 0.542324909026307,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.542324909026307,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_065",
+      "question": "Air fryer heats unevenly",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "31018765A 扬天T系列用户手册 V1.0",
+        "如何备份幸福之家4.X中的日记"
+      ],
+      "experiment_top2": [
+        "31018765A 扬天T系列用户手册 V1.0",
+        "如何备份幸福之家4.X中的日记"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.568932031510013,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.568932031510013,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何备份幸福之家4.X中的日记",
+          "source_id": "0884-如何备份幸福之家4.X中的日记.md",
+          "final_rerank_score": 0.5602768717269655,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5602768717269655,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_066",
+      "question": "Car navigation location keeps drifting",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "Intel SE7501HG2 服务器主板的故障代码。",
+        "联想手机A820t备份联系人与短信的方法"
+      ],
+      "experiment_top2": [
+        "Intel SE7501HG2 服务器主板的故障代码。",
+        "联想手机A820t备份联系人与短信的方法"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "Intel SE7501HG2 服务器主板的故障代码。",
+          "source_id": "0598-Intel SE7501HG2 服务器主板的故障代码。.md",
+          "final_rerank_score": 0.3995650098544243,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.3995650098544243,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想手机A820t备份联系人与短信的方法",
+          "source_id": "0432-联想手机A820t备份联系人与短信的方法.md",
+          "final_rerank_score": 0.3854079711508132,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.3854079711508132,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_067",
+      "question": "Smart door lock fingerprint recognition fails",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "启天IV代保护卡多媒体教程",
+        "笔记本双显卡如何切换"
+      ],
+      "experiment_top2": [
+        "启天IV代保护卡多媒体教程",
+        "笔记本双显卡如何切换"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "启天IV代保护卡多媒体教程",
+          "source_id": "0740-启天IV代保护卡多媒体教程.md",
+          "final_rerank_score": 0.4637692557179496,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4637692557179496,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "笔记本双显卡如何切换",
+          "source_id": "0222-笔记本双显卡如何切换.md",
+          "final_rerank_score": 0.4355233814424647,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.4355233814424647,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_068",
+      "question": "Home projector image keystone distortion",
+      "extracted_anchors": [],
+      "baseline_top2": [
+        "宽带连接频繁掉线",
+        "每次打开“我的电脑”或者任意一个文件夹，都有读取软驱的动作"
+      ],
+      "experiment_top2": [
+        "宽带连接频繁掉线",
+        "外接VGA设备后笔记本LCD没有显示而VGA显示正常"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": true,
+      "experiment_documents": [
+        {
+          "title": "宽带连接频繁掉线",
+          "source_id": "0055-宽带连接频繁掉线.md",
+          "final_rerank_score": 0.5463177922543804,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5463177922543804,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "外接VGA设备后笔记本LCD没有显示而VGA显示正常",
+          "source_id": "0847-外接VGA设备后笔记本LCD没有显示而VGA显示正常.md",
+          "final_rerank_score": 0.5375855171025111,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5375855171025111,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_069",
+      "question": "Wi-Fi cannot connect, not wireless keyboard mouse",
+      "extracted_anchors": [
+        "无线键鼠",
+        "无线键鼠",
+        "Wi-Fi"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6579334828380061,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5579334828380061,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "source_id": "0061-如何解决IE浏览器只能打开首页无法打开其他链接故障.md",
+          "final_rerank_score": 0.6438640083328041,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5438640083328041,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_070",
+      "question": "Wireless keyboard and mouse suddenly fail, not Wi-Fi",
+      "extracted_anchors": [
+        "Wi-Fi",
+        "无线键鼠"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6542807274482738,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5542807274482738,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6539770621587434,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.5539770621587434,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_071",
+      "question": "Word inserted pictures become blank boxes, not black screen",
+      "extracted_anchors": [
+        "Word",
+        "black screen"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.5370798347973094,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5370798347973094,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？",
+          "source_id": "0719-如何在WINDOWS 2000SERVER下安装T168-T468的USB2.0驱动？.md",
+          "final_rerank_score": 0.533394865102885,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.533394865102885,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_072",
+      "question": "Screen brightness is too low, not Word blank picture",
+      "extracted_anchors": [
+        "Word",
+        "display brightness",
+        "picture"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.7160169066260733,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7160169066260733,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6859496275518419,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6859496275518419,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_073",
+      "question": "Excel file menu is gray, not other Office document problem",
+      "extracted_anchors": [
+        "Excel",
+        "Office",
+        "problem",
+        "file"
+      ],
+      "baseline_top2": [
+        "天权2000产品示意图及功能键说明",
+        "如何控制 Internet Explorer 浏览器的进程数量？"
+      ],
+      "experiment_top2": [
+        "天权2000产品示意图及功能键说明",
+        "如何控制 Internet Explorer 浏览器的进程数量？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "天权2000产品示意图及功能键说明",
+          "source_id": "0864-天权2000产品示意图及功能键说明.md",
+          "final_rerank_score": 0.5740606740604651,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5740606740604651,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何控制 Internet Explorer 浏览器的进程数量？",
+          "source_id": "0040-如何控制 Internet Explorer 浏览器的进程数量？.md",
+          "final_rerank_score": 0.559460738230237,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.559460738230237,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_074",
+      "question": "Bluetooth device cannot be found, not infrared or Wi-Fi",
+      "extracted_anchors": [
+        "Bluetooth",
+        "蓝牙设备",
+        "Wi-Fi",
+        "device"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "如何解决IE浏览器只能打开首页无法打开其他链接故障"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.637383382915997,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.637383382915997,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "如何解决IE浏览器只能打开首页无法打开其他链接故障",
+          "source_id": "0061-如何解决IE浏览器只能打开首页无法打开其他链接故障.md",
+          "final_rerank_score": 0.6317478202997024,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6317478202997024,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_075",
+      "question": "Need to press F1 or F2 to continue startup, not shutdown problem",
+      "extracted_anchors": [
+        "startup",
+        "problem",
+        "startup"
+      ],
+      "baseline_top2": [
+        "万全2100如何设置启动顺序-",
+        "没有并口的笔记本如何接加密狗等并口设备？"
+      ],
+      "experiment_top2": [
+        "万全2100如何设置启动顺序-",
+        "没有并口的笔记本如何接加密狗等并口设备？"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "万全2100如何设置启动顺序-",
+          "source_id": "0694-万全2100如何设置启动顺序-.md",
+          "final_rerank_score": 0.6229510704957582,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6529510704957582,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "startup"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "source_id": "0971-没有并口的笔记本如何接加密狗等并口设备？.md",
+          "final_rerank_score": 0.6421638404007288,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6421638404007288,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_076",
+      "question": "Blue screen shows 0x0000007B, not generic blue screen",
+      "extracted_anchors": [
+        "0x0000007B",
+        "blue screen"
+      ],
+      "baseline_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+      ],
+      "experiment_top2": [
+        "台式和一体机蓝屏报错代码：0x0000007B",
+        "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "台式和一体机蓝屏报错代码：0x0000007B",
+          "source_id": "0212-台式和一体机蓝屏报错代码：0x0000007B.md",
+          "final_rerank_score": 0.43210351019604687,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.5421035101960469,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector",
+            "bm25"
+          ],
+          "bm25_score": 11.628176094847053
+        },
+        {
+          "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+          "source_id": "0075-Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统.md",
+          "final_rerank_score": 0.35771006995385624,
+          "anchor_adjustment": 0.11,
+          "evidence_adjusted_score": 0.4677100699538562,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "0x0000007B",
+            "blue screen"
+          ],
+          "hard_anchor_adjustment": 0.08,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 5.051618241742074
+        }
+      ]
+    },
+    {
+      "case_id": "case_077",
+      "question": "Generic blue screen cannot enter system but no error code",
+      "extracted_anchors": [
+        "blue screen",
+        "system"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.6395282230423638,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6395282230423638,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.6084579683135896,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6084579683135896,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_078",
+      "question": "Windows 8.1 update failed, not startup fault",
+      "extracted_anchors": [
+        "startup",
+        "Windows",
+        "startup"
+      ],
+      "baseline_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "Windows 8.1 Update （KB2919355）常见问题"
+      ],
+      "experiment_top2": [
+        "联想支持Windows 10系统升级的机型列表",
+        "Windows 8.1 update：更新到OneDrive"
+      ],
+      "top2_changed": true,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.5752978676680185,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.6052978676680185,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "Windows 8.1 update：更新到OneDrive",
+          "source_id": "0416-Windows 8.1 update：更新到OneDrive.md",
+          "final_rerank_score": 0.4825219364476334,
+          "anchor_adjustment": 0.03,
+          "evidence_adjusted_score": 0.5125219364476334,
+          "anchor_evidence_status": "FULL_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [
+            "Windows"
+          ],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.03,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "bm25"
+          ],
+          "bm25_score": 21.610421438205538
+        }
+      ]
+    },
+    {
+      "case_id": "case_079",
+      "question": "Network adapter power management causes disconnect, not wireless mouse",
+      "extracted_anchors": [
+        "network"
+      ],
+      "baseline_top2": [
+        "没有并口的笔记本如何接加密狗等并口设备？",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "experiment_top2": [
+        "没有并口的笔记本如何接加密狗等并口设备？",
+        "31018765A 扬天T系列用户手册 V1.0"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "没有并口的笔记本如何接加密狗等并口设备？",
+          "source_id": "0971-没有并口的笔记本如何接加密狗等并口设备？.md",
+          "final_rerank_score": 0.642533031810822,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.642533031810822,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "31018765A 扬天T系列用户手册 V1.0",
+          "source_id": "0910-31018765A 扬天T系列用户手册 V1.0.md",
+          "final_rerank_score": 0.6160188278106432,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.6160188278106432,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_080",
+      "question": "Taskbar input method icon disappeared, not Word input issue",
+      "extracted_anchors": [
+        "Word",
+        "任务栏输入法图标",
+        "issue"
+      ],
+      "baseline_top2": [
+        "在联系人窗口中怎样查看SIM卡上的号码？",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "在联系人窗口中怎样查看SIM卡上的号码？",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": true,
+      "experiment_rejected": true,
+      "experiment_rejection_reason": "ANCHOR_EVIDENCE_MISSING",
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "在联系人窗口中怎样查看SIM卡上的号码？",
+          "source_id": "0824-在联系人窗口中怎样查看SIM卡上的号码？.md",
+          "final_rerank_score": 0.5508324153330855,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.4508324153330855,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.523832937508036,
+          "anchor_adjustment": -0.1,
+          "evidence_adjusted_score": 0.42383293750803597,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": -0.1,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_081",
+      "question": "How to update network card IP address",
+      "extracted_anchors": [
+        "network"
+      ],
+      "baseline_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "experiment_top2": [
+        "同禧有内置音箱的机型如何屏蔽内置音箱",
+        "联想支持Windows 10系统升级的机型列表"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "同禧有内置音箱的机型如何屏蔽内置音箱",
+          "source_id": "0870-同禧有内置音箱的机型如何屏蔽内置音箱.md",
+          "final_rerank_score": 0.719768129158288,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.719768129158288,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "联想支持Windows 10系统升级的机型列表",
+          "source_id": "0508-联想支持Windows 10系统升级的机型列表.md",
+          "final_rerank_score": 0.7119769881097007,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.7119769881097007,
+          "anchor_evidence_status": "NO_STRONG_ANCHOR",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": 0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_082",
+      "question": "How to install printer hardware driver on Windows",
+      "extracted_anchors": [
+        "Windows"
+      ],
+      "baseline_top2": [
+        "彩色喷墨多功能一体机M920用户使用手册",
+        "WinXP从待机状态唤醒后网络连接断开"
+      ],
+      "experiment_top2": [
+        "彩色喷墨多功能一体机M920用户使用手册",
+        "WinXP从待机状态唤醒后网络连接断开"
+      ],
+      "top2_changed": false,
+      "baseline_rejected": false,
+      "experiment_rejected": false,
+      "experiment_rejection_reason": null,
+      "requires_manual_review": false,
+      "experiment_documents": [
+        {
+          "title": "彩色喷墨多功能一体机M920用户使用手册",
+          "source_id": "0799-彩色喷墨多功能一体机M920用户使用手册.md",
+          "final_rerank_score": 0.5594157508860635,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5594157508860635,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        },
+        {
+          "title": "WinXP从待机状态唤醒后网络连接断开",
+          "source_id": "0896-WinXP从待机状态唤醒后网络连接断开.md",
+          "final_rerank_score": 0.5255141245782448,
+          "anchor_adjustment": 0.0,
+          "evidence_adjusted_score": 0.5255141245782448,
+          "anchor_evidence_status": "NO_ANCHOR_EVIDENCE",
+          "matched_anchor_terms": [],
+          "hard_anchor_adjustment": 0.0,
+          "soft_anchor_adjustment": -0.0,
+          "negative_anchor_adjustment": 0.0,
+          "retrieval_routes": [
+            "vector"
+          ],
+          "bm25_score": null
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "expected_title_contains remains a weak label and is not treated as ground truth.",
+    "Anchor rejection is based only on extracted anchors from original_question and final TopK evidence fields."
+  ]
+}
