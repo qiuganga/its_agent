@@ -5,10 +5,16 @@ from collections.abc import Awaitable, Callable
 from typing import Any
 
 from app.config.settings import settings
-from app.infrastructure.harness.observability import log_harness_event
+from app.infrastructure.harness.observability import log_harness_event, log_mcp_contract_event
 from app.infrastructure.harness.policy import HarnessPolicy, ToolPolicy, freeze_tool_policies
 from app.infrastructure.harness.run_state import blocked_result, canonicalize_arguments, fingerprint_text
 from app.infrastructure.harness.session_store import SessionBudgetStore
+from app.infrastructure.tools.mcp.contracts.base import (
+    McpResult,
+    is_mcp_result_payload,
+    mcp_result_to_agent_payload,
+    result_item_count,
+)
 
 
 ActionCallable = Callable[[], Any | Awaitable[Any]]
@@ -69,6 +75,27 @@ class SystemHarness:
             }
             await run_state.trace(event)
             log_harness_event(**event)
+
+        async def record_mcp_result(result: McpResult[object]) -> None:
+            error = result.error
+            mcp_event = {
+                "run_id": run_context.run_id,
+                "user_id": run_context.user_id,
+                "session_id": run_context.session_id,
+                "agent_key": agent_key,
+                "tool_name": tool_name,
+                "provider": result.meta.provider,
+                "mcp_tool_name": result.meta.tool_name,
+                "schema_version": result.meta.schema_version,
+                "mcp_ok": result.ok,
+                "error_code": error.code if error else None,
+                "retryable": error.retryable if error else None,
+                "latency_ms": result.meta.latency_ms,
+                "result_item_count": result_item_count(result),
+                "argument_fingerprint": argument_fingerprint,
+            }
+            await run_state.trace({"event_type": "mcp_contract_result", **mcp_event})
+            log_mcp_contract_event(**mcp_event)
 
         async def block(reason_code: str, message: str, event_type: str = "tool_blocked") -> dict[str, Any]:
             result = blocked_result(reason_code, message)
@@ -188,6 +215,32 @@ class SystemHarness:
         finally:
             if acquired:
                 semaphore.release()
+
+        if isinstance(result, McpResult):
+            await record_mcp_result(result)
+            payload = mcp_result_to_agent_payload(result)
+            if result.ok:
+                await run_state.mark_tool_succeeded(tool_name)
+                await record_event("tool_succeeded", "succeeded")
+            else:
+                await run_state.mark_tool_failed(tool_name)
+                await record_event("tool_failed", "failed", result.error.code if result.error else "MCP_ERROR")
+            return payload
+
+        if is_mcp_result_payload(result):
+            parsed_result = McpResult.model_validate(result)
+            await record_mcp_result(parsed_result)
+            if parsed_result.ok:
+                await run_state.mark_tool_succeeded(tool_name)
+                await record_event("tool_succeeded", "succeeded")
+            else:
+                await run_state.mark_tool_failed(tool_name)
+                await record_event(
+                    "tool_failed",
+                    "failed",
+                    parsed_result.error.code if parsed_result.error else "MCP_ERROR",
+                )
+            return parsed_result.model_dump(mode="json")
 
         await run_state.mark_tool_succeeded(tool_name)
         await record_event("tool_succeeded", "succeeded")

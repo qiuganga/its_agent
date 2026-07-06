@@ -8,6 +8,7 @@ from app.infrastructure.logging.logger import logger
 from app.config.settings import settings
 from app.infrastructure.harness.context import AgentRunContext
 from app.infrastructure.tools.mcp.mcp_servers import search_mcp_client
+from app.infrastructure.tools.mcp.contracts import call_mcp_with_contract
 
 
 async def query_knowledge_impl(question: str) -> Dict[str, Any]:
@@ -95,15 +96,12 @@ async def query_knowledge(ctx: RunContextWrapper[AgentRunContext], question: str
 
 
 async def search_web_impl(query: str) -> str:
-    result = await search_mcp_client.call_tool(
-        "bailian_web_search",
-        {"query": query}
+    return await call_mcp_with_contract(
+        provider="bailian",
+        tool_name="search_web",
+        arguments={"query": query},
+        action=lambda args: search_mcp_client.call_tool("bailian_web_search", args),
     )
-    texts = []
-    for content in result.content:
-        if hasattr(content, "text") and content.text:
-            texts.append(content.text)
-    return "\n".join(texts)
 
 
 @function_tool
