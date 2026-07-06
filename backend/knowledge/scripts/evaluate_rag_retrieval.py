@@ -85,17 +85,44 @@ def build_variants(original_question: str) -> tuple[str, list[str], bool]:
     return normalized_question, variants, len(variants) > 1
 
 
+def candidate_key(document) -> Any:
+    metadata = document.metadata or {}
+    return metadata.get("chunk_id") or (
+        metadata.get("document_id"),
+        metadata.get("source_id"),
+        metadata.get("chunk_index"),
+        metadata.get("title"),
+    )
+
+
 def evaluate_variant_set(
     service: RetrievalService,
     original_question: str,
     query_variants: list[str],
+    *,
+    use_reranker: bool = True,
 ) -> dict[str, Any]:
     all_candidates = []
     for query in query_variants:
         all_candidates.extend(service.retrieve_candidates(query, original_question=original_question))
 
+    route_counts = Counter((doc.metadata or {}).get("retrieval_route") for doc in all_candidates)
+    vector_keys = {candidate_key(doc) for doc in all_candidates if (doc.metadata or {}).get("retrieval_route") == "vector"}
+    title_keys = {candidate_key(doc) for doc in all_candidates if (doc.metadata or {}).get("retrieval_route") == "title"}
+    bm25_keys = {candidate_key(doc) for doc in all_candidates if (doc.metadata or {}).get("retrieval_route") == "bm25"}
     unique_candidates = service._deduplicate(all_candidates)
-    reranked_documents = service.rerank_candidates(original_question, unique_candidates)
+    unique_route_counts = Counter()
+    for doc in unique_candidates:
+        metadata = doc.metadata or {}
+        routes = metadata.get("retrieval_routes") or [metadata.get("retrieval_route")]
+        for route in routes:
+            if route:
+                unique_route_counts[route] += 1
+    reranked_documents = service.rerank_candidates(
+        original_question,
+        unique_candidates,
+        use_reranker=use_reranker,
+    )
     for document in reranked_documents:
         document.metadata = dict(document.metadata or {})
         document.metadata["query_variants"] = list(query_variants)
@@ -113,6 +140,18 @@ def evaluate_variant_set(
     return {
         "candidate_count_before_dedup": len(all_candidates),
         "candidate_count_after_dedup": len(unique_candidates),
+        "vector_candidate_count": route_counts.get("vector", 0),
+        "title_candidate_count": route_counts.get("title", 0),
+        "bm25_candidate_count": route_counts.get("bm25", 0),
+        "unique_vector_candidate_count": unique_route_counts.get("vector", 0),
+        "unique_title_candidate_count": unique_route_counts.get("title", 0),
+        "unique_bm25_candidate_count": unique_route_counts.get("bm25", 0),
+        "bm25_unique_added_count": len(bm25_keys - (vector_keys | title_keys)),
+        "bm25_vector_overlap_count": len(bm25_keys & vector_keys),
+        "bm25_title_overlap_count": len(bm25_keys & title_keys),
+        "source_id_missing_before_rerank": sum(
+            1 for document in unique_candidates if not (document.metadata or {}).get("source_id")
+        ),
         "top_score": top_score,
         "accepted": accepted,
         "low_confidence_rejected": low_confidence_rejected,
@@ -132,6 +171,16 @@ def summarize_documents(documents) -> list[dict[str, Any]]:
             "title": metadata.get("title") or "",
             "source_id": metadata.get("source_id") or "",
             "retrieval_route": metadata.get("retrieval_route"),
+            "retrieval_routes": metadata.get("retrieval_routes") or [],
+            "bm25_score": to_float_or_none(metadata.get("bm25_score")),
+            "matched_by_bm25_query": metadata.get("matched_by_bm25_query"),
+            "bm25_query_variants": metadata.get("bm25_query_variants") or [],
+            "embedding_rerank_score": to_float_or_none(metadata.get("embedding_rerank_score")),
+            "reranker_score": to_float_or_none(metadata.get("reranker_score")),
+            "reranker_rank": metadata.get("reranker_rank"),
+            "ranking_base_score": to_float_or_none(metadata.get("ranking_base_score")),
+            "reranker_provider": metadata.get("reranker_provider"),
+            "reranker_model": metadata.get("reranker_model"),
             "final_rerank_score": to_float_or_none(metadata.get("final_rerank_score")),
             "mmr_score": to_float_or_none(metadata.get("mmr_score")),
             "matched_by_normalized_query": bool(metadata.get("matched_by_normalized_query")),
@@ -230,7 +279,11 @@ def score_bucket(score: float | None) -> str:
 def evaluate(
     collection_name: str | None = None,
     anchor_evidence_mode: str = "off",
+    bm25_mode: str = "off",
+    reranker_mode: str = "off",
     cases_file: str | Path | None = None,
+    checkpoint_json_path: Path | None = None,
+    checkpoint_md_path: Path | None = None,
 ) -> dict[str, Any]:
     resources = resource_status()
     missing = []
@@ -253,6 +306,8 @@ def evaluate(
     service = RetrievalService(
         chroma_vector=vector_store,
         anchor_evidence_mode=anchor_evidence_mode,
+        bm25_mode=bm25_mode,
+        reranker_mode=reranker_mode,
     )
     collection_count = get_collection_count(service)
     if collection_count == 0:
@@ -263,12 +318,23 @@ def evaluate(
             "collection_count": collection_count,
         }
 
-    results = []
+    results = load_checkpoint_results(checkpoint_json_path) if checkpoint_json_path else []
+    completed_case_ids = {item.get("case_id") for item in results}
     for case in cases:
+        if case["id"] in completed_case_ids:
+            continue
         original_question = case["question"].strip()
         normalized_question, variants, dual_enabled = build_variants(original_question)
-        single_result = evaluate_variant_set(service, original_question, [original_question])
-        dual_result = evaluate_variant_set(service, original_question, variants)
+        reranker_latency_before = len(service.reranker_latency_ms)
+        if reranker_mode == "experimental":
+            single_result = None
+            dual_result = evaluate_variant_set(service, original_question, variants, use_reranker=True)
+        elif dual_enabled:
+            single_result = evaluate_variant_set(service, original_question, [original_question], use_reranker=False)
+            dual_result = evaluate_variant_set(service, original_question, variants, use_reranker=True)
+        else:
+            dual_result = evaluate_variant_set(service, original_question, variants, use_reranker=True)
+            single_result = dual_result
         expected_terms = case.get("expected_title_contains") or []
         final_docs = annotate_hits(dual_result["documents"], expected_terms)
         final_docs_before_threshold = annotate_hits(dual_result["documents_before_threshold"], expected_terms)
@@ -284,6 +350,16 @@ def evaluate(
             "dual_retrieval_enabled": dual_enabled,
             "candidate_count_before_dedup": dual_result["candidate_count_before_dedup"],
             "candidate_count_after_dedup": dual_result["candidate_count_after_dedup"],
+            "vector_candidate_count": dual_result["vector_candidate_count"],
+            "title_candidate_count": dual_result["title_candidate_count"],
+            "bm25_candidate_count": dual_result["bm25_candidate_count"],
+            "unique_vector_candidate_count": dual_result["unique_vector_candidate_count"],
+            "unique_title_candidate_count": dual_result["unique_title_candidate_count"],
+            "unique_bm25_candidate_count": dual_result["unique_bm25_candidate_count"],
+            "bm25_unique_added_count": dual_result["bm25_unique_added_count"],
+            "bm25_vector_overlap_count": dual_result["bm25_vector_overlap_count"],
+            "bm25_title_overlap_count": dual_result["bm25_title_overlap_count"],
+            "source_id_missing_before_rerank": dual_result["source_id_missing_before_rerank"],
             "rejected_by_low_confidence": bool(dual_result.get("low_confidence_rejected")),
             "rejected_by_anchor_evidence": bool(dual_result.get("rejected_by_anchor_evidence")),
             "anchor_decision": dual_result.get("anchor_decision") or {"ok": True, "reason_code": None},
@@ -294,9 +370,40 @@ def evaluate(
             "top1_title_weak_hit": title_hit(final_docs, expected_terms, 1),
             "top2_title_weak_hit": title_hit(final_docs, expected_terms, 2),
         }
-        if dual_enabled:
+        if reranker_mode == "experimental":
+            new_latencies = service.reranker_latency_ms[reranker_latency_before:]
+            result["reranker_call_success"] = bool(new_latencies)
+            result["reranker_latency_ms"] = new_latencies[-1] if new_latencies else None
+        if dual_enabled and single_result is not None:
             result["ab_comparison"] = compare_ab(case, single_result, dual_result)
+        elif dual_enabled:
+            result["ab_comparison"] = {
+                "classification": "not_applicable_reranker_experiment",
+                "reason": "single-route rerank is skipped so the 82-case reranker experiment performs one real rerank per case",
+            }
         results.append(result)
+        if checkpoint_json_path and checkpoint_md_path:
+            checkpoint_report = build_report(
+                resources,
+                collection_count,
+                cases,
+                results,
+                collection_name=collection_name,
+                anchor_evidence_mode=anchor_evidence_mode,
+                bm25_mode=bm25_mode,
+                reranker_mode=reranker_mode,
+                reranker_stats={
+                    "success_count": sum(1 for item in results if item.get("reranker_call_success")),
+                    "failure_count": service.reranker_failure_count,
+                    "invalid_result_count": service.reranker_invalid_result_count,
+                    "latency_ms": [item.get("reranker_latency_ms") for item in results if item.get("reranker_latency_ms") is not None],
+                    "provider": settings.RAG_RERANKER_PROVIDER,
+                    "model": settings.RAG_RERANKER_MODEL,
+                },
+            )
+            checkpoint_report["status"] = "running" if len(results) < len(cases) else "success"
+            checkpoint_report["cases_file"] = str(cases_file or CASES_PATH)
+            write_reports(checkpoint_report, json_path=checkpoint_json_path, md_path=checkpoint_md_path)
 
     report = build_report(
         resources,
@@ -305,9 +412,37 @@ def evaluate(
         results,
         collection_name=collection_name,
         anchor_evidence_mode=anchor_evidence_mode,
+        bm25_mode=bm25_mode,
+        reranker_mode=reranker_mode,
+        reranker_stats={
+            "success_count": sum(1 for item in results if item.get("reranker_call_success"))
+            if reranker_mode == "experimental"
+            else service.reranker_success_count,
+            "failure_count": service.reranker_failure_count,
+            "invalid_result_count": service.reranker_invalid_result_count,
+            "latency_ms": [item.get("reranker_latency_ms") for item in results if item.get("reranker_latency_ms") is not None]
+            if reranker_mode == "experimental"
+            else list(service.reranker_latency_ms),
+            "provider": settings.RAG_RERANKER_PROVIDER,
+            "model": settings.RAG_RERANKER_MODEL,
+        },
     )
     report["cases_file"] = str(cases_file or CASES_PATH)
     return report
+
+
+def load_checkpoint_results(path: Path | None) -> list[dict[str, Any]]:
+    if not path or not path.exists():
+        return []
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            report = json.load(handle)
+        results = report.get("results") or []
+        if isinstance(results, list):
+            return [item for item in results if isinstance(item, dict) and item.get("case_id")]
+    except Exception:
+        return []
+    return []
 
 
 def case_expected_answerability(case: dict[str, Any]) -> str:
@@ -343,6 +478,9 @@ def build_report(
     results: list[dict[str, Any]],
     collection_name: str | None = None,
     anchor_evidence_mode: str = "off",
+    bm25_mode: str = "off",
+    reranker_mode: str = "off",
+    reranker_stats: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     total = len(results)
     normalization_triggered = sum(1 for item in results if item["dual_retrieval_enabled"])
@@ -409,6 +547,14 @@ def build_report(
     )
     suspicious_cases = rank_suspicious_cases(results)[:5]
     top_scores = [item["top_score"] for item in results if item["top_score"] is not None]
+    bm25_candidate_total = sum(int(item.get("bm25_candidate_count") or 0) for item in results)
+    bm25_unique_added_total = sum(int(item.get("bm25_unique_added_count") or 0) for item in results)
+    bm25_vector_overlap_total = sum(int(item.get("bm25_vector_overlap_count") or 0) for item in results)
+    bm25_title_overlap_total = sum(int(item.get("bm25_title_overlap_count") or 0) for item in results)
+    reranker_stats = reranker_stats or {}
+    reranker_latencies = [int(value) for value in reranker_stats.get("latency_ms", [])]
+    reranker_latency_avg = statistics.mean(reranker_latencies) if reranker_latencies else None
+    reranker_latency_p95 = percentile(reranker_latencies, 95) if reranker_latencies else None
     summary = {
         "total_cases": total,
         "category_distribution": dict(category_distribution),
@@ -442,6 +588,24 @@ def build_report(
         "anchor_evidence_missing_count": anchor_missing_count,
         "hard_evidence_exists_outside_topk_count": hard_evidence_outside_topk_count,
         "negative_anchor_penalty_count": negative_anchor_penalty_count,
+        "bm25_mode": bm25_mode,
+        "bm25_candidate_total": bm25_candidate_total,
+        "bm25_unique_added_total": bm25_unique_added_total,
+        "bm25_vector_overlap_total": bm25_vector_overlap_total,
+        "bm25_title_overlap_total": bm25_title_overlap_total,
+        "bm25_vector_overlap_rate": safe_rate(bm25_vector_overlap_total, bm25_candidate_total),
+        "bm25_title_overlap_rate": safe_rate(bm25_title_overlap_total, bm25_candidate_total),
+        "reranker_mode": reranker_mode,
+        "reranker_provider": reranker_stats.get("provider") if reranker_mode == "experimental" else None,
+        "reranker_model": reranker_stats.get("model") if reranker_mode == "experimental" else None,
+        "reranker_success_count": int(reranker_stats.get("success_count") or 0),
+        "reranker_failure_count": int(reranker_stats.get("failure_count") or 0),
+        "reranker_invalid_result_count": int(reranker_stats.get("invalid_result_count") or 0),
+        "reranker_latency_avg_ms": reranker_latency_avg,
+        "reranker_latency_p95_ms": reranker_latency_p95,
+        "source_id_missing_before_rerank_total": sum(
+            int(item.get("source_id_missing_before_rerank") or 0) for item in results
+        ),
         "ab_positive_count": ab_counter.get("positive", 0),
         "ab_neutral_count": ab_counter.get("neutral", 0),
         "ab_changed_count": ab_counter.get("changed", 0),
@@ -479,6 +643,12 @@ def build_report(
             "RAG_SOFT_ANCHOR_MISSING_PENALTY": settings.RAG_SOFT_ANCHOR_MISSING_PENALTY,
             "RAG_NEGATIVE_ANCHOR_MATCH_PENALTY": settings.RAG_NEGATIVE_ANCHOR_MATCH_PENALTY,
             "RAG_ANCHOR_REQUIRE_EVIDENCE_FOR_BLOCK": settings.RAG_ANCHOR_REQUIRE_EVIDENCE_FOR_BLOCK,
+            "RAG_BM25_MODE": bm25_mode,
+            "RAG_BM25_CANDIDATE_TOP_K": settings.RAG_BM25_CANDIDATE_TOP_K,
+            "RAG_RERANKER_MODE": reranker_mode,
+            "RAG_RERANKER_PROVIDER": settings.RAG_RERANKER_PROVIDER,
+            "RAG_RERANKER_MODEL": settings.RAG_RERANKER_MODEL if reranker_mode == "experimental" else None,
+            "RAG_RERANKER_MAX_DOCUMENT_CHARS": settings.RAG_RERANKER_MAX_DOCUMENT_CHARS,
         },
         "summary": summary,
         "threshold_recommendation": build_threshold_recommendation(summary, results),
@@ -544,6 +714,14 @@ def build_group_metrics(results: list[dict[str, Any]]) -> dict[str, dict[str, An
 
 def safe_rate(count: int, total: int) -> float:
     return round(count / total, 4) if total else 0.0
+
+
+def percentile(values: list[int], pct: int) -> float | None:
+    if not values:
+        return None
+    ordered = sorted(values)
+    index = min(len(ordered) - 1, max(0, int(round((pct / 100) * (len(ordered) - 1)))))
+    return float(ordered[index])
 
 
 def rank_suspicious_cases(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -641,6 +819,12 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"- RAG_FINAL_TOP_K: {settings_summary['RAG_FINAL_TOP_K']}",
         f"- RAG_MIN_RERANK_SCORE: {settings_summary['RAG_MIN_RERANK_SCORE']}",
         f"- RAG_ANCHOR_EVIDENCE_MODE: {settings_summary.get('RAG_ANCHOR_EVIDENCE_MODE')}",
+        f"- RAG_BM25_MODE: {settings_summary.get('RAG_BM25_MODE')}",
+        f"- RAG_BM25_CANDIDATE_TOP_K: {settings_summary.get('RAG_BM25_CANDIDATE_TOP_K')}",
+        f"- RAG_RERANKER_MODE: {settings_summary.get('RAG_RERANKER_MODE')}",
+        f"- RAG_RERANKER_PROVIDER: {settings_summary.get('RAG_RERANKER_PROVIDER')}",
+        f"- RAG_RERANKER_MODEL: {settings_summary.get('RAG_RERANKER_MODEL')}",
+        f"- RAG_RERANKER_MAX_DOCUMENT_CHARS: {settings_summary.get('RAG_RERANKER_MAX_DOCUMENT_CHARS')}",
         "",
         "## Summary",
         "",
@@ -663,6 +847,18 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"- Hard evidence outside TopK: {summary.get('hard_evidence_exists_outside_topk_count', 0)}",
         f"- Negative anchor penalties: {summary.get('negative_anchor_penalty_count', 0)}",
         f"- ANCHOR_EVIDENCE_MISSING: {summary.get('anchor_evidence_missing_count', 0)}",
+        f"- BM25 mode: {summary.get('bm25_mode')}",
+        f"- BM25 candidates: {summary.get('bm25_candidate_total', 0)}",
+        f"- BM25 unique additions: {summary.get('bm25_unique_added_total', 0)}",
+        f"- BM25/vector overlap: {summary.get('bm25_vector_overlap_total', 0)} ({summary.get('bm25_vector_overlap_rate', 0)})",
+        f"- BM25/title overlap: {summary.get('bm25_title_overlap_total', 0)} ({summary.get('bm25_title_overlap_rate', 0)})",
+        f"- Reranker mode: {summary.get('reranker_mode')}",
+        f"- Reranker provider: {summary.get('reranker_provider')}",
+        f"- Reranker model: {summary.get('reranker_model')}",
+        f"- Reranker success/failure: {summary.get('reranker_success_count', 0)}/{summary.get('reranker_failure_count', 0)}",
+        f"- Reranker invalid results: {summary.get('reranker_invalid_result_count', 0)}",
+        f"- Reranker latency avg/P95 ms: {summary.get('reranker_latency_avg_ms')}/{summary.get('reranker_latency_p95_ms')}",
+        f"- Missing source_id before rerank: {summary.get('source_id_missing_before_rerank_total', 0)}",
         "",
         "## Group Metrics",
         "",
@@ -715,7 +911,9 @@ def render_markdown(report: dict[str, Any]) -> str:
         top_titles = [doc["title"] for doc in item["final_documents"]]
         lines.append(
             f"- {item['case_id']} | dual={item['dual_retrieval_enabled']} | rejected={item['rejected_by_low_confidence']} "
-            f"| anchor_rejected={item.get('rejected_by_anchor_evidence', False)} | score={item['top_score']} | top_titles={top_titles}"
+            f"| anchor_rejected={item.get('rejected_by_anchor_evidence', False)} | score={item['top_score']} "
+            f"| bm25={item.get('bm25_candidate_count', 0)} unique={item.get('bm25_unique_added_count', 0)} "
+            f"| top_titles={top_titles}"
         )
     lines.extend([
         "",
@@ -754,6 +952,23 @@ def print_console_summary(report: dict[str, Any], json_path: Path = REPORT_JSON_
         f"hard_evidence_outside_topk={summary.get('hard_evidence_exists_outside_topk_count', 0)} "
         f"negative_penalties={summary.get('negative_anchor_penalty_count', 0)}"
     )
+    print(
+        f"bm25_mode={summary.get('bm25_mode')} "
+        f"bm25_candidates={summary.get('bm25_candidate_total', 0)} "
+        f"bm25_unique_added={summary.get('bm25_unique_added_total', 0)} "
+        f"bm25_vector_overlap={summary.get('bm25_vector_overlap_total', 0)} "
+        f"bm25_title_overlap={summary.get('bm25_title_overlap_total', 0)}"
+    )
+    print(
+        f"reranker_mode={summary.get('reranker_mode')} "
+        f"provider={summary.get('reranker_provider')} "
+        f"model={summary.get('reranker_model')} "
+        f"success={summary.get('reranker_success_count', 0)} "
+        f"failure={summary.get('reranker_failure_count', 0)} "
+        f"invalid={summary.get('reranker_invalid_result_count', 0)} "
+        f"avg_ms={summary.get('reranker_latency_avg_ms')} "
+        f"p95_ms={summary.get('reranker_latency_p95_ms')}"
+    )
     print(f"top1_hit={summary['top1_title_weak_hit_count']} top2_hit={summary['top2_title_weak_hit_count']}")
     print(f"ab positive={summary['ab_positive_count']} neutral={summary['ab_neutral_count']} changed={summary['ab_changed_count']} negative={summary['ab_negative_count']}")
     print(f"score_buckets={summary['score_buckets']}")
@@ -773,13 +988,29 @@ def main() -> int:
         default="off",
         help="Enable anchor evidence mode only for this evaluation run.",
     )
+    parser.add_argument(
+        "--bm25-mode",
+        choices=("off", "experimental"),
+        default="off",
+        help="Enable experimental BM25 candidate retrieval for this evaluation run.",
+    )
+    parser.add_argument(
+        "--reranker-mode",
+        choices=("off", "experimental"),
+        default="off",
+        help="Enable experimental SiliconFlow reranker only for this evaluation run.",
+    )
     args = parser.parse_args()
     json_path, md_path = report_paths(args.output_prefix)
     try:
         report = evaluate(
             collection_name=args.collection_name,
             anchor_evidence_mode=args.anchor_evidence_mode,
+            bm25_mode=args.bm25_mode,
+            reranker_mode=args.reranker_mode,
             cases_file=args.cases_file,
+            checkpoint_json_path=json_path,
+            checkpoint_md_path=md_path,
         )
     except Exception as exc:
         report = {
