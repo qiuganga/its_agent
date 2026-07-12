@@ -123,6 +123,57 @@ class ToolEventStreamingTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(events[1]["error_code"], "TOOL_TIMEOUT")
         self.assertEqual(await ctx.run_state.get_active_tool_calls(), 0)
 
+    async def test_blocked_precheck_emits_result_without_started(self):
+        harness = SystemHarness(make_policy(tool_limit=3, timeout=1.0))
+        ctx = make_context(harness, run_id="tool-blocked-stream")
+
+        result = await harness.invoke(
+            run_context=ctx,
+            agent_key="orchestrator",
+            tool_name="query_knowledge",
+            arguments={"question": "blocked"},
+            action=lambda: "should-not-run",
+        )
+
+        self.assertEqual(result["reason_code"], "TOOL_PERMISSION_DENIED")
+        event = await ctx.run_state.tool_event_queue.get()
+        self.assertEqual(event["kind"], "TOOL_RESULT")
+        self.assertEqual(event["status"], "blocked")
+        self.assertFalse(event["ok"])
+        self.assertEqual(event["error_code"], "TOOL_PERMISSION_DENIED")
+        self.assertTrue(ctx.run_state.tool_event_queue.empty())
+        self.assertEqual(await ctx.run_state.get_active_tool_calls(), 0)
+
+    async def test_terminal_event_and_active_zero_are_visible_atomically(self):
+        harness = SystemHarness(make_policy(tool_limit=3, timeout=1.0))
+        ctx = make_context(harness, run_id="tool-terminal-atomic")
+
+        await ctx.run_state.emit_started_tool_event({
+            "kind": "TOOL_STARTED",
+            "tool_call_id": "call-1",
+            "tool_name": "query_knowledge",
+            "status": "started",
+            "argument_fingerprint": "fp",
+        })
+        await ctx.run_state.tool_event_queue.get()
+        ctx.run_state.tool_event_queue.task_done()
+
+        await ctx.run_state.emit_terminal_tool_event({
+            "kind": "TOOL_RESULT",
+            "tool_call_id": "call-1",
+            "tool_name": "query_knowledge",
+            "status": "completed",
+            "ok": True,
+            "argument_fingerprint": "fp",
+        }, decrement_active=True)
+
+        self.assertFalse(await ctx.run_state.is_tool_event_idle())
+        result_event = await ctx.run_state.tool_event_queue.get()
+        ctx.run_state.tool_event_queue.task_done()
+        self.assertEqual(result_event["kind"], "TOOL_RESULT")
+        self.assertEqual(await ctx.run_state.get_active_tool_calls(), 0)
+        self.assertTrue(await ctx.run_state.is_tool_event_idle())
+
     async def test_concurrent_tools_have_unique_ids_and_incrementing_sequence(self):
         harness = SystemHarness(make_policy(tool_limit=5, timeout=1.0, tool_concurrency=2))
         ctx = make_context(harness, run_id="tool-concurrent-stream")

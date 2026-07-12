@@ -93,11 +93,30 @@ class RunHarnessState:
             active_tool_calls = self.active_tool_calls
         return active_tool_calls == 0 and self.tool_event_queue.empty()
 
-    async def emit_tool_event(self, event: dict[str, Any]) -> None:
+    def _prepare_tool_event_unlocked(self, event: dict[str, Any]) -> dict[str, Any]:
         safe_event = dict(event)
         safe_event.setdefault("run_id", self.run_id)
-        safe_event["sequence"] = await self.next_sequence()
+        self._sequence += 1
+        safe_event["sequence"] = self._sequence
         safe_event.setdefault("timestamp_ms", int(time.time() * 1000))
+        return safe_event
+
+    async def emit_tool_event(self, event: dict[str, Any]) -> None:
+        async with self._lock:
+            safe_event = self._prepare_tool_event_unlocked(event)
+        self.tool_event_queue.put_nowait(safe_event)
+
+    async def emit_started_tool_event(self, event: dict[str, Any]) -> None:
+        async with self._lock:
+            self.active_tool_calls += 1
+            safe_event = self._prepare_tool_event_unlocked(event)
+        self.tool_event_queue.put_nowait(safe_event)
+
+    async def emit_terminal_tool_event(self, event: dict[str, Any], *, decrement_active: bool) -> None:
+        async with self._lock:
+            if decrement_active:
+                self.active_tool_calls = max(0, self.active_tool_calls - 1)
+            safe_event = self._prepare_tool_event_unlocked(event)
         self.tool_event_queue.put_nowait(safe_event)
 
     async def mark_tool_failed(self, tool_name: str) -> None:

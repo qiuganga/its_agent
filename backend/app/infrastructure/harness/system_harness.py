@@ -90,9 +90,8 @@ class SystemHarness:
             nonlocal active_started
             if active_started:
                 return
-            await run_state.increment_active_tool_calls()
             active_started = True
-            await run_state.emit_tool_event({
+            await run_state.emit_started_tool_event({
                 "kind": "TOOL_STARTED",
                 "tool_call_id": tool_call_id,
                 "tool_name": tool_name,
@@ -110,8 +109,9 @@ class SystemHarness:
             schema_version: str | None = None,
             provider: str | None = None,
             retryable: bool | None = None,
+            decrement_active: bool = False,
         ) -> None:
-            await run_state.emit_tool_event({
+            await run_state.emit_terminal_tool_event({
                 "kind": "TOOL_RESULT",
                 "tool_call_id": tool_call_id,
                 "tool_name": tool_name,
@@ -124,7 +124,7 @@ class SystemHarness:
                 "provider": provider,
                 "retryable": retryable,
                 "argument_fingerprint": argument_fingerprint,
-            })
+            }, decrement_active=decrement_active)
 
         async def finish_tool_event(
             *,
@@ -138,8 +138,6 @@ class SystemHarness:
             retryable: bool | None = None,
         ) -> None:
             nonlocal active_started
-            if not active_started:
-                await emit_started()
             try:
                 await emit_result(
                     status=status,
@@ -150,9 +148,9 @@ class SystemHarness:
                     schema_version=schema_version,
                     provider=provider,
                     retryable=retryable,
+                    decrement_active=active_started,
                 )
             finally:
-                await run_state.decrement_active_tool_calls()
                 active_started = False
 
         async def record_event(event_type: str, result_status: str, reason_code: str | None = None) -> None:
