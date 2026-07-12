@@ -51,6 +51,9 @@ class RunHarnessState:
     seen_call_signatures: set[str] = field(default_factory=set)
     blocked_events: list[dict[str, Any]] = field(default_factory=list)
     trace_events: list[dict[str, Any]] = field(default_factory=list)
+    tool_event_queue: asyncio.Queue[dict[str, Any]] = field(default_factory=asyncio.Queue, repr=False)
+    active_tool_calls: int = 0
+    _sequence: int = 0
     _lock: asyncio.Lock = field(default_factory=asyncio.Lock, repr=False)
 
     def elapsed_seconds(self) -> float:
@@ -65,6 +68,37 @@ class RunHarnessState:
     async def trace(self, event: dict[str, Any]) -> None:
         async with self._lock:
             self.trace_events.append(event)
+
+    async def next_sequence(self) -> int:
+        async with self._lock:
+            self._sequence += 1
+            return self._sequence
+
+    async def increment_active_tool_calls(self) -> int:
+        async with self._lock:
+            self.active_tool_calls += 1
+            return self.active_tool_calls
+
+    async def decrement_active_tool_calls(self) -> int:
+        async with self._lock:
+            self.active_tool_calls = max(0, self.active_tool_calls - 1)
+            return self.active_tool_calls
+
+    async def get_active_tool_calls(self) -> int:
+        async with self._lock:
+            return self.active_tool_calls
+
+    async def is_tool_event_idle(self) -> bool:
+        async with self._lock:
+            active_tool_calls = self.active_tool_calls
+        return active_tool_calls == 0 and self.tool_event_queue.empty()
+
+    async def emit_tool_event(self, event: dict[str, Any]) -> None:
+        safe_event = dict(event)
+        safe_event.setdefault("run_id", self.run_id)
+        safe_event["sequence"] = await self.next_sequence()
+        safe_event.setdefault("timestamp_ms", int(time.time() * 1000))
+        self.tool_event_queue.put_nowait(safe_event)
 
     async def mark_tool_failed(self, tool_name: str) -> None:
         async with self._lock:

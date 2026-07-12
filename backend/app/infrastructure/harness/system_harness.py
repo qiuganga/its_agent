@@ -1,6 +1,7 @@
 import asyncio
 import inspect
 import time
+import uuid
 from collections.abc import Awaitable, Callable
 from typing import Any
 
@@ -18,6 +19,29 @@ from app.infrastructure.tools.mcp.contracts.base import (
 
 
 ActionCallable = Callable[[], Any | Awaitable[Any]]
+
+
+def _infer_result_item_count(result: Any) -> int | None:
+    if isinstance(result, McpResult):
+        return result_item_count(result)
+    if is_mcp_result_payload(result):
+        try:
+            return result_item_count(McpResult.model_validate(result))
+        except Exception:
+            return None
+    if isinstance(result, dict):
+        count = result.get("count")
+        if isinstance(count, int):
+            return count
+        items = result.get("items")
+        if isinstance(items, list):
+            return len(items)
+        data = result.get("data")
+        if isinstance(data, list):
+            return len(data)
+    if isinstance(result, list):
+        return len(result)
+    return None
 
 
 class SystemHarness:
@@ -59,6 +83,77 @@ class SystemHarness:
         tool_policy = self.policy.get_tool_policy(tool_name)
         canonical_args = canonicalize_arguments(arguments)
         argument_fingerprint = fingerprint_text(canonical_args)
+        tool_call_id = uuid.uuid4().hex
+        active_started = False
+
+        async def emit_started() -> None:
+            nonlocal active_started
+            if active_started:
+                return
+            await run_state.increment_active_tool_calls()
+            active_started = True
+            await run_state.emit_tool_event({
+                "kind": "TOOL_STARTED",
+                "tool_call_id": tool_call_id,
+                "tool_name": tool_name,
+                "status": "started",
+                "argument_fingerprint": argument_fingerprint,
+            })
+
+        async def emit_result(
+            *,
+            status: str,
+            ok: bool,
+            error_code: str | None = None,
+            result_item_count_value: int | None = None,
+            latency_ms: int | None = None,
+            schema_version: str | None = None,
+            provider: str | None = None,
+            retryable: bool | None = None,
+        ) -> None:
+            await run_state.emit_tool_event({
+                "kind": "TOOL_RESULT",
+                "tool_call_id": tool_call_id,
+                "tool_name": tool_name,
+                "status": status,
+                "ok": ok,
+                "error_code": error_code,
+                "result_item_count": result_item_count_value,
+                "latency_ms": latency_ms if latency_ms is not None else int((time.monotonic() - started_at) * 1000),
+                "schema_version": schema_version,
+                "provider": provider,
+                "retryable": retryable,
+                "argument_fingerprint": argument_fingerprint,
+            })
+
+        async def finish_tool_event(
+            *,
+            status: str,
+            ok: bool,
+            error_code: str | None = None,
+            result_item_count_value: int | None = None,
+            latency_ms: int | None = None,
+            schema_version: str | None = None,
+            provider: str | None = None,
+            retryable: bool | None = None,
+        ) -> None:
+            nonlocal active_started
+            if not active_started:
+                await emit_started()
+            try:
+                await emit_result(
+                    status=status,
+                    ok=ok,
+                    error_code=error_code,
+                    result_item_count_value=result_item_count_value,
+                    latency_ms=latency_ms,
+                    schema_version=schema_version,
+                    provider=provider,
+                    retryable=retryable,
+                )
+            finally:
+                await run_state.decrement_active_tool_calls()
+                active_started = False
 
         async def record_event(event_type: str, result_status: str, reason_code: str | None = None) -> None:
             event = {
@@ -97,7 +192,12 @@ class SystemHarness:
             await run_state.trace({"event_type": "mcp_contract_result", **mcp_event})
             log_mcp_contract_event(**mcp_event)
 
-        async def block(reason_code: str, message: str, event_type: str = "tool_blocked") -> dict[str, Any]:
+        async def block(
+            reason_code: str,
+            message: str,
+            event_type: str = "tool_blocked",
+            tool_event_status: str = "blocked",
+        ) -> dict[str, Any]:
             result = blocked_result(reason_code, message)
             event = {
                 "run_id": run_context.run_id,
@@ -113,6 +213,7 @@ class SystemHarness:
             }
             await run_state.record_blocked(event)
             log_harness_event(**event)
+            await finish_tool_event(status=tool_event_status, ok=False, error_code=reason_code)
             return result
 
         if tool_policy is None:
@@ -174,20 +275,24 @@ class SystemHarness:
         if remaining_before_queue <= 0:
             return await block("REQUEST_DEADLINE_EXCEEDED", "\u672c\u6b21\u8bf7\u6c42\u5df2\u8d85\u8fc7\u6700\u5927\u6267\u884c\u65f6\u95f4\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7ee7\u7eed\u8c03\u7528\u5de5\u5177\u3002", "tool_blocked_deadline")
 
+        await emit_started()
         await record_event("tool_queue_started", "started")
         acquired = False
         try:
             await asyncio.wait_for(semaphore.acquire(), timeout=remaining_before_queue)
             acquired = True
         except asyncio.CancelledError:
+            await finish_tool_event(status="failed", ok=False, error_code="TOOL_CANCELLED")
             raise
         except asyncio.TimeoutError:
             await run_state.mark_tool_failed(tool_name)
-            return await block(
+            result = await block(
                 "TOOL_QUEUE_TIMEOUT",
                 "\u7b49\u5f85\u5de5\u5177\u5e76\u53d1\u540d\u989d\u65f6\uff0c\u672c\u6b21\u8bf7\u6c42\u7684\u5269\u4f59\u65f6\u95f4\u5df2\u7ecf\u8017\u5c3d\uff0c\u7cfb\u7edf\u5df2\u963b\u6b62\u6267\u884c\u771f\u5b9e\u5de5\u5177\u3002",
                 "tool_queue_timeout",
+                "timeout",
             )
+            return result
 
         try:
             await record_event("tool_started", "started")
@@ -199,13 +304,21 @@ class SystemHarness:
                 else:
                     result = maybe_result
             except asyncio.CancelledError:
+                await finish_tool_event(status="failed", ok=False, error_code="TOOL_CANCELLED")
                 raise
             except asyncio.TimeoutError:
                 await run_state.mark_tool_failed(tool_name)
-                return await block("TOOL_TIMEOUT", "\u5de5\u5177\u6267\u884c\u8d85\u65f6\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7b49\u5f85\u8be5\u5de5\u5177\u7ed3\u679c\u3002", "tool_timeout")
+                result = await block(
+                    "TOOL_TIMEOUT",
+                    "\u5de5\u5177\u6267\u884c\u8d85\u65f6\uff0c\u7cfb\u7edf\u5df2\u505c\u6b62\u7b49\u5f85\u8be5\u5de5\u5177\u7ed3\u679c\u3002",
+                    "tool_timeout",
+                    "timeout",
+                )
+                return result
             except Exception as exc:
                 await run_state.mark_tool_failed(tool_name)
                 await record_event("tool_failed", "failed", exc.__class__.__name__)
+                await finish_tool_event(status="failed", ok=False, error_code=exc.__class__.__name__)
                 return {
                     "ok": False,
                     "harness_error": True,
@@ -222,9 +335,27 @@ class SystemHarness:
             if result.ok:
                 await run_state.mark_tool_succeeded(tool_name)
                 await record_event("tool_succeeded", "succeeded")
+                await finish_tool_event(
+                    status="completed",
+                    ok=True,
+                    result_item_count_value=result_item_count(result),
+                    latency_ms=result.meta.latency_ms,
+                    schema_version=result.meta.schema_version,
+                    provider=result.meta.provider,
+                )
             else:
                 await run_state.mark_tool_failed(tool_name)
                 await record_event("tool_failed", "failed", result.error.code if result.error else "MCP_ERROR")
+                await finish_tool_event(
+                    status="failed",
+                    ok=False,
+                    error_code=result.error.code if result.error else "MCP_ERROR",
+                    result_item_count_value=result_item_count(result),
+                    latency_ms=result.meta.latency_ms,
+                    schema_version=result.meta.schema_version,
+                    provider=result.meta.provider,
+                    retryable=result.error.retryable if result.error else None,
+                )
             return payload
 
         if is_mcp_result_payload(result):
@@ -233,6 +364,14 @@ class SystemHarness:
             if parsed_result.ok:
                 await run_state.mark_tool_succeeded(tool_name)
                 await record_event("tool_succeeded", "succeeded")
+                await finish_tool_event(
+                    status="completed",
+                    ok=True,
+                    result_item_count_value=result_item_count(parsed_result),
+                    latency_ms=parsed_result.meta.latency_ms,
+                    schema_version=parsed_result.meta.schema_version,
+                    provider=parsed_result.meta.provider,
+                )
             else:
                 await run_state.mark_tool_failed(tool_name)
                 await record_event(
@@ -240,10 +379,25 @@ class SystemHarness:
                     "failed",
                     parsed_result.error.code if parsed_result.error else "MCP_ERROR",
                 )
+                await finish_tool_event(
+                    status="failed",
+                    ok=False,
+                    error_code=parsed_result.error.code if parsed_result.error else "MCP_ERROR",
+                    result_item_count_value=result_item_count(parsed_result),
+                    latency_ms=parsed_result.meta.latency_ms,
+                    schema_version=parsed_result.meta.schema_version,
+                    provider=parsed_result.meta.provider,
+                    retryable=parsed_result.error.retryable if parsed_result.error else None,
+                )
             return parsed_result.model_dump(mode="json")
 
         await run_state.mark_tool_succeeded(tool_name)
         await record_event("tool_succeeded", "succeeded")
+        await finish_tool_event(
+            status="completed",
+            ok=True,
+            result_item_count_value=_infer_result_item_count(result),
+        )
         return result
 
 

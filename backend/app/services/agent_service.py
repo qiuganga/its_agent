@@ -172,7 +172,12 @@ class MultiAgentService:
                     run_config=_build_run_config(run_context),
                 )
 
-                async for chunk in process_stream_response(streaming_result):
+                try:
+                    stream_chunks = process_stream_response(streaming_result, run_context=run_context)
+                except TypeError:
+                    stream_chunks = process_stream_response(streaming_result)
+
+                async for chunk in stream_chunks:
                     if _is_finish_sse(chunk):
                         pending_finish_chunk = chunk
                         continue

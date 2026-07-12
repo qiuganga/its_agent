@@ -775,6 +775,18 @@ const handleServiceStation = () => {
                     scrollToBottom();
                     break;
 
+                  case 'TOOL_STARTED':
+                  case 'TOOL_RESULT':
+                    stopThinkingAnimation();
+                    streamTextToProcess(text + '\n');
+                    processMessages.value = [...processMessages.value, {
+                      type: 'PROCESS',
+                      text: text,
+                      toolEvent: parsedData.content.event || null
+                    }];
+                    scrollToBottom();
+                    break;
+
                   default:
                     console.log('Unknown content kind:', kind);
                     // 默认作为 PROCESS 处理
