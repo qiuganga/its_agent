@@ -104,20 +104,20 @@ class RunHarnessState:
     async def emit_tool_event(self, event: dict[str, Any]) -> None:
         async with self._lock:
             safe_event = self._prepare_tool_event_unlocked(event)
-        self.tool_event_queue.put_nowait(safe_event)
+            self.tool_event_queue.put_nowait(safe_event)
 
     async def emit_started_tool_event(self, event: dict[str, Any]) -> None:
         async with self._lock:
             self.active_tool_calls += 1
             safe_event = self._prepare_tool_event_unlocked(event)
-        self.tool_event_queue.put_nowait(safe_event)
+            self.tool_event_queue.put_nowait(safe_event)
 
     async def emit_terminal_tool_event(self, event: dict[str, Any], *, decrement_active: bool) -> None:
         async with self._lock:
             if decrement_active:
                 self.active_tool_calls = max(0, self.active_tool_calls - 1)
             safe_event = self._prepare_tool_event_unlocked(event)
-        self.tool_event_queue.put_nowait(safe_event)
+            self.tool_event_queue.put_nowait(safe_event)
 
     async def mark_tool_failed(self, tool_name: str) -> None:
         async with self._lock:

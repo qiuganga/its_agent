@@ -155,8 +155,7 @@ class ToolEventStreamingTests(unittest.IsolatedAsyncioTestCase):
             "status": "started",
             "argument_fingerprint": "fp",
         })
-        await ctx.run_state.tool_event_queue.get()
-        ctx.run_state.tool_event_queue.task_done()
+        self.assertEqual(await ctx.run_state.get_active_tool_calls(), 1)
 
         await ctx.run_state.emit_terminal_tool_event({
             "kind": "TOOL_RESULT",
@@ -167,10 +166,16 @@ class ToolEventStreamingTests(unittest.IsolatedAsyncioTestCase):
             "argument_fingerprint": "fp",
         }, decrement_active=True)
 
+        self.assertEqual(await ctx.run_state.get_active_tool_calls(), 0)
+        self.assertEqual(ctx.run_state.tool_event_queue.qsize(), 2)
         self.assertFalse(await ctx.run_state.is_tool_event_idle())
+        started_event = await ctx.run_state.tool_event_queue.get()
+        ctx.run_state.tool_event_queue.task_done()
         result_event = await ctx.run_state.tool_event_queue.get()
         ctx.run_state.tool_event_queue.task_done()
+        self.assertEqual(started_event["kind"], "TOOL_STARTED")
         self.assertEqual(result_event["kind"], "TOOL_RESULT")
+        self.assertLess(started_event["sequence"], result_event["sequence"])
         self.assertEqual(await ctx.run_state.get_active_tool_calls(), 0)
         self.assertTrue(await ctx.run_state.is_tool_event_idle())
 
