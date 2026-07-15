@@ -51,6 +51,7 @@ class RunHarnessState:
     seen_call_signatures: set[str] = field(default_factory=set)
     blocked_events: list[dict[str, Any]] = field(default_factory=list)
     trace_events: list[dict[str, Any]] = field(default_factory=list)
+    pending_clarification_payload: dict[str, Any] | None = None
     tool_event_queue: asyncio.Queue[dict[str, Any]] = field(default_factory=asyncio.Queue, repr=False)
     active_tool_calls: int = 0
     _sequence: int = 0
@@ -68,6 +69,16 @@ class RunHarnessState:
     async def trace(self, event: dict[str, Any]) -> None:
         async with self._lock:
             self.trace_events.append(event)
+
+    async def set_pending_clarification(self, payload: dict[str, Any]) -> None:
+        async with self._lock:
+            self.pending_clarification_payload = dict(payload)
+
+    async def get_pending_clarification(self) -> dict[str, Any] | None:
+        async with self._lock:
+            if self.pending_clarification_payload is None:
+                return None
+            return dict(self.pending_clarification_payload)
 
     async def next_sequence(self) -> int:
         async with self._lock:

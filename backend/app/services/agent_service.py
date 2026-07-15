@@ -277,6 +277,8 @@ class MultiAgentService:
 
                 agent_result = streaming_result.final_output or ""
                 clarification_payload = _extract_clarification_payload(agent_result)
+                if clarification_payload is None and run_state is not None:
+                    clarification_payload = await run_state.get_pending_clarification()
                 if clarification_payload:
                     original_query_for_state = clarification_original_query or user_query
                     await _safe_set_clarification_state(

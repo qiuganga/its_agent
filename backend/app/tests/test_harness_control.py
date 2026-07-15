@@ -8,7 +8,7 @@ from types import SimpleNamespace
 from app.infrastructure.harness.context import AgentRunContext
 from app.infrastructure.harness.policy import HarnessPolicy, ToolPolicy, freeze_tool_policies
 from app.infrastructure.harness.run_state import RunHarnessState
-from app.infrastructure.harness.system_harness import SystemHarness
+from app.infrastructure.harness.system_harness import SystemHarness, build_default_policy
 
 
 def make_policy(
@@ -100,6 +100,16 @@ def make_context(harness, *, user_id="u1", session_id="s1", run_id="r1"):
 
 
 class HarnessControlTests(unittest.IsolatedAsyncioTestCase):
+    async def test_default_service_agent_tool_timeout_allows_model_finalization(self):
+        policy = build_default_policy()
+        service_policy = policy.get_tool_policy("query_service_station_and_navigate")
+        map_policy = policy.get_tool_policy("map_navigation_tool")
+
+        self.assertIsNotNone(service_policy)
+        self.assertIsNotNone(map_policy)
+        self.assertGreater(service_policy.timeout_seconds, map_policy.timeout_seconds)
+        self.assertLess(service_policy.timeout_seconds, policy.max_request_seconds)
+
     async def test_same_run_duplicate_tool_call_executes_once(self):
         harness = SystemHarness(make_policy(tool_limit=2))
         ctx = make_context(harness)

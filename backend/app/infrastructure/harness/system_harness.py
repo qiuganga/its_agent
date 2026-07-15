@@ -415,7 +415,7 @@ def build_default_policy() -> HarnessPolicy:
             allowed_agents=("orchestrator",),
             max_calls_per_run=1,
             max_calls_per_session=20,
-            timeout_seconds=25,
+            timeout_seconds=40,
             max_concurrency=10,
             count_as_sub_agent_call=True,
         ),

@@ -24,6 +24,8 @@ def get_redis_client() -> Any | None:
             settings.REDIS_URL,
             encoding="utf-8",
             decode_responses=True,
+            socket_connect_timeout=0.2,
+            socket_timeout=0.2,
         )
     except Exception as exc:
         logger.error("Failed to create Redis client: %s", exc.__class__.__name__)

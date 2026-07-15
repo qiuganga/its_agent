@@ -3,6 +3,7 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
+from app.multi_agent import agent_factory
 from app.schemas.clarification import make_clarification_result
 from app.schemas.request import ChatMessageRequest, UserContext
 from app.services import agent_service
@@ -174,6 +175,63 @@ class AgentClarificationStateIntegrationTests(unittest.IsolatedAsyncioTestCase):
             chunks = await collect(agent_service.MultiAgentService.process_task(self.make_request("hello"), True))
 
         self.assertTrue(chunks)
+
+
+class AgentFactoryClarificationPrecheckTests(unittest.TestCase):
+    def test_service_station_missing_location_precheck(self):
+        missing_location_query = "\u4ece\u6211\u8fd9\u91cc\u5230\u6700\u8fd1\u7684\u670d\u52a1\u7ad9\u7684\u8def\u7ebf"
+        concrete_route_query = "\u5317\u4eac\u6545\u5bab\u5230\u4e09\u91cc\u5c6f\u7684\u8def\u7ebf"
+        concrete_service_query = "\u6211\u5728\u5317\u4eac\u4e2d\u5173\u6751\uff0c\u53bb\u6700\u8fd1\u670d\u52a1\u7ad9"
+
+        self.assertTrue(agent_factory._needs_location_clarification(missing_location_query))
+        self.assertFalse(agent_factory._needs_location_clarification(concrete_route_query))
+        self.assertFalse(agent_factory._needs_location_clarification(concrete_service_query))
+
+    def test_vague_technical_precheck(self):
+        vague_query = "\u7535\u8111\u9ed1\u5c4f\u600e\u4e48\u529e"
+        detailed_query = "ThinkPad T14\uff0cWindows 11\uff0c\u5f00\u673a\u9ed1\u5c4f\u4f46\u7535\u6e90\u706f\u4eae"
+
+        self.assertTrue(agent_factory._is_vague_technical_request(vague_query))
+        self.assertFalse(agent_factory._is_vague_technical_request(detailed_query))
+
+
+class PendingClarificationStateIntegrationTests(unittest.IsolatedAsyncioTestCase):
+    async def test_pending_clarification_writes_state_when_final_output_is_text(self):
+        original_query = "\u4ece\u6211\u8fd9\u91cc\u5230\u6700\u8fd1\u7684\u670d\u52a1\u7ad9\u7684\u8def\u7ebf"
+        payload = make_clarification_result(
+            clarification_type="missing_location",
+            missing_fields=["city_or_address"],
+            clarification_question="\u8bf7\u63d0\u4f9b\u4f60\u6240\u5728\u7684\u57ce\u5e02\u6216\u5177\u4f53\u5730\u5740\u3002",
+            source="query_service_station_and_navigate",
+            original_query=original_query,
+        )
+        fake_store = FakeClarificationStateStore()
+        captured = SimpleNamespace(context=None)
+
+        def fake_run_streamed(*args, **kwargs):
+            captured.context = kwargs["context"]
+            return FakeStreamingResult("\u4e3a\u4e86\u627e\u5230\u6700\u8fd1\u670d\u52a1\u7ad9\uff0c\u8bf7\u63d0\u4f9b\u6240\u5728\u57ce\u5e02\u3002")
+
+        async def stream_with_pending_clarification(streaming_result, run_context=None):
+            await captured.context.run_state.set_pending_clarification(payload)
+            yield finish_sse()
+
+        request = ChatMessageRequest(
+            query=original_query,
+            context=UserContext(user_id="u1", session_id="s1"),
+        )
+        with patch.object(agent_service, "system_harness", FakeHarness(max_request_seconds=1.0)), \
+             patch.object(agent_service, "session_service", FakeSessionService()), \
+             patch.object(agent_service, "clarification_state_store", fake_store), \
+             patch.object(agent_service.Runner, "run_streamed", side_effect=fake_run_streamed), \
+             patch.object(agent_service, "process_stream_response", stream_with_pending_clarification):
+            await collect(agent_service.MultiAgentService.process_task(request, True))
+
+        self.assertEqual(len(fake_store.set_calls), 1)
+        saved_state = fake_store.set_calls[0][2]
+        self.assertEqual(saved_state["status"], "waiting_clarification")
+        self.assertEqual(saved_state["original_query"], original_query)
+        self.assertEqual(saved_state["missing_fields"], ["city_or_address"])
 
 
 if __name__ == "__main__":

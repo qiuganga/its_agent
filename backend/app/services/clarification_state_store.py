@@ -1,9 +1,13 @@
 import json
+import asyncio
 from typing import Any
 
 from app.config.settings import settings
 from app.infrastructure.cache.redis_client import get_redis_client
 from app.infrastructure.logging.logger import logger
+
+
+REDIS_OPERATION_TIMEOUT_SECONDS = 0.25
 
 
 class ClarificationStateStore:
@@ -30,10 +34,13 @@ class ClarificationStateStore:
             return
         ttl = ttl_seconds or settings.CLARIFICATION_STATE_TTL_SECONDS
         try:
-            await client.set(
-                self._key(user_id, session_id),
-                json.dumps(state, ensure_ascii=False),
-                ex=ttl,
+            await asyncio.wait_for(
+                client.set(
+                    self._key(user_id, session_id),
+                    json.dumps(state, ensure_ascii=False),
+                    ex=ttl,
+                ),
+                timeout=REDIS_OPERATION_TIMEOUT_SECONDS,
             )
         except Exception as exc:
             logger.warning(
@@ -48,7 +55,10 @@ class ClarificationStateStore:
         if client is None:
             return None
         try:
-            raw = await client.get(self._key(user_id, session_id))
+            raw = await asyncio.wait_for(
+                client.get(self._key(user_id, session_id)),
+                timeout=REDIS_OPERATION_TIMEOUT_SECONDS,
+            )
         except Exception as exc:
             logger.warning(
                 "Failed to read clarification state user_id=%s session_id=%s: %s",
@@ -75,7 +85,10 @@ class ClarificationStateStore:
         if client is None:
             return
         try:
-            await client.delete(self._key(user_id, session_id))
+            await asyncio.wait_for(
+                client.delete(self._key(user_id, session_id)),
+                timeout=REDIS_OPERATION_TIMEOUT_SECONDS,
+            )
         except Exception as exc:
             logger.warning(
                 "Failed to clear clarification state user_id=%s session_id=%s: %s",
