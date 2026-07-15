@@ -17,6 +17,7 @@ from app.multi_agent.orchestrator_agent import orchestrator_agent
 from app.schemas.request import ChatMessageRequest
 from app.schemas.clarification import is_clarification_payload
 from app.schemas.response import ContentKind
+from app.services.clarification_state_store import clarification_state_store
 from app.services.session_service import session_service
 from app.services.stream_response_service import process_stream_response
 from app.utils.response_util import ResponseFactory
@@ -77,6 +78,67 @@ def _extract_clarification_payload(value: object) -> dict | None:
     return None
 
 
+def _build_clarification_state(payload: dict, original_query: str) -> dict:
+    return {
+        "status": "waiting_clarification",
+        "clarification_type": payload.get("clarification_type"),
+        "missing_fields": payload.get("missing_fields", []),
+        "original_query": original_query,
+        "last_clarification_question": payload.get("clarification_question"),
+        "source": payload.get("source"),
+        "suggested_examples": payload.get("suggested_examples", []),
+    }
+
+
+def _build_effective_user_query(user_query: str, state: dict | None) -> tuple[str, str | None]:
+    if not isinstance(state, dict) or state.get("status") != "waiting_clarification":
+        return user_query, None
+    original_query = str(state.get("original_query") or "").strip()
+    if not original_query:
+        return user_query, None
+    return (
+        f"原始问题：{original_query}\n用户补充信息：{user_query}",
+        original_query,
+    )
+
+
+async def _safe_get_clarification_state(user_id: str, session_id: str) -> dict | None:
+    try:
+        return await clarification_state_store.get_state(user_id, session_id)
+    except Exception as exc:
+        logger.warning(
+            "Clarification state read failed user_id=%s session_id=%s: %s",
+            user_id,
+            session_id,
+            exc.__class__.__name__,
+        )
+        return None
+
+
+async def _safe_set_clarification_state(user_id: str, session_id: str, state: dict) -> None:
+    try:
+        await clarification_state_store.set_state(user_id, session_id, state)
+    except Exception as exc:
+        logger.warning(
+            "Clarification state write failed user_id=%s session_id=%s: %s",
+            user_id,
+            session_id,
+            exc.__class__.__name__,
+        )
+
+
+async def _safe_clear_clarification_state(user_id: str, session_id: str) -> None:
+    try:
+        await clarification_state_store.clear_state(user_id, session_id)
+    except Exception as exc:
+        logger.warning(
+            "Clarification state clear failed user_id=%s session_id=%s: %s",
+            user_id,
+            session_id,
+            exc.__class__.__name__,
+        )
+
+
 def _build_run_config(run_context: AgentRunContext) -> RunConfig:
     trace_enabled = run_context.system_harness.policy.trace_enabled
     return RunConfig(
@@ -101,6 +163,8 @@ class MultiAgentService:
         user_id = request.context.user_id
         session_id = request.context.session_id
         user_query = request.query
+        effective_user_query = user_query
+        clarification_original_query: str | None = None
         run_state: RunHarnessState | None = None
         pending_finish_chunk: str | None = None
 
@@ -157,6 +221,12 @@ class MultiAgentService:
                     yield finish
                 return
 
+            stored_clarification_state = await _safe_get_clarification_state(user_id, session_id)
+            effective_user_query, clarification_original_query = _build_effective_user_query(
+                user_query,
+                stored_clarification_state,
+            )
+
             run_state = RunHarnessState(
                 run_id=run_id,
                 user_id=user_id,
@@ -167,7 +237,7 @@ class MultiAgentService:
                 user_id=user_id,
                 session_id=session_id,
                 run_id=run_id,
-                user_query=user_query,
+                user_query=effective_user_query,
                 system_harness=system_harness,
                 run_state=run_state,
             )
@@ -183,7 +253,7 @@ class MultiAgentService:
                 raise asyncio.TimeoutError
 
             async with asyncio.timeout(remaining_seconds):
-                full_history = session_service.prepare_full_history(user_id, session_id, user_query)
+                full_history = session_service.prepare_full_history(user_id, session_id, effective_user_query)
                 prompt_history = session_service.build_prompt_history(full_history)
 
                 streaming_result = Runner.run_streamed(
@@ -208,6 +278,12 @@ class MultiAgentService:
                 agent_result = streaming_result.final_output or ""
                 clarification_payload = _extract_clarification_payload(agent_result)
                 if clarification_payload:
+                    original_query_for_state = clarification_original_query or user_query
+                    await _safe_set_clarification_state(
+                        user_id,
+                        session_id,
+                        _build_clarification_state(clarification_payload, original_query_for_state),
+                    )
                     yield _sse_clarification(clarification_payload)
                     format_agent_result = re.sub(
                         r"\n+",
@@ -215,6 +291,7 @@ class MultiAgentService:
                         clarification_payload.get("clarification_question") or "",
                     )
                 else:
+                    await _safe_clear_clarification_state(user_id, session_id)
                     format_agent_result = re.sub(r"\n+", "\n", str(agent_result))
                 full_history.append({"role": "assistant", "content": format_agent_result})
                 session_service.save_history(user_id, session_id, full_history)

@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from typing import Any
+
+from pydantic import BaseModel, Field
 
 
 class UploadResponse(BaseModel):
@@ -16,6 +18,20 @@ class QueryResponse(BaseModel):
     """
     question:str # 用户提问问题
     answer:str # 模型的回答
+
+class RetrievedDocument(BaseModel):
+    title: str = ""
+    source_id: str = ""
+    content: str = ""
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class RetrieveResponse(BaseModel):
+    question: str
+    normalized_question: str
+    count: int
+    items: list[RetrievedDocument]
+
 
 class QueryRequest(BaseModel):
     """

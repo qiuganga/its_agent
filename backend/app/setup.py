@@ -14,6 +14,7 @@ setup(
         "openai-agents",
         "pymysql",
         "dbutils",
-        "pystun3"
+        "pystun3",
+        "redis"
     ],
 )

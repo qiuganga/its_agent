@@ -67,14 +67,14 @@ async def query_knowledge_impl(question: str) -> Dict[str, Any]:
             "error_msg": "KNOWLEDGE_BASE_URL 未配置"
         }
 
-    url = f"{settings.KNOWLEDGE_BASE_URL.rstrip('/')}/query"
+    url = f"{settings.KNOWLEDGE_BASE_URL.rstrip('/')}/retrieve"
 
     async with httpx.AsyncClient(trust_env=False) as client:
         try:
             response = await client.post(
                 url=url,
                 json={"question": question},
-                timeout=60
+                timeout=20
             )
 
             # 4xx / 5xx 会在这里抛出 httpx.HTTPStatusError

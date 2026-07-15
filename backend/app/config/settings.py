@@ -97,6 +97,10 @@ class Settings(BaseSettings):
     HARNESS_SESSION_MAX_TOTAL_TOOL_CALLS: int = Field(default=80)
     HARNESS_TRACE_ENABLED: bool = Field(default=False)
 
+    # ==================== Redis / Clarification State ====================
+    REDIS_URL: str = Field(default="redis://localhost:6379/0")
+    CLARIFICATION_STATE_TTL_SECONDS: int = Field(default=1800)
+
     model_config = SettingsConfigDict(
         # 计算.env文件的绝对路径：config目录的父目录(app目录)下的.env
         env_file=str(Path(__file__).parent.parent / ".env"),

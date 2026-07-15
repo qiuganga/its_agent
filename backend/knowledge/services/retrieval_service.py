@@ -95,6 +95,7 @@ class RetrievalService:
         self.reranker_failure_count = 0
         self.reranker_latency_ms: list[int] = []
         self.reranker_invalid_result_count = 0
+        self._fast_bm25_repository: Bm25Repository | None = None
 
     def rough_ranking(self, user_query, mds_metadata: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if not user_query:
@@ -231,6 +232,127 @@ class RetrievalService:
                 )
                 return []
         return final_documents
+
+    def retrieval_fast_local(
+        self,
+        original_question: str,
+        *,
+        query_variants: list[str] | None = None,
+        top_k: int | None = None,
+        candidate_top_k: int | None = None,
+    ) -> List[Document]:
+        """Fast local retrieval for online agent tools.
+
+        The full retrieval pipeline performs title semantic ranking and
+        candidate embedding rerank, which can issue many remote embedding
+        requests. This online path keeps the useful semantic recall signal by
+        asking Chroma once for the original question, then combines it with
+        local BM25 over all query variants and deterministic title/content
+        evidence scoring. It does not run title embedding, candidate embedding
+        rerank, Reranker, or the answer LLM.
+        """
+        original_question = (original_question or "").strip()
+        if not original_question:
+            return []
+
+        variants = self._normalize_query_variants(original_question, query_variants)
+        top_k = int(top_k or settings.RAG_FINAL_TOP_K)
+        candidate_top_k = int(candidate_top_k or max(settings.RAG_BM25_CANDIDATE_TOP_K, 10))
+
+        repository = self._get_fast_bm25_repository()
+        candidates: list[Document] = []
+        candidates.extend(self._search_based_vector(original_question))
+        for query in variants:
+            candidates.extend(repository.search(query, top_k=candidate_top_k, query_variant=query))
+
+        unique_candidates = self._deduplicate(candidates)
+        if not unique_candidates:
+            return []
+
+        terms = self._fast_query_terms(variants)
+        scored: list[tuple[Document, float]] = []
+        for document in unique_candidates:
+            document.metadata = dict(document.metadata or {})
+            score = self._fast_local_score(document, terms)
+            document.metadata["ranking_base_score"] = float(score)
+            document.metadata["final_rerank_score"] = float(score)
+            document.metadata["retrieval_route"] = document.metadata.get("retrieval_route") or "bm25"
+            document.metadata["retrieval_routes"] = list(document.metadata.get("retrieval_routes") or ["bm25"])
+            scored.append((document, score))
+
+        scored.sort(key=lambda item: item[1], reverse=True)
+        selected = [doc for doc, score in scored if score > 0][:top_k]
+        for rank, document in enumerate(selected, start=1):
+            document.metadata = dict(document.metadata or {})
+            document.metadata["final_rank"] = rank
+            document.metadata["query_variants"] = list(variants)
+        return selected
+
+    def _get_fast_bm25_repository(self) -> Bm25Repository:
+        if self._fast_bm25_repository is None:
+            repository = Bm25Repository()
+            repository.load_index()
+            self._fast_bm25_repository = repository
+        return self._fast_bm25_repository
+
+    def _fast_query_terms(self, query_variants: list[str]) -> list[str]:
+        stop_terms = {
+            "怎么",
+            "怎么办",
+            "如何",
+            "电脑",
+            "系统",
+            "问题",
+            "故障",
+            "处理",
+            "解决",
+            "win",
+        }
+        terms: list[str] = []
+        seen: set[str] = set()
+        for query in query_variants:
+            for item in re.findall(r"0x[0-9A-Fa-f]+|[A-Za-z]+[0-9.]*|[\u4e00-\u9fff]{2,}", query or ""):
+                normalized = item.strip().lower()
+                if not normalized or normalized in stop_terms or normalized in seen:
+                    continue
+                seen.add(normalized)
+                terms.append(normalized)
+            for item in jieba.lcut(query or ""):
+                normalized = item.strip().lower()
+                if len(normalized) < 2 or normalized in stop_terms or normalized in seen:
+                    continue
+                if not re.search(r"[\u4e00-\u9fffA-Za-z0-9]", normalized):
+                    continue
+                seen.add(normalized)
+                terms.append(normalized)
+        return terms
+
+    def _fast_local_score(self, document: Document, terms: list[str]) -> float:
+        metadata = document.metadata or {}
+        title = str(metadata.get("title") or "")
+        content = str(document.page_content or "")
+        title_norm = title.lower()
+        content_norm = content.lower()
+        bm25_score = float(metadata.get("bm25_score") or 0.0)
+
+        title_hits = 0
+        content_hits = 0
+        for term in terms:
+            if term and term in title_norm:
+                title_hits += 1
+            if term and term in content_norm:
+                content_hits += 1
+
+        score = bm25_score + title_hits * 10.0 + content_hits * 1.5
+        if "黑屏" in terms and "黑屏" in title:
+            score += 15.0
+        if any(term in terms for term in ("开机", "启动", "无法开机")) and any(term in title for term in ("开机", "启动")):
+            score += 8.0
+        if any(term in terms for term in ("蓝屏", "错误码")) and any(term in title for term in ("蓝屏", "错误")):
+            score += 8.0
+        if any(term in terms for term in ("无线网络", "wi-fi", "wifi", "网络")) and any(term in title for term in ("无线", "网络", "Wi-Fi", "wifi")):
+            score += 8.0
+        return score
 
     def is_anchor_evidence_enabled(self) -> bool:
         return bool(getattr(self, "anchor_evidence_enabled", False))

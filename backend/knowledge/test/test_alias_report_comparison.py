@@ -1,9 +1,14 @@
 import json
 import tempfile
 import unittest
+import sys
 from pathlib import Path
 
-from backend.knowledge.scripts.compare_alias_mapping_reports import build_comparison
+KNOWLEDGE_ROOT = Path(__file__).resolve().parents[1]
+if str(KNOWLEDGE_ROOT) not in sys.path:
+    sys.path.insert(0, str(KNOWLEDGE_ROOT))
+
+from scripts.compare_alias_mapping_reports import build_comparison
 
 
 def _write_json(path: Path, payload) -> None:

@@ -137,6 +137,7 @@ class FakeVectorStore:
         self.ids = []
         self.deleted = []
         self.embedded_texts = []
+        self.vector_queries = []
 
     def delete_by_source_id(self, source_id):
         self.deleted.append(source_id)
@@ -151,6 +152,7 @@ class FakeVectorStore:
         return len(documents)
 
     def search_similarity_with_score(self, user_question, top_k=5):
+        self.vector_queries.append(user_question)
         return [(FakeDocument("文档来源:旧标题\n有效内容" * 20, {"title": "旧标题"}), 0.42)]
 
     def embedd_document(self, text):
@@ -189,6 +191,30 @@ class TrackingRetrievalService(RetrievalService):
         self.rerank_questions.append(original_question)
         docs = self.reranked_docs if self.reranked_docs is not None else candidates
         return [FakeDocument(doc.page_content, dict(doc.metadata)) for doc in docs]
+
+
+class FakeBm25Repository:
+    def search(self, query, *, top_k=10, query_variant=None):
+        return [
+            FakeDocument(
+                "Windows 10 install guide " * 20,
+                {
+                    "title": "Windows 10 installation",
+                    "source_id": "win10.md",
+                    "bm25_score": 20.0,
+                    "retrieval_route": "bm25",
+                },
+            ),
+            FakeDocument(
+                "开机屏幕黑屏或蓝屏报错，无法正常进入系统。" * 20,
+                {
+                    "title": "Lenovo G470开机屏幕黑屏或蓝屏报错,无法正常进入系统",
+                    "source_id": "0075.md",
+                    "bm25_score": 12.0,
+                    "retrieval_route": "bm25",
+                },
+            ),
+        ]
 
 
 class RagControlTests(unittest.TestCase):
@@ -385,6 +411,21 @@ class RagControlTests(unittest.TestCase):
         single_source = scored[:2]
         selected_single = service._select_mmr(single_source, 2)
         self.assertEqual(len(selected_single), 2)
+
+    def test_fast_local_retrieval_prioritizes_title_evidence(self):
+        store = FakeVectorStore()
+        service = RetrievalService(chroma_vector=store)
+        service._fast_bm25_repository = FakeBm25Repository()
+        docs = service.retrieval_fast_local(
+            "win10，启动时黑屏怎么办",
+            query_variants=["win10，启动时黑屏怎么办", "Windows，启动时黑屏怎么办"],
+        )
+        self.assertGreaterEqual(len(docs), 1)
+        self.assertEqual(docs[0].metadata["source_id"], "0075.md")
+        self.assertEqual(docs[0].metadata["final_rank"], 1)
+        self.assertIn("final_rerank_score", docs[0].metadata)
+        self.assertEqual(store.vector_queries, ["win10，启动时黑屏怎么办"])
+        self.assertEqual(store.embedded_texts, [])
 
     def test_rebuild_cli_does_not_delete_old_collection_in_source(self):
         cli_path = os.path.join(KNOWLEDGE_ROOT, "cli", "rebuild_vector_store.py")

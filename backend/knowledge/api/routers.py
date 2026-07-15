@@ -5,7 +5,7 @@ from knowledge.services.retrieval_service import RetrievalService
 from knowledge.services.query_service import QueryService
 from knowledge.services.query_normalization_service import query_normalization_service
 from knowledge.services.ingestion.ingestion_processor import IngestionProcessor
-from knowledge.schemas.schema import UploadResponse, QueryRequest, QueryResponse
+from knowledge.schemas.schema import QueryRequest, QueryResponse, RetrieveResponse, RetrievedDocument, UploadResponse
 
 logging.basicConfig(level=logging.DEBUG)
 logger=logging.getLogger(__name__)
@@ -134,3 +134,52 @@ async def query(request: QueryRequest):
 
 
 
+
+@router.post("/retrieve", response_model=RetrieveResponse, summary="检索知识库资料")
+async def retrieve(request: QueryRequest):
+    try:
+        user_question = request.question.strip() if request.question else ""
+        if not user_question:
+            raise HTTPException(status_code=400, detail="query question is required")
+
+        normalized_question = query_normalization_service.normalize(user_question)
+        query_variants = [user_question]
+        if normalized_question and normalized_question != user_question:
+            query_variants.append(normalized_question)
+
+        documents = retrieval_service.retrieval_fast_local(
+            original_question=user_question,
+            query_variants=query_variants,
+        )
+        items = []
+        for document in documents:
+            metadata = dict(document.metadata or {})
+            content = (document.page_content or "").strip()
+            if len(content) > 1200:
+                content = content[:1200].rstrip() + "..."
+            items.append(
+                RetrievedDocument(
+                    title=str(metadata.get("title") or ""),
+                    source_id=str(metadata.get("source_id") or ""),
+                    content=content,
+                    metadata={
+                        "retrieval_route": metadata.get("retrieval_route"),
+                        "retrieval_routes": metadata.get("retrieval_routes"),
+                        "final_rerank_score": metadata.get("final_rerank_score"),
+                        "bm25_score": metadata.get("bm25_score"),
+                        "final_rank": metadata.get("final_rank"),
+                    },
+                )
+            )
+
+        return RetrieveResponse(
+            question=user_question,
+            normalized_question=normalized_question,
+            count=len(items),
+            items=items,
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"retrieve knowledge failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="knowledge retrieval failed")
