@@ -7,6 +7,7 @@ from app.schemas.response import (
     StreamPacket,
     TextMessageBody,
     ToolEventMessageBody,
+    ClarificationMessageBody,
     FinishMessageBody,
     StreamStatus,
     PacketMeta,
@@ -84,6 +85,37 @@ class ResponseFactory:
             kind=content_kind,
             text=text,
             event=safe_event,
+        )
+
+        return StreamPacket(
+            id=str(uuid.uuid4()),
+            content=body,
+            status=StreamStatus.IN_PROGRESS,
+            metadata=PacketMeta(createTime=str(datetime.now()))
+        )
+
+    @staticmethod
+    def build_clarification(clarification: dict) -> StreamPacket:
+        """
+        Build a safe clarification packet for SSE.
+        """
+        safe = {
+            key: clarification.get(key)
+            for key in (
+                "need_clarification",
+                "clarification_type",
+                "missing_fields",
+                "clarification_question",
+                "source",
+                "original_query",
+                "suggested_examples",
+            )
+            if key in clarification
+        }
+        text = safe.get("clarification_question") or "请补充更多信息后我再继续处理。"
+        body = ClarificationMessageBody(
+            text=text,
+            clarification=safe,
         )
 
         return StreamPacket(

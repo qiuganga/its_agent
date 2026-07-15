@@ -9,6 +9,21 @@ from app.config.settings import settings
 from app.infrastructure.harness.context import AgentRunContext
 from app.infrastructure.tools.mcp.mcp_servers import search_mcp_client
 from app.infrastructure.tools.mcp.contracts import call_mcp_with_contract
+from app.schemas.clarification import make_clarification_result
+
+
+def is_vague_technical_query(query: str) -> bool:
+    query = (query or "").strip()
+    if len(query) <= 4:
+        return True
+    vague_terms = ["坏了", "不能用", "有问题", "报错", "黑屏", "蓝屏", "连不上", "打不开"]
+    has_vague_term = any(term in query for term in vague_terms)
+    detail_tokens = [
+        "错误码", "型号", "Windows", "windows", "win10", "win11", "ThinkPad",
+        "小新", "拯救者", "BIOS", "bios", "驱动", "电源灯", "风扇", "Logo", "logo",
+    ]
+    has_detail = any(token in query for token in detail_tokens)
+    return has_vague_term and not has_detail
 
 
 async def query_knowledge_impl(question: str) -> Dict[str, Any]:
@@ -16,6 +31,29 @@ async def query_knowledge_impl(question: str) -> Dict[str, Any]:
     普通函数：真正请求知识库服务。
     这个函数可以在 main() 中直接 await 调用，用于测试接口是否正常。
     """
+
+    if not question:
+        return make_clarification_result(
+            clarification_type="missing_error_detail",
+            missing_fields=["error_detail"],
+            clarification_question="请补充具体故障现象或报错信息，我可以继续帮你排查。",
+            source="query_knowledge",
+            original_query=question,
+            suggested_examples=["开机黑屏但电源灯亮", "蓝屏错误码 CRITICAL_PROCESS_DIED"],
+        )
+
+    if is_vague_technical_query(question):
+        return make_clarification_result(
+            clarification_type="missing_device_info",
+            missing_fields=["device_model", "os_version", "error_detail"],
+            clarification_question="请补充设备型号、系统版本，以及具体故障现象或报错信息，我可以继续帮你排查。",
+            source="query_knowledge",
+            original_query=question,
+            suggested_examples=[
+                "ThinkPad T14，Windows 11，开机黑屏但电源灯亮",
+                "小新 Pro，蓝屏错误码 CRITICAL_PROCESS_DIED",
+            ],
+        )
 
     if not question:
         return {

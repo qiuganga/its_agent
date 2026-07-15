@@ -787,6 +787,15 @@ const handleServiceStation = () => {
                     scrollToBottom();
                     break;
 
+                  case 'CLARIFICATION': {
+                    stopThinkingAnimation();
+                    const examples = parsedData.content?.clarification?.suggested_examples || [];
+                    const exampleText = examples.length ? `\n\n示例：${examples.join('；')}` : '';
+                    streamTextToAnswer(text + exampleText);
+                    scrollToBottom();
+                    break;
+                  }
+
                   default:
                     console.log('Unknown content kind:', kind);
                     // 默认作为 PROCESS 处理

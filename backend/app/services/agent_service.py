@@ -15,6 +15,7 @@ from app.infrastructure.harness.system_harness import system_harness
 from app.infrastructure.logging.logger import logger
 from app.multi_agent.orchestrator_agent import orchestrator_agent
 from app.schemas.request import ChatMessageRequest
+from app.schemas.clarification import is_clarification_payload
 from app.schemas.response import ContentKind
 from app.services.session_service import session_service
 from app.services.stream_response_service import process_stream_response
@@ -45,6 +46,10 @@ def _sse_finish() -> str:
     return "data: " + ResponseFactory.build_finish().model_dump_json() + "\n\n"
 
 
+def _sse_clarification(payload: dict) -> str:
+    return "data: " + ResponseFactory.build_clarification(payload).model_dump_json() + "\n\n"
+
+
 def _is_finish_sse(chunk: str) -> bool:
     if not chunk.startswith("data: "):
         return False
@@ -53,6 +58,23 @@ def _is_finish_sse(chunk: str) -> bool:
     except json.JSONDecodeError:
         return False
     return payload.get("status") == "FINISHED" or payload.get("content", {}).get("contentType") == "sagegpt/finish"
+
+
+def _extract_clarification_payload(value: object) -> dict | None:
+    if isinstance(value, dict) and is_clarification_payload(value):
+        return value
+    if not isinstance(value, str):
+        return None
+    stripped = value.strip()
+    if not (stripped.startswith("{") and stripped.endswith("}")):
+        return None
+    try:
+        payload = json.loads(stripped)
+    except json.JSONDecodeError:
+        return None
+    if is_clarification_payload(payload):
+        return payload
+    return None
 
 
 def _build_run_config(run_context: AgentRunContext) -> RunConfig:
@@ -184,7 +206,16 @@ class MultiAgentService:
                     yield chunk
 
                 agent_result = streaming_result.final_output or ""
-                format_agent_result = re.sub(r"\n+", "\n", agent_result)
+                clarification_payload = _extract_clarification_payload(agent_result)
+                if clarification_payload:
+                    yield _sse_clarification(clarification_payload)
+                    format_agent_result = re.sub(
+                        r"\n+",
+                        "\n",
+                        clarification_payload.get("clarification_question") or "",
+                    )
+                else:
+                    format_agent_result = re.sub(r"\n+", "\n", str(agent_result))
                 full_history.append({"role": "assistant", "content": format_agent_result})
                 session_service.save_history(user_id, session_id, full_history)
                 await run_state.trace({

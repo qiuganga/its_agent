@@ -9,11 +9,9 @@ from pymysql.cursors import DictCursor
 from app.infrastructure.database.database_pool import pool
 from app.infrastructure.harness.context import AgentRunContext
 from app.infrastructure.logging.logger import logger
+from app.schemas.clarification import make_clarification_result
 from app.infrastructure.tools.mcp.contracts import (
-    LocationData,
     call_mcp_with_contract,
-    make_error_result,
-    make_success_result,
 )
 from app.infrastructure.tools.mcp.mcp_servers import baidu_mcp_client
 
@@ -22,6 +20,53 @@ RELATIVE_LOCATIONS = {
     "附近", "这", "这里", "这儿", "周围", "周边",
     "我的位置", "当前位置", "所在位置", "nearby", "here"
 }
+
+LOCATION_HINTS = {
+    "北京", "上海", "广州", "深圳", "杭州", "南京", "成都", "重庆", "天津",
+    "武汉", "西安", "苏州", "区", "县", "市", "路", "街", "号", "园",
+    "站", "中心", "大厦", "广场", "小区", "村", "镇",
+}
+
+
+def _missing_location_clarification(original_query: str | None, source: str) -> dict:
+    return make_clarification_result(
+        clarification_type="missing_location",
+        missing_fields=["city_or_address"],
+        clarification_question="请提供你所在的城市或具体地址，我再帮你查询附近服务站或生成导航。",
+        source=source,
+        original_query=original_query,
+        suggested_examples=["北京市海淀区中关村", "上海市徐汇区漕河泾", "深圳市南山区科技园"],
+    )
+
+
+def _missing_destination_clarification(original_query: str | None, source: str) -> dict:
+    return make_clarification_result(
+        clarification_type="missing_destination",
+        missing_fields=["destination"],
+        clarification_question="请提供你要导航到的目的地名称或地址，例如“联想服务中心”或“北京市海淀区某某路”。",
+        source=source,
+        original_query=original_query,
+        suggested_examples=["联想服务中心", "北京南站", "上海市徐汇区某某路"],
+    )
+
+
+def _has_location_hint(text: str) -> bool:
+    return any(hint in text for hint in LOCATION_HINTS)
+
+
+def _is_relative_only_location_request(text: str) -> bool:
+    lowered = text.lower()
+    has_relative_term = any(term in lowered for term in RELATIVE_LOCATIONS)
+    return has_relative_term and not _has_location_hint(text)
+
+
+def _valid_coords(lat: float, lng: float) -> bool:
+    try:
+        lat_value = float(lat)
+        lng_value = float(lng)
+    except (TypeError, ValueError):
+        return False
+    return -90 <= lat_value <= 90 and -180 <= lng_value <= 180
 
 
 def bd09mc_to_bd09(lng: float, lat: float) -> tuple[float, float]:
@@ -47,9 +92,9 @@ def get_ip_via_stun():
 
 async def resolve_user_location_from_text_impl(user_input: str):
     user_input = user_input.strip() if user_input else ""
-    if user_input in RELATIVE_LOCATIONS:
-        logger.info("[Location] Relative term detected; using IP/fallback location")
-        user_input = ""
+    if not user_input or user_input in RELATIVE_LOCATIONS or _is_relative_only_location_request(user_input):
+        logger.info("[Location] Missing concrete user location; asking for clarification")
+        return _missing_location_clarification(user_input, "resolve_user_location_from_text")
 
     if user_input:
         geocode_result = await call_mcp_with_contract(
@@ -68,23 +113,7 @@ async def resolve_user_location_from_text_impl(user_input: str):
             return geocode_result
         logger.warning("[Location] Geocode failed or returned no coordinates")
 
-    user_ip = get_ip_via_stun()
-    if user_ip and user_ip not in ("127.0.0.1", "localhost", "::1"):
-        ip_result = await call_mcp_with_contract(
-            provider="baidu_map",
-            tool_name="resolve_user_location_from_text",
-            arguments={"user_input": user_ip},
-            action=lambda _args: baidu_mcp_client.call_tool("map_ip_location", {"ip": user_ip}),
-        )
-        if ip_result.ok and ip_result.data and ip_result.data.lat is not None and ip_result.data.lng is not None:
-            return ip_result
-        logger.warning("[Location] IP location failed or returned no coordinates")
-
-    return make_success_result(
-        provider="local_fallback",
-        tool_name="resolve_user_location_from_text",
-        data=LocationData(lat=39.9042, lng=116.4074, source="fallback", fallback=True),
-    )
+    return _missing_location_clarification(user_input, "resolve_user_location_from_text")
 
 
 @function_tool
@@ -105,6 +134,12 @@ async def resolve_user_location_from_text(
 
 
 def query_nearest_repair_shops_by_coords_impl(lat: float, lng: float, limit: int = 3) -> str:
+    if not _valid_coords(lat, lng):
+        return json.dumps(
+            _missing_location_clarification(None, "query_nearest_repair_shops_by_coords"),
+            ensure_ascii=False,
+        )
+
     connection = None
     cursor = None
     try:
@@ -192,12 +227,19 @@ async def query_nearest_repair_shops_by_coords(
 
 
 async def geocode_destination_impl(address: str):
-    return await call_mcp_with_contract(
+    address = address.strip() if address else ""
+    if not address:
+        return _missing_destination_clarification(address, "geocode_destination")
+
+    result = await call_mcp_with_contract(
         provider="baidu_map",
         tool_name="geocode_destination",
         arguments={"address": address},
         action=lambda args: baidu_mcp_client.call_tool("map_geocode", args),
     )
+    if result.ok and result.data and result.data.lat is not None and result.data.lng is not None:
+        return result
+    return _missing_destination_clarification(address, "geocode_destination")
 
 
 @function_tool
@@ -227,13 +269,10 @@ async def map_navigation_tool_impl(
     mode: str = "driving",
     region: str = "北京",
 ):
-    if not origin or not destination:
-        return make_error_result(
-            provider="local_validation",
-            tool_name="map_navigation_tool",
-            code="MCP_INPUT_VALIDATION_ERROR",
-            message="origin and destination must not be empty.",
-        )
+    if not origin:
+        return _missing_location_clarification(origin, "map_navigation_tool")
+    if not destination:
+        return _missing_destination_clarification(destination, "map_navigation_tool")
 
     result = await call_mcp_with_contract(
         provider="baidu_map",

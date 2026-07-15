@@ -8,6 +8,7 @@ class ContentKind(str, Enum):
     THINKING = "THINKING"
     PROCESS = "PROCESS"
     ANSWER = "ANSWER"
+    CLARIFICATION = "CLARIFICATION"
     TOOL_STARTED = "TOOL_STARTED"
     TOOL_RESULT = "TOOL_RESULT"
 
@@ -40,6 +41,13 @@ class ToolEventMessageBody(MessageBody):
     event: dict[str, Any] = Field(default_factory=dict, description="Safe tool event payload")
 
 
+class ClarificationMessageBody(MessageBody):
+    contentType: Literal["sagegpt/clarification"] = "sagegpt/clarification"
+    kind: ContentKind = ContentKind.CLARIFICATION
+    text: str
+    clarification: dict[str, Any] = Field(default_factory=dict)
+
+
 class FinishMessageBody(MessageBody):
     contentType: Literal["sagegpt/finish"] = "sagegpt/finish"
 
@@ -52,6 +60,6 @@ class PacketMeta(BaseModel):
 
 class StreamPacket(BaseModel):
     id: str
-    content: Union[TextMessageBody, ToolEventMessageBody, FinishMessageBody]
+    content: Union[TextMessageBody, ToolEventMessageBody, ClarificationMessageBody, FinishMessageBody]
     status: StreamStatus
     metadata: PacketMeta
