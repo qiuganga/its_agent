@@ -103,12 +103,20 @@ class HarnessControlTests(unittest.IsolatedAsyncioTestCase):
     async def test_default_service_agent_tool_timeout_allows_model_finalization(self):
         policy = build_default_policy()
         service_policy = policy.get_tool_policy("query_service_station_and_navigate")
+        technical_policy = policy.get_tool_policy("consult_technical_expert")
         map_policy = policy.get_tool_policy("map_navigation_tool")
+        knowledge_policy = policy.get_tool_policy("query_knowledge")
 
         self.assertIsNotNone(service_policy)
+        self.assertIsNotNone(technical_policy)
         self.assertIsNotNone(map_policy)
+        self.assertIsNotNone(knowledge_policy)
         self.assertGreater(service_policy.timeout_seconds, map_policy.timeout_seconds)
+        self.assertGreater(technical_policy.timeout_seconds, knowledge_policy.timeout_seconds)
         self.assertLess(service_policy.timeout_seconds, policy.max_request_seconds)
+        self.assertLess(technical_policy.timeout_seconds, policy.max_request_seconds)
+        self.assertGreaterEqual(policy.max_request_seconds - service_policy.timeout_seconds, 20)
+        self.assertGreaterEqual(policy.max_request_seconds - technical_policy.timeout_seconds, 20)
 
     async def test_same_run_duplicate_tool_call_executes_once(self):
         harness = SystemHarness(make_policy(tool_limit=2))
@@ -300,13 +308,13 @@ class HarnessControlTests(unittest.IsolatedAsyncioTestCase):
         harness = SystemHarness(make_policy(timeout=1.0, max_request_seconds=1.0, tool_concurrency=1))
         first_ctx = make_context(harness, run_id="queue-a")
         second_ctx = make_context(harness, run_id="queue-b")
-        second_ctx.run_state.started_at = time.monotonic() - 0.98
+        second_ctx.run_state.started_at = time.monotonic() - 0.88
         first_started = asyncio.Event()
         second_calls = 0
 
         async def slow_action():
             first_started.set()
-            await asyncio.sleep(0.1)
+            await asyncio.sleep(0.2)
             return "slow"
 
         async def should_not_start():
